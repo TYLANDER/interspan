@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {Navbar, Nav, NavItem} from 'react-bootstrap';
+//import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import {AppBar, RaisedButton, } from 'material-ui'
 import './NavBar.css';
 
 class NavBar extends React.Component<any, any> {
@@ -7,7 +8,15 @@ class NavBar extends React.Component<any, any> {
     render() {
         return (
             <div className="navbar-container">
-                <Navbar inverse collapseOnSelect className="navbar-border">
+                <AppBar 
+                    title="Interspan"
+                    zDepth={3}
+                    iconElementRight={<RaisedButton primary label="Sign out" onTouchTap={this.props.logout}/>}
+                    showMenuIconButton={false}
+                    onRightIconButtonTouchTap={()=>console.log("Item clicked")}
+              />
+
+                {/*<Navbar inverse collapseOnSelect className="navbar-border">
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="#">Interspan</a>
@@ -21,7 +30,7 @@ class NavBar extends React.Component<any, any> {
                             <NavItem eventKey={2} href="#">Sign up</NavItem>
                         </Nav>
                     </Navbar.Collapse>
-                </Navbar>
+                </Navbar>*/}
             </div>
         );
     }

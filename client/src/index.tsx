@@ -4,6 +4,9 @@ import AppRoutes from './AppRoutes';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import './index.css';
+import injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
+
 
 ReactDOM.render(
   <Provider store={store}>
