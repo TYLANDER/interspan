@@ -8,7 +8,7 @@ class AppRoutes extends React.Component<any, any> {
         return (
             <Router history={browserHistory}>
                 <Route path="/" component={App}>
-                    <IndexRoute component={Login} />
+                    <IndexRoute component={Home} />
                     <Route path="login" component={Login} />
                     <Route path="signup" component={Signup} />
                     <Route component={Dashboard} >

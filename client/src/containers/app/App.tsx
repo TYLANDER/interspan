@@ -5,18 +5,21 @@ import './App.css';
 import AppTheme from '../../app-theme';
 
 class App extends React.Component<any, any> {
-  render() {
-    return (
-      <MuiThemeProvider muiTheme={AppTheme}>
-        <div className="app">
-          <NavBar />
-          <div className="app-childs">
-              {this.props.children}
-          </div>
-        </div>
-      </MuiThemeProvider>
-    );
-  }
+
+    render() {
+
+        return (
+            <MuiThemeProvider muiTheme={AppTheme}>
+                <div>
+                    <NavBar />
+                    <div className="child-page">
+                        {this.props.children}
+                    </div>
+                    
+                </div>
+            </MuiThemeProvider>
+        );
+    }
 }
 
 export default App;

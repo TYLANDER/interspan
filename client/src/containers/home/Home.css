@@ -1,0 +1,34 @@
+.home-container{
+  padding: 27px;
+}
+.home-container .title{
+  font-weight: 600;
+}
+.home-container .title-desc{
+  font-size: 30px;
+  display: block;
+  width: 500px;
+}
+.home-container .apply-desc{
+  margin-top: 40px;
+}
+
+.apply-paper{
+  width: 300px;
+  margin: 20px;
+  text-align: center;
+  color:#000;
+  display: inline-block;
+}
+.apply-paper .paper-container{
+  padding: 27px;
+}
+.apply-paper .paper-bar{
+  width:100%;
+  height:1px;
+  background-color:#dedede;
+}
+
+.text-left{
+  text-align: left;
+}

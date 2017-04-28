@@ -1,36 +1,30 @@
 import * as React from 'react';
-//import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import {AppBar, RaisedButton, } from 'material-ui'
+import { AppBar, RaisedButton, FlatButton } from 'material-ui'
 import './NavBar.css';
 
 class NavBar extends React.Component<any, any> {
 
     render() {
+
+        const menu = (
+            <div>
+                <FlatButton label="Employers" />
+                <FlatButton label="About" />
+                <RaisedButton primary label="Apply" onTouchTap={this.props.logout} />
+            </div>
+        )
+
         return (
             <div className="navbar-container">
-                <AppBar 
+                <AppBar
                     title="Interspan"
                     zDepth={3}
-                    iconElementRight={<RaisedButton primary label="Sign out" onTouchTap={this.props.logout}/>}
+                    iconElementRight={
+                        menu
+                    }
                     showMenuIconButton={false}
-                    onRightIconButtonTouchTap={()=>console.log("Item clicked")}
-              />
-
-                {/*<Navbar inverse collapseOnSelect className="navbar-border">
-                    <Navbar.Header>
-                        <Navbar.Brand>
-                            <a href="#">Interspan</a>
-                        </Navbar.Brand>
-
-                        <Navbar.Toggle />
-                    </Navbar.Header>
-                    <Navbar.Collapse>
-                        <Nav pullRight className="navbar-textcolor">
-                            <NavItem eventKey={2} href="#">Sign in</NavItem>
-                            <NavItem eventKey={2} href="#">Sign up</NavItem>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>*/}
+                    onRightIconButtonTouchTap={() => console.log("Item clicked")}
+                />
             </div>
         );
     }
