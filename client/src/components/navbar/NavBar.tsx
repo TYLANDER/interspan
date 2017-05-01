@@ -17,12 +17,13 @@ class NavBar extends React.Component<any, any> {
         return (
             <div className="navbar-container">
                 <AppBar
-                    title="Interspan"
                     zDepth={3}
+                    iconElementLeft={
+                        <img src={require("../../assets/logo.png")} className="logo" alt="logo"/>
+                    }
                     iconElementRight={
                         menu
                     }
-                    showMenuIconButton={false}
                     onRightIconButtonTouchTap={() => console.log("Item clicked")}
                 />
             </div>

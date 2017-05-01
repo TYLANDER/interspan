@@ -1,4 +1,9 @@
 .navbar-container .navbar-border{
-  border-radius: 0px;
-  
+  border-radius: 0;
+}
+.navbar-container .logo{
+  width: 150px;
+  height: 48px;
+  position: absolute;
+  left: 90px;
 }
