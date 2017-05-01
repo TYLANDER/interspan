@@ -7,3 +7,17 @@
   position: absolute;
   left: 90px;
 }
+.hamburger-icon{
+  display: none !important;
+}
+@media (max-width: 630px) {
+  .hamburger-icon{
+    display: inline !important;
+  }
+  .md-menu{
+    display: none;
+  }
+  .navbar-container .logo {
+    left: 20px;
+  }
+}
