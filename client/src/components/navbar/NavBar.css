@@ -7,11 +7,23 @@
   position: absolute;
   left: 90px;
 }
-.hamburger-icon{
+.navbar-container .hamburger-icon{
   display: none !important;
 }
+.navbar-container .sub-menu{
+  margin-top: 15px;
+  color: #373e9b;
+}
+.navbar-container .sub-menu > div {
+  padding: 10px 0 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.navbar-container .menu-container{
+  margin-top: 5px;
+}
 @media (max-width: 630px) {
-  .hamburger-icon{
+  .navbar-container .hamburger-icon{
     display: inline !important;
   }
   .md-menu{

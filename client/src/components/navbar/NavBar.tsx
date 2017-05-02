@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { AppBar, RaisedButton, FlatButton } from 'material-ui'
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+import { AppBar, RaisedButton, FlatButton } from 'material-ui';
 import IconButton from 'material-ui/IconButton';
 import './NavBar.css';
 
@@ -15,18 +13,27 @@ class NavBar extends React.Component<any, any> {
 
     render() {
         const menu = (
-            <div>
+            <div className="menu-container">
                 <span className="md-menu">
                 <FlatButton label="Employers" />
                 <FlatButton label="About" />
                 <RaisedButton primary label="Apply" onTouchTap={this.props.logout} />
                 <IconButton iconClassName="muidocs-icon-custom-github" />
                     </span>
-                <FlatButton
-                    className="hamburger-icon"
-                    icon={<img src={require("../../assets/menu.svg")}/>}
-                    onTouchTap={this.handleToggle}
-                />
+
+                {(this.state.open)?
+                    <FlatButton
+                        className="hamburger-icon"
+                        icon={<img src={require("../../assets/window-close.svg")}/>}
+                        onTouchTap={this.handleToggle}
+                    />
+                    :
+                    <FlatButton
+                        className="hamburger-icon"
+                        icon={<img src={require("../../assets/menu.svg")}/>}
+                        onTouchTap={this.handleToggle}
+                    />
+                }
 
             </div>
         );
@@ -38,17 +45,18 @@ class NavBar extends React.Component<any, any> {
                     iconElementLeft={
                         <img src={require("../../assets/logo.png")} className="logo" alt="logo"/>
                     }
-                    iconElementRight={
-                        menu
-                    }
-                    onRightIconButtonTouchTap={() => console.log("Item clicked")}
+                    iconElementRight={menu}
                 />
-                <Drawer width={300} openSecondary={true} open={this.state.open}>
-                    <MenuItem onTouchTap={this.handleClose}>Employers</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>About</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>Apply</MenuItem>
+                {(this.state.open)?
+                    <div className="sub-menu">
+                        <div onClick={this.handleClose}>Apply Now</div>
+                        <div onClick={this.handleClose}>About Interspan</div>
+                        <div onClick={this.handleClose}>For Employers</div>
+                        <div onClick={this.handleClose}>What we hire for</div>
+                    </div>
+                    : null
+                }
 
-                </Drawer>
             </div>
 
         );
