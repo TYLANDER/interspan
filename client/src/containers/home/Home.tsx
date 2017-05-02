@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './Home.css';
 import Paper from 'material-ui/Paper';
-
 import FlatButton from 'material-ui/FlatButton';
 import {RaisedButton} from 'material-ui'
+import { browserHistory } from 'react-router'
 
 class Home extends React.Component<any, any> {
     state = {
@@ -77,6 +77,10 @@ class Home extends React.Component<any, any> {
         this.setState({panelArray: this.state.panelArray})
     };
 
+    handleJobApply(){
+        browserHistory.push('/signup');
+    }
+
     render() {
 
         this.panelArray = (
@@ -129,7 +133,7 @@ class Home extends React.Component<any, any> {
                             :
                             <div className="text-left footer-container">
                                 <FlatButton label="MORE" onClick={this.showDescription.bind(this, jobObj, i)}/>
-                                <FlatButton label="APPLY"/>
+                                <FlatButton label="APPLY" onClick={this.handleJobApply}/>
                             </div>
                         }
                     </Paper>
