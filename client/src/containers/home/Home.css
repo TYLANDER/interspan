@@ -20,12 +20,14 @@
 }
 
 .apply-paper{
-  width: 300px;
-  margin: 20px;
+  /*width: 347px;*/
+  width: 30%;
+  margin: 10px;
   color:#000;
   display: inline-block;
+  vertical-align: top;
 }
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .apply-paper {
      width: 47% !important;
     margin: 7px;
@@ -42,7 +44,7 @@
   }
 }
 .apply-paper .paper-container{
-  padding: 0 27px 27px 27px;
+  padding: 0 27px 45px 27px;
 }
 .apply-paper .paper-bar{
   width:100%;
@@ -52,4 +54,24 @@
 
 .text-left{
   text-align: left;
+}
+.apply-paper .footer-container{
+  padding: 6px 0;
+}
+
+.apply-paper .showMoreDesc-container{
+  margin-top: 15px;
+}
+.apply-paper .paper-container .label-title{
+  line-height: 1.75;
+}
+.apply-paper .apply-job-btn{
+  width: 100%;
+}
+.apply-paper .cross-btn{
+  display: inline !important;
+  height: 10px;
+  float: right;
+  cursor: pointer;
+  margin-right: -16px;
 }
