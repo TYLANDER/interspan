@@ -11,6 +11,7 @@ const INITIAL_STATE = {
 interface IACTION {
     type: string;
     payload?: any;
+    isAuthenticated: true;
 };
 
 function AuthReducer(state = INITIAL_STATE, action: IACTION) {

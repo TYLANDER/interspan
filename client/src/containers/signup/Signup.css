@@ -18,3 +18,20 @@
 .signup-container .paper-container .footer-container .back-btn{
     float: left;
 }
+
+.signup-container .md-screen{
+        display: block;
+}
+.signup-container .sm-screen{
+    display: none;
+}
+
+@media (max-width: 600px){
+    .signup-container .md-screen{
+        display: none !important;
+    }
+    .signup-container .sm-screen{
+        display: block !important;
+        margin-top: -44px;
+    }
+}

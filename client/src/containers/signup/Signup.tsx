@@ -62,9 +62,12 @@ class Signup extends React.Component<any, any> {
             <MuiThemeProvider muiTheme={this.muiTheme}>
                 <div className="signup-container">
                     <div className="paper-container">
-                        <Paper zDepth={2}>
+                        <Paper zDepth={2} className="md-screen">
                             {formElement}
                         </Paper>
+                        <div className="sm-screen">
+                            {formElement}
+                        </div>
                     </div>
                 </div>
             </MuiThemeProvider>
