@@ -19,22 +19,34 @@
   text-align: left;
 }
 
+.home-container .paper-parent{
+  flex-wrap: wrap;
+  /*-webkit-rows: 20em;
+  -moz-rows: 20em;
+  rows: 20em;*/
+  -webkit-columns: 20em;
+  -moz-columns: 20em;
+  columns: 20em;
+}
+
 .apply-paper{
-  /*width: 347px;*/
-  width: 30%;
+  width: 305px;
   margin: 10px;
-  color:#000;
   display: inline-block;
   vertical-align: top;
+  min-height: 224px;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
-@media (max-width: 900px) {
+@media (max-width: 945px) {
   .apply-paper {
-     width: 47% !important;
+     width: 98% !important;
     margin: 7px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 625px) {
   .apply-paper {
     width: 96% !important;
     margin: 0 0 20px 8px ;

@@ -141,9 +141,9 @@ class Home extends React.Component<any, any> {
             })
         );
         return (
-            <div>
+            <div className="home-container">
                 {this.props.children}
-                <div className="home-container">
+                <div className="home-header-container">
                     <h2 className="title"> We span the gap</h2>
                     <div className="title-desc">
                         InterSpan provides quality employees to companies that need them.
@@ -155,7 +155,9 @@ class Home extends React.Component<any, any> {
                     <RaisedButton primary label="Apply" onTouchTap={this.props.logout}/>
                     <h1>Positions</h1>
                 </div>
-                {this.panelArray}
+                <div className="paper-parent">
+                    {this.panelArray}
+                </div>
             </div>
         );
     }
