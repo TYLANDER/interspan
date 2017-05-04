@@ -1,4 +1,4 @@
-import config from '../config'
+import config from '../config/index';
 import { createConnection } from 'mysql'
 //let mysql = require('mysql');
 

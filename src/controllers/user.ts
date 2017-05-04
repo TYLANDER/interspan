@@ -1,13 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const db_1 = require("../db");
-class User {
-    static getUsers(req, res, next) {
+import { DbUser } from '../db/index';
+
+export default class User {
+
+    static getUsers(req,res,next){
         res.send("All Users List");
     }
-    static getUserDetais(req, res, next) {
+
+    static getUserDetais(req,res,next){
         //res.send("User Details");
-        db_1.DbUser.getVisits((err, data) => {
+        DbUser.getVisits((err, data) => {
             if (err) {
                 next(err);
                 return;
@@ -19,4 +20,3 @@ class User {
         });
     }
 }
-exports.default = User;

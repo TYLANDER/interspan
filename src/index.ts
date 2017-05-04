@@ -2,9 +2,9 @@ import * as http from "http";
 import * as express from "express";    
 import * as bodyParser from "body-parser";  
 import * as methodOverride from "method-override";
+import * as path from "path";
 import routes from './routes';
 import { join } from 'path';
-
 
 let app: express.Application = express();
 
@@ -12,9 +12,8 @@ app.enable('trust proxy');
 app.use(bodyParser.urlencoded({ extended: true }));  
 app.use(bodyParser.json());  
 app.use(methodOverride());
-let path = require("path");
 
-app.use(express.static(path.resolve(__dirname,'../../client/build')));
+app.use(express.static(path.resolve(__dirname,'../client/build')));
 routes(app);
 
 

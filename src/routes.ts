@@ -1,8 +1,8 @@
 
-import { User } from './controllers';
+import { User } from './controllers/index';
 let path = require("path");
 
-function routes(app) {
+function routes(app) { 
     
     app.get('*', (req, res) => {
         res.render('index.html');

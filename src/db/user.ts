@@ -7,6 +7,6 @@ export default class DbUser {
                 return;
             }
             callback(null, results.map((data) => `ID: ${data.id}, NAME: ${data.name}`));
-        }))
+        })) 
     }
 }
