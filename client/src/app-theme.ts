@@ -21,6 +21,10 @@ const CustomTheme = getMuiTheme({
   raisedButton: {
     primaryColor: '#2D459E',
     primaryTextColor: Colors.white
+  },
+  textField:{
+    focusColor: '#2e469e',
+    textColor: '#2e469e'
   }
 });
 

@@ -7,6 +7,9 @@
 .signup-container .fields-container{
     padding: 30px;
 }
+.signup-container .fields-container label {
+    font-weight: 500;
+}
 .signup-container .fields-container .title{
     color: #c5c0c0;
     font-weight: 500;
@@ -14,16 +17,32 @@
 .signup-container .paper-container .footer-container{
     text-align: right;
     padding: 20px 5px;
+    color: black;
 }
 .signup-container .paper-container .footer-container .back-btn{
     float: left;
 }
-
+.signup-container .paper-container .footer-container .btn-icon{
+    height: 23px;
+}
+.signup-container .paper-container .footer-container .back{
+    margin-right: -10px !important;
+}
+.signup-container .paper-container .footer-container .continue{
+    margin-left: -7px !important;
+}
 .signup-container .md-screen{
         display: block;
 }
 .signup-container .sm-screen{
     display: none;
+}
+.signup-container .sm-screen .footer-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fbfef9;
 }
 
 @media (max-width: 600px){

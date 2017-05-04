@@ -8,7 +8,6 @@ import UsernameForm from './UsernameForm';
 import UserEmailForm from './UserEmailForm';
 import UserSSNForm from './UserSSNForm';
 
-
 class Signup extends React.Component<any, any> {
 
     muiTheme: any = getMuiTheme({
@@ -18,6 +17,10 @@ class Signup extends React.Component<any, any> {
         appBar: {
             height: 50,
         },
+        textField:{
+            focusColor: '#2e469e',
+            textColor: '#2e469e'
+        }
     });
 
     state: any = {
@@ -51,10 +54,20 @@ class Signup extends React.Component<any, any> {
                 (this.state.currentScreen == 'UserEmailForm') ? <UserEmailForm /> : <UserSSNForm />}
 
                 <div className="footer-container">
-                    <FlatButton label="< Back" className="back-btn"
-                                onClick={this.swapScreen.bind(this, "back")}/>
-                    <FlatButton label="Continue >" className="continue-btn"
-                                onClick={this.swapScreen.bind(this, "continue")}/>
+                    <FlatButton label="Back" 
+                        className="back-btn"
+                        secondary={true}
+                        labelStyle={{color: '#2e469e'}}
+                        icon={<img src={require("../../assets/angle-left.svg")} className="btn-icon back" alt="logo" />}
+                        onClick={this.swapScreen.bind(this, "back")}/>
+
+                    <FlatButton label="Continue"
+                        className="continue-btn"
+                        labelPosition="before"
+                        primary={true}
+                        labelStyle={{color: '#2e469e'}}
+                        icon={<img src={require("../../assets/angle-right.svg")} className="btn-icon continue" alt="logo" />}
+                        onClick={this.swapScreen.bind(this, "continue")}/>
                 </div>
             </div>
         );
