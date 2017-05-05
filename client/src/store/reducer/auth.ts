@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 interface IACTION {
     type: string;
     payload?: any;
-    isAuthenticated: true;
+    isAuthenticated: boolean;
 };
 
 function AuthReducer(state = INITIAL_STATE, action: IACTION) {
@@ -28,7 +28,6 @@ function AuthReducer(state = INITIAL_STATE, action: IACTION) {
         case AuthActions.LOGIN:
             return {...state, isProcessing: true };
         case AuthActions.LOGIN_SUCCESS:
-            // console.log('LOGIN_SUCCESS ', Object.assign({}, state, { isProcessing: false, isAuthenticated: true, activeUser: action.payload }))
             return {...state, isProcessing: false, isAuthenticated: true, activeUser: action.payload };
         case AuthActions.LOGIN_FAILER:
             return {...state, isProcessing: false, isAuthenticated: false, activeUser: {}, isError: { status: true, msg: action.payload } };

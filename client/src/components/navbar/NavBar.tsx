@@ -3,20 +3,34 @@ import { AppBar, RaisedButton, FlatButton } from 'material-ui';
 import IconButton from 'material-ui/IconButton';
 import './NavBar.css';
 import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import { Subject } from 'rxjs';
+import AuthActions from '../../store/action/auth'
 
 class NavBar extends React.Component<any, any> {
 
+    $authObservar: Subject<any>;
     constructor(props:any){
         super(props);
-        if(this.props.authObj.isAuthenticated){
-            // set state
-        }
+        //this.$authObservar = new Subject<any>();
     }
 
     state = {
-        open: false
+        open: false,
+        isAuthenticated: false
     };
     
+    componentWillReceiveProps(nextProp:any){
+        console.log(nextProp);
+        if(this.props.authObj.isAuthenticated){
+            this.setState({isAuthenticated: false})
+        }
+        else this.setState({isAuthenticated: true})
+    }
+
+    handleHomePage(){
+        browserHistory.push('/');
+    }
     handleToggle = () => this.setState({ open: !this.state.open });
     handleClose = () => {
         console.log(this.props);
@@ -56,6 +70,7 @@ class NavBar extends React.Component<any, any> {
                     <img src={require("../../assets/logo.png")} className="logo" alt="logo" />
                 }
                 iconElementRight={menu}
+                onTitleTouchTap={this.handleHomePage}
             />
             {(this.state.open) ?
                 <div className="sub-menu">
@@ -80,7 +95,7 @@ class NavBar extends React.Component<any, any> {
 
         return (
             <div className="navbar-container">
-                {(this.props.authObj.isAuthenticated? homeMenu : globalMenu)}
+                {(!this.state.isAuthenticated? homeMenu : globalMenu)}
             </div>
 
         );

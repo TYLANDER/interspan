@@ -7,6 +7,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import UsernameForm from './UsernameForm';
 import UserEmailForm from './UserEmailForm';
 import UserSSNForm from './UserSSNForm';
+import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
 
 class Signup extends React.Component<any, any> {
 
@@ -24,13 +26,23 @@ class Signup extends React.Component<any, any> {
     });
 
     state: any = {
-        currentScreen: 'UsernameForm'
+        currentScreen: 'UsernameForm',
+        isAuthenticated: false
     };
 
+    componentWillMount(){
+        if(!this.props.authObj.isAuthenticated)
+            this.props.authLogin({username: "Zeeshan Hanif"});
+    }
+    handleHomePage(){
+        browserHistory.push('/');
+    }
     swapScreen(screenName: any) {
         let changedScreen = "";
-        if (screenName == "back" && this.state.currentScreen == "UsernameForm")
+        if (screenName == "back" && this.state.currentScreen == "UsernameForm"){
             changedScreen = "UsernameForm";
+            this.handleHomePage();
+        }
         else if (screenName == "back" && this.state.currentScreen == "UserEmailForm")
             changedScreen = "UsernameForm";
         else if (screenName == "back" && this.state.currentScreen == "UserSSNForm")
@@ -40,8 +52,10 @@ class Signup extends React.Component<any, any> {
             changedScreen = "UserEmailForm";
         else if (screenName == "continue" && this.state.currentScreen == "UserEmailForm")
             changedScreen = "UserSSNForm";
-        else if (screenName == "continue" && this.state.currentScreen == "UserSSNForm")
+        else if (screenName == "continue" && this.state.currentScreen == "UserSSNForm"){
             changedScreen = "UserSSNForm";
+            this.handleHomePage();
+        }
 
         this.setState({currentScreen: changedScreen});
     }
@@ -88,4 +102,14 @@ class Signup extends React.Component<any, any> {
     }
 
 }
-export default Signup
+const mapStateToProps = (state:any) => {
+    return { authObj: state.AuthReducer};
+};
+const mapDispatchToProps = (dispatch:any) =>{
+    return {authLogin:(userObj:any)=>dispatch({
+            type: "LOGIN_SUCCESS",
+            payload: userObj
+        })}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Signup)
