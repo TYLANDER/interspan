@@ -5,7 +5,6 @@ import './NavBar.css';
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { Subject } from 'rxjs';
-import AuthActions from '../../store/action/auth'
 
 class NavBar extends React.Component<any, any> {
 

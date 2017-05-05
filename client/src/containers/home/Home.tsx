@@ -2,8 +2,10 @@ import * as React from 'react';
 import './Home.css';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
-import {RaisedButton} from 'material-ui'
+import { RaisedButton } from 'material-ui'
 import { browserHistory } from 'react-router'
+import JobActions from '../../../src/store/action/jobs';
+import { connect } from "react-redux";
 
 class Home extends React.Component<any, any> {
     state = {
@@ -69,15 +71,33 @@ class Home extends React.Component<any, any> {
                 showMore: false
             }
         ],
+        panelArray1: [{showMore:false}]
     };
+    gettingData = false;
     panelArray: any;
 
+    constructor(props:any){
+        super(props);
+        this.props.getAllJobs();
+    }
+    componentWillReceiveProps(){
+        if(this.props.isLoading)
+            this.gettingData = true;
+         if(this.props && !this.props.isLoading && this.props.allJobs.length){
+            let alljobs:any = this.props.alljobs;
+            debugger
+            alljobs = alljobs.map((job:any)=>{
+                job.showMore = false;
+            })
+            this.setState({ panelArray1: alljobs })
+         }
+    }
     showDescription(obj: any, ind: any) {
         this.state.panelArray[ind].showMore = !this.state.panelArray[ind].showMore;
-        this.setState({panelArray: this.state.panelArray})
+        this.setState({ panelArray: this.state.panelArray })
     };
 
-    handleJobApply(){
+    handleJobApply() {
         browserHistory.push('/signup');
     }
 
@@ -128,12 +148,12 @@ class Home extends React.Component<any, any> {
 
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="APPLY" className="apply-job-btn"/>
+                                <FlatButton label="APPLY" className="apply-job-btn" onClick={this.handleJobApply}/>
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="MORE" onClick={this.showDescription.bind(this, jobObj, i)}/>
-                                <FlatButton label="APPLY" onClick={this.handleJobApply}/>
+                                <FlatButton label="MORE" onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="APPLY" onClick={this.handleJobApply} />
                             </div>
                         }
                     </Paper>
@@ -152,15 +172,29 @@ class Home extends React.Component<any, any> {
                     <p className="apply-desc">
                         We have open positions now, and applying is easy.
                     </p>
-                    <RaisedButton primary label="Apply" onTouchTap={this.props.logout}/>
+                    <RaisedButton primary label="Apply"onClick={this.handleJobApply} />
                     <h1>Positions</h1>
                 </div>
                 <div className="paper-parent">
                     {this.panelArray}
                 </div>
+                 {/*{(this.props.isLoading) ? 'Loading Data....... ' : JSON.stringify(this.props.allJobs, null, 2)}*/}
             </div>
         );
     }
 }
 
-export default Home;
+const mapStateToProps = (state: any) => {
+    return {
+        allJobs: state.jobReducer['allJobs'],
+        isLoading: state.jobReducer['isLoading'],
+    };
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        getAllJobs: (): void => dispatch(JobActions.getAllJobs())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

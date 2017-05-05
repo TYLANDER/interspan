@@ -9,19 +9,23 @@ import IAppState from './IAppState';
 
 // reducers
 import AuthReducer from "./reducer/auth";
+import jobReducer from "./reducer/jobs";
 
 // epics
 import AuthEpic from "./epic/auth";
+import JobEpic from "./epic/jobs";
 
 
 // Application Epics / Effects
 export const rootEpic = combineEpics(
-    AuthEpic.loginEpic
+    AuthEpic.loginEpic,
+    JobEpic.getAllJobsEpic
 );
 
 // Application Reducers
 export const rootReducer = combineReducers<IAppState>({
-    AuthReducer
+    AuthReducer,
+    jobReducer
 });
 
 
