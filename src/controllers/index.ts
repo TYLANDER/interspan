@@ -1,6 +1,8 @@
 import User from './user';
+import Jobs from './jobs';
 
 export {
-    User
+    User,
+    Jobs
     // more controllers here
 }

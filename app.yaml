@@ -1,2 +1,16 @@
 runtime: nodejs
 env: flex
+# [START env]
+env_variables:
+  MYSQL_USER: 'test'
+  MYSQL_PASSWORD: 'test'
+  MYSQL_DATABASE: 'admin'
+  # e.g. my-awesome-project:us-central1:my-cloud-sql-instance
+  INSTANCE_CONNECTION_NAME: 'interspanresources-164914:us-east1:interspan-db'
+# [END env]
+
+# [START cloudsql_settings]
+beta_settings:
+  cloud_sql_instances: 'interspanresources-164914:us-east1:interspan-db'
+# [END cloudsql_settings]
+# [END app_yaml]
