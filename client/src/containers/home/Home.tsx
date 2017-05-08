@@ -178,7 +178,6 @@ class Home extends React.Component<any, any> {
                 <div className="paper-parent">
                     {this.panelArray}
                 </div>
-                 {/*{(this.props.isLoading) ? 'Loading Data....... ' : JSON.stringify(this.props.allJobs, null, 2)}*/}
             </div>
         );
     }
