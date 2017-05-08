@@ -153,13 +153,13 @@ class Home extends React.Component<any, any> {
 
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="Apply" labelStyle={{textTransform: "capitalize"}} 
+                                <FlatButton label="Apply" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49'}} 
                                     className="apply-job-btn" onClick={this.handleJobApply}/>
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" labelStyle={{textTransform: "capitalize"}} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" labelStyle={{textTransform: "capitalize"}}  onClick={this.handleJobApply} />
+                                <FlatButton label="More" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49'}} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49'}}  onClick={this.handleJobApply} />
                             </div>
                         }
                     </Paper>

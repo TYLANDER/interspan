@@ -10,6 +10,7 @@
   height: 48px;
   position: absolute;
   left: 90px;
+  top:0
 }
 .navbar-container .hamburger-icon{
   display: none !important;
