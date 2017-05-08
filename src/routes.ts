@@ -1,19 +1,14 @@
+import {router as jobsRouter} from './entity/jobs/route';
+import {router as userRouter} from './entity/user/route';
 
-import { User, Jobs } from './controllers/index';
-import {Jobs_Modal} from './modals/index'
 
 function routes(app) { 
-    
     app.get('/', (req, res) => {
         res.render('index.html');
     });
-    
-    app.get('/test', User.getUsers);
-    app.get('/details', User.getUserDetais);
-    app.get('/jobs_table',Jobs_Modal.createTable);
-    app.post('/jobs', Jobs.insertJobs);
-    app.get('/jobs',Jobs.getJobs);
-    //app.get('/users',app.controllers.getUsers);
+    //Rest API's
+    app.use("/api/user",userRouter)
+    app.use("/api/jobs",jobsRouter);
 }
 
 export default routes

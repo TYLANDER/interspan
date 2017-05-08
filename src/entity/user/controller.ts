@@ -1,4 +1,6 @@
-import { DbUser } from '../db/index';
+import DbUser from './query';
+import express = require("express");
+import { responseJsonHandler } from '../../utils/helper';
 
 export default class User {
 

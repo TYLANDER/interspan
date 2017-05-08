@@ -1,4 +1,6 @@
-import connection from './connection'
+import connection from '../../db/connection';
+import { CallBackFunction } from '../../utils/helper';
+
 export default class DbUser {
     static getVisits(callback){
         return (connection.query(`SELECT id, name FROM testing`, (err, results) => {
