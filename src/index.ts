@@ -14,6 +14,13 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 app.use(express.static('client/build'));
+
+app.use([
+    '/signup',
+], (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 routes(app);
 
 
