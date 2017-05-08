@@ -5,6 +5,7 @@ import FlatButton from 'material-ui/FlatButton';
 import { RaisedButton } from 'material-ui'
 import { browserHistory } from 'react-router'
 import JobActions from '../../../src/store/action/jobs';
+import AuthActions from '../../../src/store/action/auth'
 import { connect } from "react-redux";
 
 class Home extends React.Component<any, any> {
@@ -84,13 +85,17 @@ class Home extends React.Component<any, any> {
         if(this.props.isLoading)
             this.gettingData = true;
          if(this.props && !this.props.isLoading && this.props.allJobs.length){
-            let alljobs:any = this.props.alljobs;
-            debugger
+            let alljobs:any = this.props.allJobs;
             alljobs = alljobs.map((job:any)=>{
                 job.showMore = false;
             })
             this.setState({ panelArray1: alljobs })
          }
+    }
+    componentWillMount(){
+        if(this.props.authObj.isAuthenticated){
+            this.props.logout();
+        }
     }
     showDescription(obj: any, ind: any) {
         this.state.panelArray[ind].showMore = !this.state.panelArray[ind].showMore;
@@ -188,13 +193,15 @@ const mapStateToProps = (state: any) => {
     return {
         allJobs: state.jobReducer['allJobs'],
         isLoading: state.jobReducer['isLoading'],
+        authObj: state.AuthReducer
     };
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getAllJobs: (): void => dispatch(JobActions.getAllJobs())
-    };
+        getAllJobs: (): void => dispatch(JobActions.getAllJobs()),
+        logout: (): void =>dispatch(AuthActions.logout())
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

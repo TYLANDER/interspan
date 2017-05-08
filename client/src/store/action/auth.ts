@@ -37,7 +37,7 @@ export default class AuthActions {
 
     static logout() {
         return {
-            type: AuthActions.LOGOUT
+            type: AuthActions.LOGOUT_SUCCESS
         };
     }
 

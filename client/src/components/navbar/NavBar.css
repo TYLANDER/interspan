@@ -1,3 +1,7 @@
+.navbar-container{
+  box-shadow: 0 6px 8px 0px rgba(135, 152, 164, 0.3);
+  background-color: #fefefe;
+}
 .navbar-container .navbar-border{
   border-radius: 0;
 }
