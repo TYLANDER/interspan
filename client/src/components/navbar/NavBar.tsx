@@ -39,9 +39,10 @@ class NavBar extends React.Component<any, any> {
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
-                    <FlatButton label="Employers" />
-                    <FlatButton label="About" />
-                    <RaisedButton primary label="Apply" onTouchTap={this.props.logout} />
+                    <FlatButton label="Employers" className="app-box-shadow" labelStyle={{textTransform: "capitalize"}}/>
+                    <FlatButton label="About" className="app-box-shadow" labelStyle={{textTransform: "capitalize"}}/>
+                    <RaisedButton primary label="Apply" onTouchTap={this.props.logout} className="app-box-shadow" 
+                    labelStyle={{textTransform: "capitalize"}}/>
                     <IconButton iconClassName="muidocs-icon-custom-github" />
                 </span>
 

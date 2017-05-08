@@ -39,6 +39,9 @@
   page-break-inside: avoid;
   break-inside: avoid;
 }
+.home-header-container .apply{
+  margin-top: 20px;
+}
 @media (max-width: 945px) {
   .apply-paper {
      width: 98% !important;

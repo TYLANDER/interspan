@@ -148,12 +148,13 @@ class Home extends React.Component<any, any> {
 
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="APPLY" className="apply-job-btn" onClick={this.handleJobApply}/>
+                                <FlatButton label="Apply" labelStyle={{textTransform: "capitalize"}} 
+                                    className="apply-job-btn" onClick={this.handleJobApply}/>
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="MORE" onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="APPLY" onClick={this.handleJobApply} />
+                                <FlatButton label="More" labelStyle={{textTransform: "capitalize"}} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" labelStyle={{textTransform: "capitalize"}}  onClick={this.handleJobApply} />
                             </div>
                         }
                     </Paper>
@@ -172,7 +173,7 @@ class Home extends React.Component<any, any> {
                     <p className="apply-desc">
                         We have open positions now, and applying is easy.
                     </p>
-                    <RaisedButton primary label="Apply"onClick={this.handleJobApply} />
+                    <RaisedButton primary label="Apply" labelStyle={{textTransform: "capitalize"}} className="apply" onClick={this.handleJobApply} />
                     <h1>Positions</h1>
                 </div>
                 <div className="paper-parent">
