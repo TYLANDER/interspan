@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 class Home extends React.Component<any, any> {
     state = {
-        panelArray: [
+        panelArray1: [
             {
                 title: 'Light Industrial Worker',
                 location: 'Elements, outside',
@@ -72,7 +72,7 @@ class Home extends React.Component<any, any> {
                 showMore: false
             }
         ],
-        panelArray1: [{showMore:false}]
+        panelArray: [{showMore:false}]
     };
     gettingData = false;
     panelArray: any;
@@ -81,15 +81,15 @@ class Home extends React.Component<any, any> {
         super(props);
         this.props.getAllJobs();
     }
-    componentWillReceiveProps(){
-        if(this.props.isLoading)
-            this.gettingData = true;
-         if(this.props && !this.props.isLoading && this.props.allJobs.length){
-            let alljobs:any = this.props.allJobs;
+    componentWillReceiveProps(nextProps:any){
+        if(!nextProps.isLoading)
+         if(nextProps.allJobs && nextProps.allJobs.data.length){
+            let alljobs:any = nextProps.allJobs.data;
             alljobs = alljobs.map((job:any)=>{
                 job.showMore = false;
+                return job;
             })
-            this.setState({ panelArray1: alljobs })
+            this.setState({ panelArray: alljobs })
          }
     }
     componentWillMount(){
@@ -131,14 +131,14 @@ class Home extends React.Component<any, any> {
                                 </div>
                                 <div>
                                     <span className="label-title">Hours: </span>
-                                    <span>{jobObj.hrs}</span>
+                                    <span>{jobObj.hours}</span>
                                 </div>
 
                                 {jobObj.showMore ?
                                     <div className="showMoreDesc-container">
                                         <div>
                                             <span className="label-title">Description: </span>
-                                            <span>{jobObj.desc}</span>
+                                            <span>{jobObj.description}</span>
                                         </div>
                                         <div>
                                             <span className="label-title">Compensation: </span>
