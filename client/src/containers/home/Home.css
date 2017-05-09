@@ -1,13 +1,24 @@
+.text-left{
+  font-family: SFUI_Text;
+  color:#494949
+}
 .home-container{
   padding: 27px;
 }
 .home-container .title{
-  font-weight: 600;
+  color: #414141;
+  font-size: 32px;
+  
 }
 .home-container .title-desc{
-  font-size: 30px;
+  font-size: 32px;
   display: block;
   max-width: 500px;
+  font-family: "SFUI_Display_Light";
+  color:#5d5d5d;
+}
+.paper-container .h3{
+  color:#414141;
 }
 .home-container .apply-desc{
   margin-top: 40px;
@@ -17,6 +28,7 @@
   font-stretch: normal;
   font-weight: 400;
   text-align: left;
+  font-family: "SFUI_Text";
 }
 
 .home-container .paper-parent{
@@ -28,7 +40,11 @@
   -moz-columns: 20em;
   columns: 20em;
 }
-
+.paper-parent h3 {
+  font-family: "SFUI Display";
+  font-weight: 400;
+  color:#414141;
+}
 .apply-paper{
   width: 305px;
   margin: 10px;
@@ -41,6 +57,12 @@
 }
 .home-header-container .apply{
   margin-top: 20px;
+}
+.home-header-container{
+  padding-left: 11px;
+}
+.home-header-container h2{
+  font-family: "SFUI Display";
 }
 @media (max-width: 945px) {
   .apply-paper {
@@ -63,8 +85,8 @@
 }
 .apply-paper .paper-bar{
   width:100%;
-  height:1px;
-  border: 1px solid #e6e6e6;
+  height:2px;
+  background:linear-gradient(90deg, #dee1e1 10%, #f4f4f4 90%)
 }
 
 .text-left{

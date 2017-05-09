@@ -111,7 +111,7 @@ class Home extends React.Component<any, any> {
         this.panelArray = (
             this.state.panelArray.map((jobObj: any, i: number) => {
                 return (
-                    <Paper zDepth={2} key={i} className="apply-paper">
+                    <Paper zDepth={2} key={i} className="apply-paper" style={{borderRadius:"2px",boxShadow:"rgba(0, 0, 0, 0.16) 0px 6px 14px"}}>
                         <div className="paper-container">
 
                             {jobObj.showMore ?
@@ -158,8 +158,8 @@ class Home extends React.Component<any, any> {
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49'}} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49'}}  onClick={this.handleJobApply} />
+                                <FlatButton label="More" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49',fontFamily: "SFUI_Text"}} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" style={{backgroundColor:'rgba(0,0,0,0)'}} labelStyle={{color:'#494a49',fontFamily: "SFUI_Text"}}  onClick={this.handleJobApply} />
                             </div>
                         }
                     </Paper>
@@ -179,7 +179,7 @@ class Home extends React.Component<any, any> {
                         We have open positions now, and applying is easy.
                     </p>
                     <RaisedButton primary label="Apply" labelStyle={{textTransform: "capitalize"}} className="apply" onClick={this.handleJobApply} />
-                    <h1>Positions</h1>
+                    <h2>Positions</h2>
                 </div>
                 <div className="paper-parent">
                     {this.panelArray}
