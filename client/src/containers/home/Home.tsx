@@ -111,7 +111,7 @@ class Home extends React.Component<any, any> {
         this.panelArray = (
             this.state.panelArray.map((jobObj: any, i: number) => {
                 return (
-                    <Paper zDepth={2} key={i} className="apply-paper" style={{borderRadius:"2px",boxShadow:"rgba(0, 0, 0, 0.16) 0px 6px 14px"}}>
+                    <Paper zDepth={2} key={i} className="apply-paper" style={{borderRadius:"2px",boxShadow:"rgba(76, 0, 0, 0.08) 0px 6px 8px"}}>
                         <div className="paper-container">
 
                             {jobObj.showMore ?

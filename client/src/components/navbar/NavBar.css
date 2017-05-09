@@ -1,6 +1,6 @@
-.navbar-container{
-  box-shadow: 0 6px 8px 0px rgba(135, 152, 164, 0.3);
-  background-color: #fefefe;
+.navbar-container > div > div{
+  box-shadow: rgba(135, 152, 164, 0.1) 0px 6px 8px !important;
+  background-color: #fbfef9 !important;
 }
 .navbar-container .navbar-border{
   border-radius: 0;
