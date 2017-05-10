@@ -6,12 +6,22 @@ import * as path from "path";
 import routes from './routes';
 import { join } from 'path';
 
+//CORS middleware
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
 let app: express.Application = express();
 
 app.enable('trust proxy');
 app.use(bodyParser.urlencoded({ extended: true }));  
 app.use(bodyParser.json());  
 app.use(methodOverride());
+app.use(allowCrossDomain);
 
 app.use(express.static('client/build'));
 

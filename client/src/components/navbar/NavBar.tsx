@@ -66,6 +66,7 @@ class NavBar extends React.Component<any, any> {
         const homeMenu = <div>
             <AppBar
                 zDepth={1}
+                style={{backgroundColor: "#fbfef9"}}
                 iconElementLeft={
                     <img src={require("../../assets/logo.png")} className="logo" alt="logo" />
                 }
@@ -86,9 +87,9 @@ class NavBar extends React.Component<any, any> {
         const globalMenu = <div>
             <AppBar
                 zDepth={1}
-                title="Lets get started"
+                title="Let's get started"
                 style={{backgroundColor: '#2e469e'}}
-                titleStyle={{color: 'white'}}
+                titleStyle={{color: 'white',fontFamily:"SFUI Display"}}
                 showMenuIconButton={false}
             />
         </div>;

@@ -11,8 +11,10 @@
     font-weight: 500;
 }
 .signup-container .fields-container .title{
-    color: #c5c0c0;
+    color: #bbbbbb;
     font-weight: 500;
+    font-family: "SFUI_Text";
+    font-Size:14px
 }
 .signup-container .paper-container .footer-container{
     text-align: right;
@@ -24,6 +26,7 @@
 }
 .signup-container .paper-container .footer-container .btn-icon{
     height: 23px;
+    margin-bottom: 2px;
 }
 .signup-container .paper-container .footer-container .back{
     margin-right: -10px !important;
@@ -36,13 +39,16 @@
 }
 .signup-container .sm-screen{
     display: none;
+    margin-bottom: 50px;
 }
 .signup-container .sm-screen .footer-container{
-    position: absolute;
+    position: fixed;
+    z-index: 10;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fbfef9;
+    background-color: #ededed;
+
 }
 
 @media (max-width: 600px){

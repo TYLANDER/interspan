@@ -68,18 +68,18 @@ class Signup extends React.Component<any, any> {
                 (this.state.currentScreen == 'UserEmailForm') ? <UserEmailForm /> : <UserSSNForm />}
 
                 <div className="footer-container">
-                    <FlatButton label="Back" 
+                    {/*<FlatButton label="Back" 
                         className="back-btn"
                         secondary={true}
-                        labelStyle={{color: '#2e469e'}}
+                        labelStyle={{color: '#2e469e',fontSize:"16px"}}
                         icon={<img src={require("../../assets/angle-left.svg")} className="btn-icon back" alt="logo" />}
-                        onClick={this.swapScreen.bind(this, "back")}/>
+                        onClick={this.swapScreen.bind(this, "back")}/>*/}
 
                     <FlatButton label="Continue"
                         className="continue-btn"
                         labelPosition="before"
                         primary={true}
-                        labelStyle={{color: '#2e469e'}}
+                        labelStyle={{color: '#2e469e',fontSize:"16px"}}
                         icon={<img src={require("../../assets/angle-right.svg")} className="btn-icon continue" alt="logo" />}
                         onClick={this.swapScreen.bind(this, "continue")}/>
                 </div>
