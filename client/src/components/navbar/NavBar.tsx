@@ -30,6 +30,10 @@ class NavBar extends React.Component<any, any> {
     handleHomePage(){
         browserHistory.push('/');
     }
+    handleStaticUrl(url:any){
+        browserHistory.push('/'+url);
+    }
+
     handleToggle = () => this.setState({ open: !this.state.open });
     handleClose = () => {
         console.log(this.props);
@@ -39,10 +43,13 @@ class NavBar extends React.Component<any, any> {
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
-                    <FlatButton label="Employers" className="app-box-shadow" labelStyle={{textTransform: "capitalize"}}/>
-                    <FlatButton label="About" className="app-box-shadow" labelStyle={{textTransform: "capitalize"}}/>
+                    <FlatButton label="Employers" className="app-box-shadow" labelStyle={{textTransform: "capitalize"}}     
+                        onTouchTap={this.handleStaticUrl.bind(null,"employee")}/>
+                    <FlatButton label="About" className="app-box-shadow" labelStyle={{textTransform: "capitalize"}}
+                        onTouchTap={this.handleStaticUrl.bind(null,"about")}/>
                     <RaisedButton primary label="Apply" onTouchTap={this.props.logout} className="app-box-shadow" 
-                    labelStyle={{textTransform: "capitalize"}}/>
+                    labelStyle={{textTransform: "capitalize"}}
+                        onClick={this.handleStaticUrl.bind(null,"signup")}/>
                     <IconButton iconClassName="muidocs-icon-custom-github" />
                 </span>
 
@@ -75,10 +82,10 @@ class NavBar extends React.Component<any, any> {
             />
             {(this.state.open) ?
                 <div className="sub-menu">
-                    <div onClick={this.handleClose}>Apply Now</div>
-                    <div onClick={this.handleClose}>About Interspan</div>
-                    <div onClick={this.handleClose}>For Employers</div>
-                    <div onClick={this.handleClose}>What we hire for</div>
+                    <div onClick={this.handleStaticUrl.bind(null,"signup")}>Apply Now</div>
+                    <div onClick={this.handleStaticUrl.bind(null,"about")}>About Interspan</div>
+                    <div onClick={this.handleStaticUrl.bind(null,"employee")}>For Employers</div>
+                    <div onClick={this.handleStaticUrl.bind(null,"hire")}>What we hire for</div>
                 </div>
                 : null
             }
