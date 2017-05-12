@@ -16,15 +16,12 @@ var allowCrossDomain = function(req, res, next) {
 }
 
 let app: express.Application = express();
-
 app.enable('trust proxy');
 app.use(bodyParser.urlencoded({ extended: true }));  
 app.use(bodyParser.json());  
 app.use(methodOverride());
 app.use(allowCrossDomain);
-
 app.use(express.static('client/build'));
-
 app.use([
     '/signup',
 ], (req, res) => {
@@ -33,12 +30,10 @@ app.use([
 
 routes(app);
 
-
-let port: number = process.env.PORT ? process.env.PORT : 3306;
+let port: number = process.env.PORT || 3306;
 
 const server = http.createServer(app);  
 server.listen(port);
-
 server.on('error', onError);  
 server.on('listening', onListening);
 
