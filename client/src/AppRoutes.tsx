@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { App, Login, Signup, Dashboard, Home } from './containers';
+import { App, Login, Signup, Dashboard, Home, JobForm } from './containers';
 import { AboutUs, EmployeeInfo, HireFor } from './components';
 
 class AppRoutes extends React.Component<any, any> {
@@ -14,6 +14,7 @@ class AppRoutes extends React.Component<any, any> {
                     <Route path="employee" component={EmployeeInfo} />
                     <Route path="about" component={AboutUs} />
                     <Route path="hire" component={HireFor} />
+                    <Route path="job" component={JobForm} />
                     <Route path="signup" component={Signup} />
                     <Route component={Dashboard} >
                         <IndexRoute component={Home} />
