@@ -37,16 +37,19 @@ class Signup extends React.Component<any, any> {
     handleHomePage(){
         browserHistory.push('/');
     }
+    handleJobPage = ()=>{
+        browserHistory.push('/job');
+    }
     swapScreen(screenName: any) {
         let changedScreen = "";
-        if (screenName == "back" && this.state.currentScreen == "UsernameForm"){
-            changedScreen = "UsernameForm";
-            this.handleHomePage();
-        }
-        else if (screenName == "back" && this.state.currentScreen == "UserEmailForm")
-            changedScreen = "UsernameForm";
-        else if (screenName == "back" && this.state.currentScreen == "UserSSNForm")
-            changedScreen = "UserEmailForm";
+        // if (screenName == "back" && this.state.currentScreen == "UsernameForm"){
+        //     changedScreen = "UsernameForm";
+        //     this.handleHomePage();
+        // }
+        // else if (screenName == "back" && this.state.currentScreen == "UserEmailForm")
+        //     changedScreen = "UsernameForm";
+        // else if (screenName == "back" && this.state.currentScreen == "UserSSNForm")
+        //     changedScreen = "UserEmailForm";
 
         if (screenName == "continue" && this.state.currentScreen == "UsernameForm")
             changedScreen = "UserEmailForm";
@@ -54,7 +57,7 @@ class Signup extends React.Component<any, any> {
             changedScreen = "UserSSNForm";
         else if (screenName == "continue" && this.state.currentScreen == "UserSSNForm"){
             changedScreen = "UserSSNForm";
-            this.handleHomePage();
+            this.handleJobPage();
         }
 
         this.setState({currentScreen: changedScreen});
