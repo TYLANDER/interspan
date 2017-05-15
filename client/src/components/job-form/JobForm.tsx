@@ -5,8 +5,6 @@ import {
     Stepper,
     StepLabel,
 } from 'material-ui/Stepper';
-import {RaisedButton,
-    FlatButton} from "material-ui";
 import ApplicantInfo from "./applicant-info/ApplicantInfo"
 import JobLocation from "./job-location/JobLocation";
 import Education from "./education/Education";
@@ -15,11 +13,12 @@ import Education from "./education/Education";
 class MainJobForm extends React.Component<any, any>{
     state = {
         finished: false,
-        stepIndex: 2,
+        stepIndex: 0,
     };
 
    
-    handleNext = () => {
+    handleNext = (e:any) => {
+        console.log(e);
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
@@ -27,7 +26,8 @@ class MainJobForm extends React.Component<any, any>{
         });
     };
 
-    handlePrev = () => {
+    handlePrev = (e:any) => {
+        console.log(e);
         const { stepIndex } = this.state;
         if (stepIndex > 0) {
             this.setState({ stepIndex: stepIndex - 1 });
@@ -37,15 +37,15 @@ class MainJobForm extends React.Component<any, any>{
     getStepContent(stepIndex: any) {
         switch (stepIndex) {
             case 0:
-                return <ApplicantInfo />;
+                return <ApplicantInfo  handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 1:
-                return <JobLocation />;
+                return <JobLocation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 2:
-                return <Education />;
+                return <Education handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 3:
-                return <JobLocation />;
+                return <JobLocation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 4:
-                return <Education />;
+                return <Education handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
@@ -86,7 +86,7 @@ class MainJobForm extends React.Component<any, any>{
 
                                     <div>
                                         <div>{this.getStepContent(stepIndex)}</div>
-                                        <div style={{ marginTop: 12 }}>
+                                        {/*<div style={{ marginTop: 12 }}>
                                             <FlatButton
                                                 label="Back"
                                                 disabled={stepIndex === 0}
@@ -98,7 +98,7 @@ class MainJobForm extends React.Component<any, any>{
                                                 primary={true}
                                                 onTouchTap={this.handleNext}
                                             />
-                                        </div>
+                                        </div>*/}
                                     </div>
                                     )}
                              </div>

@@ -1,10 +1,17 @@
 import * as React from "react"
 import {RadioButtonGroup,RadioButton,TextField} from "material-ui";
+import ActiveButtons from "../active-buttons/ActiveButtons"
 
 class JobLocation extends React.Component<any, any>{
     state={
         position:false,
         location:false
+    }
+    handleNext = ()=>{
+        this.props.handleNext({name:123, idx : 0})
+    }
+    handlePrev = ()=>{
+        this.props.handlePrev({name:123, idx : 1})
     }
     render(){
         return(
@@ -62,6 +69,8 @@ class JobLocation extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText="Pay Rate Expected"
                 />
+
+                <ActiveButtons handleNext={()=>this.handleNext()} handlePrev={()=>this.handlePrev()}/>
             </div>
         )
     }

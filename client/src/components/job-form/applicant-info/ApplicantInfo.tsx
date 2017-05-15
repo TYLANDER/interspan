@@ -1,9 +1,19 @@
 import * as React from "react"
 import { TextField, RadioButton, RadioButtonGroup, DatePicker } from "material-ui";
+import ActiveButtons from "../active-buttons/ActiveButtons"
 
 class ApplicantInfo extends React.Component<any, any>{
+    constructor(){
+        super();
+    }
     state = {
         employee: false
+    }
+    handleNext = ()=>{
+        this.props.handleNext({name:123, idx : 0})
+    }
+    handlePrev = ()=>{
+        this.props.handlePrev({name:123, idx : 1})
     }
     render() {
 
@@ -122,6 +132,8 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText="When would you be able to begin work? "
                 />
+                
+                <ActiveButtons handleNext={()=>this.handleNext()} handlePrev={()=>this.handlePrev()}/>
             </div>
         )
     }
