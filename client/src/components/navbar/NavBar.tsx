@@ -59,11 +59,17 @@ class NavBar extends React.Component<any, any> {
                     <FlatButton
                         className="hamburger-icon"
                         icon={<img src={require("../../assets/window-close.svg")} />}
+                        disableFocusRipple={true}
+                        hoverColor="#fbfef9"
+                        disableTouchRipple={true}
                         onTouchTap={this.handleToggle}
                     />
                     :
                     <FlatButton
                         className="hamburger-icon"
+                        hoverColor="#fbfef9"
+                        disableFocusRipple={true}
+                        disableTouchRipple={true}
                         icon={<img src={require("../../assets/menu.svg")} />}
                         onTouchTap={this.handleToggle}
                     />

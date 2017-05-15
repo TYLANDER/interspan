@@ -78,14 +78,14 @@ class Education extends React.Component<any, any>{
                     <label>Name and Location of High School / College</label><br />
                     {school}
                     <FlatButton label="+" onClick={()=>this.setState({school:this.state.school+1})} />
-                    <FlatButton label="-" onClick={()=>this.setState({school:this.state.school-1})} />
+                    <FlatButton label="-" onClick={()=>this.state.school===1?"":this.setState({school:this.state.school-1})} />
                         </div>
                         <div>
                     <label>List any special training skills, and experience.</label>
                     <p>(Include  factory and/or office  equipment you can  operate  and any certifications, machine operation, forklift, first aid, safety training, etc.)</p>
                     {skills}
                     <FlatButton label="+" onClick={()=>this.setState({skills:this.state.skills+1})} />
-                    <FlatButton label="-" onClick={()=>this.setState({skills:this.state.skills-1})} />
+                    <FlatButton label="-" onClick={()=>this.state.skills===1?"":this.setState({skills:this.state.skills-1})} />
                 </div>
                 <ActiveButtons handleNext={()=>this.handleNext()} handlePrev={()=>this.handlePrev()}/>
             </div>

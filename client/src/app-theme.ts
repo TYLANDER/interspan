@@ -8,7 +8,6 @@ const CustomTheme = getMuiTheme({
   palette: {
     // Need to change based on requirments
     textColor: Colors.black,
-    primary1Color: Colors.white,
     primary2Color: Colors.indigo700,
     accent1Color: Colors.redA200,
     pickerHeaderColor: Colors.darkBlack,

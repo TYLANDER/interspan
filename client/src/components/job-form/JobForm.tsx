@@ -8,12 +8,13 @@ import {
 import ApplicantInfo from "./applicant-info/ApplicantInfo"
 import JobLocation from "./job-location/JobLocation";
 import Education from "./education/Education";
-
+import Certification from "./certification/Certification";
+import EmployementHistory from "./employment-history/EmploymentHistory";
 
 class MainJobForm extends React.Component<any, any>{
     state = {
         finished: false,
-        stepIndex: 0,
+        stepIndex: 4,
     };
 
    
@@ -22,7 +23,7 @@ class MainJobForm extends React.Component<any, any>{
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
-            finished: stepIndex >= 3,
+            finished: stepIndex >= 4,
         });
     };
 
@@ -43,9 +44,9 @@ class MainJobForm extends React.Component<any, any>{
             case 2:
                 return <Education handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 3:
-                return <JobLocation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <Certification handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 4:
-                return <Education handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <EmployementHistory handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
