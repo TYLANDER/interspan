@@ -10,11 +10,13 @@ import JobLocation from "./job-location/JobLocation";
 import Education from "./education/Education";
 import Certification from "./certification/Certification";
 import EmployementHistory from "./employment-history/EmploymentHistory";
+import PersonalInfo from "./personal-info/PersonalInfo";
+import LightIndustrialSkill from "./light-industrial-skills/lightIndustrialSkills";
 
 class MainJobForm extends React.Component<any, any>{
     state = {
         finished: false,
-        stepIndex: 4,
+        stepIndex: 6,
     };
 
    
@@ -47,6 +49,10 @@ class MainJobForm extends React.Component<any, any>{
                 return <Certification handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 4:
                 return <EmployementHistory handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 5:
+                return <PersonalInfo handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 6:
+                return <LightIndustrialSkill handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
@@ -72,6 +78,12 @@ class MainJobForm extends React.Component<any, any>{
                     </Step>
                     <Step>
                         <StepLabel>Employment History</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>Personal Information</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>Light Industrial Skills</StepLabel>
                     </Step>
                 </Stepper>
                 <div style={contentStyle}>

@@ -1,0 +1,14 @@
+.job-applicant-container .inline-radio{
+    display: inline-block !important;
+    width: 150px !important;
+}
+.job-applicant-container .inline-fields{
+    float: left;
+}
+.job-applicant-container .right{
+    float:right;
+}
+.job-applicant-container .inline{
+    display: inline;
+    
+}
