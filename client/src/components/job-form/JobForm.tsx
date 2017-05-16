@@ -1,10 +1,6 @@
 import * as React from "react";
 import "./JobForm.css"
-import {
-    Step,
-    Stepper,
-    StepLabel,
-} from 'material-ui/Stepper';
+import {Step, Stepper, StepLabel } from 'material-ui/Stepper';
 import ApplicantInfo from "./applicant-info/ApplicantInfo"
 import JobLocation from "./job-location/JobLocation";
 import Education from "./education/Education";
@@ -12,11 +8,17 @@ import Certification from "./certification/Certification";
 import EmployementHistory from "./employment-history/EmploymentHistory";
 import PersonalInfo from "./personal-info/PersonalInfo";
 import LightIndustrialSkill from "./light-industrial-skills/lightIndustrialSkills";
+import Media from "./media/Media";
+import EqualOpportunity from "./equal-opportunity/EqualOpportunity";
+import WorkHour from "./work-hours/WorkHours";
+import Communication from "./communication/Communication";
+import Transportation from "./transportation/Transportation";
+import References from "./references/References";
 
 class MainJobForm extends React.Component<any, any>{
     state = {
         finished: false,
-        stepIndex: 6,
+        stepIndex: 0,
     };
 
    
@@ -25,7 +27,7 @@ class MainJobForm extends React.Component<any, any>{
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
-            finished: stepIndex >= 4,
+            finished: stepIndex >= 12,
         });
     };
 
@@ -53,6 +55,18 @@ class MainJobForm extends React.Component<any, any>{
                 return <PersonalInfo handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             case 6:
                 return <LightIndustrialSkill handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 7:
+                return <Media handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 8:
+                return <EqualOpportunity handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 9:
+                return <WorkHour handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 10:
+                return <Communication handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 11:
+                return <Transportation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+            case 12:
+                return <References handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
@@ -63,7 +77,7 @@ class MainJobForm extends React.Component<any, any>{
         const contentStyle = { margin: '0 16px' };
         return (
             <div className="main-job-form-container">
-                <Stepper activeStep={stepIndex} >
+                <Stepper activeStep={stepIndex} style={{"flex-wrap": "wrap"}} >
                     <Step>
                         <StepLabel>Applicant Information</StepLabel>
                     </Step>
@@ -85,6 +99,24 @@ class MainJobForm extends React.Component<any, any>{
                     <Step>
                         <StepLabel>Light Industrial Skills</StepLabel>
                     </Step>
+                    <Step>
+                        <StepLabel>Media</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>Equal Opportunity</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>Work Hours</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>Communication</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>Transportation</StepLabel>
+                    </Step>
+                    <Step>
+                        <StepLabel>References</StepLabel>
+                    </Step>
                 </Stepper>
                 <div style={contentStyle}>
                     {finished ? (
@@ -99,19 +131,6 @@ class MainJobForm extends React.Component<any, any>{
 
                                     <div>
                                         <div>{this.getStepContent(stepIndex)}</div>
-                                        {/*<div style={{ marginTop: 12 }}>
-                                            <FlatButton
-                                                label="Back"
-                                                disabled={stepIndex === 0}
-                                                onTouchTap={this.handlePrev}
-                                                style={{ marginRight: 12 }}
-                                            />
-                                            <RaisedButton
-                                                label={stepIndex === 2 ? 'Finish' : 'Next'}
-                                                primary={true}
-                                                onTouchTap={this.handleNext}
-                                            />
-                                        </div>*/}
                                     </div>
                                     )}
                              </div>

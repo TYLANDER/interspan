@@ -1,0 +1,63 @@
+import * as React from "react"
+import ActiveButtons from "../active-buttons/ActiveButtons";
+import { TextField, FlatButton } from "material-ui";
+
+class References extends React.Component<any, any>{
+    constructor(props: any) {
+        super()
+        this.state = {
+            reference: 1,
+            family:1
+        }
+    }
+    handleNext = () => {
+        this.props.handleNext({ name: 123, idx: 0 })
+    }
+    handlePrev = () => {
+        this.props.handlePrev({ name: 123, idx: 1 })
+    }
+    render() {
+        var reference = [];
+        var family = [];
+
+        for (let i = 0; i < this.state.reference; i++) {
+            reference.push(<div>
+                <TextField
+                    floatingLabelText="Name"
+                />
+                <TextField
+                    floatingLabelText="Relation"
+                />
+                <TextField
+                    floatingLabelText="Telephone #"
+                />
+            </div>)
+        }
+          for (let i = 0; i < this.state.family; i++) {
+            family.push(<div>
+                <TextField
+                    floatingLabelText="Name"
+                />
+                <TextField
+                    floatingLabelText="Relation"
+                />
+            </div>)
+        }
+        return (
+            <div className="transportation-container">
+                <label> References </label> <br /><br />
+                {reference}
+                <FlatButton label="Add" secondary={true} onTouchTap={() => this.setState({ reference: this.state.reference + 1 })} />
+                <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.reference === 1 ? null : this.setState({ reference: this.state.reference - 1 })} />
+                    <br /><br />
+                <label>FRIENDS/RELATIVES WORKING AT INTERSPAN</label>
+                {family}
+                <FlatButton label="Add" secondary={true} onTouchTap={() => this.setState({ family: this.state.family + 1 })} />
+                <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.family === 1 ? null : this.setState({ family: this.state.family - 1 })} />
+                <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
+            </div>
+        )
+    }
+}
+
+export default References;

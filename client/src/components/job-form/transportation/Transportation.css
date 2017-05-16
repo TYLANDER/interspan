@@ -1,0 +1,14 @@
+.transportation-container .inline-radio{
+    display: inline-block !important;
+    width: 150px !important;
+}
+.transportation-container .inline-fields{
+    float: left;
+}
+.transportation-container .right{
+    float:right;
+}
+.transportation-container .inline{
+    display: inline;
+    
+}

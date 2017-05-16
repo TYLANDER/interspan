@@ -1,6 +1,6 @@
 import * as React from "react"
 import  MainJobForm  from "./../../components/job-form/JobForm";
-
+import "./JobForm.css"
 class JobForm extends React.Component<any, any>{
 
     constructor(){

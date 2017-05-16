@@ -64,7 +64,7 @@ class EmploymentHistory extends React.Component<any, any>{
                 {history}
                 <br/>
                 <FlatButton label="Add" secondary={true} onTouchTap={() => this.setState({ employed: this.state.employed + 1 })} />
-                <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.employed < 1 ? null : this.setState({ employed: this.state.employed - 1 })} />
+                <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.employed === 1 ? null : this.setState({ employed: this.state.employed - 1 })} />
 
                 <br/>
                 <br/>

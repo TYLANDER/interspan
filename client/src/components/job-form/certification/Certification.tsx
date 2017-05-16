@@ -15,7 +15,7 @@ class Certification extends React.Component<any, any>{
     render() {
 
         return (
-            <div className="job-applicant-container">
+            <div className="certification-container">
                 <label> CERTIFICATION & AUTHORIZATION for RELEASE of PERSONAL DATA</label>
                 <p className="paragraph">I certify the information provided in this Application for Employment and accompanying documents is true, correct, and complete.
                 Any misrepresentation of information or significant omissions will be cause for rejection of my application or for subsequent discipline up to and including my dismissal from
