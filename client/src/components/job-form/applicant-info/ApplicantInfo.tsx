@@ -3,8 +3,12 @@ import { TextField, RadioButton, RadioButtonGroup, DatePicker } from "material-u
 import ActiveButtons from "../active-buttons/ActiveButtons"
 
 class ApplicantInfo extends React.Component<any, any>{
-    constructor(){
-        super();
+
+    jsonData:any;
+
+    constructor(props:any){
+        super(props);
+        this.jsonData = this.props.jsonData;
     }
     state = {
         employee: false
@@ -16,96 +20,104 @@ class ApplicantInfo extends React.Component<any, any>{
         this.props.handlePrev({name:123, idx : 1})
     }
     render() {
-
+        console.log(this.jsonData)
+        const {lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus} = this.jsonData
         return (
             <div className="job-applicant-container">
                 <label className="title">Applicant Information</label>
                 <TextField
                     hintText=""
                     fullWidth={true}
-                    floatingLabelText="First Name"
+                    floatingLabelText={firstName}
                 />
 
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="Middle Name"
+                    floatingLabelText={middle}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="Last Name"
+                    floatingLabelText={lastName}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
                     multiLine={true}
-                    floatingLabelText="Street Address"
+                    floatingLabelText={streetAddress}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="City"
+                    floatingLabelText={city}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="State"
+                    floatingLabelText={state}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="Zip"
-                />
-                <TextField
-                    hintText=""
-                    type="tel"
-                    onFocus={() => { }}
-                    fullWidth={true}
-                    floatingLabelText="Home Telephone"
+                    floatingLabelText={zip}
                 />
                 <TextField
                     hintText=""
                     type="tel"
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="Alternate Telephone"
+                    floatingLabelText={homeTelephone}
+                />
+                <TextField
+                    hintText=""
+                    type="tel"
+                    onFocus={() => { }}
+                    fullWidth={true}
+                    floatingLabelText={alternateTelephone}
+                />
+                <TextField
+                    hintText=""
+                    type="tel"
+                    onFocus={() => { }}
+                    fullWidth={true}
+                    floatingLabelText={cellularTelephone}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="Social Security #"
+                    floatingLabelText={socialSecurity}
                 />
                 <TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="Email"
+                    floatingLabelText={email}
                 />
                 <br />
-                <b>Are you at least 18 year old? </b>
+                <b>{areYou18} </b>
                 <RadioButtonGroup name="age">
 
                     <RadioButton
                         value="yes"
-                        label="Yes"
+                        label={employementYes}
                     />
                     <RadioButton
                         value="no"
                         label="No"
                     />
                 </RadioButtonGroup>
-                <b>Have you ever applied for employment with us? </b>
+                <b>{employment} </b>
                 <RadioButtonGroup name="employement" onChange={(event: any) => event.target.value === 'yes' ? this.setState({ employee: true }) : this.setState({ employee: false })}>
                     <RadioButton
-                        value="yes"
+                        value={employementYes}
                         label="Yes"
                     />
                     <RadioButton
@@ -113,12 +125,12 @@ class ApplicantInfo extends React.Component<any, any>{
                         label="No"
                     />
                 </RadioButtonGroup>
-                {this.state.employee ? <DatePicker floatingLabelText="Month and Year" /> : ""}
+                {this.state.employee ? <DatePicker floatingLabelText={legallyEligible} /> : ""}
                 <b>Are you legally eligible for employment in the United States? </b>
                 <RadioButtonGroup name="age">
 
                     <RadioButton
-                        value="yes"
+                        value={employementYes}
                         label="Yes"
                     />
                     <RadioButton
@@ -130,7 +142,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    floatingLabelText="When would you be able to begin work? "
+                    floatingLabelText={workStatus}
                 />
                 
                 <ActiveButtons handleNext={()=>this.handleNext()} handlePrev={()=>this.handlePrev()}/>

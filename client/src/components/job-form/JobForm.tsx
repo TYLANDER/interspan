@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./JobForm.css"
+import "./JobForm.css";
 import {Step, Stepper, StepLabel } from 'material-ui/Stepper';
 import ApplicantInfo from "./applicant-info/ApplicantInfo"
 import JobLocation from "./job-location/JobLocation";
@@ -16,12 +16,18 @@ import Transportation from "./transportation/Transportation";
 import References from "./references/References";
 
 class MainJobForm extends React.Component<any, any>{
-    state = {
-        finished: false,
-        stepIndex: 0,
-    };
 
-   
+    jobDataEn:any = {};
+
+    constructor(){
+        super();
+        this.jobDataEn =  require("../../assets/json/job-en");
+        this.state = {
+            finished: false,
+            stepIndex: 0,
+        };
+    }
+    
     handleNext = (e:any) => {
         console.log(e);
         const { stepIndex } = this.state;
@@ -42,31 +48,31 @@ class MainJobForm extends React.Component<any, any>{
     getStepContent(stepIndex: any) {
         switch (stepIndex) {
             case 0:
-                return <ApplicantInfo  handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <ApplicantInfo  handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.applicationInformation}/>;
             case 1:
-                return <JobLocation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <JobLocation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.jobLocation}/>;
             case 2:
-                return <Education handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <Education handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.educationTraining}/>;
             case 3:
-                return <Certification handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <Certification handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.certification}/>;
             case 4:
-                return <EmployementHistory handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <EmployementHistory handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.employmentHistory}/>;
             case 5:
-                return <PersonalInfo handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <PersonalInfo handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.personalInformation}/>;
             case 6:
-                return <LightIndustrialSkill handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <LightIndustrialSkill handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.lightIndustrialAndWarehousePositions}/>;
             case 7:
-                return <Media handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <Media handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.media}/>;
             case 8:
-                return <EqualOpportunity handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <EqualOpportunity handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.equalOpportunity}/>;
             case 9:
-                return <WorkHour handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <WorkHour handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.WorkHours}/>;
             case 10:
-                return <Communication handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <Communication handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.communication}/>;
             case 11:
-                return <Transportation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <Transportation handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.transportation}/>;
             case 12:
-                return <References handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)}/>;
+                return <References handleNext={(e:any)=>this.handleNext(e)} handlePrev={(e:any)=>this.handlePrev(e)} jsonData={this.jobDataEn.references}/>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
@@ -77,7 +83,7 @@ class MainJobForm extends React.Component<any, any>{
         const contentStyle = { margin: '0 16px' };
         return (
             <div className="main-job-form-container">
-                <Stepper activeStep={stepIndex} style={{"flex-wrap": "wrap"}} >
+                <Stepper activeStep={stepIndex} style={{"flexWrap": "wrap"}} >
                     <Step>
                         <StepLabel>Applicant Information</StepLabel>
                     </Step>
