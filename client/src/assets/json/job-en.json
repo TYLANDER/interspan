@@ -170,7 +170,7 @@
         "other":"Other",
         "veteran":"Veteran",
         "vietname":"Vietnam Era Veteran",
-        "disableVeteran":"Disabled Veteran",
+        "disableVeteran":"Disabled Veteran"
     },
     "WorkHours":{
         "title":"PREFERRED WORK HOURS",
@@ -209,9 +209,7 @@
         "name":"Name",
         "relation":"Relation",
         "telephone":"Telephone",
-        "friends":"FRIENDS/RELATIVES WORKING AT INTERSPAN",
-        "name":"Name",
-        "relation":"Relation"
+        "friends":"FRIENDS/RELATIVES WORKING AT INTERSPAN"
     },
     "forEmployerUse":{
         "initialAssignment":"Initial Assignment:",
