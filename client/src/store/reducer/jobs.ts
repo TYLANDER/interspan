@@ -6,8 +6,8 @@ const INITIAL_STATE = {
 };
 
 interface IAction {
-    type: string,
-    payload?: any
+    type: string;
+    payload?: any;
 }
 
 export function jobReducer(state = INITIAL_STATE, action: IAction) {

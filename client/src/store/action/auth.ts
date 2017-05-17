@@ -14,7 +14,7 @@ export default class AuthActions {
     static ISLOGGEDIN: string = 'ISLOGGEDIN';
 
     static NULL: string = 'NULL';
-    
+
     static isLoggedin() {
         return {
             type: AuthActions.ISLOGGEDIN
@@ -41,4 +41,4 @@ export default class AuthActions {
         };
     }
 
-} 
+}

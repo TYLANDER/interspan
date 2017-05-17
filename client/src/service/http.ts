@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/dom/ajax';
 
-
 export class HttpService {
 
     static get(url: string, headers: Object = {}): Observable<any> {

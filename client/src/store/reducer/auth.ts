@@ -12,7 +12,7 @@ interface IACTION {
     type: string;
     payload?: any;
     isAuthenticated: boolean;
-};
+}
 
 function AuthReducer(state = INITIAL_STATE, action: IACTION) {
     switch (action.type) {

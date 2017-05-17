@@ -4,10 +4,10 @@ import { ActionsObservable } from 'redux-observable';
 import AuthActions from './../action/auth';
 
 export default class AuthEpic {
-    
+
     static loginEpic = (action$: ActionsObservable<any>) =>
         action$.ofType(AuthActions.LOGIN)
-            .switchMap(({payload}) => {                
+            .switchMap(({payload}) => {
                 return Observable.of({
                                 type: AuthActions.LOGIN_SUCCESS,
                                 payload: 'User Name'

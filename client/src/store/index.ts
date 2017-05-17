@@ -8,13 +8,12 @@ import { combineEpics } from 'redux-observable';
 import IAppState from './IAppState';
 
 // reducers
-import AuthReducer from "./reducer/auth";
-import jobReducer from "./reducer/jobs";
+import AuthReducer from './reducer/auth';
+import jobReducer from './reducer/jobs';
 
 // epics
-import AuthEpic from "./epic/auth";
-import JobEpic from "./epic/jobs";
-
+import AuthEpic from './epic/auth';
+import JobEpic from './epic/jobs';
 
 // Application Epics / Effects
 export const rootEpic = combineEpics(
@@ -28,8 +27,7 @@ export const rootReducer = combineReducers<IAppState>({
     jobReducer
 });
 
-
-// for initialize in application 
+// for initialize in application
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
 const createStoreWithMiddleware = applyMiddleware(epicMiddleware)(createStore);

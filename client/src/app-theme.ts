@@ -21,7 +21,7 @@ const CustomTheme = getMuiTheme({
     primaryColor: '#2D459E',
     primaryTextColor: Colors.white
   },
-  textField:{
+  textField: {
     focusColor: '#2e469e',
     textColor: '#2e469e'
   }
