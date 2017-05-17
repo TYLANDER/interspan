@@ -3,13 +3,13 @@ import ActiveButtons from "../active-buttons/ActiveButtons";
 import { TextField, RadioButtonGroup, RadioButton } from "material-ui";
 
 class PersonalInfo extends React.Component<any, any>{
-    jsonData:any;
-    constructor(props:any) {
-        super();
-        this.jsonData = this.props.jsonData;
-        this.state = {
+    jsonData:any
+    constructor(props: any) {
+        super(props)
+       this.state = {
             convictedCrime: false
         }
+        this.jsonData = this.props.jsonData
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 })

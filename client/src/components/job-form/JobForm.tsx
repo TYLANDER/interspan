@@ -24,7 +24,7 @@ class MainJobForm extends React.Component<any, any>{
         this.jobDataEn =  require("../../assets/json/job-en");
         this.state = {
             finished: false,
-            stepIndex: 12,
+            stepIndex: 0,
         };
     }
     
@@ -80,48 +80,49 @@ class MainJobForm extends React.Component<any, any>{
 
     render() {
         const { finished, stepIndex } = this.state;
+        const {headings} = this.jobDataEn;
         const contentStyle = { margin: '0 16px' };
         return (
             <div className="main-job-form-container">
                 <Stepper activeStep={stepIndex} style={{"flexWrap": "wrap"}} >
                     <Step>
-                        <StepLabel>Applicant Information</StepLabel>
+                        <StepLabel>{headings.applicationInformation}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Job / Location</StepLabel>
+                        <StepLabel>{headings.jobLocation}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Education / Training</StepLabel>
+                        <StepLabel>{headings.educationTraining}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Certification</StepLabel>
+                        <StepLabel>{headings.certification}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Employment History</StepLabel>
+                        <StepLabel>{headings.employementHistory}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Personal Information</StepLabel>
+                        <StepLabel>{headings.personalInformation}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Light Industrial Skills</StepLabel>
+                        <StepLabel>{headings.lightIndustrialSkills}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Media</StepLabel>
+                        <StepLabel>{headings.media}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Equal Opportunity</StepLabel>
+                        <StepLabel>{headings.equalOpportunity}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Work Hours</StepLabel>
+                        <StepLabel>{headings.workHours}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Communication</StepLabel>
+                        <StepLabel>{headings.communication}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>Transportation</StepLabel>
+                        <StepLabel>{headings.transportation}</StepLabel>
                     </Step>
                     <Step>
-                        <StepLabel>References</StepLabel>
+                        <StepLabel>{headings.references}</StepLabel>
                     </Step>
                 </Stepper>
                 <div style={contentStyle}>

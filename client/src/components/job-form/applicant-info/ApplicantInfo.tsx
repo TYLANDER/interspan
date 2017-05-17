@@ -120,7 +120,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         label={yes}
                     />
                     <RadioButton
-                        value="yes"
+                        value="no"
                         label={no}
                     />
                 </RadioButtonGroup>

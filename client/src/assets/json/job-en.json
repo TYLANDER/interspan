@@ -1,224 +1,235 @@
 {
-    "headings":{
-        "applicationInformation":"Application Information",
-        "jobLocation":"Job / Location",
+    "headings": {
+        "applicationInformation": "Application Information",
+        "jobLocation": "Job / Location",
         "educationTraining": "Education / Training",
-        "certification":"Certification",
-        "employementHistory":"Employment History",
-        "personalInformation":"Personal Information",
-        "lighIndustrialSkills":"Light Industrial Skills",
-        "media":"Media",
-        "equalOpportunity":"Equal Opportunity",
-        "workHours":"Work Hours",
-        "communication":"Communication",
-        "transportation":"Transportation",
-        "references":"References",
-        "employerUse":"Employer's Use"
+        "certification": "Certification",
+        "employementHistory": "Employment History",
+        "personalInformation": "Personal Information",
+        "lighIndustrialSkills": "Light Industrial Skills",
+        "media": "Media",
+        "equalOpportunity": "Equal Opportunity",
+        "workHours": "Work Hours",
+        "communication": "Communication",
+        "transportation": "Transportation",
+        "references": "References",
+        "employerUse": "Employer's Use"
     },
-    "applicationInformation":{
-        "lastName":"Last Name",
-        "firstName":"First Name",
-        "middle":"Middle",
-        "streetAddress":"Street Address",
-        "city":"City",
-        "state":"State",
-        "zip":"Zip",
-        "socialSecurity":"Social Security",
-        "email":"Email",
-        "homeTelephone":"Home Telephone",
-        "cellularTelephone":"Cellular Telephone",
-        "alternateTelephone":"Alternate Telephone",
-        "areYou18":"Are you at least 18 years old?",
-        "employment":"Have you ever applied for employment with us?",
-        "employementYes":"If yes: Month and Year",
+    "applicationInformation": {
+        "lastName": "Last Name",
+        "firstName": "First Name",
+        "middle": "Middle",
+        "streetAddress": "Street Address",
+        "city": "City",
+        "state": "State",
+        "zip": "Zip",
+        "socialSecurity": "Social Security",
+        "email": "Email",
+        "homeTelephone": "Home Telephone",
+        "cellularTelephone": "Cellular Telephone",
+        "alternateTelephone": "Alternate Telephone",
+        "areYou18": "Are you at least 18 years old?",
+        "employment": "Have you ever applied for employment with us?",
+        "employementYes": "Month and Year",
         "legallyEligible": "Are you legally eligible for employement in the United State",
-        "workStatus":"When would you be able to begin work?"
+        "workStatus": "When would you be able to begin work?",
+        "yes": "yes",
+        "no": "No"
     },
-    "jobLocation":{
-        "positionDesired":{
-            "avalaiblePosition":"Any available position",
-            "clericalOffice":"Clerical / Office",
-            "industrialFactory":"Industrial / Factory / Warehouse",
-            "other":"Other"
+    "jobLocation": {
+        "positionDesired": "Position Desired",
+        "avalaiblePosition": "Any available position",
+        "clericalOffice": "Clerical / Office",
+        "industrialFactory": "Industrial / Factory / Warehouse",
+        "other": "Other",
+        "locationPreference": "Location Preference",
+        "anyAvailableSite": "Any Available Site",
+        "site": "Site",
+        "payRateExpected": "Pay Rate Expected",
+        "perHour": "per hour"
+    },
+    "educationTraining": {
+        "question": {
+            "one": "What is the highest level of education you have completed?",
+            "two": "Name and Location of High School / College"
         },
-        "locationPreference":{
-            "anyAvailableSite":"Any Available Site",
-            "site":"Site"
+        "values": {
+            "elementary": "Elementary",
+            "highSchool": "High School",
+            "ged": "GED",
+            "trade": "Trade/Business/ Technical School",
+            "attendedCollege": "Attended some College",
+            "collegeDegree": "College Degree"
         },
-        "payRateExpected":{
-            "perHour":"oer hour"
+        "skillsAndExperience": {
+            "heading": "List any special training skills, and experience.",
+            "content": "(Include  factory and/or office  equipment you can  operate  and any certifications, machine operation, forklift, first aid, safety training, etc.)"
         }
     },
-    "educationTraining":{
-        "question":{
-            "one":"What is the highest level of education you have completed?",
-            "two":"Name and Location of High School / College"
+    "certification": {
+        "header": "CERTIFICATION & AUTHORIZATION for RELEASE of PERSONAL DATA",
+        "content": "I certify the information provided in this Application for Employment and accompanying documents is true, correct, and complete. Any misrepresentation of information or significant omissions will be cause for rejection of my application or for subsequent discipline up to and including my dismissal from employment if discovered at a later date.  I understand that acceptance of an offer of employment does not create a contractual obligation upon the employer to continue to employme in the future.  If employed, I understand that I will be an employee “at will” and either InterSpan, Inc. or I may terminate my employment relationship at any time or without notice for any reason. All information (including information on any accompanying resume and documents) is subject to verification. I authorize and consent to any current and prior employers, educational institutions, law enforcement agency, financial institution, consumer reporting agency, court and persons or organizations named in this application (or accompanying resume) to release any information to InterSpan, Inc. that may be required to make an employment decision. I understand and acknowledge that an employment offer and/or my continuing employment are conditioned upon the results of any background check, consumer report or verification efforts.  I hereby release from liability and hold harmless all persons and corporations supplying this information to InterSpan, Inc. and/or its agents. A photocopy of this authorization is as effective as the original.",
+        "agreed": "I Agreed"
+    },
+    "employmentHistory": {
+        "companyName": "Company Name",
+        "city": "City",
+        "state": "State",
+        "nameOfSupervisor": "Name Of Supervisor",
+        "stateJobTitle": "State Job Title and Describe your Work",
+        "telephone": "Telephone",
+        "employed": "Employed (month and year)",
+        "from": "From",
+        "to": "To",
+        "payRate": "Pay Rate",
+        "start": "Start",
+        "end": "End",
+        "reason": "Reason",
+        "reasonForleaving": "Reason for Leaving",
+        "doNotContact": "DO NOT CONTACT",
+        "employeeNumber": "Employer Number(s)Reason",
+        "note": "We may contact the employers listed above unless you indicate those you do not want us to contact."
+    },
+    "personalInformation": {
+        "questions": {
+            "one": "Please explain any gaps in your employment history.",
+            "two": "In case of emergency, please contact: (name & phone #)",
+            "three": "Have you been convicted of a crime in the past 10 years, excluding misdemeanors, minor traffic violations, and summary offenses which has not been annulled, expunged or sealed by the court?",
+            "four": "If “Yes”, describe in full. (A conviction will not necessarily disqualify you from employment but will be considered in relation to specific job requirements)"
         },
-        "values":{
-            "elementary":"Elementary",
-            "highSchool":"High School",
-            "ged":"GED",
-            "trade":"Trade/Business/ Technical School",
-            "attendedCollege":"Attended some College",
-            "collegeDegree":"College Degree"
+        "description": "Description",
+        "yes": "yes",
+        "no": "no"
+    },
+    "lightIndustrialAndWarehousePositions": {
+        "questions": {
+            "one": "How many years experience in industrial & warehouse positions?",
+            "two": "Do you have experience with:",
+            "three": "How many pounds are you capable of lifting repeatedly?",
+            "four": "Can you lift 50 lbs. 4 to 6 times during a shift?",
+            "five": "Can you stand for an 8 hour or a 12 hour shift?",
+            "six": "Can you work a job with a lot of walking?",
+            "seven": "Can you stand, bend, reach for an 8 or 12 hour shift?",
+            "eight": "Are you able to use basic math skills? (counting, addition, subtraction)",
+            "nine": "Can you read measurements with a tape measure or ruler?",
+            "ten": "Can you use a calculator?",
+            "eleven": "Can you use a personal computer?",
+            "twelve": "Have you operated a forklift?",
+            "thirteen": "Have you been certified as a forklift operator?",
+            "fourteen": "Have you operated a pallet jack?",
+            "fifteen": "Do you have steel toe safety shoes readily available to wear on certain jobsites?"
         },
-        "skillsAndExperience":{
-            "heading":"List any special training skills, and experience.",
-            "content":"(Include  factory and/or office  equipment you can  operate  and any certifications, machine operation, forklift, first aid, safety training, etc.)"
-        }
+        "experience": "Enter years of experience",
+        "yes": "Yes",
+        "no": "No",
+        "noExperience": "No experience",
+        "lessThanOneYear": "Less than 1 year",
+        "oneToFiveYears": "1 to 5 years",
+        "sixToTenYears": "6 to 10 years",
+        "tenYearsOrMore": "10 years or more",
+        "assembly": "Assembly",
+        "pullingOrders": "Pulling orders",
+        "productionLine": "Production Line",
+        "packingMaterials": "Production Materials",
+        "loadingLifter": "Loading/Heavy Lifter",
+        "bandingMachine": "Banding machine",
+        "upsShippingLabels": "UPS shipping labels",
+        "dataEntry": "Data entry to a personal computer",
+        "countingMaterial": "Counting materials/inventory",
+        "workingFrom": "Working from a conveyor belt",
+        "gluingBoxes": "Gluing boxes",
+        "stacker": "Stacker",
+        "qualityControl": "Quality Control",
+        "weighingMaterial": "Weighing materials",
+        "noneOfAbove": "None Of the Above",
+        "lessThanTenLbs": "Less than 10 lbs",
+        "upToTenLbs": "Up to 10 lbs",
+        "upToTwentyLbs": "Up to 20 lbs",
+        "upToSixtyLbs": "Up to 60 lbs",
+        "sixtyOneOrMore": "61 lbs or more"
     },
-    "certification":{
-        "header":"CERTIFICATION & AUTHORIZATION for RELEASE of PERSONAL DATA",
-        "content":"I certify the information provided in this Application for Employment and accompanying documents is true, correct, and complete. Any misrepresentation of information or significant omissions will be cause for rejection of my application or for subsequent discipline up to and including my dismissal from employment if discovered at a later date.  I understand that acceptance of an offer of employment does not create a contractual obligation upon the employer to continue to employme in the future.  If employed, I understand that I will be an employee “at will” and either InterSpan, Inc. or I may terminate my employment relationship at any time or without notice for any reason. All information (including information on any accompanying resume and documents) is subject to verification. I authorize and consent to any current and prior employers, educational institutions, law enforcement agency, financial institution, consumer reporting agency, court and persons or organizations named in this application (or accompanying resume) to release any information to InterSpan, Inc. that may be required to make an employment decision. I understand and acknowledge that an employment offer and/or my continuing employment are conditioned upon the results of any background check, consumer report or verification efforts.  I hereby release from liability and hold harmless all persons and corporations supplying this information to InterSpan, Inc. and/or its agents. A photocopy of this authorization is as effective as the original.",
-        "agreed":"I Agreed"
+    "media": {
+        "questions": "How did you hear about InterSpan, Inc.?",
+        "radio": "Radio Station",
+        "richMond": "Richmond Times Newspaper",
+        "jobSearch": "Job search on Internet",
+        "referredJob": "Referred from job site",
+        "referredInterSpan": "Referred by InterSpan, Inc. employee.",
+        "referredFriend": "Referred by friend.",
+        "site": "Site",
+        "name": "Name",
+        "friend": "Friend"
     },
-    "employmentHistory":{
-        "companyName":"Company Name",
-        "city":"City",
-        "state":"State",
-        "nameOfSupervisor":"Name Of Supervisor",
-        "stateJobTitle":"State Job Title and Describe your Work",
-        "telephone":"Telephone",
-        "employed":"Employed (month and year)",
-        "from":"From",
-        "to":"To",
-        "payRate":"Pay Rate",
-        "start":"Start",
-        "end":"End",
-        "reasonForleaving":"Reason for Leaving",
-        "doNotContact":"DO NOT CONTACT",
-        "employeeNumber":"Employer Number(s)Reason",
-        "note":"We may contact the employers listed above unless you indicate those you do not want us to contact."
-    },
-    "personalInformation":{
-        "questions":{
-            "one":"Please explain any gaps in your employment history.",
-            "two":"In case of emergency, please contact: (name & phone #)",
-            "three":"Have you been convicted of a crime in the past 10 years, excluding misdemeanors, minor traffic violations, and summary offenses which has not been annulled, expunged or sealed by the court?",
-            "four":"If “Yes”, describe in full. (A conviction will not necessarily disqualify you from employment but will be considered in relation to specific job requirements)"
-        },
-        "yes":"yes",
-        "no":"no"
-    },
-    "lightIndustrialAndWarehousePositions":{
-        "questions":{
-            "one":"How many years experience in industrial & warehouse positions?",
-            "two":"Do you have experience with:",
-            "three":"How many pounds are you capable of lifting repeatedly?",
-            "four":"Can you lift 50 lbs. 4 to 6 times during a shift?",
-            "five":"Can you stand for an 8 hour or a 12 hour shift?",
-            "six":"Can you work a job with a lot of walking?",
-            "seven":"Can you stand, bend, reach for an 8 or 12 hour shift?",
-            "eight":"Are you able to use basic math skills? (counting, addition, subtraction)",
-            "nine":"Can you read measurements with a tape measure or ruler?",
-            "ten":"Can you use a calculator?",
-            "eleven":"Can you use a personal computer?",
-            "twelve":"Have you operated a forklift?If yes, years experience",
-            "thirteen":"Have you been certified as a forklift operator?",
-            "fourteen":"Have you operated a pallet jack?If yes, years experience",
-            "fifteen":"Do you have steel toe safety shoes readily available to wear on certain jobsites?"
-        },
-        "yes":"Yes",
-        "no":"No",
-        "noExperience":"No experience",
-        "lessThanOneYear":"Less than 1 year",
-        "oneToFiveYears":"1 to 5 years",
-        "sixToTenYears":"6 to 10 years",
-        "tenYearsOrMore":"10 years or more",
-        "assembly":"Assembly",
-        "pullingOrders":"Pulling orders",
-        "productionLine":"Production Line",
-        "packingMaterials":"Production Materials",
-        "loadingLifter":"Loading/Heavy Lifter",
-        "bandingMachine":"Banding machine",
-        "upsShippingLabels":"UPS shipping labels",
-        "dataEntry":"Data entry to a personal computer",
-        "countingMaterial":"Counting materials/inventory",
-        "workingFrom":"Working from a conveyor belt",
-        "gluingBoxes":"Gluing boxes",
-        "stacker":"Stacker",
-        "qualityControl":"Quality Control",
-        "weighingMaterial":"Weighing materials",
-        "noneOfAbove":"None Of the Above",
-        "lessThanTenLbs":"Less than 10 lbs",
-        "upToTenLbs":"Up to 10 lbs",
-        "upToTwentyLbs":"Up to 20 lbs",
-        "upToSixtyLbs":"Up to 60 lbs",
-        "sixtyOneOrMore":"61 lbs or more"
-    },
-    "media":{
-        "questions":"How did you hear about InterSpan, Inc.?",
-        "radio":"Radio Station",
-        "richMond":"Richmond Times Newspaper",
-        "jobSearch":"Job search on Internet",
-        "referredJob":"Referred from job site.Site:",
-        "referredInterSpan":"Referred by InterSpan, Inc. employee. Name:",
-        "referredFriend":"Referred by friend. Name:"
-    },
-    "equalOpportunity":{
-        "content":"InterSpan, Inc. is an EQUAL OPPORTUNITY EMPLOYER. To successfully implement this program and comply with government record keeping requirements, the Company requests that you provide the following information, which will not be used in evaluating your application for employment, or in the case of incumbent employees, your performance evaluation. Completion of this section is voluntary and will be kept confidential. If you choose not to provide this information, your decision will not affect your application",
-        "gender":"Gender",
-        "male":"Male",
-        "female":"Female",
+    "equalOpportunity": {
+        "content": "InterSpan, Inc. is an EQUAL OPPORTUNITY EMPLOYER. To successfully implement this program and comply with government record keeping requirements, the Company requests that you provide the following information, which will not be used in evaluating your application for employment, or in the case of incumbent employees, your performance evaluation. Completion of this section is voluntary and will be kept confidential. If you choose not to provide this information, your decision will not affect your application",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
         "raceEthnicity": "RACE/ETHNICITY DATA",
-        "veteran status":"Veteran Status",
-        "asian":"Asian",
-        "black":"Black",
-        "hispanic":"Hispanic",
-        "nativeAmerican":"Native American",
-        "white":"White (Caucasian)",
-        "other":"Other",
-        "veteran":"Veteran",
-        "vietname":"Vietnam Era Veteran",
-        "disableVeteran":"Disabled Veteran"
+        "veteran status": "Veteran Status",
+        "asian": "Asian",
+        "black": "Black",
+        "hispanic": "Hispanic",
+        "nativeAmerican": "Native American",
+        "white": "White (Caucasian)",
+        "other": "Other",
+        "veteran": "Veteran",
+        "vietname": "Vietnam Era Veteran",
+        "disableVeteran": "Disabled Veteran"
     },
-    "WorkHours":{
-        "title":"PREFERRED WORK HOURS",
-        "questions":{
-            "one":"Are you available for full-time work (apart from absence for religious observance)?",
-            "two":"If not, what hours can you work?",
+    "WorkHours": {
+        "title": "PREFERRED WORK HOURS",
+        "questions": {
+            "one": "Are you available for full-time work (apart from absence for religious observance)?",
+            "two": "If not, what hours can you work?",
             "three": "Can you work the following shift schedules?",
-            "four":"Any available shift",
+            "four": "Any available shift",
             "five": "Days:8 hour shift, 7:00am to 4:00pm",
-            "six":"Evenings:8 hour shift, 3:30 or 4:00pm to 12:00 midnight",
+            "six": "Evenings:8 hour shift, 3:30 or 4:00pm to 12:00 midnight",
             "seven": "Nights (3rd Shift):  8 hour shift, 11:00pm to 7:30am",
-            "eight":"Days:12 hour shift, 6:00am to 6:00pm",
+            "eight": "Days:12 hour shift, 6:00am to 6:00pm",
             "nine": "Nights:12 hour shift, 6:00pm to 6:00am",
             "ten": "Are you willing to work overtime if asked?",
             "eleven": "Are you willing to work a Saturday shift?or a Sunday shift?",
-            "twelve":"Please list any specific hours or weekdays that you know you are unavailable for work"
-        }
+            "twelve": "Please list any specific hours or weekdays that you know you are unavailable for work"
+        },
+        "yes": "Yes",
+        "no": "No"
     },
-    "communication":{
-        "title":"LANGUAGE",
-        "fluent":"Are you fluent in any language other than English?",
-        "yes":"Yes",
-        "no":"No",
-        "levelOfCommunication":"Level of communication: (non-English speakers only)",
-        "understandSpeak":"Understand/Speak no English Learning English as ESL",
-        "understandEnglish":"Understand a few English instructionsBilingual English/Spanish",
+    "communication": {
+        "title": "LANGUAGE",
+        "fluent": "Are you fluent in any language other than English?",
+        "yes": "Yes",
+        "no": "No",
+        "levelOfCommunication": "Level of communication: (non-English speakers only)",
+        "understandSpeak": "Understand/Speak no English",
+        "ESL":"Learning English as ESL",
+        "understandEnglish": "Understand a few English instructions",
+        "billingual":"Bilingual English/Spanish",
         "understandInstructions": "Understand most English instructions"
     },
-    "transportation":{
-        "accessReliableTransportation":"Do you have access to reliable transportation?",
-        "employmentBusLine":"Do you need employment on the bus line?",
-        "rideWithAnotherEmployment":"Do you need to ride with another employee?",
-        "name":"Name"
+    "transportation": {
+        "accessReliableTransportation": "Do you have access to reliable transportation?",
+        "employmentBusLine": "Do you need employment on the bus line?",
+        "rideWithAnotherEmployment": "Do you need to ride with another employee?",
+        "name": "Name",
+        "yes":"Yes",
+        "no":"No"
     },
-    "references":{
-        "name":"Name",
-        "relation":"Relation",
-        "telephone":"Telephone",
-        "friends":"FRIENDS/RELATIVES WORKING AT INTERSPAN"
+    "references": {
+        "name": "Name",
+        "relation": "Relation",
+        "telephone": "Telephone",
+        "friends": "FRIENDS/RELATIVES WORKING AT INTERSPAN"
     },
-    "forEmployerUse":{
-        "initialAssignment":"Initial Assignment:",
-        "location":"Location",
-        "supervisor":"Supervisor",
-        "position":"Position",
-        "shift":"Shift",
-        "payRate":"Pay Rate",
-        "startDate":"Start Date",
-        "notes":"Notes"
+    "forEmployerUse": {
+        "initialAssignment": "Initial Assignment:",
+        "location": "Location",
+        "supervisor": "Supervisor",
+        "position": "Position",
+        "shift": "Shift",
+        "payRate": "Pay Rate",
+        "startDate": "Start Date",
+        "notes": "Notes"
     }
 }
