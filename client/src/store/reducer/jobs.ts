@@ -2,7 +2,8 @@ import JobActions from '../action/jobs';
 
 const INITIAL_STATE = {
     isLoading: false,
-    allJobs: []
+    allJobs: [],
+    language:"english"
 };
 
 interface IAction {
@@ -16,6 +17,8 @@ export function jobReducer(state = INITIAL_STATE, action: IAction) {
             return Object.assign({}, state, {isLoading: true});
         case JobActions.GET_ALL_JOBS_SUCCESS:
             return Object.assign({}, state, { allJobs: action.payload, isLoading: false });
+        case JobActions.CHANGE_LANGUAGE:
+            return Object.assign({},{language: action.payload})
         default:
             return state;
     }

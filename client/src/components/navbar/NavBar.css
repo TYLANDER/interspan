@@ -15,6 +15,12 @@
 .navbar-container .hamburger-icon{
   display: none !important;
 }
+.navbar-container .lang-select{
+  width: 120px !important;
+  position: absolute !important;
+  right: 365px;
+  top: -11px;
+}
 .navbar-container .sub-menu{
   margin-top: 15px;
   color: #373e9b;

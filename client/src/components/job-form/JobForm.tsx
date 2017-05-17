@@ -15,16 +15,20 @@ import Communication from './communication/Communication';
 import Transportation from './transportation/Transportation';
 import References from './references/References';
 
-class MainJobForm extends React.Component<any, any>{
+export default class MainJobForm extends React.Component<any, any>{
 
     jobDataEn: any = {};
+    jobDataSp: any = {};
+    selectedJson: any = {};
 
     constructor(){
         super();
         this.jobDataEn =  require('../../assets/json/job-en');
+        this.jobDataSp =  require('../../assets/json/job-sp');
         this.state = {
             finished: false,
             stepIndex: 0,
+            selectedJson: this.jobDataEn
         };
     }
 
@@ -48,34 +52,40 @@ class MainJobForm extends React.Component<any, any>{
     getStepContent(stepIndex: any) {
         switch (stepIndex) {
             case 0:
-                return <ApplicantInfo  handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.applicationInformation}/>;
+                return <ApplicantInfo  handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.applicationInformation}/>;
             case 1:
-                return <JobLocation handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.jobLocation}/>;
+                return <JobLocation handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.jobLocation}/>;
             case 2:
-                return <Education handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.educationTraining}/>;
+                return <Education handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.educationTraining}/>;
             case 3:
-                return <Certification handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.certification}/>;
+                return <Certification handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.certification}/>;
             case 4:
-                return <EmployementHistory handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.employmentHistory}/>;
+                return <EmployementHistory handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.employmentHistory}/>;
             case 5:
-                return <PersonalInfo handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.personalInformation}/>;
+                return <PersonalInfo handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.personalInformation}/>;
             case 6:
-                return <LightIndustrialSkill handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.lightIndustrialAndWarehousePositions}/>;
+                return <LightIndustrialSkill handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.lightIndustrialAndWarehousePositions}/>;
             case 7:
-                return <Media handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.media}/>;
+                return <Media handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.media}/>;
             case 8:
-                return <EqualOpportunity handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.equalOpportunity}/>;
+                return <EqualOpportunity handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.equalOpportunity}/>;
             case 9:
-                return <WorkHour handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.WorkHours}/>;
+                return <WorkHour handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.WorkHours}/>;
             case 10:
-                return <Communication handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.communication}/>;
+                return <Communication handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.communication}/>;
             case 11:
-                return <Transportation handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.transportation}/>;
+                return <Transportation handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.transportation}/>;
             case 12:
-                return <References handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.jobDataEn.references}/>;
+                return <References handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.references}/>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
+    }
+
+     componentWillReceiveProps(nextProp: any){
+         console.log(nextProp.language);
+        let userSelectedJson = nextProp.language === "en"? this.jobDataEn : this.jobDataSp;
+        this.setState({selectedJson: userSelectedJson})
     }
 
     render() {
@@ -146,4 +156,3 @@ class MainJobForm extends React.Component<any, any>{
     }
 }
 
-export default MainJobForm;

@@ -1,30 +1,38 @@
 import * as React from 'react';
-import { AppBar, RaisedButton, FlatButton } from 'material-ui';
+import { AppBar, RaisedButton, FlatButton, SelectField, MenuItem } from 'material-ui';
 import IconButton from 'material-ui/IconButton';
 import './NavBar.css';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Subject } from 'rxjs';
+import JobActions from "../../store/action/jobs"
 
 class NavBar extends React.Component<any, any> {
 
     $authObservar: Subject<any>;
     constructor(props: any){
         super(props);
-        //this.$authObservar = new Subject<any>();
     }
 
     state = {
         open: false,
-        isAuthenticated: false
+        isAuthenticated: false,
+        language: 'sp',
+    };
+
+    handleLanguage = (event:any, index:any, value:any) => {
+        this.props.changeLanguage(value)
+        this.setState({language:value})   
     };
 
     componentWillReceiveProps(nextProp: any){
-        console.log(nextProp);
-        if (this.props.authObj.isAuthenticated){
-            this.setState({isAuthenticated: false});
-        }
-        else this.setState({isAuthenticated: true});
+        window.location.pathname === "/" ?
+            this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: false})
+    }
+
+    componentWillMount(nextProp: any){
+        window.location.pathname === "/" ?
+            this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: false})
     }
 
     handleHomePage(){
@@ -42,9 +50,21 @@ class NavBar extends React.Component<any, any> {
     }
 
     render() {
+        const languageSelect = (
+            <SelectField
+                className="lang-select"
+                floatingLabelText="Language"
+                value={this.state.language}
+                onChange={this.handleLanguage}
+                >
+                <MenuItem value="en" primaryText="English" />
+                <MenuItem value="sp" primaryText="Spanish" />
+            </SelectField>
+        )
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
+                    {languageSelect}
                     <FlatButton label="Employers" className="app-box-shadow" labelStyle={{textTransform: 'capitalize'}}
                         onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)}/>
                     <FlatButton label="About" className="app-box-shadow" labelStyle={{textTransform: 'capitalize'}}
@@ -120,7 +140,13 @@ class NavBar extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any) => {
-    return { authObj: state.AuthReducer};
+    return { authObj: state.AuthReducer,
+        language: state.jobReducer.language  
+    };
 };
 
-export default connect(mapStateToProps)(NavBar);
+const mapDispatchToProps = (dispatch: any) => {
+    return {changeLanguage: (language: any) => dispatch(JobActions.changeLanguage(language))};
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(NavBar);

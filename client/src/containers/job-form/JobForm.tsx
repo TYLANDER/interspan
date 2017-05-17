@@ -1,24 +1,28 @@
 import * as React from 'react';
 import  MainJobForm  from './../../components/job-form/JobForm';
+import { connect } from 'react-redux';
 import './JobForm.css';
 class JobForm extends React.Component<any, any>{
 
-    constructor(){
-        super();
-
-        this.state = {
-            selectedLanguage : 'en'
-        };
+    constructor(props:any){
+        super(props);
     }
     render(){
 
         return(
             <div className="job-form-container">
-                {/*{ this.state.selectedLanguage == 'en'? true : false }*/}
-                <MainJobForm />
+                <MainJobForm language={this.props.language} />
             </div>
         );
     }
 }
 
-export default JobForm;
+const mapStateToProps = (state: any) => {
+    return { 
+        language: state.jobReducer.language  
+    };
+};
+
+
+
+export default connect(mapStateToProps)(JobForm);
