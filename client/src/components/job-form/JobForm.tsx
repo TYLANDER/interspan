@@ -24,7 +24,7 @@ class MainJobForm extends React.Component<any, any>{
         this.jobDataEn =  require("../../assets/json/job-en");
         this.state = {
             finished: false,
-            stepIndex: 0,
+            stepIndex: 12,
         };
     }
     

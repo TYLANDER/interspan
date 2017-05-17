@@ -20,8 +20,7 @@ class ApplicantInfo extends React.Component<any, any>{
         this.props.handlePrev({name:123, idx : 1})
     }
     render() {
-        console.log(this.jsonData)
-        const {lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus} = this.jsonData
+        const {lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus,yes,no} = this.jsonData
         return (
             <div className="job-applicant-container">
                 <label className="title">Applicant Information</label>
@@ -107,35 +106,35 @@ class ApplicantInfo extends React.Component<any, any>{
 
                     <RadioButton
                         value="yes"
-                        label={employementYes}
+                        label={yes}
                     />
                     <RadioButton
                         value="no"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <b>{employment} </b>
                 <RadioButtonGroup name="employement" onChange={(event: any) => event.target.value === 'yes' ? this.setState({ employee: true }) : this.setState({ employee: false })}>
                     <RadioButton
-                        value={employementYes}
-                        label="Yes"
+                        value="yes"
+                        label={yes}
                     />
                     <RadioButton
-                        value="no"
-                        label="No"
+                        value="yes"
+                        label={no}
                     />
                 </RadioButtonGroup>
-                {this.state.employee ? <DatePicker floatingLabelText={legallyEligible} /> : ""}
-                <b>Are you legally eligible for employment in the United States? </b>
+                {this.state.employee ? <DatePicker floatingLabelText={employementYes} /> : ""}
+                <b>{legallyEligible}</b>
                 <RadioButtonGroup name="age">
 
                     <RadioButton
-                        value={employementYes}
-                        label="Yes"
+                        value="yes"
+                        label={yes}
                     />
                     <RadioButton
                         value="no"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <TextField

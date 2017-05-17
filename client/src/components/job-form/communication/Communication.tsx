@@ -3,8 +3,10 @@ import ActiveButtons from "../active-buttons/ActiveButtons"
 import { RadioButton, RadioButtonGroup } from "material-ui"
 
 class Communication extends React.Component<any, any>{
-    constructor() {
-        super();
+    jsonData:any
+    constructor(props: any) {
+        super(props)
+        this.jsonData = this.props.jsonData
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 })
@@ -13,42 +15,42 @@ class Communication extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 })
     }
     render() {
-
+        const {title,fluent,yes,no,billingual,ESL,levelOfCommunication,understandSpeak,understandEnglish,understandInstructions} = this.jsonData;
         return (
             <div className="job-applicant-container">
-                <label>Language </label>
-                <p>Are you fluent in any langouage other than English?</p>
+                <label>{title} </label>
+                <p>{fluent}</p>
                 <RadioButtonGroup name="fluent">
                     <RadioButton
                         value="yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         value="no"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
-                <p>Level of communication: (non-English speakers only)</p>
+                <p>{levelOfCommunication}</p>
                 <RadioButtonGroup name="language">
                     <RadioButton
                         value="Understand/Speak no English"
-                        label="Understand/Speak no English"
+                        label={understandSpeak}
                     />
                     <RadioButton
                         value="Understand a few English instructions"
-                        label="Understand a few English instructions"
+                        label={understandEnglish}
                     />
                     <RadioButton
                         value="Understand most English instructions"
-                        label="Understand most English instructions"
+                        label={understandInstructions}
                     />
                     <RadioButton
                         value="Learning English as ESL"
-                        label="Learning English as ESL"
+                        label={ESL}
                     />
                     <RadioButton
                         value="Bilingual English/Spanish"
-                        label="Bilingual English/Spanish"
+                        label={billingual}
                     />
                 </RadioButtonGroup>
                 <br /><br />

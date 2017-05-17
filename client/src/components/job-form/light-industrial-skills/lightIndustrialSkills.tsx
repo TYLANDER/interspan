@@ -4,330 +4,335 @@ import ActiveButtons from "../active-buttons/ActiveButtons";
 import { RadioButtonGroup, RadioButton, TextField } from "material-ui";
 
 class lightIndustrialSkills extends React.Component<any, any>{
-    constructor() {
-        super();
+    jsonData: any;
+    constructor(props: any) {
+        super(props);
+        this.jsonData = this.props.jsonData;
         this.state = {
-            forklift : false,
-            palletJack : false
-        }
+            forklift: false,
+            palletJack: false
+        };
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 })
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 })
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
 
     render() {
+        const { questions, yes, no, noExperience, lessThanOneYear, oneToFiveYears, sixToTenYears, tenYearsOrMore, assembly, pullingOrders, productionLine, packingMaterials,
+            loadingLifter, bandingMachine, upsShippingLabels, dataEntry, countingMaterial, workingFrom, gluingBoxes, stacker, qualityControl, weighingMaterial, noneOfAbove,
+            lessThanTenLbs, upToTenLbs,experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.jsonData;
         return (
             <div className="job-applicant-container">
                 <label>LIGHT INDUSTRIAL  WAREHOUSE POSITIONS</label>
-                <p>How many years experience in industrial  warehouse positions?</p>
+                <p>{questions.one}</p>
                 <RadioButtonGroup name="experience" >
                     <RadioButton
                         value="No experience"
-                        label="No experience"
+                        label={noExperience}
                     />
                     <RadioButton
                         value="Less than 1 year"
-                        label="Less than 1 year"
+                        label={lessThanOneYear}
                     />
                     <RadioButton
                         value="1 to 5 years"
-                        label="1 to 5 years"
+                        label={oneToFiveYears}
                     />
                     <RadioButton
                         value="6 to 10 years"
-                        label="6 to 10 years"
+                        label={sixToTenYears}
                     />
                     <RadioButton
                         value="10 years or moreNo"
-                        label="10 years or more"
+                        label={tenYearsOrMore}
                     />
                 </RadioButtonGroup>
 
-                <p>Do you have experience with:</p>
+                <p>{questions.two}</p>
                 <RadioButtonGroup name="experience " >
                     <RadioButton
                         value="Assembly"
-                        label="Assembly"
+                        label={assembly}
                     />
                     <RadioButton
                         value="Production Line"
-                        label="Production Line"
+                        label={productionLine}
                     />
                     <RadioButton
                         value="Packing materials"
-                        label="Packing materials"
+                        label={packingMaterials}
                     />
                     <RadioButton
                         value="Loading/Heavy Lifter"
-                        label="Loading/Heavy Lifter"
+                        label={loadingLifter}
                     />
                     <RadioButton
                         value="Banding machine"
-                        label="Banding machine"
+                        label={bandingMachine}
                     />
                     <RadioButton
                         value="Pulling Orders"
-                        label="Pulling Orders"
+                        label={pullingOrders}
                     />
                     <RadioButton
                         value="UPS shipping labels"
-                        label="UPS shipping labels"
+                        label={upsShippingLabels}
                     />
                     <RadioButton
                         value="Data entry to a personal computer"
-                        label="Data entry to a personal computer"
+                        label={dataEntry}
                     />
                     <RadioButton
                         value="Counting materials/inventory"
-                        label="Counting materials/inventory"
+                        label={countingMaterial}
                     />
                     <RadioButton
                         value="Working from a conveyor belt"
-                        label="Working from a conveyor belt"
+                        label={workingFrom}
                     />
                     <RadioButton
                         value="Gluing boxes"
-                        label="Gluing boxes"
+                        label={gluingBoxes}
                     />
                     <RadioButton
                         value="Stacker"
-                        label="Stacker"
+                        label={stacker}
                     />
                     <RadioButton
                         value="Quality Control"
-                        label="Quality Control"
+                        label={qualityControl}
                     />
                     <RadioButton
                         value="Weighing materials"
-                        label="Weighing materials"
+                        label={weighingMaterial}
                     />
                     <RadioButton
                         value="None of the above"
-                        label="None of the above"
+                        label={noneOfAbove}
                     />
 
                 </RadioButtonGroup>
-                <p>How many pounds are you capable of lifting repeatedly?</p>
+                <p>{questions.three}</p>
                 <RadioButtonGroup name="capable" >
                     <RadioButton
                         value="Less than 10 lbs."
-                        label="Less than 10 lbs."
+                        label={lessThanTenLbs}
                     />
                     <RadioButton
                         value="Up to 10 lbs."
-                        label="Up to 10 lbs."
+                        label={upToTenLbs}
                     />
                     <RadioButton
                         value="Up to 20 lbs"
-                        label="Up to 20 lbs"
+                        label={upToTwentyLbs}
                     />
                     <RadioButton
                         value="Up to 60 lbs"
-                        label="Up to 60 lbs"
+                        label={upToSixtyLbs}
                     />
                     <RadioButton
                         value="61 lbs or more"
-                        label="61 lbs or more"
+                        label={sixtyOneOrMore}
                     />
                 </RadioButtonGroup>
-            
-                <br/>
-                <label className="inline-fields">Can you lift 50 lbs. 4 to 6 times during a shift?</label>
+
+                <br />
+                <label className="inline-fields">{questions.four}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Can you stand for an 8 hour or a 12 hour shift?</label>
+                <label className="inline-fields">{questions.five}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Can you work a job with a lot of walking?</label>
+                <label className="inline-fields">{questions.six}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Can you stand, bend, reach for an 8 or 12 hour shift?</label>
+                <label className="inline-fields">{questions.seven}?</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Are you able to use basic math skills? (counting, addition, subtraction)</label>
+                <label className="inline-fields">{questions.eight}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Can you read measurements with a tape measure or ruler?</label>
+                <label className="inline-fields">{questions.nine}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Can you use a calculator?</label>
+                <label className="inline-fields">{questions.ten}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">Can you use a personal computer?</label>
+                <label className="inline-fields">{questions.eleven}</label>
                 <RadioButtonGroup name="capable" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Have you operated a forklift?</label>
-                <RadioButtonGroup name="capable" className="right"  onChange={(event: any) => event.target.value === 'No' ? this.setState({ forklift: false }) : this.setState({ forklift: true })}>
+                <label className="inline-fields">{questions.twelve}</label>
+                <RadioButtonGroup name="capable" className="right" onChange={(event: any) => event.target.value === 'No' ? this.setState({ forklift: false }) : this.setState({ forklift: true })}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
 
-                {this.state.forklift ? 
-                <TextField
-                    hintText=""
-                    onFocus={() => { }}
-                    fullWidth={true}
-                    floatingLabelText="Enter years of experience "
-                />
-                 : null}
+                {this.state.forklift ?
+                    <TextField
+                        hintText=""
+                        onFocus={() => { }}
+                        fullWidth={true}
+                        floatingLabelText={experience}
+                    />
+                    : null}
                 <br /><br />
 
-                <label className="inline-fields">Have you been certified as a forklift operator?</label>
+                <label className="inline-fields">{questions.thirteen}</label>
                 <RadioButtonGroup name="capable" className="right">
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
-                </RadioButtonGroup>        
+                </RadioButtonGroup>
                 <br /><br />
 
-                <label className="inline-fields">Have you operated a pallet jack?</label>
-                <RadioButtonGroup name="capable" className="right"  onChange={(event: any) => event.target.value === 'No' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true })}>
+                <label className="inline-fields">{questions.fourteen}</label>
+                <RadioButtonGroup name="capable" className="right" onChange={(event: any) => event.target.value === 'No' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true })}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
 
-                {this.state.palletJack ? 
-                <TextField
-                    hintText=""
-                    onFocus={() => { }}
-                    fullWidth={true}
-                    floatingLabelText="Enter years of experience "
-                />
-                 : null}
+                {this.state.palletJack ?
+                    <TextField
+                        hintText=""
+                        onFocus={() => { }}
+                        fullWidth={true}
+                        floatingLabelText="Enter years of experience "
+                    />
+                    : null}
                 <br /><br />
 
-                <label className="inline-fields">Do you have steel toe safety shoes readily available to wear on certain jobsites?</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <label className="inline-fields">{questions.fifteen}</label>
+                <RadioButtonGroup name="capable" className="right">
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />

@@ -4,11 +4,13 @@ import "./Transportation.css";
 import { RadioButton, RadioButtonGroup, TextField } from "material-ui";
 
 class Transportation extends React.Component<any, any>{
+    jsonData:any
     constructor(props: any) {
-        super()
+        super(props)
         this.state = {
             employee: false
         }
+        this.jsonData = this.props.jsonData
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 })
@@ -17,55 +19,56 @@ class Transportation extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 })
     }
     render() {
-
+        console.log(this.jsonData);
+        const {accessReliableTransportation,employmentBusLine,rideWithAnotherEmployment,name,yes,no} = this.jsonData;
         return (
             <div className="transportation-container">
                 <label> Transportation </label> <br /><br />
-                <p className="inline-fields">Do you have access to reliable transportation?</p>
+                <p className="inline-fields">{accessReliableTransportation}</p>
                 <RadioButtonGroup name="reliable-tranportation" className="right" >
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /> <br />
-                <p className="inline-fields">Do you need employment on the bus line?</p>
+                <p className="inline-fields">{employmentBusLine}</p>
                 <RadioButtonGroup name="reliable-tranportation" className="right">
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /> <br />
-                <p className="inline-fields">Do you need to ride with another employee?</p>
+                <p className="inline-fields">{rideWithAnotherEmployment}</p>
                 <RadioButtonGroup name="another-employee" className="right" onChange={(event: any) => { event.target.value === "Yes" ? this.setState({ employee: true }) : this.setState({ employee: false }) }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
-                        label="Yes"
+                        label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
-                        label="No"
+                        label={no}
                     />
                 </RadioButtonGroup>
                 <br /> <br />
                 {this.state.employee ?
                     <TextField
-                        floatingLabelText="Name"
+                        floatingLabelText={name}
                     /> :
                     null
                 }

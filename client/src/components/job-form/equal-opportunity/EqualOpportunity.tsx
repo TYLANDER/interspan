@@ -3,8 +3,10 @@ import ActiveButtons from "../active-buttons/ActiveButtons"
 import "./EqualOpportunity.css"
 import { RadioButtonGroup, RadioButton, TextField } from "material-ui"
 class EqualOpportunity extends React.Component<any, any>{
+    jsonData:any
     constructor(props: any) {
         super(props)
+        this.jsonData = this.props.jsonData
         this.state = {
             other: false
         }
@@ -18,76 +20,73 @@ class EqualOpportunity extends React.Component<any, any>{
     }
 
     render() {
-
+        const {content,gender,male,female,raceEthnicity,veteranstatus,asian,black,hispanic,nativeAmerican,white,other,veteran,vietname,disableVeteran} = this.jsonData;
         return (
             <div className="equal-opprtunity-container">
                 <label>Equal Opportunity Information (Voluntary, responses not required)</label>
                 <p className="paragraph">
-                    InterSpan, Inc. is an EQUAL OPPORTUNITY EMPLOYER. To successfully implement this program and comply with government record keeping requirements,
-                    the Company requests that you provide the following information, which will not be used in evaluating your application for employment, or in the case of incumbent
-                    employees, your performance evaluation. Completion of this section is voluntary and will be kept confidential. If you choose not to provide this information,
-                    your decision will not affect your application.
+                    {content}
                 </p><br /><br />
-                <p>Gender </p>
+                <p>{gender}</p>
                 <RadioButtonGroup name="gender">
                     <RadioButton
                         value="male"
-                        label="Male"
+                        label={male}
                     />
                     <RadioButton
                         value="female"
-                        label="Female"
+                        label={female}
                     />
                 </RadioButtonGroup>    <br /><br />
 
-                <p>Race / Ethnicity Data </p>
+                <p>{raceEthnicity}</p>
                 <RadioButtonGroup name="race" onChange={(event: any) => { event.target.value === "other" ? this.setState({ other: true }) : this.setState({ other: false }) }}>
                     <RadioButton
                         value="asian"
-                        label="Asian"
+                        label={asian}
                     />
                     <RadioButton
                         value="black"
-                        label="Black"
+                        label={black}
                     />
 
                     <RadioButton
                         value="hispanic"
-                        label="Hispanic"
+                        label={hispanic}
                     />
                     <RadioButton
                         value="native american"
-                        label="Native American"
+                        label={nativeAmerican}
                     />
                     <RadioButton
                         value="white"
-                        label="White (Caucasian)"
+                        label={white}
                     />
                     <RadioButton
                         value="other"
-                        label="Other"
+                        label={other}
                     />
                 </RadioButtonGroup>
 
                 {this.state.other ?
                     <TextField
-                        floatingLabelText="Other"
+                        floatingLabelText={other}
                     /> : null
                 } <br /><br />
 
-                <p>VETERAN STATUS </p>
+                <p>{veteranstatus} </p>
                 <RadioButtonGroup name="veteran">
                     <RadioButton
                         value="veteran"
-                        label="Veteran"
+                        label={veteran}
                     />
                     <RadioButton
                         value="Vietnam Era Veteran"
-                        label="Vietnam Era Veteran"
+                        label={vietname}
                     />
                     <RadioButton
                         value="Disabled Veteran"
-                        label="Disabled Veteran"
+                        label={disableVeteran}
                     />
                 </RadioButtonGroup>
 
