@@ -4,7 +4,7 @@ class Dashboard extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="container">                
+            <div className="container">
                 <div>
                     {this.props.children}
                 </div>
@@ -13,4 +13,4 @@ class Dashboard extends React.Component<any, any> {
     }
 
 }
-export default Dashboard
+export default Dashboard;

@@ -15,7 +15,7 @@ class App extends React.Component<any, any> {
                     <div className="child-page">
                         {this.props.children}
                     </div>
-                    
+
                 </div>
             </MuiThemeProvider>
         );

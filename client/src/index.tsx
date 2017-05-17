@@ -7,7 +7,6 @@ import './index.css';
 import injectTapEventPlugin = require('react-tap-event-plugin');
 injectTapEventPlugin();
 
-
 ReactDOM.render(
   <Provider store={store}>
     <AppRoutes />

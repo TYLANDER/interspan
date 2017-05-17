@@ -1,14 +1,14 @@
 import * as React from 'react';
 import './Signup.css';
-import {Paper, FlatButton} from "material-ui";
+import {Paper, FlatButton} from 'material-ui';
 import {indigo900} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import UsernameForm from './UsernameForm';
 import UserEmailForm from './UserEmailForm';
 import UserSSNForm from './UserSSNForm';
-import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 class Signup extends React.Component<any, any> {
 
@@ -19,7 +19,7 @@ class Signup extends React.Component<any, any> {
         appBar: {
             height: 50,
         },
-        textField:{
+        textField: {
             focusColor: '#2e469e',
             textColor: '#2e469e'
         }
@@ -31,17 +31,17 @@ class Signup extends React.Component<any, any> {
     };
 
     componentWillMount(){
-        if(!this.props.authObj.isAuthenticated)
-            this.props.authLogin({username: "Zeeshan Hanif"});
+        if (!this.props.authObj.isAuthenticated)
+            this.props.authLogin({username: 'Zeeshan Hanif'});
     }
     handleHomePage(){
         browserHistory.push('/');
     }
-    handleJobPage = ()=>{
+    handleJobPage = () => {
         browserHistory.push('/job');
     }
     swapScreen(screenName: any) {
-        let changedScreen = "";
+        let changedScreen = '';
         // if (screenName == "back" && this.state.currentScreen == "UsernameForm"){
         //     changedScreen = "UsernameForm";
         //     this.handleHomePage();
@@ -51,12 +51,12 @@ class Signup extends React.Component<any, any> {
         // else if (screenName == "back" && this.state.currentScreen == "UserSSNForm")
         //     changedScreen = "UserEmailForm";
 
-        if (screenName == "continue" && this.state.currentScreen == "UsernameForm")
-            changedScreen = "UserEmailForm";
-        else if (screenName == "continue" && this.state.currentScreen == "UserEmailForm")
-            changedScreen = "UserSSNForm";
-        else if (screenName == "continue" && this.state.currentScreen == "UserSSNForm"){
-            changedScreen = "UserSSNForm";
+        if (screenName === 'continue' && this.state.currentScreen === 'UsernameForm')
+            changedScreen = 'UserEmailForm';
+        else if (screenName === 'continue' && this.state.currentScreen === 'UserEmailForm')
+            changedScreen = 'UserSSNForm';
+        else if (screenName === 'continue' && this.state.currentScreen === 'UserSSNForm'){
+            changedScreen = 'UserSSNForm';
             this.handleJobPage();
         }
 
@@ -67,11 +67,11 @@ class Signup extends React.Component<any, any> {
 
         let formElement: any = (
             <div>
-                {(this.state.currentScreen == 'UsernameForm') ? <UsernameForm />:
+                {(this.state.currentScreen == 'UsernameForm') ? <UsernameForm /> :
                 (this.state.currentScreen == 'UserEmailForm') ? <UserEmailForm /> : <UserSSNForm />}
 
                 <div className="footer-container">
-                    {/*<FlatButton label="Back" 
+                    {/*<FlatButton label="Back"
                         className="back-btn"
                         secondary={true}
                         labelStyle={{color: '#2e469e',fontSize:"16px"}}
@@ -82,9 +82,9 @@ class Signup extends React.Component<any, any> {
                         className="continue-btn"
                         labelPosition="before"
                         primary={true}
-                        labelStyle={{color: '#2e469e',fontSize:"16px"}}
-                        icon={<img src={require("../../assets/angle-right.svg")} className="btn-icon continue" alt="logo" />}
-                        onClick={this.swapScreen.bind(this, "continue")}/>
+                        labelStyle={{color: '#2e469e', fontSize: '16px'}}
+                        icon={<img src={require('../../assets/angle-right.svg')} className="btn-icon continue" alt="logo" />}
+                        onClick={this.swapScreen.bind(this, 'continue')}/>
                 </div>
             </div>
         );
@@ -105,14 +105,14 @@ class Signup extends React.Component<any, any> {
     }
 
 }
-const mapStateToProps = (state:any) => {
+const mapStateToProps = (state: any) => {
     return { authObj: state.AuthReducer};
 };
-const mapDispatchToProps = (dispatch:any) =>{
-    return {authLogin:(userObj:any)=>dispatch({
-            type: "LOGIN_SUCCESS",
+const mapDispatchToProps = (dispatch: any) => {
+    return {authLogin: (userObj: any) => dispatch({
+            type: 'LOGIN_SUCCESS',
             payload: userObj
-        })}
-}
+        })};
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

@@ -1,14 +1,14 @@
-import * as React from "react"
-import  MainJobForm  from "./../../components/job-form/JobForm";
-import "./JobForm.css"
+import * as React from 'react';
+import  MainJobForm  from './../../components/job-form/JobForm';
+import './JobForm.css';
 class JobForm extends React.Component<any, any>{
 
     constructor(){
         super();
 
         this.state = {
-            selectedLanguage : "en"
-        }
+            selectedLanguage : 'en'
+        };
     }
     render(){
 
@@ -17,7 +17,7 @@ class JobForm extends React.Component<any, any>{
                 {/*{ this.state.selectedLanguage == 'en'? true : false }*/}
                 <MainJobForm />
             </div>
-        )
+        );
     }
 }
 
