@@ -1,26 +1,26 @@
-import * as React from "react"
-import { TextField, RadioButton, RadioButtonGroup, DatePicker } from "material-ui";
-import ActiveButtons from "../active-buttons/ActiveButtons"
+import * as React from 'react';
+import { TextField, RadioButton, RadioButtonGroup, DatePicker } from 'material-ui';
+import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class ApplicantInfo extends React.Component<any, any>{
 
-    jsonData:any;
+    jsonData: any;
 
-    constructor(props:any){
+    constructor(props: any){
         super(props);
         this.jsonData = this.props.jsonData;
     }
     state = {
         employee: false
+    };
+    handleNext = () => {
+        this.props.handleNext({name: 123, idx : 0});
     }
-    handleNext = ()=>{
-        this.props.handleNext({name:123, idx : 0})
-    }
-    handlePrev = ()=>{
-        this.props.handlePrev({name:123, idx : 1})
+    handlePrev = () => {
+        this.props.handlePrev({name: 123, idx : 1});
     }
     render() {
-        const {lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus,yes,no} = this.jsonData
+        const {lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no} = this.jsonData;
         return (
             <div className="job-applicant-container">
                 <label className="title">Applicant Information</label>
@@ -124,7 +124,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         label={no}
                     />
                 </RadioButtonGroup>
-                {this.state.employee ? <DatePicker floatingLabelText={employementYes} /> : ""}
+                {this.state.employee ? <DatePicker floatingLabelText={employementYes} /> : ''}
                 <b>{legallyEligible}</b>
                 <RadioButtonGroup name="age">
 
@@ -143,10 +143,10 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText={workStatus}
                 />
-                
-                <ActiveButtons handleNext={()=>this.handleNext()} handlePrev={()=>this.handlePrev()}/>
+
+                <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()}/>
             </div>
-        )
+        );
     }
 }
 

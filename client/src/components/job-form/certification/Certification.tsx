@@ -1,10 +1,10 @@
-import * as React from "react"
-import ActiveButtons from "../active-buttons/ActiveButtons"
-import { Checkbox } from 'material-ui'
-import "./Certification.css";
+import * as React from 'react';
+import ActiveButtons from '../active-buttons/ActiveButtons';
+import { Checkbox } from 'material-ui';
+import './Certification.css';
 class Certification extends React.Component<any, any>{
-    jsonData:any
-    constructor(props:any) {
+    jsonData: any;
+    constructor(props: any) {
         super(props);
         this.jsonData = this.props.jsonData;
     }
@@ -15,20 +15,20 @@ class Certification extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {header,content,agreed} = this.jsonData;
+        const {header, content, agreed} = this.jsonData;
 
         return (
             <div className="certification-container">
                 <label>{header}</label>
                 <p className="paragraph">{content}</p>
-                <div style={{maxWidth:"150px"}}>
+                <div style={{maxWidth: '150px'}}>
                 <Checkbox
                     label={agreed}
                 />
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
-        )
+        );
     }
 }
 

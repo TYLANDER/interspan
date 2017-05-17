@@ -1,37 +1,37 @@
-import * as React from "react"
-import ActiveButtons from "../active-buttons/ActiveButtons"
+import * as React from 'react';
+import ActiveButtons from '../active-buttons/ActiveButtons';
 import { TextField, DatePicker, FlatButton} from 'material-ui';
 
 class EmploymentHistory extends React.Component<any, any>{
-    jsonData:any;
-    constructor(props:any) {
+    jsonData: any;
+    constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData
+        this.jsonData = this.props.jsonData;
         this.state = {
             employed: 1
-        }
+        };
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 })
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 })
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {companyName,city,state,nameOfSupervisor,stateJobTitle,telephone,employed,from,to,payRate,start,end,reasonForleaving,doNotContact,employeeNumber,note,reason} = this.jsonData;
+        const {companyName, city, state, nameOfSupervisor, stateJobTitle, telephone, employed, from, to, payRate, start, end, reasonForleaving, doNotContact, employeeNumber, note, reason} = this.jsonData;
         var history = [];
         for (var i = 0; i < this.state.employed; i++) {
             history.push(
                 <div key={i}>
-                    <h3> {i+1} - Employment History </h3><br />
+                    <h3> {i + 1} - Employment History </h3><br />
                     <TextField
                         hintText={companyName}
                         floatingLabelText={companyName}
                         fullWidth={true}
                     />
                     <TextField
-                        hintText={city+" "+state}
-                        floatingLabelText={city+" "+state}
+                        hintText={city + ' ' + state}
+                        floatingLabelText={city + ' ' + state}
                         fullWidth={true}
                     />
                     <TextField
@@ -91,7 +91,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
-        )
+        );
     }
 }
 

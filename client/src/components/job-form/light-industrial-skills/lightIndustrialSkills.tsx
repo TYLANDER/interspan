@@ -1,7 +1,7 @@
-import * as React from "react";
-import "./lightIndustrialSkills.css"
-import ActiveButtons from "../active-buttons/ActiveButtons";
-import { RadioButtonGroup, RadioButton, TextField } from "material-ui";
+import * as React from 'react';
+import './lightIndustrialSkills.css';
+import ActiveButtons from '../active-buttons/ActiveButtons';
+import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 
 class lightIndustrialSkills extends React.Component<any, any>{
     jsonData: any;
@@ -23,7 +23,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
     render() {
         const { questions, yes, no, noExperience, lessThanOneYear, oneToFiveYears, sixToTenYears, tenYearsOrMore, assembly, pullingOrders, productionLine, packingMaterials,
             loadingLifter, bandingMachine, upsShippingLabels, dataEntry, countingMaterial, workingFrom, gluingBoxes, stacker, qualityControl, weighingMaterial, noneOfAbove,
-            lessThanTenLbs, upToTenLbs,experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.jsonData;
+            lessThanTenLbs, upToTenLbs, experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.jsonData;
         return (
             <div className="job-applicant-container">
                 <label>LIGHT INDUSTRIAL  WAREHOUSE POSITIONS</label>
@@ -339,7 +339,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
 
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
-        )
+        );
     }
 }
 

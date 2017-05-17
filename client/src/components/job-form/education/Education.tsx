@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 import { RadioButton, RadioButtonGroup, FlatButton, TextField } from 'material-ui';
-import ActiveButtons from "../active-buttons/ActiveButtons";
+import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class Education extends React.Component<any, any>{
     jsonData: any;
@@ -9,14 +9,14 @@ class Education extends React.Component<any, any>{
         this.state = {
             school: 1,
             skills: 1
-        }
+        };
         this.jsonData = this.props.jsonData;
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 })
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 })
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
 
     render() {
@@ -32,7 +32,7 @@ class Education extends React.Component<any, any>{
                         floatingLabelText="High School / College"
                     />
                 </div>);
-        };
+        }
         for (var i = 0; i < this.state.skills; i++) {
             skills.push(
                 <div key={i}>
@@ -42,8 +42,8 @@ class Education extends React.Component<any, any>{
                         floatingLabelText="High School / College"
                     />
                 </div>);
-        };
-        const {question,values,skillsAndExperience} = this.jsonData;
+        }
+        const {question, values, skillsAndExperience} = this.jsonData;
         return (
             <div className="job-applicant-container">
                 <label>{question.one}</label>
@@ -79,18 +79,18 @@ class Education extends React.Component<any, any>{
                     <label>{question.two}</label><br />
                     {school}
                     <FlatButton label="+" onClick={() => this.setState({ school: this.state.school + 1 })} />
-                    <FlatButton label="-" onClick={() => this.state.school === 1 ? "" : this.setState({ school: this.state.school - 1 })} />
+                    <FlatButton label="-" onClick={() => this.state.school === 1 ? '' : this.setState({ school: this.state.school - 1 })} />
                 </div>
                 <div>
                     <label>{skillsAndExperience.heading}</label>
                     <p>{skillsAndExperience.content}</p>
                     {skills}
                     <FlatButton label="+" onClick={() => this.setState({ skills: this.state.skills + 1 })} />
-                    <FlatButton label="-" onClick={() => this.state.skills === 1 ? "" : this.setState({ skills: this.state.skills - 1 })} />
+                    <FlatButton label="-" onClick={() => this.state.skills === 1 ? '' : this.setState({ skills: this.state.skills - 1 })} />
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
-        )
+        );
     }
 }
 

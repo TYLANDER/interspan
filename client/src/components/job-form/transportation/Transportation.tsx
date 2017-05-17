@@ -1,26 +1,26 @@
-import * as React from "react"
-import ActiveButtons from "../active-buttons/ActiveButtons";
-import "./Transportation.css";
-import { RadioButton, RadioButtonGroup, TextField } from "material-ui";
+import * as React from 'react';
+import ActiveButtons from '../active-buttons/ActiveButtons';
+import './Transportation.css';
+import { RadioButton, RadioButtonGroup, TextField } from 'material-ui';
 
 class Transportation extends React.Component<any, any>{
-    jsonData:any
+    jsonData: any;
     constructor(props: any) {
-        super(props)
+        super(props);
         this.state = {
             employee: false
-        }
-        this.jsonData = this.props.jsonData
+        };
+        this.jsonData = this.props.jsonData;
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 })
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 })
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
         console.log(this.jsonData);
-        const {accessReliableTransportation,employmentBusLine,rideWithAnotherEmployment,name,yes,no} = this.jsonData;
+        const {accessReliableTransportation, employmentBusLine, rideWithAnotherEmployment, name, yes, no} = this.jsonData;
         return (
             <div className="transportation-container">
                 <label> Transportation </label> <br /><br />
@@ -53,7 +53,7 @@ class Transportation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <br /> <br />
                 <p className="inline-fields">{rideWithAnotherEmployment}</p>
-                <RadioButtonGroup name="another-employee" className="right" onChange={(event: any) => { event.target.value === "Yes" ? this.setState({ employee: true }) : this.setState({ employee: false }) }}>
+                <RadioButtonGroup name="another-employee" className="right" onChange={(event: any) => { event.target.value === 'Yes' ? this.setState({ employee: true }) : this.setState({ employee: false }); }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -74,7 +74,7 @@ class Transportation extends React.Component<any, any>{
                 }
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div >
-        )
+        );
     }
 }
 

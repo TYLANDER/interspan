@@ -1,24 +1,24 @@
-import * as React from "react"
-import ActiveButtons from "../active-buttons/ActiveButtons";
-import { TextField, RadioButtonGroup, RadioButton } from "material-ui";
+import * as React from 'react';
+import ActiveButtons from '../active-buttons/ActiveButtons';
+import { TextField, RadioButtonGroup, RadioButton } from 'material-ui';
 
 class PersonalInfo extends React.Component<any, any>{
-    jsonData:any
+    jsonData: any;
     constructor(props: any) {
-        super(props)
-       this.state = {
+        super(props);
+        this.state = {
             convictedCrime: false
-        }
-        this.jsonData = this.props.jsonData
+        };
+        this.jsonData = this.props.jsonData;
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 })
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 })
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
     render(){
-        const {questions,yes,no,description} = this.jsonData;
+        const {questions, yes, no, description} = this.jsonData;
         return(
             <div className="job-applicant-container">
                 <label> Personal Information</label>
@@ -36,12 +36,12 @@ class PersonalInfo extends React.Component<any, any>{
                     />
 
                   <br/>
-                  <br/>  
+                  <br/>
                   <p>
                       {questions.three}
                   </p>
 
-                <RadioButtonGroup  name="location" defaultSelected={"No"}
+                <RadioButtonGroup  name="location" defaultSelected={'No'}
                     onChange={(event: any) => event.target.value === 'Yes' ? this.setState({convictedCrime: true }) : this.setState({convictedCrime: false })}>
 
                     <RadioButton
@@ -53,7 +53,7 @@ class PersonalInfo extends React.Component<any, any>{
                         label={no}
                     />
                 </RadioButtonGroup>
-                {this.state.convictedCrime ? 
+                {this.state.convictedCrime ?
                 <div>
                 <p>{questions.four}</p>
                 <TextField
@@ -63,12 +63,11 @@ class PersonalInfo extends React.Component<any, any>{
                     multiLine={true}
                     />
                     </div>
-                    :null}
-                  
+                    : null}
 
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
-        )
+        );
     }
 }
 

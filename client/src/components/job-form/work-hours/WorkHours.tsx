@@ -1,7 +1,7 @@
-import * as React from "react"
-import "./WorkHours.css"
-import { RadioButton, RadioButtonGroup, TextField } from "material-ui"
-import ActiveButtons from "../active-buttons/ActiveButtons";
+import * as React from 'react';
+import './WorkHours.css';
+import { RadioButton, RadioButtonGroup, TextField } from 'material-ui';
+import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class WorkHours extends React.Component<any, any>{
     jsonData: any;
@@ -10,7 +10,7 @@ class WorkHours extends React.Component<any, any>{
         this.jsonData = this.props.jsonData;
         this.state = {
             other: false
-        }
+        };
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -171,7 +171,7 @@ class WorkHours extends React.Component<any, any>{
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
 
             </div>
-        )
+        );
     }
 }
 

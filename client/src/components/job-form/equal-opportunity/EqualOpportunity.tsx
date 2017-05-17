@@ -1,26 +1,26 @@
-import * as React from "react"
-import ActiveButtons from "../active-buttons/ActiveButtons"
-import "./EqualOpportunity.css"
-import { RadioButtonGroup, RadioButton, TextField } from "material-ui"
+import * as React from 'react';
+import ActiveButtons from '../active-buttons/ActiveButtons';
+import './EqualOpportunity.css';
+import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 class EqualOpportunity extends React.Component<any, any>{
-    jsonData:any
+    jsonData: any;
     constructor(props: any) {
-        super(props)
-        this.jsonData = this.props.jsonData
+        super(props);
+        this.jsonData = this.props.jsonData;
         this.state = {
             other: false
-        }
+        };
     }
 
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 })
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 })
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
 
     render() {
-        const {content,gender,male,female,raceEthnicity,veteranstatus,asian,black,hispanic,nativeAmerican,white,other,veteran,vietname,disableVeteran} = this.jsonData;
+        const {content, gender, male, female, raceEthnicity, veteranstatus, asian, black, hispanic, nativeAmerican, white, other, veteran, vietname, disableVeteran} = this.jsonData;
         return (
             <div className="equal-opprtunity-container">
                 <label>Equal Opportunity Information (Voluntary, responses not required)</label>
@@ -40,7 +40,7 @@ class EqualOpportunity extends React.Component<any, any>{
                 </RadioButtonGroup>    <br /><br />
 
                 <p>{raceEthnicity}</p>
-                <RadioButtonGroup name="race" onChange={(event: any) => { event.target.value === "other" ? this.setState({ other: true }) : this.setState({ other: false }) }}>
+                <RadioButtonGroup name="race" onChange={(event: any) => { event.target.value === 'other' ? this.setState({ other: true }) : this.setState({ other: false }); }}>
                     <RadioButton
                         value="asian"
                         label={asian}
@@ -93,7 +93,7 @@ class EqualOpportunity extends React.Component<any, any>{
                 <br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
-        )
+        );
     }
 }
 
