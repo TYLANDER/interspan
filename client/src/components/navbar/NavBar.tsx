@@ -5,7 +5,8 @@ import './NavBar.css';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { Subject } from 'rxjs';
-import JobActions from "../../store/action/jobs"
+import JobActions from "../../store/action/jobs";
+import {withRouter} from "react-router";
 
 class NavBar extends React.Component<any, any> {
 
@@ -27,12 +28,12 @@ class NavBar extends React.Component<any, any> {
 
     componentWillReceiveProps(nextProp: any){
         window.location.pathname === "/" ?
-            this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: false})
+            this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: true})
     }
 
     componentWillMount(nextProp: any){
         window.location.pathname === "/" ?
-            this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: false})
+            this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: true})
     }
 
     handleHomePage(){
@@ -51,20 +52,23 @@ class NavBar extends React.Component<any, any> {
 
     render() {
         const languageSelect = (
+            this.props.router.location.pathname==="/job"? 
             <SelectField
                 className="lang-select"
+                floatingLabelStyle={{color:"white"}}
                 floatingLabelText="Language"
+                labelStyle={{color:"white"}}
                 value={this.state.language}
                 onChange={this.handleLanguage}
                 >
                 <MenuItem value="en" primaryText="English" />
                 <MenuItem value="sp" primaryText="Spanish" />
             </SelectField>
+            :<p></p>
         )
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
-                    {languageSelect}
                     <FlatButton label="Employers" className="app-box-shadow" labelStyle={{textTransform: 'capitalize'}}
                         onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)}/>
                     <FlatButton label="About" className="app-box-shadow" labelStyle={{textTransform: 'capitalize'}}
@@ -123,9 +127,11 @@ class NavBar extends React.Component<any, any> {
             <AppBar
                 zDepth={1}
                 title="Let's get started"
+                iconElementRight={languageSelect}
                 style={{backgroundColor: '#2e469e'}}
                 titleStyle={{color: 'white', fontFamily: 'SFUI Display'}}
                 showMenuIconButton={false}
+                onTitleTouchTap={this.handleHomePage}
             />
         </div>;
 
@@ -149,4 +155,4 @@ const mapDispatchToProps = (dispatch: any) => {
     return {changeLanguage: (language: any) => dispatch(JobActions.changeLanguage(language))};
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(NavBar));

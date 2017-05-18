@@ -21,8 +21,8 @@ export default class MainJobForm extends React.Component<any, any>{
     jobDataSp: any = {};
     selectedJson: any = {};
 
-    constructor(){
-        super();
+    constructor(props:any){
+        super(props);
         this.jobDataEn =  require('../../assets/json/job-en');
         this.jobDataSp =  require('../../assets/json/job-sp');
         this.state = {
