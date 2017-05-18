@@ -17,7 +17,7 @@ class NavBar extends React.Component<any, any> {
     state = {
         open: false,
         isAuthenticated: false,
-        language: 'sp',
+        language: 'en',
     };
 
     handleLanguage = (event:any, index:any, value:any) => {

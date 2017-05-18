@@ -90,7 +90,7 @@ export default class MainJobForm extends React.Component<any, any>{
 
     render() {
         const { finished, stepIndex } = this.state;
-        const {headings} = this.jobDataEn;
+        const {headings} = this.state.selectedJson;
         const contentStyle = { margin: '0 16px' };
         return (
             <div className="main-job-form-container">

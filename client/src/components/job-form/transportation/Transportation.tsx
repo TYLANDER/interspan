@@ -4,13 +4,17 @@ import './Transportation.css';
 import { RadioButton, RadioButtonGroup, TextField } from 'material-ui';
 
 class Transportation extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
         this.state = {
-            employee: false
+            employee: false,
+            selectedJson:this.props.jsonData
         };
-        this.jsonData = this.props.jsonData;
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -19,8 +23,7 @@ class Transportation extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        console.log(this.jsonData);
-        const {accessReliableTransportation, employmentBusLine, rideWithAnotherEmployment, name, yes, no} = this.jsonData;
+        const {accessReliableTransportation, employmentBusLine, rideWithAnotherEmployment, name, yes, no} = this.state.selectedJson;
         return (
             <div className="transportation-container">
                 <label> Transportation </label> <br /><br />

@@ -3,17 +3,20 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 
 class Media extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
         this.state = {
             position: false,
             interspan: false,
-            friend: false
+            friend: false,
+            selectedJson:this.props.jsonData
         };
     }
-
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
+    }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
     }
@@ -21,7 +24,7 @@ class Media extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend} = this.jsonData;
+        const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label>Media</label>

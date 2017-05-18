@@ -3,10 +3,16 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButton, RadioButtonGroup } from 'material-ui';
 
 class Communication extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
+        this.state = {
+            selectedJson:this.props.jsonData
+        }
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -15,7 +21,7 @@ class Communication extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {title, fluent, yes, no, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.jsonData;
+        const {title, fluent, yes, no, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label>{title} </label>

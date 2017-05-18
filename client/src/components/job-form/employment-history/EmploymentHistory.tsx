@@ -1,15 +1,19 @@
 import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
-import { TextField, DatePicker, FlatButton} from 'material-ui';
+import { TextField, DatePicker, FlatButton } from 'material-ui';
 
 class EmploymentHistory extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
         this.state = {
-            employed: 1
+            employed: 1,
+            selectedJson:this.props.jsonData
         };
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -18,7 +22,7 @@ class EmploymentHistory extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {companyName, city, state, nameOfSupervisor, stateJobTitle, telephone, employed, from, to, payRate, start, end, reasonForleaving, doNotContact, employeeNumber, note, reason} = this.jsonData;
+        const { companyName, city, state, nameOfSupervisor, stateJobTitle, telephone, employed, from, to, payRate, start, end, reasonForleaving, doNotContact, employeeNumber, note, reason } = this.state.selectedJson;
         var history = [];
         for (var i = 0; i < this.state.employed; i++) {
             history.push(
@@ -65,30 +69,30 @@ class EmploymentHistory extends React.Component<any, any>{
         return (
             <div className="job-applicant-container">
                 {history}
-                <br/>
+                <br />
                 <FlatButton label="Add" secondary={true} onTouchTap={() => this.setState({ employed: this.state.employed + 1 })} />
                 <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.employed === 1 ? null : this.setState({ employed: this.state.employed - 1 })} />
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <label>
-                   {note}
+                    {note}
                 </label>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <label>
                     {doNotContact}
                 </label>
-                <br/>
+                <br />
 
                 <TextField
-                        floatingLabelText={employeeNumber}
-                        fullWidth={true}
-                    />
+                    floatingLabelText={employeeNumber}
+                    fullWidth={true}
+                />
                 <TextField
-                        floatingLabelText={reason}
-                        fullWidth={true}
-                        multiLine={true}
-                    />
+                    floatingLabelText={reason}
+                    fullWidth={true}
+                    multiLine={true}
+                />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

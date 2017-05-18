@@ -3,15 +3,18 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 import './EqualOpportunity.css';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 class EqualOpportunity extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
         this.state = {
-            other: false
+            other: false,
+            selectedJson:this.props.jsonData
         };
     }
-
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
+    }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
     }
@@ -20,7 +23,7 @@ class EqualOpportunity extends React.Component<any, any>{
     }
 
     render() {
-        const {content, gender, male, female, raceEthnicity, veteranstatus, asian, black, hispanic, nativeAmerican, white, other, veteran, vietname, disableVeteran} = this.jsonData;
+        const { content, gender, male, female, raceEthnicity, veteranstatus, asian, black, hispanic, nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
         return (
             <div className="equal-opprtunity-container">
                 <label>Equal Opportunity Information (Voluntary, responses not required)</label>

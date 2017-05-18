@@ -3,10 +3,16 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 import { Checkbox } from 'material-ui';
 import './Certification.css';
 class Certification extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
+        this.state = {
+            selectedJson:this.props.jsonData
+        }
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -15,7 +21,7 @@ class Certification extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {header, content, agreed} = this.jsonData;
+        const {header, content, agreed} = this.state.selectedJson;
 
         return (
             <div className="certification-container">

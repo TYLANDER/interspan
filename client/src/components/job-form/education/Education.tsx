@@ -3,14 +3,18 @@ import { RadioButton, RadioButtonGroup, FlatButton, TextField } from 'material-u
 import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class Education extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
         this.state = {
             school: 1,
-            skills: 1
+            skills: 1,
+            selectedJson:this.props.jsonData
         };
-        this.jsonData = this.props.jsonData;
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -20,7 +24,7 @@ class Education extends React.Component<any, any>{
     }
 
     render() {
-        console.log(this.jsonData);
+        console.log(this.state.selectedJson);
         var school = [];
         var skills = [];
         for (var i = 0; i < this.state.school; i++) {
@@ -43,7 +47,7 @@ class Education extends React.Component<any, any>{
                     />
                 </div>);
         }
-        const {question, values, skillsAndExperience} = this.jsonData;
+        const {question, values, skillsAndExperience} = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label>{question.one}</label>

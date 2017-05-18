@@ -4,13 +4,17 @@ import { RadioButton, RadioButtonGroup, TextField } from 'material-ui';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class WorkHours extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
         this.state = {
-            other: false
+            other: false,
+            selectedJson:this.props.jsonData
         };
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -19,7 +23,7 @@ class WorkHours extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const { title, questions, yes, no } = this.jsonData;
+        const { title, questions, yes, no } = this.state.selectedJson;
         return (
             <div className="work-hours-container">
                 <label>{title}</label><br /><br />

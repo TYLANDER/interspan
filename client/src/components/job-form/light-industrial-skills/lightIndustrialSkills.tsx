@@ -4,14 +4,18 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 
 class lightIndustrialSkills extends React.Component<any, any>{
-    jsonData: any;
     constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
         this.state = {
             forklift: false,
-            palletJack: false
+            palletJack: false,
+            selectedJson:this.props.jsonData
         };
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({ name: 123, idx: 0 });
@@ -23,7 +27,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
     render() {
         const { questions, yes, no, noExperience, lessThanOneYear, oneToFiveYears, sixToTenYears, tenYearsOrMore, assembly, pullingOrders, productionLine, packingMaterials,
             loadingLifter, bandingMachine, upsShippingLabels, dataEntry, countingMaterial, workingFrom, gluingBoxes, stacker, qualityControl, weighingMaterial, noneOfAbove,
-            lessThanTenLbs, upToTenLbs, experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.jsonData;
+            lessThanTenLbs, upToTenLbs, experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label>LIGHT INDUSTRIAL  WAREHOUSE POSITIONS</label>

@@ -4,23 +4,27 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class ApplicantInfo extends React.Component<any, any>{
 
-    jsonData: any;
-
-    constructor(props: any){
+    constructor(props: any) {
         super(props);
-        this.jsonData = this.props.jsonData;
     }
     state = {
-        employee: false
+        employee: false,
+        selectedJson:this.props.jsonData
     };
+
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
+    }
     handleNext = () => {
-        this.props.handleNext({name: 123, idx : 0});
+        this.props.handleNext({ name: 123, idx: 0 });
     }
     handlePrev = () => {
-        this.props.handlePrev({name: 123, idx : 1});
+        this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no} = this.jsonData;
+        const { lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label className="title">Applicant Information</label>
@@ -144,7 +148,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     floatingLabelText={workStatus}
                 />
 
-                <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()}/>
+                <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );
     }

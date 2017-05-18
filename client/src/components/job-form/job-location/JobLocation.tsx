@@ -4,16 +4,18 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 
 class JobLocation extends React.Component<any, any>{
 
-    jsonData: any;
-
     constructor(props: any){
         super(props);
-        this.jsonData = this.props.jsonData;
         this.state = {
             position: false,
-            location: false
+            location: false,
+            selectedJson:this.props.jsonData
         };
-        console.log(this.jsonData);
+    }
+    componentWillReceiveProps(nextProp: any) {
+        this.setState({
+            selectedJson: nextProp.jsonData
+        })
     }
     handleNext = () => {
         this.props.handleNext({name: 123, idx : 0});
@@ -22,7 +24,7 @@ class JobLocation extends React.Component<any, any>{
         this.props.handlePrev({name: 123, idx : 1});
     }
     render(){
-        const {positionDesired, avalaiblePosition, clericalOffice, industrialFactory, other, locationPreference, anyAvailableSite, site, payRateExpected, perHour} = this.jsonData;
+        const {positionDesired, avalaiblePosition, clericalOffice, industrialFactory, other, locationPreference, anyAvailableSite, site, payRateExpected, perHour} = this.state.selectedJson;
         return(
             <div className="job-applicant-container">
                  <label className="title">Job / Location </label>
