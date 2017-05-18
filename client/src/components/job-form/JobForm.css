@@ -1,0 +1,15 @@
+
+.main-job-form-container .sm-stepper{
+    display: none;
+}
+@media (max-width: 600px){
+    .main-job-form-container .md-stepper{
+        display: none;
+    }
+    .main-job-form-container .sm-stepper{
+        display: block !important;
+    }
+    .main-job-form-container .sm-stepper > div > div span {
+    padding: 0 !important;
+}
+}
