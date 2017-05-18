@@ -2,6 +2,7 @@ import * as React from 'react';
 import './Home.css';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
+import CircularProgress from 'material-ui/CircularProgress';
 import { RaisedButton } from 'material-ui';
 import { browserHistory } from 'react-router';
 import JobActions from '../../../src/store/action/jobs';
@@ -182,7 +183,9 @@ class Home extends React.Component<any, any> {
                     <h2>Positions</h2>
                 </div>
                 <div className="paper-parent">
-                    {this.panelArray}
+                    {this.props.isLoading?  
+                        <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)" style={{position: 'absolute' ,textAlign: 'center', margin: '0 auto',left: 0,right: 0}}/> 
+                        : this.panelArray}
                 </div>
             </div>
         );
