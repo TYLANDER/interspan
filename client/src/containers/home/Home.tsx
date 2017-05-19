@@ -34,9 +34,15 @@ class Home extends React.Component<any, any> {
             }
     }
     componentWillMount() {
-        if (this.props.authObj.isAuthenticated) {
-            this.props.logout();
-        }
+        if (this.props.allJobs.data && this.props.allJobs.data.length)
+            if (this.props.allJobs && this.props.allJobs.data.length) {
+                let alljobs: any = this.props.allJobs.data;
+                alljobs = alljobs.map((job: any) => {
+                    job.showMore = false;
+                    return job;
+                });
+                this.setState({ panelArray: alljobs });
+            }
     }
     showDescription(obj: any, ind: any) {
         this.state.panelArray[ind].showMore = !this.state.panelArray[ind].showMore;
