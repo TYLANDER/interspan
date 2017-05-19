@@ -15,6 +15,7 @@ class NavBar extends React.Component<any, any> {
         super(props);
     }
 
+
     state = {
         open: false,
         isAuthenticated: false,
@@ -40,12 +41,17 @@ class NavBar extends React.Component<any, any> {
         browserHistory.push('/');
     }
     handleStaticUrl(url: any, closeNav: boolean){
-        if (closeNav)
+        if (closeNav){
             this.setState({ open: false });
+            this.props.menuAction();
+        }
         browserHistory.push('/' + url);
     }
 
-    handleToggle = () => this.setState({ open: !this.state.open });
+    handleToggle = () => {
+        this.setState({ open: !this.state.open });
+        this.props.menuAction();
+    };
     handleClose = () => {
         this.setState({ open: false });
     }
@@ -118,6 +124,23 @@ class NavBar extends React.Component<any, any> {
                     <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'employee', true)}>For Employers</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'hire', true)}>What we hire for</div>
+
+                    <div className="menu-info contact-info">
+                        <p className="title">Office Hours</p>
+                        <p>Mon-Fri</p>
+                        <p>8AM-5PM EST</p>
+                    </div>
+
+                    <div className="contact-info">
+                        <p className="title">Contact</p>
+                        <p>Office: 804-519-7677</p>
+                        <p>Fax: 804-595-9999</p>
+                        <p>Email: work@Interspan.com</p>
+                    </div>
+
+                    <div>
+                        <h2>English | Spanish</h2>
+                    </div>
                 </div>
                 : null
             }

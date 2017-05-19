@@ -22,9 +22,22 @@
   top: -11px;
 }
 .navbar-container .sub-menu{
-  margin-top: 15px;
+  padding-left: 10px;
   color: #373e9b;
   font-family: "SFUI_Text";
+  height: 100vh;
+  width:100%;
+  position:fixed;
+}
+.navbar-container .sub-menu .menu-info {
+  margin-top: 25px !important;
+}
+.navbar-container .sub-menu .contact-info {
+  color: black;
+}
+.navbar-container .sub-menu .contact-info .title {
+  color: gray !important;
+  font-size: 22px;
 }
 .navbar-container .sub-menu > div {
   padding: 10px 0 10px 20px;

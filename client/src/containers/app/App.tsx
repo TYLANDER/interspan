@@ -6,13 +6,24 @@ import AppTheme from '../../app-theme';
 
 class App extends React.Component<any, any> {
 
-    render() {
+    constructor(props: any) {
+        super(props);
+    }
+    state = {
+        isMenuOpened: false,
+        isMenuActive: false
+    };
 
+    menuOpened = () => {
+        this.setState({ isMenuOpened: !this.state.isMenuOpened, isMenuActive: !this.state.isMenuActive });
+    }
+    render() {
+        const menuClass = this.state.isMenuActive?"child-page-active":"child-page";
         return (
             <MuiThemeProvider muiTheme={AppTheme}>
                 <div>
-                    <NavBar />
-                    <div className="child-page">
+                    <NavBar {...this.props} menuAction={this.menuOpened} />
+                    <div className={menuClass}>
                         {this.props.children}
                     </div>
 
