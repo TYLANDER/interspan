@@ -56,7 +56,8 @@
   break-inside: avoid;
 }
 .home-header-container .apply{
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-bottom:40px
 }
 .home-header-container{
   padding-left: 11px;

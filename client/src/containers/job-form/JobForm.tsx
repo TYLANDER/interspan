@@ -8,10 +8,9 @@ class JobForm extends React.Component<any, any>{
         super(props);
     }
     render(){
-
         return(
             <div className="job-form-container">
-                <MainJobForm language={this.props.language} />
+                <MainJobForm language={this.props.language} titleChanged={this.props.titleStatus}/>
             </div>
         );
     }

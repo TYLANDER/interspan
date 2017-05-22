@@ -18,8 +18,8 @@
 .navbar-container .lang-select{
   width: 120px !important;
   position: absolute !important;
-  right: 35px;
-  top: -11px;
+  right: 15px;
+  top: 7px;
 }
 .navbar-container .sub-menu{
   padding-left: 10px;
@@ -54,6 +54,9 @@
   .navbar-container .hamburger-icon{
     display: inline !important;
   }
+  .navbar-container .lang-select{
+  right: 2px;
+}
   .md-menu{
     display: none;
   }

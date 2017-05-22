@@ -31,7 +31,7 @@ class Education extends React.Component<any, any>{
             school.push(
                 <div key={i}>
                     <TextField
-                        hintText="Like Saint School USA"
+                        hintText=""
                         onFocus={() => { }}
                         floatingLabelText="High School / College"
                     />
@@ -41,7 +41,7 @@ class Education extends React.Component<any, any>{
             skills.push(
                 <div key={i}>
                     <TextField
-                        hintText="Like Saint School USA"
+                        hintText=""
                         onFocus={() => { }}
                         floatingLabelText="High School / College"
                     />

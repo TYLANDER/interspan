@@ -24,11 +24,11 @@ class ApplicantInfo extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const { lastName, firstName, middle, streetAddress, city, state, zip, socialSecurity, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
+        const {streetAddress, city, state, zip, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label className="title">Applicant Information</label>
-                <TextField
+                {/*<TextField
                     hintText=""
                     fullWidth={true}
                     floatingLabelText={firstName}
@@ -45,7 +45,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     onFocus={() => { }}
                     fullWidth={true}
                     floatingLabelText={lastName}
-                />
+                />*/}
                 <TextField
                     hintText=""
                     onFocus={() => { }}
@@ -92,12 +92,12 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText={cellularTelephone}
                 />
-                <TextField
+                {/*<TextField
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
                     floatingLabelText={socialSecurity}
-                />
+                />*/}
                 <TextField
                     hintText=""
                     onFocus={() => { }}

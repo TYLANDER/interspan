@@ -61,10 +61,9 @@ class NavBar extends React.Component<any, any> {
             this.props.router.location.pathname==="/job"? 
             <SelectField
                 className="lang-select"
-                floatingLabelStyle={{color:"white"}}
-                floatingLabelText="Language"
-                labelStyle={{color:"white"}}
+                labelStyle={{color:"white",textOverflow:"none",paddingLeft: "30px"}}
                 value={this.state.language}
+               underlineStyle={{display: 'none'}}
                 onChange={this.handleLanguage}
                 >
                 <MenuItem value="en" primaryText="English" />
@@ -72,6 +71,7 @@ class NavBar extends React.Component<any, any> {
             </SelectField>
             :<p></p>
         )
+        const title=(this.props.router.location.pathname === "/job"?this.props.title:"Let's get started")
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
@@ -149,12 +149,11 @@ class NavBar extends React.Component<any, any> {
         const globalMenu = <div>
             <AppBar
                 zDepth={1}
-                title="Let's get started"
+                title={title}
                 iconElementRight={languageSelect}
                 style={{backgroundColor: '#2e469e'}}
                 titleStyle={{color: 'white', fontFamily: 'SFUI Display'}}
                 showMenuIconButton={false}
-                onTitleTouchTap={this.handleHomePage}
             />
         </div>;
 

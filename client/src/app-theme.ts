@@ -24,6 +24,10 @@ const CustomTheme = getMuiTheme({
   textField: {
     focusColor: '#2e469e',
     textColor: '#2e469e'
+  },
+  stepper: 
+  {
+    iconColor:"#2e469e"
   }
 });
 

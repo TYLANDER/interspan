@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './JobForm.css';
+import {browserHistory} from 'react-router';
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
 import ApplicantInfo from './applicant-info/ApplicantInfo';
 import JobLocation from './job-location/JobLocation';
@@ -33,7 +34,6 @@ export default class MainJobForm extends React.Component<any, any>{
     }
 
     handleNext = (e: any) => {
-        console.log(e);
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
@@ -42,7 +42,6 @@ export default class MainJobForm extends React.Component<any, any>{
     }
 
     handlePrev = (e: any) => {
-        console.log(e);
         const { stepIndex } = this.state;
         if (stepIndex > 0) {
             this.setState({ stepIndex: stepIndex - 1 });
@@ -81,7 +80,56 @@ export default class MainJobForm extends React.Component<any, any>{
                 return 'You\'re a long way from home sonny jim!';
         }
     }
+    titleBar() {
+        const { headings } = this.state.selectedJson;
+        switch (this.state.stepIndex) {
+            case 1:
+                this.props.titleChanged(headings.applicationInformation);
+            default:
+                console.log("Not Found");
+        };
+    }
+    componentWillMount() {
+        const { headings } = this.state.selectedJson;
+        if (this.state.stepIndex === 0) {
+            this.props.titleChanged(headings.applicationInformation)
 
+        }
+    }
+    componentDidUpdate() {
+        const { headings } = this.state.selectedJson;
+
+        switch (this.state.stepIndex) {
+            case 0:
+                return this.props.titleChanged(headings.applicationInformation);
+            case 1:
+                return this.props.titleChanged(headings.jobLocation);
+            case 2:
+                return this.props.titleChanged(headings.educationTraining);
+            case 3:
+                return this.props.titleChanged(headings.certification);
+            case 4:
+                return this.props.titleChanged(headings.employementHistory);
+            case 5:
+                return this.props.titleChanged(headings.personalInformation);
+            case 6:
+                return this.props.titleChanged(headings.lightIndustrialSkills);
+            case 7:
+                return this.props.titleChanged(headings.media);
+            case 8:
+                return this.props.titleChanged(headings.equalOpportunity);
+            case 9:
+                return this.props.titleChanged(headings.workHours);
+            case 10:
+                return this.props.titleChanged(headings.communication);
+            case 11:
+                return this.props.titleChanged(headings.transportation);
+            case 12:
+                return this.props.titleChanged(headings.references);
+            default:
+                return this.props.titleChanged("You'r all set!")
+        }
+    }
     componentWillReceiveProps(nextProp: any) {
         console.log(nextProp.language);
         let userSelectedJson = nextProp.language === "en" ? this.jobDataEn : this.jobDataSp;
@@ -96,7 +144,7 @@ export default class MainJobForm extends React.Component<any, any>{
             <div className="main-job-form-container">
                 <div className="md-stepper">
                     <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }} >
-                    
+
                         <Step>
                             <StepLabel>{headings.applicationInformation}</StepLabel>
                         </Step>
@@ -136,7 +184,7 @@ export default class MainJobForm extends React.Component<any, any>{
                         <Step>
                             <StepLabel>{headings.references}</StepLabel>
                         </Step>
-                    
+
                     </Stepper>
                 </div>
 
@@ -154,18 +202,19 @@ export default class MainJobForm extends React.Component<any, any>{
                         <Step><StepLabel></StepLabel></Step>
                         <Step><StepLabel></StepLabel></Step>
                         <Step><StepLabel></StepLabel></Step>
-                        
+
                     </Stepper>
                 </div>
                 <div style={contentStyle}>
                     {finished ? (
-                        <p>
+                        <p>You're all set! We will be in touch
                             <a href="#"
                                 onClick={(event) => {
                                     event.preventDefault();
-                                    this.setState({ stepIndex: 0, finished: false });
+                                    browserHistory.push('/');
+
                                 }}>
-                                Click here</a> to reset the example.
+                                 Click Here</a>
                         </p>) : (
 
                             <div>

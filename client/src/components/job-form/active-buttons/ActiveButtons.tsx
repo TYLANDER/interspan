@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {RaisedButton,
     FlatButton} from 'material-ui';
+import "./ActiveButtons.css"
 class ActiveButtons extends React.Component<any, any>{
 
     stepIndex = 0;
