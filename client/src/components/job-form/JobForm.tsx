@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './JobForm.css';
-import {browserHistory} from 'react-router';
+import {Link} from 'react-router';
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper';
 import ApplicantInfo from './applicant-info/ApplicantInfo';
 import JobLocation from './job-location/JobLocation';
@@ -208,13 +208,8 @@ export default class MainJobForm extends React.Component<any, any>{
                 <div style={contentStyle}>
                     {finished ? (
                         <p>You're all set! We will be in touch
-                            <a href="#"
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    browserHistory.push('/');
-
-                                }}>
-                                 Click Here</a>
+                            <Link to="/">
+                                 Click Here</Link>
                         </p>) : (
 
                             <div>
