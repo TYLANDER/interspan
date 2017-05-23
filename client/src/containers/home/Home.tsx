@@ -58,7 +58,7 @@ class Home extends React.Component<any, any> {
         this.panelArray = (
             this.state.panelArray.map((jobObj: any, i: number) => {
                 return (
-                    <Paper zDepth={2} key={i} className="apply-paper" style={{ borderRadius: '2px', boxShadow: 'rgba(76, 0, 0, 0.08) 0px 6px 8px' }}>
+                    <Paper zDepth={2} key={i} className="apply-paper" style={{ borderRadius: '2px', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.1), rgba(76, 0, 0, 0.08) 0px 6px 8px' }}>
                         <div className="paper-container">
 
                             {jobObj.showMore ?
@@ -100,13 +100,13 @@ class Home extends React.Component<any, any> {
 
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49' }}
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49' }}
                                     className="apply-job-btn" onClick={this.handleJobApply} />
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply} />
+                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply} />
                             </div>
                         }
                     </Paper>

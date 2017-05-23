@@ -1,5 +1,5 @@
 .navbar-container > div > div{
-  box-shadow: rgba(135, 152, 164, 0.1) 0px 6px 8px !important;
+  box-shadow: rgba(135, 152, 164, 0.2) 0px 6px 16px !important;
   background-color: #fbfef9;
 }
 .navbar-container .navbar-border{
