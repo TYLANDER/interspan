@@ -54,13 +54,13 @@ class References extends React.Component<any, any>{
             <div className="transportation-container">
                 <label> References </label> <br /><br />
                 {reference}
-                <FlatButton label="Add" secondary={true} onTouchTap={() => this.setState({ reference: this.state.reference + 1 })} />
-                <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.reference === 1 ? null : this.setState({ reference: this.state.reference - 1 })} />
+                <FlatButton label="Add" primary={true} onTouchTap={() => this.setState({ reference: this.state.reference + 1 })} />
+                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.reference === 1 ? null : this.setState({ reference: this.state.reference - 1 })} />
                 <br /><br />
                 <label>{friends}</label>
                 {family}
-                <FlatButton label="Add" secondary={true} onTouchTap={() => this.setState({ family: this.state.family + 1 })} />
-                <FlatButton label="Delete" primary={true} onTouchTap={() => this.state.family === 1 ? null : this.setState({ family: this.state.family - 1 })} />
+                <FlatButton label="Add" primary={true} onTouchTap={() => this.setState({ family: this.state.family + 1 })} />
+                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.family === 1 ? null : this.setState({ family: this.state.family - 1 })} />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

@@ -82,15 +82,15 @@ class Education extends React.Component<any, any>{
                 <div>
                     <label>{question.two}</label><br />
                     {school}
-                    <FlatButton label="+" onClick={() => this.setState({ school: this.state.school + 1 })} />
-                    <FlatButton label="-" onClick={() => this.state.school === 1 ? '' : this.setState({ school: this.state.school - 1 })} />
+                    <FlatButton label="Add" primary={true} onClick={() => this.setState({ school: this.state.school + 1 })} />
+                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.school === 1 ? '' : this.setState({ school: this.state.school - 1 })} />
                 </div>
                 <div>
                     <label>{skillsAndExperience.heading}</label>
                     <p>{skillsAndExperience.content}</p>
                     {skills}
-                    <FlatButton label="+" onClick={() => this.setState({ skills: this.state.skills + 1 })} />
-                    <FlatButton label="-" onClick={() => this.state.skills === 1 ? '' : this.setState({ skills: this.state.skills - 1 })} />
+                    <FlatButton label="Add" primary={true} onClick={() => this.setState({ skills: this.state.skills + 1 })} />
+                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.skills === 1 ? '' : this.setState({ skills: this.state.skills - 1 })} />
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
