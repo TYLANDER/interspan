@@ -4,15 +4,14 @@ import { responseJsonHandler, CallBackFunction } from '../../utils/helper';
 
 export default class UserModel {
 
-    // For Testing MOdel
-    static getVisits(cb: CallBackFunction) {
-        connection.query(`SELECT id, name FROM testing`, cb);
-        // (err, results) => {
-        //     if (err) {
-        //         cb(err, null);
-        //     }
-        //     cb(null, results.map((data) => `ID: ${data.id}, NAME: ${data.name}`));
-        // })) 
+   static signUp(user, cb: CallBackFunction) {
+        connection
+            .query(`INSERT INTO user SET ?`, user, cb);
     }
 
+    static login(user, cb: CallBackFunction) {
+        console.log(user)
+        connection
+            .query(`SELECT id,first_name,last_name,email,social_security FROM user WHERE email=? AND password=?`,[user.email,user.password], cb)
+    }
 }

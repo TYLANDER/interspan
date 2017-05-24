@@ -8,4 +8,13 @@ let config = {
     }
 }
 
+let devConfig = {
+    dbConfig: {
+        user: 'test',
+        password: 'test',
+        database: 'admin',
+        socketPath: '',
+    }
+}
+
 export default config;
