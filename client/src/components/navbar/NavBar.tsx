@@ -111,7 +111,7 @@ class NavBar extends React.Component<any, any> {
         const homeMenu = <div>
             <AppBar
                 zDepth={1}
-                style={{backgroundColor: '#fbfef9'}}
+                style={{backgroundColor: '#fbfef9',transition:"none"}}
                 iconElementLeft={
                     <img src={require('../../assets/logo.png')} className="logo" alt="logo" />
                 }
@@ -151,14 +151,14 @@ class NavBar extends React.Component<any, any> {
                 zDepth={1}
                 title={title}
                 iconElementRight={languageSelect}
-                style={{backgroundColor: '#2e469e'}}
+                style={{backgroundColor: '#2e469e',transition:"none"}}
                 titleStyle={{color: 'white', fontFamily: 'SFUI Display'}}
                 showMenuIconButton={false}
             />
         </div>;
 
         return (
-            <div className="navbar-container">
+            <div className={`navbar-container ${!this.state.isAuthenticated?`navbar-container-color`:`navbar-global-container-color`}`}>
                 {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
             </div>
 

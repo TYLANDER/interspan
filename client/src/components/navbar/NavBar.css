@@ -1,6 +1,21 @@
-.navbar-container > div > div{
+.navbar-container{
   box-shadow: rgba(135, 152, 164, 0.2) 0px 6px 16px !important;
+}
+.navbar-home-container-color{
   background-color: #fbfef9;
+}
+.navbar-global-container-color{
+  background-color:#2e469e !important;
+}
+.navbar-container > div > div{
+  box-shadow: none !important;
+  background-color: #fbfef9;
+}
+@media (min-width:1116px){
+  .navbar-container > div > div{
+    width: 1116px !important;
+    margin: 0 auto;
+  }
 }
 .navbar-container .navbar-border{
   border-radius: 0;
@@ -9,7 +24,7 @@
   width: 150px;
   height: 48px;
   position: absolute;
-  left: 90px;
+  left: 35px;
   top:0
 }
 .navbar-container .hamburger-icon{
@@ -60,7 +75,7 @@
   .md-menu{
     display: none;
   }
-  .navbar-container .logo {
+  /*.navbar-container .logo {
     left: 20px;
-  }
+  }*/
 }
