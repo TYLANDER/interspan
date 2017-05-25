@@ -32,6 +32,7 @@ class UsernameForm extends React.Component<any, any> {
         }
 
         console.log(value);
+        this.props.collection({first_name:value});
         this.setState({
             first_name_error: false,
             first_name_success: true
@@ -58,8 +59,7 @@ class UsernameForm extends React.Component<any, any> {
             });
             return;
         }
-
-        console.log(value);
+        this.props.collection({last_name:value});
         this.setState({
             last_name_error: false,
             last_name_success: true

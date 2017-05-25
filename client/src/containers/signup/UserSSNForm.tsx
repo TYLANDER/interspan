@@ -9,6 +9,8 @@ class UserSSNForm extends React.Component<any, any> {
                 <label className="title">Enter Social Security Number</label>
                 <TextField
                     hintText=""
+                    onFocus={()=>{}}
+                    onBlur={(event:any)=>this.props.collection({social_security:event.target.value})}
                     errorText=""
                     fullWidth={true}
                     floatingLabelText="Social Security Number"

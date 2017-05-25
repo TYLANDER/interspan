@@ -37,6 +37,7 @@ class UserEmailForm extends React.Component<any, any> {
             email_error: false,
             email_success: true
         });
+        this.props.collection({email:value});
     }
 // Confirm Password Validation
     isPassword(value: any) {
@@ -60,6 +61,7 @@ class UserEmailForm extends React.Component<any, any> {
             pass_error: false,
             pass_success: true
         });
+        this.props.collection({password:value})
     }
 
     render() {

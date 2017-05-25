@@ -22,6 +22,7 @@ export default class AuthActions {
     }
 
     static signup(payload: Object) {
+        console.log(payload);
         return {
             type: AuthActions.SIGNUP,
             payload
