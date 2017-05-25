@@ -18,7 +18,8 @@ import JobEpic from './epic/jobs';
 // Application Epics / Effects
 export const rootEpic = combineEpics(
     AuthEpic.loginEpic,
-    JobEpic.getAllJobsEpic
+    JobEpic.getAllJobsEpic,
+    AuthEpic.signupEpic
 );
 
 // Application Reducers
