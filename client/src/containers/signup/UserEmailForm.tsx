@@ -43,7 +43,7 @@ class UserEmailForm extends React.Component<any, any> {
         this.setState({
             email_error: false,
             email_success: true,
-            email_val:value
+            email_val:value.toLowerCase()
         });
         // this.props.collection({ email: value });
     }
@@ -90,7 +90,6 @@ class UserEmailForm extends React.Component<any, any> {
     }
 
     validation  (){
-        debugger;
         if (this.state.email_val.trim() == '' || this.state.pass_val.trim() == '' || this.state.repeat_pass_val.trim() == '') {
             if (this.state.email_val.trim() == '' &&  this.state.pass_val.trim() == '' && this.state.repeat_pass_val.trim() == '') {
                 this.setState({
@@ -130,7 +129,7 @@ class UserEmailForm extends React.Component<any, any> {
             }
         }
         else if (!this.state.email_error && !this.state.pass_error) {
-            this.props.clickEvent({ email: this.state.email_val, passord: this.state.pass_val })
+            this.props.clickEvent({ email: this.state.email_val, password: this.state.pass_val })
         }
 
     }

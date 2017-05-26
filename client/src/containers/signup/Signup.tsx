@@ -30,7 +30,7 @@ class Signup extends React.Component<any, any> {
         isAuthenticated: false,
         userObj: {},
         loading: false,
-        step: 2
+        step: 0
     };
 
     componentWillMount() {
@@ -55,8 +55,7 @@ class Signup extends React.Component<any, any> {
         //returning form value
         console.log(users);
         if(this.state.step == 2 )
-            // call db
-            alert("You are done");
+            this.props.signUp(users);
 
         else
             this.setState({
