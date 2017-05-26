@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { TextField } from 'material-ui';
+import { SignupActionButton } from "./actionButtons";
 
 class UsernameForm extends React.Component<any, any> {
-    state= {
+    state = {
         first_name_error: false,
+        first_name: "",
+        last_name: "",
         first_name_messages: '',
         first_name_success: false,
         last_name_error: false,
@@ -21,8 +24,7 @@ class UsernameForm extends React.Component<any, any> {
         }
         let pattern = /^[a-zA-Z ]{2,30}$/;
         let isValidName = pattern.test(value);
-        console.log(isValidName);
-        if (!isValidName){
+        if (!isValidName) {
             this.setState({
                 first_name_error: true,
                 first_name_messages: 'Please enter valid first name',
@@ -31,15 +33,15 @@ class UsernameForm extends React.Component<any, any> {
             return;
         }
 
-        console.log(value);
-        this.props.collection({first_name:value});
+        // this.props.collection({ first_name: value });
         this.setState({
             first_name_error: false,
-            first_name_success: true
+            first_name_success: true,
+            first_name: value
         });
     }
     //Last Name Validation
-     isLastName(value: any) {
+    isLastName(value: any) {
         if (value.trim() == '') {
             this.setState({
                 last_name_error: true,
@@ -50,8 +52,7 @@ class UsernameForm extends React.Component<any, any> {
         }
         let pattern = /^[a-zA-Z ]{2,30}$/;
         let isValidName = pattern.test(value);
-        console.log(isValidName);
-        if (!isValidName){
+        if (!isValidName) {
             this.setState({
                 last_name_error: true,
                 last_name_messages: 'Please enter valid last name',
@@ -59,11 +60,34 @@ class UsernameForm extends React.Component<any, any> {
             });
             return;
         }
-        this.props.collection({last_name:value});
+        // this.props.collection({ last_name: value });
         this.setState({
             last_name_error: false,
-            last_name_success: true
+            last_name_success: true,
+            last_name: value
         });
+    }
+    validation = () => {
+        if (this.state.first_name.trim() == '' || this.state.last_name.trim() == '') {
+            if (this.state.last_name.trim() == '') {
+                this.setState({
+                    last_name_error: true,
+                    last_name_messages: 'Please enter last name',
+                    last_name_success: false
+                });
+            }
+            if (this.state.first_name.trim() == '') {
+                this.setState({
+                    first_name_error: true,
+                    first_name_messages: 'Please enter last name',
+                    first_name_success: false
+                });
+            }
+        }
+        else if (!this.state.first_name_error && !this.state.last_name_error) {
+            this.props.clickEvent({ first_name: this.state.first_name, last_name: this.state.last_name })
+        }
+
     }
     render() {
         return (
@@ -93,6 +117,7 @@ class UsernameForm extends React.Component<any, any> {
                     fullWidth={true}
                     floatingLabelText="Last Name"
                 />
+                <SignupActionButton clicked={this.validation} />
             </div>
         );
     }
