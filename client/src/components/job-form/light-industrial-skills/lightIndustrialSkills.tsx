@@ -9,7 +9,10 @@ class lightIndustrialSkills extends React.Component<any, any>{
         this.state = {
             forklift: false,
             palletJack: false,
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form: {
+                
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -23,7 +26,11 @@ class lightIndustrialSkills extends React.Component<any, any>{
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-
+     handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef[event.target.name]= event.target.value;
+         this.setState(formRef);
+    }
     render() {
         const { questions, yes, no, noExperience, lessThanOneYear, oneToFiveYears, sixToTenYears, tenYearsOrMore, assembly, pullingOrders, productionLine, packingMaterials,
             loadingLifter, bandingMachine, upsShippingLabels, dataEntry, countingMaterial, workingFrom, gluingBoxes, stacker, qualityControl, weighingMaterial, noneOfAbove,

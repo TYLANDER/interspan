@@ -6,7 +6,10 @@ class Certification extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form:{
+                agreed: false
+            }
         }
     }
     componentWillReceiveProps(nextProp: any) {
@@ -15,7 +18,7 @@ class Certification extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
@@ -29,6 +32,12 @@ class Certification extends React.Component<any, any>{
                 <p className="paragraph">{content}</p>
                 <div style={{maxWidth: '150px'}}>
                 <Checkbox
+                    onCheck={(event: any,value:any) => {
+                        let formRef = this.state.form;
+                        formRef.agreed = value;
+                        this.setState(formRef);
+                        }}
+                    name="agreed"
                     label={agreed}
                 />
                 </div>

@@ -7,7 +7,13 @@ class PersonalInfo extends React.Component<any, any>{
         super(props);
         this.state = {
             convictedCrime: false,
-            selectedJson: this.props.jsonData
+            selectedJson: this.props.jsonData,
+            form:{
+                employmentGap: "",
+                emergencyContact: "",
+                comittedCrime: false,
+                crimeDesc: ""
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -16,12 +22,16 @@ class PersonalInfo extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-
+    handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef[event.target.name]= event.target.value;
+         this.setState(formRef);
+    }
     render(){
         const {questions, yes, no, description} = this.state.selectedJson;
         return(
@@ -29,15 +39,17 @@ class PersonalInfo extends React.Component<any, any>{
                 <label> Personal Information</label>
                 <TextField
                     floatingLabelText={questions.one}
-                    onFocus={() => { }}
+                    onBlur={this.handleTargetEvents}
                     fullWidth={true}
                     multiLine={true}
+                    name="employmentGap"
                     />
 
                 <TextField
                     floatingLabelText={questions.two}
-                    onFocus={() => { }}
+                    onBlur={this.handleTargetEvents}
                     fullWidth={true}
+                    name="emergencyContact"
                     />
 
                   <br/>
@@ -46,8 +58,13 @@ class PersonalInfo extends React.Component<any, any>{
                       {questions.three}
                   </p>
 
-                <RadioButtonGroup  name="location" defaultSelected={'No'}
-                    onChange={(event: any) => event.target.value === 'Yes' ? this.setState({convictedCrime: true }) : this.setState({convictedCrime: false })}>
+                <RadioButtonGroup  name="comittedCrime" defaultSelected={'No'}
+                    onChange={(event: any) =>{ 
+                        (event.target.value === 'Yes' ? this.setState({convictedCrime: true }) : this.setState({convictedCrime: false })) 
+                        let formRef = this.state.form;
+                        formRef.comittedCrime = this.state.convictedCrime;
+                        this.setState(formRef)
+                        }}>
 
                     <RadioButton
                         value="Yes"
@@ -63,9 +80,10 @@ class PersonalInfo extends React.Component<any, any>{
                 <p>{questions.four}</p>
                 <TextField
                     floatingLabelText={description}
-                    onFocus={() => { }}
+                    onBlur={this.handleTargetEvents}
                     fullWidth={true}
                     multiLine={true}
+                    name="crimeDesc"
                     />
                     </div>
                     : null}
