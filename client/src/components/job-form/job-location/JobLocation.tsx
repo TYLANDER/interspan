@@ -9,7 +9,15 @@ class JobLocation extends React.Component<any, any>{
         this.state = {
             position: false,
             location: false,
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form:{
+                
+                position: "",
+                otherDesc: "",  
+                site: "", 
+                siteDesc: "",
+                payRateExpected:""
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -17,8 +25,13 @@ class JobLocation extends React.Component<any, any>{
             selectedJson: nextProp.jsonData
         })
     }
+    handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef[event.target.name]= event.target.value;
+         this.setState(formRef);
+    }
     handleNext = () => {
-        this.props.handleNext({name: 123, idx : 0});
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({name: 123, idx : 1});
@@ -31,7 +44,9 @@ class JobLocation extends React.Component<any, any>{
                  <br />
                  <br />
                  <p>{positionDesired} </p>
-                <RadioButtonGroup name="position" onChange={(event: any) => event.target.value === 'other' ? this.setState({position: true }) : this.setState({position: false })}>
+                <RadioButtonGroup name="position" onChange={(event: any) => {
+                    this.handleTargetEvents(event);
+                    event.target.value === 'other' ? this.setState({position: true }) : this.setState({position: false })}}>
 
                     <RadioButton
                         value="Any available position"
@@ -50,14 +65,19 @@ class JobLocation extends React.Component<any, any>{
                         label={other}
                     />
                 </RadioButtonGroup>
-                {this.state.position ? <TextField
+                {this.state.position ? 
+                <TextField
+                    name="otherDesc"
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
                     floatingLabelText={other}
+                    onBlur={this.handleTargetEvents}
                 /> : ''}
                  <p>{locationPreference} </p>
-                <RadioButtonGroup name="location" onChange={(event: any) => event.target.value === 'site' ? this.setState({location: true }) : this.setState({location: false })}>
+                <RadioButtonGroup name="site" onChange={(event: any) => {
+                    this.handleTargetEvents(event);
+                    event.target.value === 'site' ? this.setState({location: true }) : this.setState({location: false })}}>
 
                     <RadioButton
                         value="Any available site"
@@ -68,17 +88,22 @@ class JobLocation extends React.Component<any, any>{
                         label={site}
                     />
                 </RadioButtonGroup>
-                {this.state.location ? <TextField
+                {this.state.location ? 
+                <TextField
+                    name="siteDesc"
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
                     floatingLabelText={site}
+                    onBlur={this.handleTargetEvents}
                 /> : ''}
                 <TextField
+                    name="payRateExpected"
                     hintText={perHour}
                     onFocus={() => { }}
                     fullWidth={true}
                     floatingLabelText={payRateExpected}
+                    onBlur={this.handleTargetEvents}
                 />
 
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()}/>

@@ -8,7 +8,12 @@ class Education extends React.Component<any, any>{
         this.state = {
             school: 1,
             skills: 1,
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form:{
+                highestEducation: "",
+                schoolLocationList: [],
+                specialTrainingList: [],
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -17,22 +22,29 @@ class Education extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
+    handleTargetEvents = (event: any, ind?:number) =>{
+        let formRef= this.state.form;
+        if(Array.isArray(formRef[event.target.name]))
+            formRef[event.target.name].push(event.target.value)    
+        else formRef[event.target.name]= event.target.value;
+        this.setState(formRef);
+    }
 
     render() {
-        console.log(this.state.selectedJson);
-        var school = [];
-        var skills = [];
+        let school = [];
+        let skills = [];
         for (var i = 0; i < this.state.school; i++) {
             school.push(
                 <div key={i}>
                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        name="schoolLocationList"
+                        onBlur={this.handleTargetEvents}
                         floatingLabelText="High School / College"
                     />
                 </div>);
@@ -42,7 +54,8 @@ class Education extends React.Component<any, any>{
                 <div key={i}>
                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        name="specialTrainingList"
+                        onBlur={this.handleTargetEvents}
                         floatingLabelText="High School / College"
                     />
                 </div>);
@@ -51,7 +64,9 @@ class Education extends React.Component<any, any>{
         return (
             <div className="job-applicant-container">
                 <label>{question.one}</label>
-                <RadioButtonGroup name="education">
+                <RadioButtonGroup name="highestEducation"  onChange={(event: any) => 
+                    this.handleTargetEvents(event)
+                    }>
                     <RadioButton
                         value="Elementary"
                         label={values.elementary}
