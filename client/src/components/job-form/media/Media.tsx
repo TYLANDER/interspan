@@ -9,7 +9,10 @@ class Media extends React.Component<any, any>{
             position: false,
             interspan: false,
             friend: false,
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form: {
+                about_interspan: ""
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -18,10 +21,15 @@ class Media extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
+    }
+    handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef.about_interspan= event.target.value;
+         this.setState(formRef);
     }
     render() {
         const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
@@ -29,7 +37,7 @@ class Media extends React.Component<any, any>{
             <div className="job-applicant-container">
                 <label>Media</label>
                 <p>{questions}</p>
-                <RadioButtonGroup name="experience"
+                <RadioButtonGroup name="about_interspan"
                     onChange={(event: any) => {
                         if (event.target.value === 'Referred from job site') {
                             this.setState({ position: true, interspan: false, friend: false });
@@ -42,6 +50,7 @@ class Media extends React.Component<any, any>{
                         }
                         else {
                             this.setState({ position: false, interspan: false, friend: false });
+                            this.handleTargetEvents(event);
                         }
                     }}>
                     <RadioButton
@@ -74,21 +83,21 @@ class Media extends React.Component<any, any>{
                 {this.state.position ?
                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        onBlur={this.handleTargetEvents}
                         fullWidth={true}
                         floatingLabelText={site}
                     /> : null}
                 {this.state.interspan ?
                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        onBlur={this.handleTargetEvents}
                         fullWidth={true}
                         floatingLabelText={name}
                     /> : null}
                 {this.state.friend ?
-                    <TextField
+                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        onBlur={this.handleTargetEvents}
                         fullWidth={true}
                         floatingLabelText={friend}
                     /> : null}
