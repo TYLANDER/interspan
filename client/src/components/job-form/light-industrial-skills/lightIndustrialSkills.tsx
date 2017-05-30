@@ -11,7 +11,23 @@ class lightIndustrialSkills extends React.Component<any, any>{
             palletJack: false,
             selectedJson:this.props.jsonData,
             form: {
-                
+                industrial_experience: "",
+                experience_with: "",
+                lifting: "",
+                lift_weight: false,
+                stand_hours: false,
+                walking_job: false,
+                stand_bend: false,
+                basic_maths: false,
+                tape_mesurement: false,
+                use_calculator: false,
+                use_pc: false,
+                operated_forklift: false,
+                forklift_experience: false,
+                certified_forklift: false,
+                operated_pallet_jack: false,
+                pallet_jack_experience: false,
+                steel_shoes: false
             }
         };
     }
@@ -21,7 +37,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
@@ -39,7 +55,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
             <div className="job-applicant-container">
                 <label>LIGHT INDUSTRIAL  WAREHOUSE POSITIONS</label>
                 <p>{questions.one}</p>
-                <RadioButtonGroup name="experience" >
+                <RadioButtonGroup name="industrial_experience" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="No experience"
                         label={noExperience}
@@ -63,7 +79,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                 </RadioButtonGroup>
 
                 <p>{questions.two}</p>
-                <RadioButtonGroup name="experience " >
+                <RadioButtonGroup name="experience_with" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Assembly"
                         label={assembly}
@@ -127,7 +143,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
 
                 </RadioButtonGroup>
                 <p>{questions.three}</p>
-                <RadioButtonGroup name="capable" >
+                <RadioButtonGroup name="lifting" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Less than 10 lbs."
                         label={lessThanTenLbs}
@@ -152,134 +168,134 @@ class lightIndustrialSkills extends React.Component<any, any>{
 
                 <br />
                 <label className="inline-fields">{questions.four}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="lift_weight" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.five}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="stand_hours" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.six}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="walking_job" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.seven}?</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="stand_bend" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.eight}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="basic_maths" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.nine}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="tape_mesurement" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.ten}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="use_calculator" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
                 <label className="inline-fields">{questions.eleven}</label>
-                <RadioButtonGroup name="capable" className="right" >
+                <RadioButtonGroup name="use_pc" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.twelve}</label>
-                <RadioButtonGroup name="capable" className="right" onChange={(event: any) => event.target.value === 'No' ? this.setState({ forklift: false }) : this.setState({ forklift: true })}>
+                <RadioButtonGroup name="operated_forklift" className="right" onChange={(event: any) =>{ this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ forklift: false }) : this.setState({ forklift: true })}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
@@ -287,38 +303,39 @@ class lightIndustrialSkills extends React.Component<any, any>{
                 {this.state.forklift ?
                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        onBlur={(event: any) => {this.handleTargetEvents(event)}}
                         fullWidth={true}
                         floatingLabelText={experience}
+                        name="forklift_experience"
                     />
                     : null}
                 <br /><br />
 
                 <label className="inline-fields">{questions.thirteen}</label>
-                <RadioButtonGroup name="capable" className="right">
+                <RadioButtonGroup name="certified_forklift" className="right"  onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /><br />
 
                 <label className="inline-fields">{questions.fourteen}</label>
-                <RadioButtonGroup name="capable" className="right" onChange={(event: any) => event.target.value === 'No' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true })}>
+                <RadioButtonGroup name="operated_pallet_jack" className="right" onChange={(event: any) =>{ this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true })}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
@@ -326,23 +343,24 @@ class lightIndustrialSkills extends React.Component<any, any>{
                 {this.state.palletJack ?
                     <TextField
                         hintText=""
-                        onFocus={() => { }}
+                        onBlur={(event: any) => {this.handleTargetEvents(event)}}
                         fullWidth={true}
-                        floatingLabelText="Enter years of experience "
+                        floatingLabelText="Enter years of experience"
+                        name="pallet_jack_experience"
                     />
                     : null}
                 <br /><br />
 
                 <label className="inline-fields">{questions.fifteen}</label>
-                <RadioButtonGroup name="capable" className="right">
+                <RadioButtonGroup name="steel_shoes" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
-                        value="Yes"
+                        value="true"
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
-                        value="No"
+                        value="false"
                         label={no}
                     />
                 </RadioButtonGroup>
