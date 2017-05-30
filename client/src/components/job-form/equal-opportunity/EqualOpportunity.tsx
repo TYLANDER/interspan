@@ -21,8 +21,7 @@ class EqualOpportunity extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        console.log(this.state.form);
-        // this.props.handleNext(this.state.form);
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });

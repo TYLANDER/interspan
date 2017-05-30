@@ -8,7 +8,20 @@ class WorkHours extends React.Component<any, any>{
         super(props);
         this.state = {
             other: false,
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form: {
+                available_fulltime: true,
+                any_shift: true,
+                day_7_4: true,
+                evening_4_12: false,
+                night_11_7: false,
+                day_12_6_6: false,
+                night_12_6_6: false,
+                do_overtime: false,
+                work_on_weekends: true,
+                unavailability: "none"
+
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -17,10 +30,16 @@ class WorkHours extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        console.log(this.state.form);
+        // this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
+    }
+    handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef[event.target.name]= event.target.value;
+         this.setState(formRef);
     }
     render() {
         const { title, questions, yes, no } = this.state.selectedJson;
@@ -28,7 +47,7 @@ class WorkHours extends React.Component<any, any>{
             <div className="work-hours-container">
                 <label>{title}</label><br /><br />
                 <p className="inline-fields">{questions.one}</p>
-                <RadioButtonGroup name="full time work" className="right" >
+                <RadioButtonGroup name="any_shift" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -45,7 +64,7 @@ class WorkHours extends React.Component<any, any>{
                 <ul>
                     <li>
                         <p className="inline-fields">{questions.four}</p>
-                        <RadioButtonGroup name="availability" className="right" >
+                        <RadioButtonGroup name="any_shift" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -61,7 +80,7 @@ class WorkHours extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.five}</p>
-                        <RadioButtonGroup name="morning" className="right" >
+                        <RadioButtonGroup name="day_7_4" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -77,7 +96,7 @@ class WorkHours extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.six}</p>
-                        <RadioButtonGroup name="evening" className="right" >
+                        <RadioButtonGroup name="evening_4_12" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -93,7 +112,7 @@ class WorkHours extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.seven}</p>
-                        <RadioButtonGroup name="night" className="right" >
+                        <RadioButtonGroup name="night_11_7" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -109,7 +128,7 @@ class WorkHours extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.eight}</p>
-                        <RadioButtonGroup name="early" className="right" >
+                        <RadioButtonGroup name="day_12_6_6" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -125,7 +144,7 @@ class WorkHours extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.nine}</p>
-                        <RadioButtonGroup name="early-night" className="right" >
+                        <RadioButtonGroup name="night_12_6_6" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -141,7 +160,7 @@ class WorkHours extends React.Component<any, any>{
                     </li>
                 </ul>
                 <p className="inline-fields">{questions.ten}</p>
-                <RadioButtonGroup name="overtime" className="right" >
+                <RadioButtonGroup name="do_overtime" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -155,7 +174,7 @@ class WorkHours extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <br /><br />
                 <p className="inline-fields">{questions.eleven}</p>
-                <RadioButtonGroup name="saturday-shift" className="right" >
+                <RadioButtonGroup name="work_on_weekends" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -171,6 +190,8 @@ class WorkHours extends React.Component<any, any>{
                 <TextField
                     fullWidth={true}
                     floatingLabelText={questions.twelve}
+                    onBlur={this.handleTargetEvents}
+                    name="unavailability"
                 />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
 
