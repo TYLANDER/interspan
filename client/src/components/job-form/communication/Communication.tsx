@@ -6,7 +6,11 @@ class Communication extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.state = {
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form:{
+                language: false,
+                level_communication: ""
+            }
         }
     }
     componentWillReceiveProps(nextProp: any) {
@@ -15,10 +19,15 @@ class Communication extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
+    }
+    handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef[event.target.name]= event.target.value;
+         this.setState(formRef);
     }
     render() {
         const {title, fluent, yes, no, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.state.selectedJson;
@@ -26,7 +35,7 @@ class Communication extends React.Component<any, any>{
             <div className="job-applicant-container">
                 <label>{title} </label>
                 <p>{fluent}</p>
-                <RadioButtonGroup name="fluent">
+                <RadioButtonGroup name="language" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="yes"
                         label={yes}
@@ -37,7 +46,7 @@ class Communication extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <p>{levelOfCommunication}</p>
-                <RadioButtonGroup name="language">
+                <RadioButtonGroup name="level_communication" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Understand/Speak no English"
                         label={understandSpeak}
