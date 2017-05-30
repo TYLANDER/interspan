@@ -7,7 +7,12 @@ class EqualOpportunity extends React.Component<any, any>{
         super(props);
         this.state = {
             other: false,
-            selectedJson:this.props.jsonData
+            selectedJson:this.props.jsonData,
+            form:{
+                gender: "male",
+                race: "",
+                veteran: ""
+            }
         };
     }
     componentWillReceiveProps(nextProp: any) {
@@ -16,14 +21,20 @@ class EqualOpportunity extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext({ name: 123, idx: 0 });
+        console.log(this.state.form);
+        // this.props.handleNext(this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-
+    handleTargetEvents = (event: any) =>{
+        let formRef= this.state.form;
+        formRef[event.target.name]= event.target.value;
+         this.setState(formRef);
+    }
     render() {
-        const { content, gender, male, female, raceEthnicity, veteranstatus, asian, black, hispanic, nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
+        const { content, gender, male, female, raceEthnicity, veteranstatus, asian, black, hispanic, 
+            nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
         return (
             <div className="equal-opprtunity-container">
                 <label>Equal Opportunity Information (Voluntary, responses not required)</label>
@@ -31,7 +42,7 @@ class EqualOpportunity extends React.Component<any, any>{
                     {content}
                 </p><br /><br />
                 <p>{gender}</p>
-                <RadioButtonGroup name="gender">
+                <RadioButtonGroup name="gender" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="male"
                         label={male}
@@ -43,7 +54,8 @@ class EqualOpportunity extends React.Component<any, any>{
                 </RadioButtonGroup>    <br /><br />
 
                 <p>{raceEthnicity}</p>
-                <RadioButtonGroup name="race" onChange={(event: any) => { event.target.value === 'other' ? this.setState({ other: true }) : this.setState({ other: false }); }}>
+                <RadioButtonGroup name="race" onChange={(event: any) => {  this.handleTargetEvents(event); (event.target.value === 'other' ? this.setState({ other: true }) : 
+                                                                        this.setState({ other: false })) }}>
                     <RadioButton
                         value="asian"
                         label={asian}
@@ -74,11 +86,13 @@ class EqualOpportunity extends React.Component<any, any>{
                 {this.state.other ?
                     <TextField
                         floatingLabelText={other}
+                        name="race"
+                        onBlur={this.handleTargetEvents}
                     /> : null
                 } <br /><br />
 
                 <p>{veteranstatus} </p>
-                <RadioButtonGroup name="veteran">
+                <RadioButtonGroup name="veteran" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="veteran"
                         label={veteran}
