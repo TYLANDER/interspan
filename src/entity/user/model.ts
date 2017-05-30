@@ -1,6 +1,7 @@
 import * as express from "express";
 import connection from '../../db/connection';
 import { responseJsonHandler, CallBackFunction } from '../../utils/helper';
+let crypto = require('crypto');
 
 export default class UserModel {
 
@@ -10,8 +11,7 @@ export default class UserModel {
     }
 
     static login(user, cb: CallBackFunction) {
-        console.log(user)
         connection
-            .query(`SELECT id,first_name,last_name,email,social_security FROM user WHERE email=? AND password=?`,[user.email,user.password], cb)
+            .query(`SELECT id,first_name,last_name,email,social_security FROM user WHERE email=? AND password=?`,[user.email,crypto.createHash('md5').update(user.password).digest("hex")], cb)
     }
 }

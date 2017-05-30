@@ -1,5 +1,6 @@
 import {router as jobsRouter} from './entity/jobs/route';
 import {router as userRouter} from './entity/user/route';
+import {router as applyRouter} from './entity/apply/route';
 
 
 function routes(app) { 
@@ -9,6 +10,7 @@ function routes(app) {
     //Rest API's
     app.use("/api/user",userRouter)
     app.use("/api/jobs",jobsRouter);
+    app.use("/api/apply",applyRouter)
 }
 
 export default routes
