@@ -93,7 +93,9 @@
     "personalInformation": {
         "questions": {
             "one": "Please explain any gaps in your employment history.",
-            "two": "In case of emergency, please contact: (name & phone #)",
+            "two": "In case of emergency, please contact:",
+            "name": "name",
+            "phone": "phone #",
             "three": "Have you been convicted of a crime in the past 10 years, excluding misdemeanors, minor traffic violations, and summary offenses which has not been annulled, expunged or sealed by the court?",
             "four": "If “Yes”, describe in full. (A conviction will not necessarily disqualify you from employment but will be considered in relation to specific job requirements)"
         },
@@ -165,8 +167,8 @@
         "gender": "Gender",
         "male": "Male",
         "female": "Female",
-        "raceEthnicity": "RACE/ETHNICITY DATA",
-        "veteran status": "Veteran Status",
+        "raceEthnicity": "Race/Ethiniticity data",
+        "veteranStatus": "Veteran Status",
         "asian": "Asian",
         "black": "Black",
         "hispanic": "Hispanic",

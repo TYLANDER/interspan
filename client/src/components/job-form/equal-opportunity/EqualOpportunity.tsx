@@ -32,7 +32,7 @@ class EqualOpportunity extends React.Component<any, any>{
          this.setState(formRef);
     }
     render() {
-        const { content, gender, male, female, raceEthnicity, veteranstatus, asian, black, hispanic, 
+        const { content, gender, male, female, raceEthnicity, veteranStatus, asian, black, hispanic, 
             nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
         return (
             <div className="equal-opprtunity-container">
@@ -90,7 +90,7 @@ class EqualOpportunity extends React.Component<any, any>{
                     /> : null
                 } <br /><br />
 
-                <p>{veteranstatus} </p>
+                <p>{veteranStatus} </p>
                 <RadioButtonGroup name="veteran" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="veteran"

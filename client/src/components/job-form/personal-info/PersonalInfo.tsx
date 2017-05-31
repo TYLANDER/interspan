@@ -8,7 +8,7 @@ class PersonalInfo extends React.Component<any, any>{
         this.state = {
             convictedCrime: false,
             selectedJson: this.props.jsonData,
-            form:{
+            form: {
                 employmentGap: "",
                 emergencyContact: "",
                 comittedCrime: false,
@@ -27,14 +27,14 @@ class PersonalInfo extends React.Component<any, any>{
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-    handleTargetEvents = (event: any) =>{
-        let formRef= this.state.form;
-        formRef[event.target.name]= event.target.value;
-         this.setState(formRef);
+    handleTargetEvents = (event: any) => {
+        let formRef = this.state.form;
+        formRef[event.target.name] = event.target.value;
+        this.setState(formRef);
     }
-    render(){
-        const {questions, yes, no, description} = this.state.selectedJson;
-        return(
+    render() {
+        const { questions, yes, no, description } = this.state.selectedJson;
+        return (
             <div className="job-applicant-container">
                 <label> Personal Information</label>
                 <TextField
@@ -43,48 +43,53 @@ class PersonalInfo extends React.Component<any, any>{
                     fullWidth={true}
                     multiLine={true}
                     name="employmentGap"
-                    />
-
+                />
+                <br /><br />
+                <label>{questions.two}</label><br /><br />
                 <TextField
-                    floatingLabelText={questions.two}
+                    floatingLabelText={questions.name}
                     onBlur={this.handleTargetEvents}
-                    fullWidth={true}
-                    name="emergencyContact"
-                    />
+                    name="emergencyName"
+                />
+                <TextField
+                    floatingLabelText={questions.phone}
+                    onBlur={this.handleTargetEvents}
+                    name="emergencyPhone"
+                />
 
-                  <br/>
-                  <br/>
-                  <p>
-                      {questions.three}
-                  </p>
+                <br />
+                <br />
+                <p>
+                    {questions.three}
+                </p>
 
-                <RadioButtonGroup  name="comittedCrime" defaultSelected={'No'}
-                    onChange={(event: any) =>{ 
-                        (event.target.value === 'Yes' ? this.setState({convictedCrime: true }) : this.setState({convictedCrime: false })) 
+                <RadioButtonGroup name="comittedCrime" defaultSelected={'No'}
+                    onChange={(event: any) => {
+                        (event.target.value === 'Yes' ? this.setState({ convictedCrime: true }) : this.setState({ convictedCrime: false }))
                         let formRef = this.state.form;
                         formRef.comittedCrime = this.state.convictedCrime;
                         this.setState(formRef)
-                        }}>
+                    }}>
 
                     <RadioButton
                         value="Yes"
                         label={yes}
                     />
-                     <RadioButton
+                    <RadioButton
                         value="No"
                         label={no}
                     />
                 </RadioButtonGroup>
                 {this.state.convictedCrime ?
-                <div>
-                <p>{questions.four}</p>
-                <TextField
-                    floatingLabelText={description}
-                    onBlur={this.handleTargetEvents}
-                    fullWidth={true}
-                    multiLine={true}
-                    name="crimeDesc"
-                    />
+                    <div>
+                        <p>{questions.four}</p>
+                        <TextField
+                            floatingLabelText={description}
+                            onBlur={this.handleTargetEvents}
+                            fullWidth={true}
+                            multiLine={true}
+                            name="crimeDesc"
+                        />
                     </div>
                     : null}
 

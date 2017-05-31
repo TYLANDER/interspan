@@ -93,7 +93,9 @@
     "personalInformation": {
         "questions": {
             "one": "Por favor explique todo el tiempo que no trabajo, incluyendo el tiempo entre un trabajo y otro.",
-            "two": "En caso de emergencia, por favor llamar, (nombre &  número de teléfono)",
+            "two": "En caso de emergencia, por favor llamar",
+            "name": "nombre",
+            "phone": "número de teléfono",
             "three": "Ha sido convicto de algun crimen en los ultimos diez años, excluyenodo los deloitos menores, violaciones de tráfico, y otras que no han sido anuladas o acatadas por la corte?",
             "four": "Si la respuesta es “Si”, describa.  (Una convicción no será razón de descalificación para empleo pero será considerada en relación para requerimientos específicos de trabajo.)"
         },
@@ -166,7 +168,7 @@
         "male": "Masculino",
         "female": "Femenino",
         "raceEthnicity": "RAZA",
-        "veteran status": "ESTADO VETERANO",
+        "veteranStatus": "ESTADO VETERANO",
         "asian": "Asiática",
         "black": "Negra",
         "hispanic": "Hispana",

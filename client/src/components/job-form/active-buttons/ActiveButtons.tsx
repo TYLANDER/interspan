@@ -24,7 +24,7 @@ class ActiveButtons extends React.Component<any, any>{
                     style={{ marginRight: 12 }}
                 />
                 <RaisedButton
-                    label={this.stepIndex === 2 ? 'Finish' : 'Next'}
+                    label={this.props.finished? 'I Agree' : 'Next'}
                     primary={true}
                     onTouchTap={() => this.handleNext()}
                 />

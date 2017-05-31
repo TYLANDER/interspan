@@ -56,7 +56,7 @@ class Education extends React.Component<any, any>{
                         hintText=""
                         name="specialTrainingList"
                         onBlur={this.handleTargetEvents}
-                        floatingLabelText="High School / College"
+                        floatingLabelText="Special skills or experience"
                     />
                 </div>);
         }
