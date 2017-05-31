@@ -91,6 +91,9 @@
   .navbar-container .hamburger-icon{
     display: inline !important;
   }
+  .navbar-container .close:hover{
+    transform: rotate(85deg)
+  }
   .navbar-container .lang-select{
   right: 2px;
 }

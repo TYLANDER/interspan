@@ -87,7 +87,7 @@ class NavBar extends React.Component<any, any> {
 
                 {(this.state.open) ?
                     <FlatButton
-                        className="hamburger-icon"
+                        className="hamburger-icon close"
                         icon={<img src={require('../../assets/window-close.svg')} />}
                         disableFocusRipple={true}
                         hoverColor="#fbfef9"
