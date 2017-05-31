@@ -54,6 +54,28 @@
   color: gray !important;
   font-size: 22px;
 }
+.slide-in {
+    animation: slide-in 0.5s ease;
+    -webkit-animation: slide-in 1.0s ease;
+}
+@keyframes slide-in {
+    	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}		
+}
+
+@-webkit-keyframes slide-in {
+       	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(0%);
+	}	
+}
+
 .navbar-container .sub-menu > div {
   padding: 10px 0 10px 20px;
   font-size: 18px;

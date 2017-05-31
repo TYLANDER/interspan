@@ -111,7 +111,7 @@ class NavBar extends React.Component<any, any> {
         const homeMenu = <div>
             <AppBar
                 zDepth={1}
-                style={{backgroundColor: '#fbfef9',transition:"none"}}
+                style={{backgroundColor: 'rgb(255,255,255)',transition:"none"}}
                 iconElementLeft={
                     <img src={require('../../assets/logo.png')} className="logo" alt="logo" />
                 }
@@ -119,7 +119,7 @@ class NavBar extends React.Component<any, any> {
                 onTitleTouchTap={this.handleHomePage}
             />
             {(this.state.open) ?
-                <div className="sub-menu">
+                <div className="sub-menu slide-in">
                     <div onClick={this.handleStaticUrl.bind(this, 'signup', true)}>Apply Now</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'employee', true)}>For Employers</div>
