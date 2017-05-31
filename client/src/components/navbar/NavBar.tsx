@@ -28,12 +28,12 @@ class NavBar extends React.Component<any, any> {
     };
 
     componentWillReceiveProps(nextProp: any){
-        window.location.pathname === "/" ?
+        window.location.pathname === "/" || this.props.router.location.pathname === "/about" || this.props.router.location.pathname === "/employee" || this.props.router.location.pathname === "/hire"?
             this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: true})
     }
 
     componentWillMount(nextProp: any){
-        window.location.pathname === "/" ?
+        window.location.pathname === "/" || this.props.router.location.pathname === "/about" || this.props.router.location.pathname === "/employee" || this.props.router.location.pathname === "/hire"?
             this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: true})
     }
 
@@ -120,6 +120,7 @@ class NavBar extends React.Component<any, any> {
             />
             {(this.state.open) ?
                 <div className="sub-menu slide-in">
+                     <div onClick={this.handleStaticUrl.bind(this, 'login', true)}>Login</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'signup', true)}>Apply Now</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'employee', true)}>For Employers</div>
@@ -133,6 +134,7 @@ class NavBar extends React.Component<any, any> {
 
                     <div className="contact-info">
                         <p className="title">Contact</p>
+                        <p>Address: <a style={{textDecoration:"none"}} href="https://www.google.com/maps/place/United+States/@36.2152546,-113.6923823,4z/data=!4m5!3m4!1s0x54eab584e432360b:0x1c3bb99243deb742!8m2!3d39.7747695!4d-101.4038086" target="_blank"> XYZ City, USA </a></p>
                         <p>Office: 804-519-7677</p>
                         <p>Fax: 804-595-9999</p>
                         <p>Email: work@Interspan.com</p>
