@@ -28,18 +28,20 @@ class Login extends React.Component<any, any> {
         isAuthenticated: false,
         userObj: {},
         loading: false,
+        error:false
     };
 
     componentWillMount() {
-        if (!this.props.authObj.isAuthenticated)
-            this.props.authLogin({ username: 'Zeeshan Hanif' });
+        // if (!this.props.authObj.isAuthenticated)
+        //     this.props.authLogin({ username: 'Zeeshan Hanif' });
     }
     handleHomePage() {
         browserHistory.push('/');
     }
     componentWillReceiveProps(newProps: any) {
         newProps.authObj.isProcessing ? this.setState({ loading: true }) : this.setState({ loading: false });
-        newProps.authObj.isRegistered ? browserHistory.push('/job') : null;
+        newProps.authObj.isError.status?this.setState({error:true}): this.setState({error:false})
+        newProps.authObj.isAuthenticated ? browserHistory.push('/job') : null;
     }
     
     // handleJobPage = () => {
@@ -49,6 +51,7 @@ class Login extends React.Component<any, any> {
 
     handleNext = (values:any) => {
         let users = Object.assign(this.state.userObj, values);
+
         //returning form value
         console.log(users);
         this.props.login(users);
@@ -59,7 +62,7 @@ class Login extends React.Component<any, any> {
     }
 
     render() {
-
+        {this.state.error?alert(this.props.authObj.isError.msg):null}
         return (
             <MuiThemeProvider muiTheme={this.muiTheme}>
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"

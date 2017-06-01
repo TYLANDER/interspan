@@ -12,10 +12,10 @@ export default class AuthEpic {
                 return HttpService.post(Path.LOGIN, payload)
                     .switchMap(({ response }) => {
                         console.log(response);
-                        if(response.err){
+                        if(response.data.length === 0){
                             return Observable.of({
                                 type: AuthActions.LOGIN_FAILER,
-                                payload: response
+                                payload: "email and password not matched ! Try Again "
                             });    
                         }
                         return Observable.of({

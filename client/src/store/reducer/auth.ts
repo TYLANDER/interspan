@@ -26,7 +26,7 @@ function AuthReducer(state = INITIAL_STATE, action: IACTION) {
             return {...state, isProcessing: false, isError: action.payload };
 
         case AuthActions.LOGIN:
-            return {...state, isProcessing: true };
+            return {...state, isProcessing: true, isError:{status:false,msg:''} };
         case AuthActions.LOGIN_SUCCESS:
             return {...state, isProcessing: false, isAuthenticated: true, activeUser: action.payload};
         case AuthActions.LOGIN_FAILER:
