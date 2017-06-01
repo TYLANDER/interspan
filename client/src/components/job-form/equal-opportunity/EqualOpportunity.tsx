@@ -40,7 +40,7 @@ class EqualOpportunity extends React.Component<any, any>{
                 <p className="paragraph">
                     {content}
                 </p><br /><br />
-                <p>{gender}</p>
+                <label className="title">{gender}</label>
                 <RadioButtonGroup name="gender" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="male"
@@ -52,7 +52,7 @@ class EqualOpportunity extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>    <br /><br />
 
-                <p>{raceEthnicity}</p>
+                <label className="title">{raceEthnicity}</label>
                 <RadioButtonGroup name="race" onChange={(event: any) => {  this.handleTargetEvents(event); (event.target.value === 'other' ? this.setState({ other: true }) : 
                                                                         this.setState({ other: false })) }}>
                     <RadioButton
@@ -90,7 +90,7 @@ class EqualOpportunity extends React.Component<any, any>{
                     /> : null
                 } <br /><br />
 
-                <p>{veteranStatus} </p>
+                <label className="title">{veteranStatus} </label>
                 <RadioButtonGroup name="veteran" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="veteran"

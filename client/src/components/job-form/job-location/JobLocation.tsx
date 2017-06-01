@@ -40,10 +40,7 @@ class JobLocation extends React.Component<any, any>{
         const {positionDesired, avalaiblePosition, clericalOffice, industrialFactory, other, locationPreference, anyAvailableSite, site, payRateExpected, perHour} = this.state.selectedJson;
         return(
             <div className="job-applicant-container">
-                 <label className="title">Job / Location </label>
-                 <br />
-                 <br />
-                 <p>{positionDesired} </p>
+                 <label className="title">{positionDesired} </label>
                 <RadioButtonGroup name="position" onChange={(event: any) => {
                     this.handleTargetEvents(event);
                     event.target.value === 'other' ? this.setState({position: true }) : this.setState({position: false })}}>
@@ -74,7 +71,7 @@ class JobLocation extends React.Component<any, any>{
                     floatingLabelText={other}
                     onBlur={this.handleTargetEvents}
                 /> : ''}
-                 <p>{locationPreference} </p>
+                 <label className="title">{locationPreference} </label>
                 <RadioButtonGroup name="site" onChange={(event: any) => {
                     this.handleTargetEvents(event);
                     event.target.value === 'site' ? this.setState({location: true }) : this.setState({location: false })}}>

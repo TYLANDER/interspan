@@ -99,7 +99,7 @@ class References extends React.Component<any, any>{
         }
         return (
             <div className="transportation-container">
-                <label> References </label> <br /><br />
+                <label> References </label> <br />
                 {reference}
                 <FlatButton label="Add" primary={true} onTouchTap={this.handleReferenceAdd} />
                 <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.reference === 1 ? null : this.setState({ reference: this.state.reference - 1 })} />

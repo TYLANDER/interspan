@@ -36,7 +36,6 @@ class PersonalInfo extends React.Component<any, any>{
         const { questions, yes, no, description } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
-                <label> Personal Information</label>
                 <TextField
                     floatingLabelText={questions.one}
                     onBlur={this.handleTargetEvents}
@@ -44,8 +43,9 @@ class PersonalInfo extends React.Component<any, any>{
                     multiLine={true}
                     name="employmentGap"
                 />
-                <br /><br />
-                <label>{questions.two}</label><br /><br />
+                <br />
+                <label>{questions.two}</label>
+                <br/>
                 <TextField
                     floatingLabelText={questions.name}
                     onBlur={this.handleTargetEvents}

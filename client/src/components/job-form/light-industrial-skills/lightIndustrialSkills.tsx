@@ -53,8 +53,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
             lessThanTenLbs, upToTenLbs, experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
-                <label>LIGHT INDUSTRIAL  WAREHOUSE POSITIONS</label>
-                <p>{questions.one}</p>
+                <label>{questions.one}</label>
                 <RadioButtonGroup name="industrial_experience" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="No experience"
@@ -78,7 +77,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
 
-                <p>{questions.two}</p>
+                <label>{questions.two}</label>
                 <RadioButtonGroup name="experience_with" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Assembly"
@@ -142,7 +141,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                     />
 
                 </RadioButtonGroup>
-                <p>{questions.three}</p>
+                <label>{questions.three}</label>
                 <RadioButtonGroup name="lifting" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Less than 10 lbs."

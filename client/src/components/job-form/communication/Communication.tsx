@@ -30,11 +30,10 @@ class Communication extends React.Component<any, any>{
          this.setState(formRef);
     }
     render() {
-        const {title, fluent, yes, no, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.state.selectedJson;
+        const {fluent, yes, no, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
-                <label>{title} </label>
-                <p>{fluent}</p>
+                <label className="title">{fluent}</label>
                 <RadioButtonGroup name="language" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="yes"
@@ -45,7 +44,7 @@ class Communication extends React.Component<any, any>{
                         label={no}
                     />
                 </RadioButtonGroup>
-                <p>{levelOfCommunication}</p>
+                <label className="title">{levelOfCommunication}</label>
                 <RadioButtonGroup name="level_communication" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Understand/Speak no English"

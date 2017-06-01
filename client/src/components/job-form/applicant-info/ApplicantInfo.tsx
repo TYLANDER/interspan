@@ -44,7 +44,6 @@ class ApplicantInfo extends React.Component<any, any>{
         const formRef = this.state.form;
         return (
             <div className="job-applicant-container">
-                <label className="title">Applicant Information</label>
                 <TextField
                     hintText=""
                     fullWidth={true}

@@ -35,8 +35,7 @@ class Media extends React.Component<any, any>{
         const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
-                <label>Media</label>
-                <p>{questions}</p>
+                <label className="title">{questions}</label>
                 <RadioButtonGroup name="about_interspan"
                     onChange={(event: any) => {
                         if (event.target.value === 'Referred from job site') {

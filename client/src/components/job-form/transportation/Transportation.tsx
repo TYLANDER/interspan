@@ -36,8 +36,8 @@ class Transportation extends React.Component<any, any>{
         const {accessReliableTransportation, employmentBusLine, rideWithAnotherEmployment, name, yes, no} = this.state.selectedJson;
         return (
             <div className="transportation-container">
-                <label> Transportation </label> <br /><br />
-                <p className="inline-fields">{accessReliableTransportation}</p>
+                <br/>
+                <label className="inline-fields">{accessReliableTransportation}</label>
                 <RadioButtonGroup name="reliable_transportation" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
@@ -51,7 +51,7 @@ class Transportation extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /> <br />
-                <p className="inline-fields">{employmentBusLine}</p>
+                <label className="inline-fields">{employmentBusLine}</label>
                 <RadioButtonGroup name="employment_bus" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
@@ -65,7 +65,7 @@ class Transportation extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /> <br />
-                <p className="inline-fields">{rideWithAnotherEmployment}</p>
+                <label className="inline-fields">{rideWithAnotherEmployment}</label>
                 <RadioButtonGroup name="another_employee" className="right" onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'Yes' ? this.setState({ employee: true }) : this.setState({ employee: false }); }}>
                     <RadioButton
                         className="inline-radio"

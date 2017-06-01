@@ -33,8 +33,8 @@
         "employementYes": "Month and Year",
         "legallyEligible": "Are you legally eligible for employement in the United State",
         "workStatus": "When would you be able to begin work?",
-        "yes": "yes",
-        "no": "No"
+        "yes": "YES",
+        "no": "NO"
     },
     "jobLocation": {
         "positionDesired": "Position Desired",
@@ -67,7 +67,7 @@
         }
     },
     "certification": {
-        "header": "CERTIFICATION & AUTHORIZATION for RELEASE of PERSONAL DATA",
+        "header": "Certification & authorization for release of persoaml data",
         "content": "I certify the information provided in this Application for Employment and accompanying documents is true, correct, and complete. Any misrepresentation of information or significant omissions will be cause for rejection of my application or for subsequent discipline up to and including my dismissal from employment if discovered at a later date.  I understand that acceptance of an offer of employment does not create a contractual obligation upon the employer to continue to employme in the future.  If employed, I understand that I will be an employee “at will” and either InterSpan, Inc. or I may terminate my employment relationship at any time or without notice for any reason. All information (including information on any accompanying resume and documents) is subject to verification. I authorize and consent to any current and prior employers, educational institutions, law enforcement agency, financial institution, consumer reporting agency, court and persons or organizations named in this application (or accompanying resume) to release any information to InterSpan, Inc. that may be required to make an employment decision. I understand and acknowledge that an employment offer and/or my continuing employment are conditioned upon the results of any background check, consumer report or verification efforts.  I hereby release from liability and hold harmless all persons and corporations supplying this information to InterSpan, Inc. and/or its agents. A photocopy of this authorization is as effective as the original.",
         "agreed": "I Agreed"
     },
@@ -86,7 +86,7 @@
         "end": "End",
         "reason": "Reason",
         "reasonForleaving": "Reason for Leaving",
-        "doNotContact": "DO NOT CONTACT",
+        "doNotContact": "Do not contact",
         "employeeNumber": "Employer Number(s)Reason",
         "note": "We may contact the employers listed above unless you indicate those you do not want us to contact."
     },
@@ -94,14 +94,14 @@
         "questions": {
             "one": "Please explain any gaps in your employment history.",
             "two": "In case of emergency, please contact:",
-            "name": "name",
-            "phone": "phone #",
+            "name": "Name",
+            "phone": "Phone #",
             "three": "Have you been convicted of a crime in the past 10 years, excluding misdemeanors, minor traffic violations, and summary offenses which has not been annulled, expunged or sealed by the court?",
             "four": "If “Yes”, describe in full. (A conviction will not necessarily disqualify you from employment but will be considered in relation to specific job requirements)"
         },
         "description": "Description",
-        "yes": "yes",
-        "no": "no"
+        "yes": "YES",
+        "no": "NO"
     },
     "lightIndustrialAndWarehousePositions": {
         "questions": {
@@ -180,7 +180,7 @@
         "disableVeteran": "Disabled Veteran"
     },
     "WorkHours": {
-        "title": "PREFERRED WORK HOURS",
+        "title": "Preferred Work Hours",
         "questions": {
             "one": "Are you available for full-time work (apart from absence for religious observance)?",
             "two": "If not, what hours can you work?",
@@ -195,14 +195,14 @@
             "eleven": "Are you willing to work a Saturday shift?or a Sunday shift?",
             "twelve": "Please list any specific hours or weekdays that you know you are unavailable for work"
         },
-        "yes": "Yes",
-        "no": "No"
+        "yes": "YES",
+        "no": "NO"
     },
     "communication": {
         "title": "LANGUAGE",
         "fluent": "Are you fluent in any language other than English?",
-        "yes": "Yes",
-        "no": "No",
+        "yes": "YES",
+        "no": "NO",
         "levelOfCommunication": "Level of communication: (non-English speakers only)",
         "understandSpeak": "Understand/Speak no English",
         "ESL":"Learning English as ESL",
@@ -215,14 +215,14 @@
         "employmentBusLine": "Do you need employment on the bus line?",
         "rideWithAnotherEmployment": "Do you need to ride with another employee?",
         "name": "Name",
-        "yes":"Yes",
-        "no":"No"
+        "yes":"YES",
+        "no":"NO"
     },
     "references": {
         "name": "Name",
         "relation": "Relation",
         "telephone": "Telephone",
-        "friends": "FRIENDS/RELATIVES WORKING AT INTERSPAN"
+        "friends": "Friends/relatives working at Interspan"
     },
     "forEmployerUse": {
         "initialAssignment": "Initial Assignment:",
