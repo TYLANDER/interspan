@@ -173,11 +173,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -188,11 +190,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -203,11 +207,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -218,11 +224,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -233,11 +241,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -248,11 +258,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -263,11 +275,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -277,11 +291,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -292,11 +308,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
 
@@ -317,11 +335,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -332,11 +352,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
 
@@ -357,11 +379,13 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
                 <br /><br />
