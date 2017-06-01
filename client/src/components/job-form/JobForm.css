@@ -14,8 +14,14 @@
     }
 }
 
-.stepper-content{
+.main-job-form-container .stepper-content{
      margin: 0 16px;
+}
+.main-job-form-container .stepper-content label {
+    font-weight: 500;
+}
+.main-job-form-container .stepper-content label.title {
+    font-weight: 600 !important;
 }
 @media (min-width: 1050px){
     .stepper-content{

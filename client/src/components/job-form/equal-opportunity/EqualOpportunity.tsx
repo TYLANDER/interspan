@@ -36,7 +36,7 @@ class EqualOpportunity extends React.Component<any, any>{
             nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
         return (
             <div className="equal-opprtunity-container">
-                <label>Equal Opportunity Information (Voluntary, responses not required)</label>
+                <label className="title">Equal Opportunity Information (Voluntary, responses not required)</label>
                 <p className="paragraph">
                     {content}
                 </p><br /><br />

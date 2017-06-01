@@ -44,7 +44,7 @@ class PersonalInfo extends React.Component<any, any>{
                     name="employmentGap"
                 />
                 <br />
-                <label>{questions.two}</label>
+                <label className="title">{questions.two}</label>
                 <br/>
                 <TextField
                     floatingLabelText={questions.name}
@@ -59,9 +59,9 @@ class PersonalInfo extends React.Component<any, any>{
 
                 <br />
                 <br />
-                <p>
+                <label className="title">
                     {questions.three}
-                </p>
+                </label>
 
                 <RadioButtonGroup name="comittedCrime" defaultSelected={'No'}
                     onChange={(event: any) => {

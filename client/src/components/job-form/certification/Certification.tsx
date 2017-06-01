@@ -28,7 +28,7 @@ class Certification extends React.Component<any, any>{
 
         return (
             <div className="certification-container">
-                <label>{header}</label>
+                <label className="title">{header}</label>
                 <p className="paragraph">{content}</p>
                 <div style={{maxWidth: '150px'}}>
                 <Checkbox

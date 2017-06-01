@@ -63,7 +63,7 @@ class Education extends React.Component<any, any>{
         const {question, values, skillsAndExperience} = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
-                <label>{question.one}</label>
+                <label className="title">{question.one}</label>
                 <RadioButtonGroup name="highestEducation"  onChange={(event: any) => 
                     this.handleTargetEvents(event)
                     }>
@@ -93,16 +93,15 @@ class Education extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br />
-                <br />
                 <div>
-                    <label>{question.two}</label><br />
+                    <label className="title">{question.two}</label><br />
                     {school}
                     <FlatButton label="Add" primary={true} onClick={() => this.setState({ school: this.state.school + 1 })} />
                     <FlatButton label="Delete" secondary={true} onClick={() => this.state.school === 1 ? '' : this.setState({ school: this.state.school - 1 })} />
                 </div>
                 <div>
-                    <label>{skillsAndExperience.heading}</label>
-                    <p>{skillsAndExperience.content}</p>
+                    <label className="title">{skillsAndExperience.heading}</label>
+                    <label className="title">{skillsAndExperience.content}</label>
                     {skills}
                     <FlatButton label="Add" primary={true} onClick={() => this.setState({ skills: this.state.skills + 1 })} />
                     <FlatButton label="Delete" secondary={true} onClick={() => this.state.skills === 1 ? '' : this.setState({ skills: this.state.skills - 1 })} />

@@ -112,14 +112,10 @@ class EmploymentHistory extends React.Component<any, any>{
                 <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.employed === 1 ? null : this.setState({ employed: this.state.employed - 1 })} />
                 <br />
                 <br />
-                <label>
-                    {note}
-                </label>
+                <label className="title">{note}</label>
                 <br />
                 <br />
-                <label>
-                    {doNotContact}
-                </label>
+                <label className="title">{doNotContact}</label>
                 <br />
 
                 <TextField

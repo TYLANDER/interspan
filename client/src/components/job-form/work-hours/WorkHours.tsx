@@ -44,7 +44,7 @@ class WorkHours extends React.Component<any, any>{
         const { title, questions, yes, no } = this.state.selectedJson;
         return (
             <div className="work-hours-container">
-                <label>{title}</label><br /><br />
+                <label className="title">{title}</label><br /><br />
                 <p className="inline-fields">{questions.one}</p>
                 <RadioButtonGroup name="any_shift" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
@@ -59,7 +59,7 @@ class WorkHours extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.three}</label><br /><br />
+                <label className="inline-fields title">{questions.three}</label><br /><br />
                 <ul>
                     <li>
                         <p className="inline-fields">{questions.four}</p>
