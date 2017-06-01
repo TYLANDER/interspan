@@ -11,5 +11,15 @@
     }
     .main-job-form-container .sm-stepper > div > div span {
     padding: 0 !important;
+    }
 }
+
+.stepper-content{
+     margin: 0 16px;
+}
+@media (min-width: 1050px){
+    .stepper-content{
+        width: calc(100vw / 12 * 8) !important;
+        margin: 0 auto !important;
+    }
 }

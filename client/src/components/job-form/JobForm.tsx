@@ -143,7 +143,6 @@ export default class MainJobForm extends React.Component<any, any>{
     render() {
         const { finished, stepIndex } = this.state;
         const { headings } = this.state.selectedJson;
-        const contentStyle = { margin: '0 16px' };
         return (
             <div className="main-job-form-container">
                 <div className="md-stepper">
@@ -210,7 +209,7 @@ export default class MainJobForm extends React.Component<any, any>{
                         <Step><StepButton completed={stepIndex===12?false:this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={()=>this.setState({stepIndex:12})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                     </Stepper>
                 </div>
-                <div style={contentStyle}>
+                <div className="stepper-content">
                     {finished ? (
                         <p>You're all set! We will be in touch
                             <Link to="/">
