@@ -9,11 +9,22 @@ export default class AuthEpic {
     static loginEpic = (action$: ActionsObservable<any>) =>
         action$.ofType(AuthActions.LOGIN)
             .switchMap(({ payload }) => {
-                return Observable.of({
-                    type: AuthActions.LOGIN_SUCCESS,
-                    payload: 'User Name'
-                });
+                return HttpService.post(Path.LOGIN, payload)
+                    .switchMap(({ response }) => {
+                        console.log(response);
+                        if(response.err){
+                            return Observable.of({
+                                type: AuthActions.LOGIN_FAILER,
+                                payload: response
+                            });    
+                        }
+                        return Observable.of({
+                            type: AuthActions.LOGIN_SUCCESS,
+                            payload: response
+                        });
+                    });
             })
+
 
     static signupEpic = (action$: ActionsObservable<any>) =>
         action$.ofType(AuthActions.SIGNUP)

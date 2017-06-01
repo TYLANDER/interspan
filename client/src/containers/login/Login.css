@@ -1,0 +1,62 @@
+.signup-container .paper-container{
+    max-width: 500px;
+    display: block;
+    margin:0 auto;
+    margin-top: 50px;
+}
+.signup-container .fields-container{
+    padding: 30px;
+}
+.signup-container .fields-container label {
+    font-weight: 500;
+}
+.signup-container .fields-container .title{
+    color: #bbbbbb;
+    font-weight: 500;
+    font-family: "SFUI_Text";
+    font-Size:14px
+}
+.signup-container .paper-container .footer-container{
+    text-align: right;
+    padding: 5px;
+    color: black;
+}
+.signup-container .paper-container .footer-container .back-btn{
+    float: left;
+}
+.signup-container .paper-container .footer-container .btn-icon{
+    height: 23px;
+    margin-bottom: 2px;
+}
+.signup-container .paper-container .footer-container .back{
+    margin-right: -10px !important;
+}
+.signup-container .paper-container .footer-container .continue{
+    margin-left: -7px !important;
+}
+.signup-container .md-screen{
+        display: block;
+}
+.signup-container .sm-screen{
+    display: none;
+    margin-bottom: 50px;
+}
+.signup-container .sm-screen .footer-container{
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ededed;
+
+}
+
+@media (max-width: 600px){
+    .signup-container .md-screen{
+        display: none !important;
+    }
+    .signup-container .sm-screen{
+        display: block !important;
+        margin-top: -44px;
+    }
+}
