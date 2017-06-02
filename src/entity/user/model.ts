@@ -13,8 +13,7 @@ export default class UserModel {
 
     static login(user, cb: CallBackFunction) {
         user['password'] = crypto.createHash('md5').update(user.password).digest("hex");
-        console.log(user)
         connection
-            .query(`SELECT id,first_name,last_name,email,social_security FROM user WHERE email=? AND passwords=?`,[user.email,user.password], cb)
+            .query(`SELECT id,first_name,last_name,email,social_security FROM user WHERE email=? AND password=?`,[user.email,user.password], cb)
     }
 }

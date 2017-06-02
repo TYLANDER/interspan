@@ -30,6 +30,12 @@ class NavBar extends React.Component<any, any> {
     componentWillReceiveProps(nextProp: any){
         window.location.pathname === "/" || this.props.router.location.pathname === "/about" || this.props.router.location.pathname === "/employee" || this.props.router.location.pathname === "/hire"?
             this.setState({isAuthenticated: false}) : this.setState({isAuthenticated: true})
+            if(Object.keys(nextProp.authObj.activeUser).length !== 0)
+            {
+                localStorage.setItem("user-info",JSON.stringify(nextProp.authObj.activeUser));
+            }
+            else
+            console.log("User not logged in");
     }
 
     componentWillMount(nextProp: any){
@@ -59,6 +65,7 @@ class NavBar extends React.Component<any, any> {
     render() {
         const languageSelect = (
             this.props.router.location.pathname==="/job"? 
+            <div>
             <SelectField
                 className="lang-select"
                 labelStyle={{color:"white",textOverflow:"none",paddingLeft: "30px"}}
@@ -69,6 +76,8 @@ class NavBar extends React.Component<any, any> {
                 <MenuItem value="en" primaryText="English" />
                 <MenuItem value="sp" primaryText="Spanish" />
             </SelectField>
+            
+            </div>
             :<p></p>
         )
         const title=(this.props.router.location.pathname === "/job"?this.props.title:"Let's get started")

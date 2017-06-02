@@ -1,10 +1,11 @@
 export default class path {
 
-    /* User entity*/ 
-    static SIGNUP = "http://interspanresources-164914.appspot.com/api/user/signup";
-    static LOGIN = "http://localhost:3306/api/user/login";
-    
-    /*Job entity*/ 
+    // static environment = "dev";
+    static environment = "prod";
 
-    /* Job form entity*/ 
+    static baseUrl = path.environment == "dev" ? "" : "http://interspanresources-164914.appspot.com/";
+
+    static SIGNUP = path.baseUrl+"api/user/signup";
+    static LOGIN = path.baseUrl+"api/user/login";
+    
 }
