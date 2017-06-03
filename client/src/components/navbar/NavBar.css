@@ -32,9 +32,10 @@
 }
 .navbar-container .lang-select{
   width: 120px !important;
-  position: absolute !important;
-  right: 15px;
-  top: 7px;
+  /*position: absolute !important;*/
+    right: -3px;
+    top: 4px;
+    display:inline-flex !important
 }
 .navbar-container .sub-menu{
   padding-left: 21px;

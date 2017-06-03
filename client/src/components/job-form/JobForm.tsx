@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './JobForm.css';
-import {Link} from 'react-router';
-import { Step, Stepper,StepButton} from 'material-ui/Stepper';
+// import { Link } from 'react-router';
+import { Step, Stepper, StepButton } from 'material-ui/Stepper';
 import ApplicantInfo from './applicant-info/ApplicantInfo';
 import JobLocation from './job-location/JobLocation';
 import Education from './education/Education';
@@ -15,8 +15,11 @@ import WorkHour from './work-hours/WorkHours';
 import Communication from './communication/Communication';
 import Transportation from './transportation/Transportation';
 import References from './references/References';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import {withRouter} from "react-router"
 
-export default class MainJobForm extends React.Component<any, any>{
+class MainJobForm extends React.Component<any, any>{
 
     jobDataEn: any = {};
     jobDataSp: any = {};
@@ -30,7 +33,8 @@ export default class MainJobForm extends React.Component<any, any>{
             finished: false,
             stepIndex: 0,
             selectedJson: this.jobDataEn,
-            visited:[]  
+            visited: [],
+            open: true
         };
     }
 
@@ -42,7 +46,7 @@ export default class MainJobForm extends React.Component<any, any>{
             finished: stepIndex >= 12,
             visited: this.state.visited.concat(stepIndex)
         });
-        
+
     }
 
     handlePrev = (e: any) => {
@@ -140,7 +144,18 @@ export default class MainJobForm extends React.Component<any, any>{
         this.setState({ selectedJson: userSelectedJson })
     }
 
+    handleClose = () => {
+        this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2},this.props.router.push('/'));
+    };
     render() {
+        const actions = [
+            <FlatButton
+                label="Done"
+                primary={true}
+                keyboardFocused={true}
+                onTouchTap={this.handleClose}
+            />,
+        ];
         const { finished, stepIndex } = this.state;
         const { headings } = this.state.selectedJson;
         return (
@@ -149,72 +164,77 @@ export default class MainJobForm extends React.Component<any, any>{
                     <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>
 
                         <Step>
-                            <StepButton completed={stepIndex===0?false:this.state.visited.indexOf(0) !== -1} onClick={()=>this.setState({stepIndex:0})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.applicationInformation}</StepButton>
+                            <StepButton completed={stepIndex === 0 ? false : this.state.visited.indexOf(0) !== -1} onClick={() => this.setState({ stepIndex: 0 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.applicationInformation}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===1?false:this.state.visited.indexOf(1) !== -1} disabled={this.state.visited.indexOf(0) === -1} onClick={()=>this.setState({stepIndex:1})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.jobLocation}</StepButton>
+                            <StepButton completed={stepIndex === 1 ? false : this.state.visited.indexOf(1) !== -1} disabled={this.state.visited.indexOf(0) === -1} onClick={() => this.setState({ stepIndex: 1 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.jobLocation}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===2?false:this.state.visited.indexOf(2) !== -1} disabled={this.state.visited.indexOf(1) == -1} onClick={()=>this.setState({stepIndex:2})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.educationTraining}</StepButton>
+                            <StepButton completed={stepIndex === 2 ? false : this.state.visited.indexOf(2) !== -1} disabled={this.state.visited.indexOf(1) == -1} onClick={() => this.setState({ stepIndex: 2 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.educationTraining}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===3?false:this.state.visited.indexOf(3) !== -1} disabled={this.state.visited.indexOf(2) == -1} onClick={()=>this.setState({stepIndex:3})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.employementHistory}</StepButton>
+                            <StepButton completed={stepIndex === 3 ? false : this.state.visited.indexOf(3) !== -1} disabled={this.state.visited.indexOf(2) == -1} onClick={() => this.setState({ stepIndex: 3 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.employementHistory}</StepButton>
                         </Step>
                         <Step>
-                           <StepButton completed={stepIndex===4?false:this.state.visited.indexOf(4) !== -1} disabled={this.state.visited.indexOf(3) == -1} onClick={()=>this.setState({stepIndex:4})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.personalInformation}</StepButton>
+                            <StepButton completed={stepIndex === 4 ? false : this.state.visited.indexOf(4) !== -1} disabled={this.state.visited.indexOf(3) == -1} onClick={() => this.setState({ stepIndex: 4 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.personalInformation}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===5?false:this.state.visited.indexOf(5) !== -1} disabled={this.state.visited.indexOf(4) == -1} onClick={()=>this.setState({stepIndex:5})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.lightIndustrialSkills}</StepButton>
+                            <StepButton completed={stepIndex === 5 ? false : this.state.visited.indexOf(5) !== -1} disabled={this.state.visited.indexOf(4) == -1} onClick={() => this.setState({ stepIndex: 5 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.lightIndustrialSkills}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===6?false:this.state.visited.indexOf(6) !== -1} disabled={this.state.visited.indexOf(5) == -1} onClick={()=>this.setState({stepIndex:6})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.media}</StepButton>
+                            <StepButton completed={stepIndex === 6 ? false : this.state.visited.indexOf(6) !== -1} disabled={this.state.visited.indexOf(5) == -1} onClick={() => this.setState({ stepIndex: 6 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.media}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===7?false:this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={()=>this.setState({stepIndex:7})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.equalOpportunity}</StepButton>
+                            <StepButton completed={stepIndex === 7 ? false : this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={() => this.setState({ stepIndex: 7 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.equalOpportunity}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===8?false:this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={()=>this.setState({stepIndex:8})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.workHours}</StepButton>
+                            <StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.workHours}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===9?false:this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={()=>this.setState({stepIndex:9})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.communication}</StepButton>
+                            <StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.communication}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===10?false:this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={()=>this.setState({stepIndex:10})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.transportation}</StepButton>
+                            <StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.transportation}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===11?false:this.state.visited.indexOf(11) !== -1} disabled={this.state.visited.indexOf(10) == -1} onClick={()=>this.setState({stepIndex:11})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.references}</StepButton>
+                            <StepButton completed={stepIndex === 11 ? false : this.state.visited.indexOf(11) !== -1} disabled={this.state.visited.indexOf(10) == -1} onClick={() => this.setState({ stepIndex: 11 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.references}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex===12?false:this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={()=>this.setState({stepIndex:12})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}>{headings.certification}</StepButton>
+                            <StepButton completed={stepIndex === 12 ? false : this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={() => this.setState({ stepIndex: 12 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.certification}</StepButton>
                         </Step>
-                        
+
 
                     </Stepper>
                 </div>
 
                 <div className="sm-stepper">
                     <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}  >
-                        <Step><StepButton completed={stepIndex===0?false:this.state.visited.indexOf(0) !== -1} onClick={()=>this.setState({stepIndex:0})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===1?false:this.state.visited.indexOf(1) !== -1} disabled={this.state.visited.indexOf(0) === -1} onClick={()=>this.setState({stepIndex:1})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===2?false:this.state.visited.indexOf(2) !== -1} disabled={this.state.visited.indexOf(1) == -1} onClick={()=>this.setState({stepIndex:2})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===3?false:this.state.visited.indexOf(3) !== -1} disabled={this.state.visited.indexOf(2) == -1} onClick={()=>this.setState({stepIndex:3})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===4?false:this.state.visited.indexOf(4) !== -1} disabled={this.state.visited.indexOf(3) == -1} onClick={()=>this.setState({stepIndex:4})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===5?false:this.state.visited.indexOf(5) !== -1} disabled={this.state.visited.indexOf(4) == -1} onClick={()=>this.setState({stepIndex:5})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===6?false:this.state.visited.indexOf(6) !== -1} disabled={this.state.visited.indexOf(5) == -1} onClick={()=>this.setState({stepIndex:6})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===7?false:this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={()=>this.setState({stepIndex:7})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===8?false:this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={()=>this.setState({stepIndex:8})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===9?false:this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={()=>this.setState({stepIndex:9})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===10?false:this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={()=>this.setState({stepIndex:10})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===11?false:this.state.visited.indexOf(11) !== -1} disabled={this.state.visited.indexOf(10) == -1} onClick={()=>this.setState({stepIndex:11})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex===12?false:this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={()=>this.setState({stepIndex:12})} style={{ backgroundColor: 'rgba(0,0,0,0)'  }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 0 ? false : this.state.visited.indexOf(0) !== -1} onClick={() => this.setState({ stepIndex: 0 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 1 ? false : this.state.visited.indexOf(1) !== -1} disabled={this.state.visited.indexOf(0) === -1} onClick={() => this.setState({ stepIndex: 1 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 2 ? false : this.state.visited.indexOf(2) !== -1} disabled={this.state.visited.indexOf(1) == -1} onClick={() => this.setState({ stepIndex: 2 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 3 ? false : this.state.visited.indexOf(3) !== -1} disabled={this.state.visited.indexOf(2) == -1} onClick={() => this.setState({ stepIndex: 3 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 4 ? false : this.state.visited.indexOf(4) !== -1} disabled={this.state.visited.indexOf(3) == -1} onClick={() => this.setState({ stepIndex: 4 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 5 ? false : this.state.visited.indexOf(5) !== -1} disabled={this.state.visited.indexOf(4) == -1} onClick={() => this.setState({ stepIndex: 5 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 6 ? false : this.state.visited.indexOf(6) !== -1} disabled={this.state.visited.indexOf(5) == -1} onClick={() => this.setState({ stepIndex: 6 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 7 ? false : this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={() => this.setState({ stepIndex: 7 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 11 ? false : this.state.visited.indexOf(11) !== -1} disabled={this.state.visited.indexOf(10) == -1} onClick={() => this.setState({ stepIndex: 11 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        <Step><StepButton completed={stepIndex === 12 ? false : this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={() => this.setState({ stepIndex: 12 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                     </Stepper>
                 </div>
                 <div className="stepper-content">
                     {finished ? (
-                        <p>You're all set! We will be in touch
-                            <Link to="/">
-                                 Click Here</Link>
-                        </p>) : (
+                        <Dialog
+                            title="Congratulations!"
+                            actions={actions}
+                            modal={false}
+                            open={this.state.open}
+                            onRequestClose={this.handleClose}
+                        >
+                            You're all set! We will be in touch
+        </Dialog>) : (
 
                             <div>
                                 <div>{this.getStepContent(stepIndex)}</div>
@@ -225,4 +245,6 @@ export default class MainJobForm extends React.Component<any, any>{
         );
     }
 }
+
+export default withRouter(MainJobForm);
 
