@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlatButton } from 'material-ui'; 
 
-export class SignupActionButton extends React.Component <any,any>{
+export class SubmitActionButton extends React.Component <any,any>{
     render(){
 
         return (
