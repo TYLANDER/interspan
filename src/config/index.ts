@@ -17,4 +17,4 @@ let devConfig = {
     }
 }
 
-export default devConfig;
+export default config;

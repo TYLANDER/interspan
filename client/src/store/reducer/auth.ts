@@ -18,12 +18,12 @@ function AuthReducer(state = INITIAL_STATE, action: IACTION) {
     switch (action.type) {
 
         case AuthActions.SIGNUP:
-            return {...state, isProcessing: true };
+            return {...state, isProcessing: true , isError:{status:false,msg:''}};
         case AuthActions.SIGNUP_SUCCESS:
             return {...state, isProcessing: false, isRegistered: true};
         case AuthActions.SIGNUP_FAILER:
-            console.log('SIGNUP_FAILER .....', {...state, isProcessing: false, isError: action.payload });
-            return {...state, isProcessing: false, isError: action.payload };
+            console.log('SIGNUP_FAILER .....', {...state, isProcessing: false, isError:{status: true , msg:action.payload}});
+            return {...state, isProcessing: false, isError:{status: true , msg:action.payload}};
 
         case AuthActions.LOGIN:
             return {...state, isProcessing: true, isError:{status:false,msg:''} };

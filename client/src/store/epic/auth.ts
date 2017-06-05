@@ -35,7 +35,7 @@ export default class AuthEpic {
                         if(response.err){
                             return Observable.of({
                                 type: AuthActions.SIGNUP_FAILER,
-                                payload: response
+                                payload: response.err
                             });    
                         }
                         return Observable.of({

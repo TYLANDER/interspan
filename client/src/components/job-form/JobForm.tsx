@@ -17,7 +17,7 @@ import Transportation from './transportation/Transportation';
 import References from './references/References';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import {withRouter} from "react-router"
+import {withRouter,browserHistory} from "react-router"
 
 class MainJobForm extends React.Component<any, any>{
 
@@ -145,7 +145,9 @@ class MainJobForm extends React.Component<any, any>{
     }
 
     handleClose = () => {
-        this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2},this.props.router.push('/'));
+        
+        this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2});
+        browserHistory.push('/');
     };
     render() {
         const actions = [
