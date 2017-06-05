@@ -34,8 +34,8 @@ class Signup extends React.Component<any, any> {
     };
 
     componentWillMount() {
-        if (!this.props.authObj.isAuthenticated)
-            this.props.authLogin({ username: 'Zeeshan Hanif' });
+        // if (!this.props.authObj.isAuthenticated)
+            // this.props.authLogin({ username: 'Zeeshan Hanif' });
     }
     handleHomePage() {
         browserHistory.push('/');
@@ -43,6 +43,9 @@ class Signup extends React.Component<any, any> {
     componentWillReceiveProps(newProps: any) {
         newProps.authObj.isProcessing ? this.setState({ loading: true }) : this.setState({ loading: false });
         newProps.authObj.isRegistered ? browserHistory.push('/job') : null;
+        newProps.authObj.isError.status ? this.setState({step:0},()=>{
+            alert("Email Already Exist");
+        }) :null;
     }
     
     handleJobPage = () => {
