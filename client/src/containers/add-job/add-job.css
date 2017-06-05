@@ -1,0 +1,62 @@
+.add-job-container .paper-container{
+    max-width: 500px;
+    display: block;
+    margin:0 auto;
+    margin-top: 50px;
+}
+.add-job-container .fields-container{
+    padding: 30px;
+}
+.add-job-container .fields-container label {
+    font-weight: 500;
+}
+.add-job-container .fields-container .title{
+    color: #bbbbbb;
+    font-weight: 500;
+    font-family: "SFUI_Text";
+    font-Size:14px
+}
+.add-job-container .paper-container .footer-container{
+    text-align: right;
+    padding: 5px;
+    color: black;
+}
+.add-job-container .paper-container .footer-container .back-btn{
+    float: left;
+}
+.add-job-container .paper-container .footer-container .btn-icon{
+    height: 23px;
+    margin-bottom: 2px;
+}
+.add-job-container .paper-container .footer-container .back{
+    margin-right: -10px !important;
+}
+.add-job-container .paper-container .footer-container .continue{
+    margin-left: -7px !important;
+}
+.add-job-container .md-screen{
+        display: block;
+}
+.add-job-container .sm-screen{
+    display: none;
+    margin-bottom: 50px;
+}
+.add-job-container .sm-screen .footer-container{
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ededed;
+
+}
+
+@media (max-width: 600px){
+    .add-job-container .md-screen{
+        display: none !important;
+    }
+    .add-job-container .sm-screen{
+        display: block !important;
+        margin-top: -44px;
+    }
+}
