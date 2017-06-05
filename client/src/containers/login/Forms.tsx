@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'material-ui';
 import { SignupActionButton } from "./actionButtons";
+import {Link} from "react-router";
 
 class Forms extends React.Component<any, any> {
     state: any = {
@@ -136,7 +137,7 @@ class Forms extends React.Component<any, any> {
     render() {
         return (
             <div className="fields-container">
-                <label className="title">Enter Email Address</label>
+                <label className="title">Login</label>
                 <TextField
                     ref="email"
                     errorText={this.state.email_error ? this.state.email_message : ''}
@@ -162,7 +163,6 @@ class Forms extends React.Component<any, any> {
                     }}
                     floatingLabelText="Password"
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
-
                 />
 
                 {/*<TextField
@@ -178,6 +178,7 @@ class Forms extends React.Component<any, any> {
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
 
                 />*/}
+                <Link to="/signup" style={{color:"rgb(46, 70, 158)"}}>Create new account</Link>
                 <SignupActionButton clicked={this.validation.bind(this)} />
             </div>
         );

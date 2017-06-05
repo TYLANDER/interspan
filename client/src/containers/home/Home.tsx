@@ -50,7 +50,7 @@ class Home extends React.Component<any, any> {
     }
 
     handleJobApply() {
-        browserHistory.push('/signup');
+        browserHistory.push('/login');
     }
 
     render() {
