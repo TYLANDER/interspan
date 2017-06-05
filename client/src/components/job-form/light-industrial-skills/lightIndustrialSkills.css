@@ -1,6 +1,6 @@
 .job-applicant-container .inline-radio{
     display: inline-block !important;
-    width: 150px !important;
+    width: 110px !important;
 }
 .job-applicant-container .inline-fields{
     float: left;
@@ -10,5 +10,36 @@
 }
 .job-applicant-container .inline{
     display: inline;
-    
+}
+
+@media (max-width:1213px){
+    .job-applicant-container .sections{
+        display:grid;
+        grid-template-columns: repeat(3, 0fr);
+        grid-auto-rows: minmax(55px, auto);
+        grid-gap:2px;
+}
+.job-applicant-container .inline-fields{
+    float: left;
+    grid-column:4;
+}
+    .job-applicant-container .right{
+   grid-column:7;
+  float:right
+}
+}
+@media (max-width:601px){
+
+    .job-applicant-container .right{
+    grid-column:8;
+    float:right;
+    }
+    .job-applicant-container .inline-radio  {
+    width:58px !important
+    }
+    .job-applicant-container .inline-radio > div > div {
+    width: 50px !important;
+    margin-right:-22px !important
+    }
+
 }

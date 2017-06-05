@@ -166,6 +166,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                 </RadioButtonGroup>
 
                 <br />
+                <div className="sections">
                 <label className="inline-fields">{questions.four}</label>
                 <RadioButtonGroup name="lift_weight" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
@@ -387,6 +388,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         labelStyle={{color: "gray",fontWeight: 500}}
                     />
                 </RadioButtonGroup>
+                </div>
                 <br /><br />
 
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
