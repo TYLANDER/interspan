@@ -74,9 +74,12 @@ class NavBar extends React.Component<any, any> {
             this.props.router.location.pathname === "/job" ?
                 <div style={{ marginTop: "-6px", display: "inline" }}>
                     {this.state.isLogin ? <Chip style={{ display: "inline-flex", backgroundColor: "transparent", margin: "-22px" }} labelColor="white" labelStyle={{ fontWeight: 500, fontSize: "16px" }}>
-                        Welcome, {username[0].first_name}
+                        
+                        {username[0].first_name}
                         </Chip>
-                        :""}
+                        :<Chip style={{ display: "inline-flex", backgroundColor: "transparent", margin: "-22px" }} labelColor="white" labelStyle={{ fontWeight: 500, fontSize: "16px" }}>
+                            N/A
+                            </Chip>}
             <SelectField
                             className="lang-select"
                             labelStyle={{ color: "white", textOverflow: "none", paddingLeft: "30px" }}

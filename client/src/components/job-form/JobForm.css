@@ -26,6 +26,7 @@
 @media (min-width: 1050px){
     .stepper-content{
         width: calc(100vw / 12 * 8) !important;
+        max-width:1110px;
         margin: 0 auto !important;
     }
 }
