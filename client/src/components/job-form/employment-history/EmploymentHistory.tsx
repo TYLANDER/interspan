@@ -45,11 +45,12 @@ class EmploymentHistory extends React.Component<any, any>{
     render() {
         const { companyName, city, state, nameOfSupervisor, stateJobTitle, telephone, employed, from, 
             to, payRate, start, end, reasonForleaving, doNotContact, employeeNumber, note, reason } = this.state.selectedJson;
-        var history = [];
+        let history = [];
         for (var i = 0; i < this.state.employed; i++) {
             history.push(
                 <div key={i}>
-                    <h3> {i + 1} - Employment History </h3><br />
+                    { this.state.employed > 1? <h3> {i + 1} - Employment History </h3> : ""}
+                    
                     <TextField
                         hintText={companyName}
                         floatingLabelText={companyName}

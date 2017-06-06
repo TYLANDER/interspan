@@ -140,7 +140,7 @@ class NavBar extends React.Component<any, any> {
                     >
                             <Menu>
                                 <MenuItem primaryText={username[0].first_name} />
-                                <MenuItem primaryText="log Out" onClick={this.logOut} />
+                                <MenuItem primaryText="Logout" onClick={this.logOut} />
                             </Menu>
                         </IconMenu>
                     </div>
@@ -188,7 +188,7 @@ class NavBar extends React.Component<any, any> {
                             <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
                             <div onClick={this.handleStaticUrl.bind(this, 'employee', true)}>For Employers</div>
                             <div onClick={this.handleStaticUrl.bind(this, 'hire', true)}>What we hire for</div>
-                            {this.state.isLogin?<div onClick={this.logOut.bind(this, 'logOut', true)}>Log Out</div>:<div onClick={this.handleStaticUrl.bind(this, 'login', true)}>Login</div>}
+                            {this.state.isLogin?<div onClick={this.logOut.bind(this, 'logOut', true)}>Logout</div>:<div onClick={this.handleStaticUrl.bind(this, 'login', true)}>Login</div>}
 
                             <div className="menu-info contact-info">
                                 <p className="title">Office Hours</p>
