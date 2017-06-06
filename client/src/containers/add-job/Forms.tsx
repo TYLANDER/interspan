@@ -8,7 +8,6 @@ class Forms extends React.Component<any, any> {
         title_message: '',
         title_success: false,
         title_val: '',
-        value: 1,
 
         location_message: '',
         location_error: false,
@@ -18,7 +17,17 @@ class Forms extends React.Component<any, any> {
         description_message: '',
         description_error: false,
         description_success: false,
-        description_val: ''
+        description_val: '',
+
+        compensation_message: '',
+        compensation_error: false,
+        compensation_success: false,
+        compensation_val: '',
+
+        duration: 'part-time',
+
+        toTime:"4:00PM",
+        fromTime:"8:00AM"
 
     };
     // title Validation
@@ -27,28 +36,16 @@ class Forms extends React.Component<any, any> {
             this.setState({
                 title_error: true,
                 title_message: 'title field is required',
-                title_success: false
             });
-            return;
         }
-        let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        let isValidtitle = pattern.test(value);
-        if (!isValidtitle) {
+        else {
             this.setState({
-                title_error: true,
-                title_message: 'Please enter valid title',
-                title_success: false
+                title_error: false,
+                title_success: true,
+                title_val: value
             });
-            return;
         }
-        this.setState({
-            title_error: false,
-            title_success: true,
-            title_val: value.toLowerCase()
-        });
-        // this.props.collection({ title: value });
     }
-
     // Confirm location Validation
     islocation(value: any) {
         if (value.trim() == '') {
@@ -65,7 +62,24 @@ class Forms extends React.Component<any, any> {
             });
         }
     }
-     isDescription(value: any) {
+
+    isCompensation(value: any) {
+        if (value.trim() == '') {
+            this.setState({
+                compensation_error: true,
+                compensation_message: 'compensation is required',
+            });
+        }
+        else {
+            this.setState({
+                compensation_error: false,
+                compensation_success: true,
+                compensation_val: value
+            });
+        }
+    }
+
+    isDescription(value: any) {
         if (value.trim() == '') {
             this.setState({
                 description_error: true,
@@ -74,19 +88,19 @@ class Forms extends React.Component<any, any> {
         }
         else {
             this.setState({
-               description_error: false,
+                description_error: false,
                 description_success: true,
                 description_val: value
             });
         }
     }
 
-    handleChange = (event: any, index: any, value: any) => this.setState({ value });
+    handleChange = (event: any, index: any, duration: any) => this.setState({ duration });
 
 
     validation() {
-        if (this.state.title_val.trim() == '' || this.state.location_val.trim() == '' || this.state.description_val.trim()== '') {
-            if (this.state.title_val.trim() == '' && this.state.location_val.trim() == '' && this.state.description_val.trim()== '') {
+        if (this.state.title_val.trim() == '' || this.state.location_val.trim() == '' || this.state.description_val.trim() == '' || this.state.compensation_val.trim() == '') {
+            if (this.state.title_val.trim() == '' && this.state.location_val.trim() == '' && this.state.description_val.trim() == '' && this.state.compensation_val.trim() == '') {
                 this.setState({
                     title_error: true,
                     title_message: 'Please enter title',
@@ -99,6 +113,10 @@ class Forms extends React.Component<any, any> {
                     description_error: true,
                     description_message: 'Please enter description',
                     description_success: false,
+
+                    compensation_error: true,
+                    compensation_message: 'Please enter compensation',
+                    compensation_success: false,
 
                 });
             }
@@ -116,18 +134,51 @@ class Forms extends React.Component<any, any> {
                     location_success: false,
                 });
             }
-             else if (this.state.description_val.trim() == '') {
+            else if (this.state.description_val.trim() == '') {
                 this.setState({
                     description_error: true,
                     description_message: 'Please enter description',
                     description_success: false,
                 });
             }
+            else if (this.state.compensation_val.trim() == '') {
+                this.setState({
+                    compensation_error: true,
+                    compensation_message: 'Please enter compensation',
+                    compensation_success: false,
+                });
+            }
         }
-        else if (!this.state.title_error && !this.state.location_error && !this.state.description_error) {
-            this.props.clickEvent({ title: this.state.title_val, location: this.state.location_val , description: this.state.description_val })
+        else if (!this.state.title_error && !this.state.location_error && !this.state.description_error && !this.state.compensation_error) {
+            this.props.clickEvent({ title: this.state.title_val, location: this.state.location_val, description: this.state.description_val, compensation: this.state.compensation_val, duration:this.state.duration , hours:this.state.toTime + "-" + this.state.fromTime})
         }
 
+    }
+    handleChangeToTime = (event:any,date:any) => {
+        interface toTime{
+            hour:string,
+            minute: string
+        }
+        let options:toTime= {
+            hour: "numeric",
+            minute: "numeric"
+        }
+        this.setState({toTime:new Date(date).toLocaleString("en-US",options).replace(" ","")})
+        
+
+    }
+
+    handleChangeFromTime = (event:any, date:any)=>{
+        interface fromTime{
+            hour: string,
+            minute: string
+        }
+
+        let options:fromTime = {
+            hour: 'numeric',
+            minute: 'numeric'
+        }
+        this.setState({fromTime: new Date(date).toLocaleString('en-Us',options).replace(" ","")})
     }
     render() {
         return (
@@ -161,21 +212,25 @@ class Forms extends React.Component<any, any> {
                 />
                 <SelectField
                     floatingLabelText="Duration"
-                    value={this.state.value}
+                    value={this.state.duration}
                     onChange={this.handleChange}
                 >
-                    <MenuItem value={1} primaryText="part-time" />
-                    <MenuItem value={2} primaryText="half-time" />
-                    <MenuItem value={3} primaryText="full-time" />
+                    <MenuItem value={'part-time'} primaryText="part-time" />
+                    <MenuItem value={'half-time'} primaryText="half-time" />
+                    <MenuItem value={'full-time'} primaryText="full-time" />
 
                 </SelectField>
                 <br /><br />
                 <label> Hours </label>
                 <TimePicker
                     hintText="From"
+                    defaultTime={new Date(2017, 12,12 , 8, 0, 0)}
+                    onChange={this.handleChangeFromTime}
                 />
                 <TimePicker
                     hintText="To"
+                    defaultTime={new Date(2017, 12,12 , 16, 0, 0)}
+                    onChange={this.handleChangeToTime}
                 />
                 <TextField
                     hintText=""
@@ -188,6 +243,19 @@ class Forms extends React.Component<any, any> {
                         this.isDescription(event.target.value);
                     }}
                     floatingLabelText="Job Description"
+                    floatingLabelStyle={this.state.description_success ? styles.floating : styles.floatingFailure}
+                />
+                <TextField
+                    hintText=""
+                    errorText={this.state.compensation_error ? this.state.compensation_message : ''}
+                    fullWidth={true}
+                    ref="compensation"
+                    type="compensation"
+                    onFocus={() => console.log('FOCUS')}
+                    onBlur={(event: any) => {
+                        this.isCompensation(event.target.value);
+                    }}
+                    floatingLabelText="Compensation"
                     floatingLabelStyle={this.state.description_success ? styles.floating : styles.floatingFailure}
                 />
                 <SubmitActionButton clicked={this.validation.bind(this)} />

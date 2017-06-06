@@ -19,6 +19,7 @@ import JobEpic from './epic/jobs';
 export const rootEpic = combineEpics(
     AuthEpic.loginEpic,
     JobEpic.getAllJobsEpic,
+    JobEpic.postJobEpic,
     AuthEpic.signupEpic
 );
 

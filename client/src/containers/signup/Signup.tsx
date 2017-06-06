@@ -33,10 +33,6 @@ class Signup extends React.Component<any, any> {
         step: 0
     };
 
-    componentWillMount() {
-        // if (!this.props.authObj.isAuthenticated)
-            // this.props.authLogin({ username: 'Zeeshan Hanif' });
-    }
     handleHomePage() {
         browserHistory.push('/');
     }

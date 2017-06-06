@@ -7,5 +7,8 @@ export default class path {
 
     static SIGNUP = path.baseUrl+"api/user/signup";
     static LOGIN = path.baseUrl+"api/user/login";
+
+    static GET_JOB = path.baseUrl+"api/jobs/jobs";
+    static POST_JOB = path.baseUrl+"api/jobs/jobs";
     
 }

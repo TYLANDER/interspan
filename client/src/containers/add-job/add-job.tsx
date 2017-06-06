@@ -7,7 +7,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Forms from './Forms';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-// import AuthActions from "../../store/action/auth";
+import JobActions from "../../store/action/jobs";
 
 class AddJob extends React.Component<any, any> {
 
@@ -28,7 +28,7 @@ class AddJob extends React.Component<any, any> {
         isAuthenticated: false,
         userObj: {},
         loading: false,
-        error:false
+        error: false
     };
 
     componentWillMount() {
@@ -39,22 +39,17 @@ class AddJob extends React.Component<any, any> {
         browserHistory.push('/');
     }
     componentWillReceiveProps(newProps: any) {
-        newProps.authObj.isProcessing ? this.setState({ loading: true }) : this.setState({ loading: false });
-        newProps.authObj.isError.status?this.setState({error:true}): this.setState({error:false})
-        newProps.authObj.isAuthenticated ? browserHistory.push('/job') : null;
+        newProps.jobObj.isLoading ? this.setState({ loading: true }) : this.setState({ loading: false });
+        newProps.jobObj.isError? this.setState({ error: true }) : this.setState({ error: false })
+        newProps.jobObj.success ? browserHistory.push('/') : null;
     }
-    
-    // handleJobPage = () => {
-    //     this.props.signUp(this.state.userObj);
 
-    // }
 
-    handleNext = (values:any) => {
+    handleNext = (values: any) => {
         let users = Object.assign(this.state.userObj, values);
-
         //returning form value
         console.log(users);
-        this.props.login(users);
+        // this.props.postJob(users);
     }
 
     formCard = () => {
@@ -62,7 +57,7 @@ class AddJob extends React.Component<any, any> {
     }
 
     render() {
-        {this.state.error?alert(this.props.authObj.isError.msg):null}
+        { this.state.error ? alert(this.props.authObj.isError.msg) : null }
         return (
             <MuiThemeProvider muiTheme={this.muiTheme}>
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
@@ -83,11 +78,14 @@ class AddJob extends React.Component<any, any> {
 
 }
 const mapStateToProps = (state: any) => {
-    return { };
+    return {
+        jobObj: state.jobReducer
+
+    };
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-
+        postJob: (payload:any) => dispatch(JobActions.addJobs(payload))
     };
 };
 
