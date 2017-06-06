@@ -11,12 +11,9 @@ class JobLocation extends React.Component<any, any>{
             location: false,
             selectedJson:this.props.jsonData,
             form:{
-                
-                position: "",
-                otherDesc: "",  
-                site: "", 
-                siteDesc: "",
-                payRateExpected:""
+                position_desired: "",
+                location_preference: "", 
+                pay_rate:""
             }
         };
     }
@@ -41,7 +38,7 @@ class JobLocation extends React.Component<any, any>{
         return(
             <div className="job-applicant-container">
                  <label className="title">{positionDesired} </label>
-                <RadioButtonGroup name="position" onChange={(event: any) => {
+                <RadioButtonGroup name="position_desired" onChange={(event: any) => {
                     this.handleTargetEvents(event);
                     event.target.value === 'other' ? this.setState({position: true }) : this.setState({position: false })}}>
 
@@ -64,7 +61,7 @@ class JobLocation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 {this.state.position ? 
                 <TextField
-                    name="otherDesc"
+                    name="location_preference"
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
@@ -72,7 +69,7 @@ class JobLocation extends React.Component<any, any>{
                     onBlur={this.handleTargetEvents}
                 /> : ''}
                  <label className="title">{locationPreference} </label>
-                <RadioButtonGroup name="site" onChange={(event: any) => {
+                <RadioButtonGroup name="location_preference" onChange={(event: any) => {
                     this.handleTargetEvents(event);
                     event.target.value === 'site' ? this.setState({location: true }) : this.setState({location: false })}}>
 
@@ -87,7 +84,7 @@ class JobLocation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 {this.state.location ? 
                 <TextField
-                    name="siteDesc"
+                    name="location_preference"
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
@@ -95,7 +92,7 @@ class JobLocation extends React.Component<any, any>{
                     onBlur={this.handleTargetEvents}
                 /> : ''}
                 <TextField
-                    name="payRateExpected"
+                    name="pay_rate"
                     hintText={perHour}
                     onFocus={() => { }}
                     fullWidth={true}

@@ -39,6 +39,7 @@ class MainJobForm extends React.Component<any, any>{
     }
 
     handleNext = (e: any) => {
+        console.log(e);
         const { stepIndex } = this.state;
         console.log(this.state.visited)
         this.setState({
