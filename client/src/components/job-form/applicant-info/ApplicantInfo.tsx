@@ -11,21 +11,20 @@ class ApplicantInfo extends React.Component<any, any>{
         employee: false,
         selectedJson:this.props.jsonData,
         form: {
-            address: "",
+            street_address: "",
             city: "",
             state:"",
             zip: "",
-            homeTelephone: "",
-            alternateTelephone: "",
-            cellularTelephone: "",
+            home_telephone: "",
+            alternate_telephone: "",
+            cellular_telephone: "",
             email: "",
-            areYou18: "",
-            appliedBefore: "",
-            appliedDate: "",
-            legallyEligible: "",
-            beginWork: ""
-        }
-
+            years_old: "",
+            employement: "",
+            eligible: "",
+            begin_work: ""
+        },
+        appliedBefore: ""
     };
 
     componentWillReceiveProps(nextProp: any) {
@@ -50,7 +49,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     multiLine={true}
                     floatingLabelText={streetAddress}
                     onBlur={(event: any) => {
-                        formRef.address = event.target.value
+                        formRef.street_address = event.target.value
                         this.setState(formRef);
                     }}
                 />
@@ -92,7 +91,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText={homeTelephone}
                     onBlur={(event: any) => {
-                        formRef.homeTelephone = event.target.value
+                        formRef.home_telephone = event.target.value
                         this.setState(formRef);
                     }}
                 />
@@ -103,7 +102,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText={alternateTelephone}
                     onBlur={(event: any) => {
-                        formRef.alternateTelephone = event.target.value
+                        formRef.alternate_telephone = event.target.value
                         this.setState(formRef);
                     }}
                 />
@@ -114,7 +113,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText={cellularTelephone}
                     onBlur={(event: any) => {
-                        formRef.cellularTelephone = event.target.value
+                        formRef.cellular_telephone = event.target.value
                         this.setState(formRef);
                     }}
                 />
@@ -131,7 +130,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 <br />
                 <b>{areYou18} </b>
                 <RadioButtonGroup name="age"  onChange={(event: any) => {
-                        formRef.areYou18 = event.target.value
+                        formRef.years_old = event.target.value
                         this.setState(formRef)}}>
 
                     <RadioButton
@@ -145,7 +144,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <b>{employment} </b>
                 <RadioButtonGroup name="employement" onChange={(event: any) => {
-                        formRef.appliedBefore = event.target.value
+                        this.state.appliedBefore = event.target.value
                         this.setState(formRef);
                         event.target.value === 'yes' ? this.setState({ employee: true }) : this.setState({ employee: false })}}>
                     <RadioButton
@@ -160,14 +159,14 @@ class ApplicantInfo extends React.Component<any, any>{
                 {this.state.employee ? 
                     <DatePicker floatingLabelText={employementYes} 
                         onChange={(event: any,date:any) => {
-                            formRef.appliedDate = date.toISOString()
+                            formRef.employement = date.toISOString()
                             this.setState(formRef);
                         }}
                     /> 
                     : ''}
                 <b>{legallyEligible}</b>
                 <RadioButtonGroup name="eligible" onChange={(event: any) => {
-                        formRef.legallyEligible = event.target.value
+                        formRef.eligible = event.target.value
                         this.setState(formRef)}}>
 
                     <RadioButton
@@ -185,7 +184,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     fullWidth={true}
                     floatingLabelText={workStatus}
                     onBlur={(event: any) => {
-                        formRef.beginWork = event.target.value
+                        formRef.begin_work = event.target.value
                         this.setState(formRef);
                     }}
                 />
