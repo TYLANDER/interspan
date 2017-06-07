@@ -37,11 +37,36 @@ class EmploymentHistory extends React.Component<any, any>{
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-    handleTargetEvents = (event: any) =>{
+   handleTargetEvents = (arrayRef:string, ind:number, event?: any) =>{
         let formRef= this.state.form;
-        formRef[event.target.name]= event.target.value;
-         this.setState(formRef);
+        if(arrayRef && Array.isArray(formRef[arrayRef]))
+            formRef[arrayRef][ind][event.target.name] = event.target.value;
+        else formRef[event.target.name]= event.target.value;
+        this.setState(formRef);
     }
+    handleHistoryDetails = (action: string)=>{
+        let formRef = this.state.form["EmploymentHistory"];
+        if(action === "add"){
+            formRef.push({
+                    company_name: "",
+                    city: "",
+                    supervisor_name: "",
+                    job_title: "",
+                    telephone: "",
+                    employment_start: "",
+                    employment_end: "",
+                    pay_rate_start: "",
+                    pay_rate_end: "",
+                    leaving_reason: ""
+                }); 
+            this.setState({ employed: this.state.employed + 1,formRef })
+        }
+        else{
+            formRef.pop();
+            this.setState({ employed: this.state.employed - 1,formRef })
+        }
+    }
+
     render() {
         const { companyName, city, state, nameOfSupervisor, stateJobTitle, telephone, employed, from, 
             to, payRate, start, end, reasonForleaving, doNotContact, employeeNumber, note, reason } = this.state.selectedJson;
@@ -56,21 +81,21 @@ class EmploymentHistory extends React.Component<any, any>{
                         floatingLabelText={companyName}
                         fullWidth={true}
                         name="company_name"
-                        onBlur={this.handleTargetEvents}
+                        onBlur={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
                     />
                     <TextField
                         hintText={city + ' ' + state}
                         floatingLabelText={city + ' ' + state}
                         fullWidth={true}
                         name="city"
-                        onBlur={this.handleTargetEvents}
+                        onBlur={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
                     />
                     <TextField
                         hintText={nameOfSupervisor}
                         floatingLabelText={nameOfSupervisor}
                         fullWidth={true}
                         name="supervisor_name"
-                        onBlur={this.handleTargetEvents}
+                        onBlur={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
                     />
                     <TextField
                         hintText={stateJobTitle}
@@ -78,7 +103,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         multiLine={true}
                         fullWidth={true}
                         name="job_title"
-                        onBlur={this.handleTargetEvents}
+                        onBlur={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
                     />
                     <TextField
                         hintText={telephone}
@@ -86,21 +111,23 @@ class EmploymentHistory extends React.Component<any, any>{
                         multiLine={true}
                         fullWidth={true}
                         name="telephone"
-                        onBlur={this.handleTargetEvents}
+                        onBlur={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
                     />
                     <b>{employed}</b>
-                        <DatePicker floatingLabelText={from} name="employment_start"/>
-                        <DatePicker floatingLabelText={to} name="employment_end"/>
+                        <DatePicker floatingLabelText={from} name="employment_start" onChange={(val)=>
+                            this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
+                            />
+                        <DatePicker floatingLabelText={to} name="employment_end" onChange={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}/>
                     <b>{payRate} </b>
-                        <TextField type="number" floatingLabelText={start} name="pay_rate_start"/>
-                        <TextField type="number" floatingLabelText={end} name="pay_rate_end"/>
+                        <TextField type="number" floatingLabelText={start} name="pay_rate_start" onChange={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}/>
+                        <TextField type="number" floatingLabelText={end} name="pay_rate_end" onChange={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}/>
                     <TextField
                         hintText={reasonForleaving}
                         floatingLabelText={reasonForleaving}
                         multiLine={true}
                         fullWidth={true}
                         name="leaving_reason"
-                        onBlur={this.handleTargetEvents}
+                        onBlur={this.handleTargetEvents.bind(this,"EmploymentHistory",i)}
                     />
 
                 </div>);
@@ -109,8 +136,8 @@ class EmploymentHistory extends React.Component<any, any>{
             <div className="job-applicant-container">
                 {history}
                 <br />
-                <FlatButton label="Add" primary={true} onTouchTap={() => this.setState({ employed: this.state.employed + 1 })} />
-                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.employed === 1 ? null : this.setState({ employed: this.state.employed - 1 })} />
+                <FlatButton label="Add" primary={true} onTouchTap={() => this.handleHistoryDetails("add") } />
+                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete") } />
                 <br />
                 <br />
                 <label className="title">{note}</label>
@@ -123,14 +150,14 @@ class EmploymentHistory extends React.Component<any, any>{
                     floatingLabelText={employeeNumber}
                     fullWidth={true}
                     name="no_contact_num"
-                    onBlur={this.handleTargetEvents}
+                    onBlur={this.handleTargetEvents.bind(this,null,i)}
                 />
                 <TextField
                     floatingLabelText={reason}
                     fullWidth={true}
                     multiLine={true}
                     name="no_contact_reason"
-                    onBlur={this.handleTargetEvents}
+                    onBlur={this.handleTargetEvents.bind(this,null,i)}
                 />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
