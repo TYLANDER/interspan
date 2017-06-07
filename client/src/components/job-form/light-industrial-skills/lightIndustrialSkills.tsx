@@ -23,10 +23,8 @@ class lightIndustrialSkills extends React.Component<any, any>{
                 use_calculator: false,
                 use_pc: false,
                 operated_forklift: false,
-                forklift_experience: false,
                 certified_forklift: false,
                 operated_pallet_jack: false,
-                pallet_jack_experience: false,
                 steel_shoes: false
             }
         };
@@ -324,7 +322,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         onBlur={(event: any) => {this.handleTargetEvents(event)}}
                         fullWidth={true}
                         floatingLabelText={experience}
-                        name="forklift_experience"
+                        name="operated_forklift"
                     />
                     : null}
                 <br /><br />
@@ -368,7 +366,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         onBlur={(event: any) => {this.handleTargetEvents(event)}}
                         fullWidth={true}
                         floatingLabelText="Enter years of experience"
-                        name="pallet_jack_experience"
+                        name="operated_pallet_jack"
                     />
                     : null}
                 <br /><br />

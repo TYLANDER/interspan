@@ -9,10 +9,10 @@ class PersonalInfo extends React.Component<any, any>{
             convictedCrime: false,
             selectedJson: this.props.jsonData,
             form: {
-                employmentGap: "",
-                emergencyContact: "",
-                comittedCrime: false,
-                crimeDesc: ""
+                employment_history: "",
+                emergency_number: "",
+                emergency_name: "",
+                crime: ""
             }
         };
     }
@@ -41,7 +41,7 @@ class PersonalInfo extends React.Component<any, any>{
                     onBlur={this.handleTargetEvents}
                     fullWidth={true}
                     multiLine={true}
-                    name="employmentGap"
+                    name="employment_history"
                 />
                 <br />
                 <label className="title">{questions.two}</label>
@@ -49,12 +49,12 @@ class PersonalInfo extends React.Component<any, any>{
                 <TextField
                     floatingLabelText={questions.name}
                     onBlur={this.handleTargetEvents}
-                    name="emergencyName"
+                    name="emergency_name"
                 />
                 <TextField
                     floatingLabelText={questions.phone}
                     onBlur={this.handleTargetEvents}
-                    name="emergencyPhone"
+                    name="emergency_number"
                 />
 
                 <br />
@@ -63,12 +63,9 @@ class PersonalInfo extends React.Component<any, any>{
                     {questions.three}
                 </label>
 
-                <RadioButtonGroup name="comittedCrime" defaultSelected={'No'}
+                <RadioButtonGroup name="comittedCrimeBefore" defaultSelected={'No'}
                     onChange={(event: any) => {
                         (event.target.value === 'Yes' ? this.setState({ convictedCrime: true }) : this.setState({ convictedCrime: false }))
-                        let formRef = this.state.form;
-                        formRef.comittedCrime = this.state.convictedCrime;
-                        this.setState(formRef)
                     }}>
 
                     <RadioButton
@@ -88,7 +85,7 @@ class PersonalInfo extends React.Component<any, any>{
                             onBlur={this.handleTargetEvents}
                             fullWidth={true}
                             multiLine={true}
-                            name="crimeDesc"
+                            name="crime"
                         />
                     </div>
                     : null}

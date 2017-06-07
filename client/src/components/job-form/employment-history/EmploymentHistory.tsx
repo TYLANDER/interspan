@@ -10,19 +10,19 @@ class EmploymentHistory extends React.Component<any, any>{
             selectedJson:this.props.jsonData,
             form:{
                 EmploymentHistory: [{
-                    companyName: "",
+                    company_name: "",
                     city: "",
-                    nameOfSupervisor: "",
-                    stateJobTitle: "",
+                    supervisor_name: "",
+                    job_title: "",
                     telephone: "",
-                    EmploymentStart: "",
-                    EmploymentEnd: "",
-                    payRateStart: "",
-                    payRateEnd: "",
-                    reasonForleaving: ""
+                    employment_start: "",
+                    employment_end: "",
+                    pay_rate_start: "",
+                    pay_rate_end: "",
+                    leaving_reason: ""
                 }],
-                doNotContactNumber: "",
-                doNotContactReason: ""
+                no_contact_num: "",
+                no_contact_reason: ""
             }
         };
     }
@@ -55,7 +55,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         hintText={companyName}
                         floatingLabelText={companyName}
                         fullWidth={true}
-                        name="companyName"
+                        name="company_name"
                         onBlur={this.handleTargetEvents}
                     />
                     <TextField
@@ -69,7 +69,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         hintText={nameOfSupervisor}
                         floatingLabelText={nameOfSupervisor}
                         fullWidth={true}
-                        name="nameOfSupervisor"
+                        name="supervisor_name"
                         onBlur={this.handleTargetEvents}
                     />
                     <TextField
@@ -77,7 +77,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         floatingLabelText={stateJobTitle}
                         multiLine={true}
                         fullWidth={true}
-                        name="stateJobTitle"
+                        name="job_title"
                         onBlur={this.handleTargetEvents}
                     />
                     <TextField
@@ -89,17 +89,17 @@ class EmploymentHistory extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents}
                     />
                     <b>{employed}</b>
-                        <DatePicker floatingLabelText={from} name="EmploymentStart"/>
-                        <DatePicker floatingLabelText={to} name="EmploymentEnd"/>
+                        <DatePicker floatingLabelText={from} name="employment_start"/>
+                        <DatePicker floatingLabelText={to} name="employment_end"/>
                     <b>{payRate} </b>
-                        <TextField type="number" floatingLabelText={start} name="payRateStart"/>
-                        <TextField type="number" floatingLabelText={end} name="payRateEnd"/>
+                        <TextField type="number" floatingLabelText={start} name="pay_rate_start"/>
+                        <TextField type="number" floatingLabelText={end} name="pay_rate_end"/>
                     <TextField
                         hintText={reasonForleaving}
                         floatingLabelText={reasonForleaving}
                         multiLine={true}
                         fullWidth={true}
-                        name="reasonForleaving"
+                        name="leaving_reason"
                         onBlur={this.handleTargetEvents}
                     />
 
@@ -122,14 +122,14 @@ class EmploymentHistory extends React.Component<any, any>{
                 <TextField
                     floatingLabelText={employeeNumber}
                     fullWidth={true}
-                    name="doNotContactNumber"
+                    name="no_contact_num"
                     onBlur={this.handleTargetEvents}
                 />
                 <TextField
                     floatingLabelText={reason}
                     fullWidth={true}
                     multiLine={true}
-                    name="doNotContactReason"
+                    name="no_contact_reason"
                     onBlur={this.handleTargetEvents}
                 />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />

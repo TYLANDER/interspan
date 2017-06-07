@@ -30,11 +30,7 @@ class References extends React.Component<any, any>{
     }
     handleTargetEvents = (arrayRef:string, ind:number, event: any) =>{
         let formRef= this.state.form;
-        // let lastInd = formRef[arrayRef].length - 1;
-        //if()
         formRef[arrayRef][ind][event.target.name] = event.target.value;
-
-        // formRef.push(lastEntry);
          this.setState(formRef);
     }
     componentWillReceiveProps(nextProp: any) {
