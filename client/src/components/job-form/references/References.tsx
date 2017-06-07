@@ -38,22 +38,34 @@ class References extends React.Component<any, any>{
             selectedJson: nextProp.jsonData
         })
     }   
-    handleReferenceAdd = ()=>{
+    handleReference = (action: string)=>{
         let formRef = this.state.form["references"];
-        formRef.push({
-                name: "",
-                relation: "",
-                telephone: ""
-            }); 
-        this.setState({ reference: this.state.reference + 1,formRef })
+        if(action === "add"){
+            formRef.push({
+                    name: "",
+                    relation: "",
+                    telephone: ""
+                }); 
+            this.setState({ reference: this.state.reference + 1,formRef })
+        }
+        else{
+            formRef.pop();
+            this.setState({ reference: this.state.reference - 1,formRef })
+        }
     }
-    handleFriendAdd = ()=>{
-        let formRef = this.state.form["friendRef"]
-        formRef.push({
-                name: "",
-                relation: ""
-            }); 
-        this.setState({ family: this.state.family + 1,formRef })
+    handleFriend = (action: string)=>{
+        let formRef = this.state.form["friendRef"];
+        if(action === "add"){
+            formRef.push({
+                    name: "",
+                    relation: ""
+                }); 
+            this.setState({ family: this.state.family + 1,formRef })
+        }
+        else{
+            formRef.pop();
+            this.setState({ family: this.state.family - 1,formRef })
+        }
     }
     render() {
         const { name, relation, telephone, friends } = this.state.selectedJson;
@@ -97,13 +109,13 @@ class References extends React.Component<any, any>{
             <div className="transportation-container">
                 <label className="title"> References </label> <br />
                 {reference}
-                <FlatButton label="Add" primary={true} onTouchTap={this.handleReferenceAdd} />
-                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.reference === 1 ? null : this.setState({ reference: this.state.reference - 1 })} />
+                <FlatButton label="Add" primary={true} onClick={() =>this.handleReference("add")} />
+                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.reference === 1 ? null : this.handleReference("delete")} />
                 <br /><br />
                 <label className="title">{friends}</label>
                 {family}
-                <FlatButton label="Add" primary={true} onTouchTap={this.handleFriendAdd} />
-                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.family === 1 ? null : this.setState({ family: this.state.family - 1 })} />
+                <FlatButton label="Add" primary={true} onClick={() =>this.handleFriend("add")} />
+                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.family === 1 ? null : this.handleFriend("delete")} />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );
