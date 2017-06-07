@@ -11,8 +11,13 @@ class Education extends React.Component<any, any>{
             selectedJson:this.props.jsonData,
             form:{
                 highestEducation: "",
-                schoolLocationList: [],
-                specialTrainingList: [],
+                schoolLocationList: [{
+                    name: "",
+                    location: ""
+                }],
+                specialTrainingList: [{
+                    skill: ""
+                }],
             }
         };
     }
@@ -27,12 +32,39 @@ class Education extends React.Component<any, any>{
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-    handleTargetEvents = (event: any, ind?:number) =>{
+    handleTargetEvents = (arrayRef:string, ind:number, event?: any) =>{
         let formRef= this.state.form;
-        if(Array.isArray(formRef[event.target.name]))
-            formRef[event.target.name].push(event.target.value)    
+        if(arrayRef && Array.isArray(formRef[arrayRef]))
+            formRef[arrayRef][ind][event.target.name] = event.target.value;
         else formRef[event.target.name]= event.target.value;
         this.setState(formRef);
+    }
+    handleSchoolLocationList = (action:string)=>{
+        let formRef = this.state.form["schoolLocationList"];
+        if(action === "add"){
+            formRef.push({
+                    name: "",
+                    location: ""
+                }); 
+            this.setState({ formRef, school: this.state.school + 1 })
+        }
+        else{
+            formRef.pop();            
+            this.setState({ formRef, school: this.state.school - 1 })
+        }
+    }
+    handleSpecialTrainingList = (action:string)=>{
+        let formRef = this.state.form["specialTrainingList"]
+        if(action === "add"){
+            formRef.push({
+                    skill: ""
+                }); 
+            this.setState({ formRef, skills: this.state.skills + 1 })
+        }
+        else{
+            formRef.pop();
+            this.setState({ formRef, skills: this.state.skills - 1 })
+        }
     }
 
     render() {
@@ -43,9 +75,15 @@ class Education extends React.Component<any, any>{
                 <div key={i}>
                     <TextField
                         hintText=""
-                        name="schoolLocationList"
-                        onBlur={this.handleTargetEvents}
-                        floatingLabelText="High School / College"
+                        name="name"
+                        onBlur={this.handleTargetEvents.bind(this,"schoolLocationList",i)}
+                        floatingLabelText="Name of High School / College"
+                    />
+                    <TextField
+                        hintText=""
+                        name="location"
+                        onBlur={this.handleTargetEvents.bind(this,"schoolLocationList",i)}
+                        floatingLabelText="Location of High School / College"
                     />
                 </div>);
         }
@@ -54,8 +92,8 @@ class Education extends React.Component<any, any>{
                 <div key={i}>
                     <TextField
                         hintText=""
-                        name="specialTrainingList"
-                        onBlur={this.handleTargetEvents}
+                        name="skill"
+                        onBlur={this.handleTargetEvents.bind(this,"specialTrainingList",i)}
                         floatingLabelText="Special skills or experience"
                     />
                 </div>);
@@ -65,7 +103,7 @@ class Education extends React.Component<any, any>{
             <div className="job-applicant-container">
                 <label className="title">{question.one}</label>
                 <RadioButtonGroup name="highestEducation"  onChange={(event: any) => 
-                    this.handleTargetEvents(event)
+                    this.handleTargetEvents(event, 0,event)
                     }>
                     <RadioButton
                         value="Elementary"
@@ -96,15 +134,15 @@ class Education extends React.Component<any, any>{
                 <div>
                     <label className="title">{question.two}</label><br />
                     {school}
-                    <FlatButton label="Add" primary={true} onClick={() => this.setState({ school: this.state.school + 1 })} />
-                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.school === 1 ? '' : this.setState({ school: this.state.school - 1 })} />
+                    <FlatButton label="Add" primary={true} onClick={() => this.handleSchoolLocationList("add")} />
+                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
                 </div>
                 <div>
                     <label className="title">{skillsAndExperience.heading}</label>
                     <label className="title">{skillsAndExperience.content}</label>
                     {skills}
-                    <FlatButton label="Add" primary={true} onClick={() => this.setState({ skills: this.state.skills + 1 })} />
-                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.skills === 1 ? '' : this.setState({ skills: this.state.skills - 1 })} />
+                    <FlatButton label="Add" primary={true} onClick={() => this.handleSpecialTrainingList("add")} />
+                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
