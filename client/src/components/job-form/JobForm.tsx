@@ -31,14 +31,51 @@ class MainJobForm extends React.Component<any, any>{
         this.jobDataSp = require('../../assets/json/job-sp');
         this.state = {
             finished: false,
-            stepIndex: 0,
+            stepIndex:0,
             selectedJson: this.jobDataEn,
             visited: [],
             open: true
         };
     }
 
-    handleNext = (e: any) => {
+    
+    handleNext = (url:any,e: any) => {
+        switch(url){
+            case 'application-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'job-location':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'education-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'personal-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'media-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+             case 'equal-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'work-hour':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'communication-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+             case 'transportation-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'education-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+                
+
+            default:
+                console.log("Default Case")
+        }
         console.log(e);
         const { stepIndex } = this.state;
         console.log(this.state.visited)
@@ -60,31 +97,31 @@ class MainJobForm extends React.Component<any, any>{
     getStepContent(stepIndex: any) {
         switch (stepIndex) {
             case 0:
-                return <ApplicantInfo handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.applicationInformation} />;
+                return <ApplicantInfo handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.applicationInformation} />;
             case 1:
-                return <JobLocation handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.jobLocation} />;
+                return <JobLocation handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.jobLocation} />;
             case 2:
-                return <Education handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.educationTraining} />;
+                return <Education handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.educationTraining} />;
             case 3:
-                return <EmployementHistory handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.employmentHistory} />;
+                return <EmployementHistory handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.employmentHistory} />;
             case 4:
-                return <PersonalInfo handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.personalInformation} />;
+                return <PersonalInfo handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.personalInformation} />;
             case 5:
-                return <LightIndustrialSkill handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.lightIndustrialAndWarehousePositions} />;
+                return <LightIndustrialSkill handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.lightIndustrialAndWarehousePositions} />;
             case 6:
-                return <Media handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.media} />;
+                return <Media handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.media} />;
             case 7:
-                return <EqualOpportunity handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.equalOpportunity} />;
+                return <EqualOpportunity handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.equalOpportunity} />;
             case 8:
-                return <WorkHour handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.WorkHours} />;
+                return <WorkHour handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.WorkHours} />;
             case 9:
-                return <Communication handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.communication} />;
+                return <Communication handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.communication} />;
             case 10:
-                return <Transportation handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.transportation} />;
+                return <Transportation handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.transportation} />;
             case 11:
-                return <References handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.references} />;
+                return <References handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.references} />;
             case 12:
-                return <Certification handleNext={(e: any) => this.handleNext(e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.certification} />;
+                return <Certification handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.certification} />;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }

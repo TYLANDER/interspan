@@ -7,13 +7,24 @@ class EqualOpportunity extends React.Component<any, any>{
         super(props);
         this.state = {
             other: false,
-            selectedJson:this.props.jsonData,
-            form:{
+            selectedJson: this.props.jsonData,
+            form: {
                 gender: "male",
                 race: "",
                 veteran: ""
             }
         };
+    }
+    componentWillMount() {
+        if (localStorage.getItem('equal-form') !== null) {
+            let data: any = localStorage.getItem('equal-form');
+            data = JSON.parse(data)
+            this.setState({
+                form: data
+            })
+
+            console.log(data);
+        }
     }
     componentWillReceiveProps(nextProp: any) {
         this.setState({
@@ -21,19 +32,20 @@ class EqualOpportunity extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        this.props.handleNext("equal-form", this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-    handleTargetEvents = (event: any) =>{
-        let formRef= this.state.form;
-        formRef[event.target.name]= event.target.value;
-         this.setState(formRef);
+    handleTargetEvents = (event: any) => {
+        let formRef = this.state.form;
+        formRef[event.target.name] = event.target.value;
+        this.setState(formRef);
     }
     render() {
-        const { content, gender, male, female, raceEthnicity, veteranStatus, asian, black, hispanic, 
+        const { content, gender, male, female, raceEthnicity, veteranStatus, asian, black, hispanic,
             nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
+        let formRef = this.state.form;
         return (
             <div className="equal-opprtunity-container">
                 <label className="title">Equal Opportunity Information (Voluntary, responses not required)</label>
@@ -41,7 +53,7 @@ class EqualOpportunity extends React.Component<any, any>{
                     {content}
                 </p><br /><br />
                 <label className="title">{gender}</label>
-                <RadioButtonGroup name="gender" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="gender" valueSelected={formRef.gender} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="male"
                         label={male}
@@ -53,8 +65,16 @@ class EqualOpportunity extends React.Component<any, any>{
                 </RadioButtonGroup>    <br /><br />
 
                 <label className="title">{raceEthnicity}</label>
-                <RadioButtonGroup name="race" onChange={(event: any) => {  this.handleTargetEvents(event); (event.target.value === 'other' ? this.setState({ other: true }) : 
-                                                                        this.setState({ other: false })) }}>
+                <RadioButtonGroup name="race" defaultSelected={
+                    formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
+                        "other" : formRef.race
+                }
+
+                    onChange={(event: any) => {
+                        this.handleTargetEvents(event);
+                        (event.target.value === 'other' ? this.setState({ other: true }) :
+                            this.setState({ other: false }))
+                    }}>
                     <RadioButton
                         value="asian"
                         label={asian}
@@ -82,16 +102,22 @@ class EqualOpportunity extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
 
-                {this.state.other ?
+                {this.state.other || formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
                     <TextField
                         floatingLabelText={other}
                         name="race"
+                        onChange={(event: any) => {
+                            formRef.race= event.target.value
+                            this.setState(formRef);
+                        }
+                        }
+                        value={formRef.race}
                         onBlur={this.handleTargetEvents}
                     /> : null
                 } <br /><br />
 
                 <label className="title">{veteranStatus} </label>
-                <RadioButtonGroup name="veteran" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="veteran" defaultSelected={formRef.veteran} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="veteran"
                         label={veteran}

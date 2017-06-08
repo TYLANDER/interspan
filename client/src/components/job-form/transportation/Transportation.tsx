@@ -16,13 +16,25 @@ class Transportation extends React.Component<any, any>{
             }
         };
     }
+    componentWillMount(){
+        if(localStorage.getItem('transportation-form') !== null)
+        {
+            let data:any = localStorage.getItem('transportation-form');
+            data = JSON.parse(data)
+            this.setState({
+                form:data
+            })
+
+            console.log(data);
+        }
+    }
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        this.props.handleNext('transportation-form',this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
@@ -34,11 +46,12 @@ class Transportation extends React.Component<any, any>{
     }
     render() {
         const {accessReliableTransportation, employmentBusLine, rideWithAnotherEmployment, name, yes, no} = this.state.selectedJson;
+        let formRef = this.state.form;
         return (
             <div className="transportation-container">
                 <br/>
                 <label className="inline-fields">{accessReliableTransportation}</label>
-                <RadioButtonGroup name="reliable_transportation" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="reliable_transportation" defaultSelected={formRef.reliable_transportation} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -52,7 +65,7 @@ class Transportation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <br /> <br />
                 <label className="inline-fields">{employmentBusLine}</label>
-                <RadioButtonGroup name="employment_bus" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="employment_bus" defaultSelected={formRef.employment_bus} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -66,7 +79,7 @@ class Transportation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <br /> <br />
                 <label className="inline-fields">{rideWithAnotherEmployment}</label>
-                <RadioButtonGroup name="another_employee" className="right" onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'Yes' ? this.setState({ employee: true }) : this.setState({ employee: false }); }}>
+                <RadioButtonGroup name="another_employee" className="right" defaultSelected={formRef.another_employee !== "No"?"Yes":formRef.another_employee} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'Yes' ? this.setState({ employee: true }) : this.setState({ employee: false }); }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -79,8 +92,9 @@ class Transportation extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /> <br />
-                {this.state.employee ?
+                {this.state.employee || formRef.another_employee !== "No" ?
                     <TextField
+                        value = {this.state.form.another_employee}
                         floatingLabelText={name}
                         name="another_employee"
                         onBlur={this.handleTargetEvents}

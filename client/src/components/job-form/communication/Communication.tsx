@@ -19,10 +19,22 @@ class Communication extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        this.props.handleNext('communication-form',this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
+    }
+    componentWillMount(){
+        if(localStorage.getItem('communication-form') !== null)
+        {
+            let data:any = localStorage.getItem('communication-form');
+            data = JSON.parse(data)
+            this.setState({
+                form:data
+            })
+
+            console.log(data);
+        }
     }
     handleTargetEvents = (event: any) =>{
         let formRef= this.state.form;
@@ -31,10 +43,11 @@ class Communication extends React.Component<any, any>{
     }
     render() {
         const {fluent, yes, no, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.state.selectedJson;
+        let formRef = this.state.form;
         return (
             <div className="job-applicant-container">
                 <label className="title">{fluent}</label>
-                <RadioButtonGroup name="language" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="language" defaultSelected={formRef.language} onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="yes"
                         label={yes}
@@ -45,7 +58,7 @@ class Communication extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <label className="title">{levelOfCommunication}</label>
-                <RadioButtonGroup name="level_communication" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="level_communication" defaultSelected={formRef.level_communication} onChange={(event: any) => {this.handleTargetEvents(event)}}>
                     <RadioButton
                         value="Understand/Speak no English"
                         label={understandSpeak}

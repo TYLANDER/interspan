@@ -9,11 +9,25 @@ class Media extends React.Component<any, any>{
             position: false,
             interspan: false,
             friend: false,
-            selectedJson:this.props.jsonData,
+            selectedJson: this.props.jsonData,
             form: {
-                about_interspan: ""
+                about_interspan: "",
+                job_description: "",
+                employee_description: "",
+                friend_description: ""
             }
         };
+    }
+    componentWillMount() {
+        if (localStorage.getItem('media-form') !== null) {
+            let data: any = localStorage.getItem('media-form');
+            data = JSON.parse(data)
+            this.setState({
+                form: data
+            })
+
+            console.log(data);
+        }
     }
     componentWillReceiveProps(nextProp: any) {
         this.setState({
@@ -21,22 +35,46 @@ class Media extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        let formRef = this.state.form;
+        switch(this.state.form.about_interspan)
+        {
+            case "Referred from job site":
+                formRef.employee_description = "";
+                formRef.friend_description = "";
+                this.setState(formRef);
+                break;
+            case "Referred by InterSpan, Inc. employee":
+                formRef.job_description ="";
+                formRef.friend_description = "";
+                this.setState(formRef);
+                break;
+            case "Referred by friend":
+                formRef.employee_description ="";
+                formRef.job_description = "";
+                this.setState(formRef);
+                break;
+            default:
+                console.log("not valid");
+
+        }
+        this.props.handleNext('media-form', this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-    handleTargetEvents = (event: any) =>{
-        let formRef= this.state.form;
-        formRef.about_interspan= event.target.value;
-         this.setState(formRef);
+    handleTargetEvents = (event: any) => {
+        let formRef = this.state.form;
+        formRef[event.target.name] = event.target.value;
+        this.setState(formRef);
     }
     render() {
+        let formRef = this.state.form;
         const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
         return (
             <div className="job-applicant-container">
                 <label className="title">{questions}</label>
                 <RadioButtonGroup name="about_interspan"
+                    defaultSelected={formRef.about_interspan}
                     onChange={(event: any) => {
                         if (event.target.value === 'Referred from job site') {
                             this.setState({ position: true, interspan: false, friend: false });
@@ -49,8 +87,9 @@ class Media extends React.Component<any, any>{
                         }
                         else {
                             this.setState({ position: false, interspan: false, friend: false });
-                            this.handleTargetEvents(event);
+                            {/*this.handleTargetEvents(event);*/ }
                         }
+                        this.handleTargetEvents(event);
                     }}>
                     <RadioButton
                         value="Radio Station"
@@ -79,23 +118,44 @@ class Media extends React.Component<any, any>{
                     />
 
                 </RadioButtonGroup>
-                {this.state.position ?
+                {this.state.position || this.state.form.about_interspan === "Referred from job site"?
                     <TextField
+                        name="job_description"
                         hintText=""
+                        value={formRef.job_description}
                         onBlur={this.handleTargetEvents}
                         fullWidth={true}
+                        onChange={(event: any) => {
+                            formRef.job_description = event.target.value
+                            this.setState(formRef);
+                        }
+                        }
                         floatingLabelText={site}
                     /> : null}
-                {this.state.interspan ?
+                {this.state.interspan || this.state.form.about_interspan === "Referred by InterSpan, Inc. employee" ?
                     <TextField
                         hintText=""
+                        value={formRef.employee_description}
+                        name="employee_description"
+                        onChange={(event: any) => {
+                            formRef.employee_description = event.target.value
+                            this.setState(formRef);
+                        }
+                        }
                         onBlur={this.handleTargetEvents}
                         fullWidth={true}
                         floatingLabelText={name}
                     /> : null}
-                {this.state.friend ?
-                     <TextField
+                {this.state.friend || this.state.form.about_interspan === "Referred by friend" ?
+                    <TextField
                         hintText=""
+                        value={formRef.friend_description}
+                        name="friend_description"
+                        onChange={(event: any) => {
+                            formRef.friend_description = event.target.value
+                            this.setState(formRef);
+                        }
+                        }
                         onBlur={this.handleTargetEvents}
                         fullWidth={true}
                         floatingLabelText={friend}
