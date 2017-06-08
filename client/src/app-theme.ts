@@ -12,7 +12,7 @@ const CustomTheme = getMuiTheme({
     primary1Color: Colors.indigo700,
     accent1Color: Colors.redA200,
     pickerHeaderColor: Colors.darkBlack,
-    alternateTextColor: Colors.darkBlack,
+    // alternateTextColor: Colors.darkBlack,
   },
   appBar: {
     height: 57,

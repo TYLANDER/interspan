@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar, RaisedButton, FlatButton, SelectField, MenuItem, Chip, Menu ,IconButton,IconMenu} from 'material-ui';
+import { AppBar, RaisedButton, FlatButton, Drawer, SelectField, MenuItem, Chip, Menu, IconButton, IconMenu } from 'material-ui';
 // import IconButton from 'material-ui/IconButton';
 import './NavBar.css';
 import { connect } from 'react-redux';
@@ -22,7 +22,8 @@ class NavBar extends React.Component<any, any> {
         language: 'en',
         isLogin: false,
         anchorEl: {},
-        opens: false
+        opens: false,
+        openDrawer: false
     };
 
     handleLanguage = (event: any, index: any, value: any) => {
@@ -82,16 +83,19 @@ class NavBar extends React.Component<any, any> {
     handleClose = () => {
         this.setState({ open: false });
     }
+
+    drawerToggle = () => this.setState({ openDrawer: !this.state.openDrawer });
+
     handleRequestClose = () => {
         this.setState({
             opens: false,
         });
     };
-    logOut=()=>{
-            console.log("FUNCTION TESTED")
-            localStorage.removeItem('user-info');
-            this.setState({isLogin:false})
-            browserHistory.push('/')
+    logOut = () => {
+        console.log("FUNCTION TESTED")
+        localStorage.removeItem('user-info');
+        this.setState({ isLogin: false })
+        browserHistory.push('/')
     }
 
     render() {
@@ -133,16 +137,16 @@ class NavBar extends React.Component<any, any> {
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
                     {/*<IconButton iconClassName="muidocs-icon-custom-github" />*/}
                     {this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
-                    iconStyle={{height:"15px",marginLeft:"-10px",display:"inline",marginTop:"0px"}}
-                        iconButtonElement={<IconButton style={{height:"0px"}}><Carrot style={{height:"10px"}}/></IconButton>}
+                        iconStyle={{ height: "15px", marginLeft: "-10px", display: "inline", marginTop: "0px" }}
+                        iconButtonElement={<IconButton style={{ height: "0px" }}><Carrot style={{ height: "10px" }} /></IconButton>}
                         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
                         targetOrigin={{ horizontal: 'left', vertical: 'top' }}
                     >
-                            <Menu>
-                                <MenuItem primaryText={username[0].first_name} />
-                                <MenuItem primaryText="Logout" onClick={this.logOut} />
-                            </Menu>
-                        </IconMenu>
+                        <Menu>
+                            <MenuItem primaryText={username[0].first_name} />
+                            <MenuItem primaryText="Logout" onClick={this.logOut} />
+                        </Menu>
+                    </IconMenu>
                     </div>
                         :
                         null
@@ -150,98 +154,123 @@ class NavBar extends React.Component<any, any> {
                 </span>
 
                 {(this.state.open) ?
-                            <FlatButton
-                                className="hamburger-icon close"
-                                icon={<img src={require('../../assets/window-close.svg')} />}
-                                disableFocusRipple={true}
-                                hoverColor="#fbfef9"
-                                disableTouchRipple={true}
-                                onTouchTap={this.handleToggle}
-                            />
-                            :
-                            <FlatButton
-                                className="hamburger-icon"
-                                hoverColor="#fbfef9"
-                                disableFocusRipple={true}
-                                disableTouchRipple={true}
-                                icon={<img src={require('../../assets/menu.svg')} />}
-                                onTouchTap={this.handleToggle}
-                            />
-                    }
+                    <FlatButton
+                        className="hamburger-icon close"
+                        icon={<img src={require('../../assets/window-close.svg')} />}
+                        disableFocusRipple={true}
+                        hoverColor="#fbfef9"
+                        disableTouchRipple={true}
+                        onTouchTap={this.handleToggle}
+                    />
+                    :
+                    <FlatButton
+                        className="hamburger-icon"
+                        hoverColor="#fbfef9"
+                        disableFocusRipple={true}
+                        disableTouchRipple={true}
+                        icon={<img src={require('../../assets/menu.svg')} />}
+                        onTouchTap={this.handleToggle}
+                    />
+                }
 
             </div>
-                );
+        );
 
         const homeMenu = <div>
-                    <AppBar
-                        zDepth={1}
-                        style={{ backgroundColor: 'rgb(255,255,255)', transition: "none" }}
-                        iconElementLeft={
-                            <img src={require('../../assets/logo.png')} className="logo" alt="logo" />
-                        }
-                        iconElementRight={menu}
-                        onTitleTouchTap={this.handleHomePage}
-                    />
-                    {(this.state.open) ?
-                        <div className="sub-menu slide-in">
-                            <div onClick={this.handleStaticUrl.bind(this, 'signup', true)}>Apply Now</div>
-                            <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
-                            <div onClick={this.handleStaticUrl.bind(this, 'employee', true)}>For Employers</div>
-                            <div onClick={this.handleStaticUrl.bind(this, 'hire', true)}>What we hire for</div>
-                            {this.state.isLogin?<div onClick={this.logOut.bind(this, 'logOut', true)}>Logout</div>:<div onClick={this.handleStaticUrl.bind(this, 'login', true)}>Login</div>}
+            <AppBar
+                zDepth={1}
+                style={{ backgroundColor: 'rgb(255,255,255)', transition: "none" }}
+                iconElementLeft={
+                    <img src={require('../../assets/logo.png')} className="logo" alt="logo" />
+                }
+                iconElementRight={menu}
+                onTitleTouchTap={this.handleHomePage}
+            />
+            {(this.state.open) ?
+                <div className="sub-menu slide-in">
+                    <div onClick={this.handleStaticUrl.bind(this, 'signup', true)}>Apply Now</div>
+                    <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
+                    <div onClick={this.handleStaticUrl.bind(this, 'employee', true)}>For Employers</div>
+                    <div onClick={this.handleStaticUrl.bind(this, 'hire', true)}>What we hire for</div>
+                    {this.state.isLogin ? <div onClick={this.logOut.bind(this, 'logOut', true)}>Logout</div> : <div onClick={this.handleStaticUrl.bind(this, 'login', true)}>Login</div>}
 
-                            <div className="menu-info contact-info">
-                                <p className="title">Office Hours</p>
-                                <p>Mon-Fri</p>
-                                <p>8AM-5PM EST</p>
-                            </div>
+                    <div className="menu-info contact-info">
+                        <p className="title">Office Hours</p>
+                        <p>Mon-Fri</p>
+                        <p>8AM-5PM EST</p>
+                    </div>
 
-                            <div className="contact-info">
-                                <p className="title">Contact</p>
-                                <p>Address: <a style={{ textDecoration: "none" }} href="https://www.google.com/maps/place/United+States/@36.2152546,-113.6923823,4z/data=!4m5!3m4!1s0x54eab584e432360b:0x1c3bb99243deb742!8m2!3d39.7747695!4d-101.4038086" target="_blank"> XYZ City, USA </a></p>
-                                <p>Office: 804-519-7677</p>
-                                <p>Fax: 804-595-9999</p>
-                                <p>Email: work@Interspan.com</p>
-                            </div>
+                    <div className="contact-info">
+                        <p className="title">Contact</p>
+                        <p>Address: <a style={{ textDecoration: "none" }} href="https://www.google.com/maps/place/United+States/@36.2152546,-113.6923823,4z/data=!4m5!3m4!1s0x54eab584e432360b:0x1c3bb99243deb742!8m2!3d39.7747695!4d-101.4038086" target="_blank"> XYZ City, USA </a></p>
+                        <p>Office: 804-519-7677</p>
+                        <p>Fax: 804-595-9999</p>
+                        <p>Email: work@Interspan.com</p>
+                    </div>
 
-                            <div>
-                                <h2>English | Spanish</h2>
-                            </div>
-                        </div>
-                        : null
-                    }
-                </div>;
+                    <div>
+                        <h2>English | Spanish</h2>
+                    </div>
+                </div>
+                : null
+            }
+        </div>;
 
         const globalMenu = <div>
-                    <AppBar
-                        zDepth={1}
-                        title={title}
-                        iconElementRight={languageSelect}
-                        style={{ backgroundColor: '#2e469e', transition: "none" }}
-                        titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
-                        showMenuIconButton={false}
-                    />
-                </div>;
+            <AppBar
+                zDepth={1}
+                title={title}
+                className="icon-menu-hamburger"
+                onLeftIconButtonTouchTap={
+                    this.drawerToggle.bind(this)
+                }
+                iconElementRight={languageSelect}
+                style={{ backgroundColor: '#2e469e', transition: "none" }}
+                titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
+                showMenuIconButton={true}
+            />
+
+        </div>;
 
         return (
+            <div>
+                 <Drawer
+                        docked={false}
+                        width={200}
+                        open={this.state.openDrawer}
+                        onRequestChange={(openDrawer) => this.setState({ openDrawer: openDrawer })}
+                    >
+                        <AppBar
+                            zDepth={1}
+                            style={{ backgroundColor: '#2e469e', transition: "none" }}
+                            titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
+                            showMenuIconButton={false}
+                        />
+                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/add");this.setState({openDrawer:false})}}>Add Jobs</MenuItem>
+                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/");;this.setState({openDrawer:false})}}>View Jobs</MenuItem>
+                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/about");;this.setState({openDrawer:false})}}>About Interspan</MenuItem>
+                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/employee");;this.setState({openDrawer:false})}}>For Employers</MenuItem>
+                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/hire");;this.setState({openDrawer:false})}}>What we hire for</MenuItem>
+                    </Drawer>
             <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : `navbar-global-container-color`}`}>
-                    {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
-                </div>
+                {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
+            </div>
+            </div>
 
-                );
+        );
     }
 
 }
 
 const mapStateToProps = (state: any) => {
     return {
-                    authObj: state.AuthReducer,
+        authObj: state.AuthReducer,
         language: state.jobReducer.language
     };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
-    return {changeLanguage: (language: any) => dispatch(JobActions.changeLanguage(language)) };
+    return { changeLanguage: (language: any) => dispatch(JobActions.changeLanguage(language)) };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar));
