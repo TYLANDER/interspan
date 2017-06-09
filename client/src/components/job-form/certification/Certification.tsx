@@ -41,7 +41,7 @@ class Certification extends React.Component<any, any>{
                     label={agreed}
                 />
                 </div>
-                <ActiveButtons finished={true} handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
+                <ActiveButtons disabled={this.state.form.agreed?false:true} finished={true} handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );
     }

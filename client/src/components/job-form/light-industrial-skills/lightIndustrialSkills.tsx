@@ -9,7 +9,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
         this.state = {
             forklift: false,
             palletJack: false,
-            selectedJson:this.props.jsonData,
+            selectedJson: this.props.jsonData,
             form: {
                 industrial_experience: "",
                 experience_with: "",
@@ -29,30 +29,43 @@ class lightIndustrialSkills extends React.Component<any, any>{
             }
         };
     }
+    componentWillMount() {
+        if (localStorage.getItem('skills-form') !== null) {
+            let data: any = localStorage.getItem('skills-form');
+            data = JSON.parse(data)
+            this.setState({
+                form: data
+            })
+
+            console.log(data);
+        }
+    }
+
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        this.props.handleNext("skills-form", this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
-     handleTargetEvents = (event: any) =>{
-        let formRef= this.state.form;
-        formRef[event.target.name]= event.target.value;
-         this.setState(formRef);
+    handleTargetEvents = (event: any) => {
+        let formRef = this.state.form;
+        formRef[event.target.name] = event.target.value;
+        this.setState(formRef);
     }
     render() {
         const { questions, yes, no, noExperience, lessThanOneYear, oneToFiveYears, sixToTenYears, tenYearsOrMore, assembly, pullingOrders, productionLine, packingMaterials,
             loadingLifter, bandingMachine, upsShippingLabels, dataEntry, countingMaterial, workingFrom, gluingBoxes, stacker, qualityControl, weighingMaterial, noneOfAbove,
             lessThanTenLbs, upToTenLbs, experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.state.selectedJson;
+        let formRef = this.state.form;
         return (
             <div className="job-applicant-container">
                 <label className="title">{questions.one}</label>
-                <RadioButtonGroup name="industrial_experience" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup defaultSelected={formRef.industrial_experience} name="industrial_experience" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="No experience"
                         label={noExperience}
@@ -76,7 +89,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
                 </RadioButtonGroup>
 
                 <label className="title">{questions.two}</label>
-                <RadioButtonGroup name="experience_with" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="experience_with" defaultSelected={formRef.experience_with} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="Assembly"
                         label={assembly}
@@ -140,7 +153,7 @@ class lightIndustrialSkills extends React.Component<any, any>{
 
                 </RadioButtonGroup>
                 <label className="title">{questions.three}</label>
-                <RadioButtonGroup name="lifting" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="lifting" defaultSelected={formRef.lifting} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="Less than 10 lbs."
                         label={lessThanTenLbs}
@@ -165,227 +178,239 @@ class lightIndustrialSkills extends React.Component<any, any>{
 
                 <br />
                 <div className="sections">
-                <label className="inline-fields">{questions.four}</label>
-                <RadioButtonGroup name="lift_weight" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.four}</label>
+                    <RadioButtonGroup name="lift_weight" defaultSelected={formRef.lift_weight} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.five}</label>
-                <RadioButtonGroup name="stand_hours" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.five}</label>
+                    <RadioButtonGroup name="stand_hours" defaultSelected={formRef.stand_hours} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.six}</label>
-                <RadioButtonGroup name="walking_job" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.six}</label>
+                    <RadioButtonGroup name="walking_job" className="right" defaultSelected={formRef.walking_job} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.seven}?</label>
-                <RadioButtonGroup name="stand_bend" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.seven}?</label>
+                    <RadioButtonGroup name="stand_bend" className="right" defaultSelected={formRef.stand_bend} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.eight}</label>
-                <RadioButtonGroup name="basic_maths" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.eight}</label>
+                    <RadioButtonGroup name="basic_maths" className="right" defaultSelected={formRef.basic_maths} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.nine}</label>
-                <RadioButtonGroup name="tape_mesurement" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.nine}</label>
+                    <RadioButtonGroup name="tape_mesurement" className="right" defaultSelected={formRef.tape_mesurement} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.ten}</label>
-                <RadioButtonGroup name="use_calculator" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
-                <label className="inline-fields">{questions.eleven}</label>
-                <RadioButtonGroup name="use_pc" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.ten}</label>
+                    <RadioButtonGroup name="use_calculator" className="right" defaultSelected={formRef.use_calculator} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
+                    <label className="inline-fields">{questions.eleven}</label>
+                    <RadioButtonGroup name="use_pc" className="right" defaultSelected={formRef.use_pc} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.twelve}</label>
-                <RadioButtonGroup name="operated_forklift" className="right" onChange={(event: any) =>{ this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ forklift: false }) : this.setState({ forklift: true })}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
+                    <label className="inline-fields">{questions.twelve}</label>
+                    <RadioButtonGroup name="operated_forklift" className="right" defaultSelected={formRef.operated_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ forklift: false }) : this.setState({ forklift: true }) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
 
-                {this.state.forklift ?
-                    <TextField
-                        hintText=""
-                        onBlur={(event: any) => {this.handleTargetEvents(event)}}
-                        fullWidth={true}
-                        floatingLabelText={experience}
-                        name="operated_forklift"
-                    />
-                    : null}
-                <br /><br />
+                    {this.state.forklift || formRef.operated_forklift !== "false" ?
+                        <TextField
+                            hintText=""
+                            value={formRef.operated_forklift}
+                            onChange={(event: any) => {
+                                formRef.operated_forklift = event.target.value
+                                this.setState(formRef);
+                            }
+                            }
+                            onBlur={(event: any) => { this.handleTargetEvents(event) }}
+                            fullWidth={true}
+                            floatingLabelText={experience}
+                            name="operated_forklift"
+                        />
+                        : null}
+                    <br /><br />
 
-                <label className="inline-fields">{questions.thirteen}</label>
-                <RadioButtonGroup name="certified_forklift" className="right"  onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
-                <br /><br />
+                    <label className="inline-fields">{questions.thirteen}</label>
+                    <RadioButtonGroup name="certified_forklift" className="right" defaultSelected={formRef.certified_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
+                    <br /><br />
 
-                <label className="inline-fields">{questions.fourteen}</label>
-                <RadioButtonGroup name="operated_pallet_jack" className="right" onChange={(event: any) =>{ this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true })}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
+                    <label className="inline-fields">{questions.fourteen}</label>
+                    <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack !== "true" ? "false" :"true"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
 
-                {this.state.palletJack ?
-                    <TextField
-                        hintText=""
-                        onBlur={(event: any) => {this.handleTargetEvents(event)}}
-                        fullWidth={true}
-                        floatingLabelText="Enter years of experience"
-                        name="operated_pallet_jack"
-                    />
-                    : null}
-                <br /><br />
+                    {this.state.palletJack || formRef.operated_pallet_jack !== "true" ?
+                        <TextField
+                            hintText=""
+                            onBlur={(event: any) => { this.handleTargetEvents(event) }}
+                            fullWidth={true}
+                            onChange={(event: any) => {
+                                formRef.operated_pallet_jack = event.target.value
+                                this.setState(formRef);
+                            }
+                            }
+                            value={formRef.operated_pallet_jack}
+                            floatingLabelText="Enter years of experience"
+                            name="operated_pallet_jack"
+                        />
+                        : null}
+                    <br /><br />
 
-                <label className="inline-fields">{questions.fifteen}</label>
-                <RadioButtonGroup name="steel_shoes" className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
-                    <RadioButton
-                        className="inline-radio"
-                        value="true"
-                        label={yes}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                    <RadioButton
-                        className="inline-radio"
-                        value="false"
-                        label={no}
-                        labelStyle={{color: "gray",fontWeight: 500}}
-                    />
-                </RadioButtonGroup>
+                    <label className="inline-fields">{questions.fifteen}</label>
+                    <RadioButtonGroup name="steel_shoes" defaultSelected={formRef.steel_shoes} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                        <RadioButton
+                            className="inline-radio"
+                            value="true"
+                            label={yes}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                        <RadioButton
+                            className="inline-radio"
+                            value="false"
+                            label={no}
+                            labelStyle={{ color: "gray", fontWeight: 500 }}
+                        />
+                    </RadioButtonGroup>
                 </div>
                 <br /><br />
 

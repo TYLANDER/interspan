@@ -26,6 +26,7 @@ class ActiveButtons extends React.Component<any, any>{
                 <RaisedButton
                     label={this.props.finished? 'I Agree' : 'Next'}
                     primary={true}
+                    disabled={this.props.disabled}
                     onTouchTap={() => this.handleNext()}
                 />
             </div>

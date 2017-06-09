@@ -71,8 +71,15 @@ class MainJobForm extends React.Component<any, any>{
             case 'education-form':
                 localStorage.setItem(url,JSON.stringify(e));
                 break;
-                
-
+            case 'employment-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+             case 'skills-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
+            case 'reference-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
             default:
                 console.log("Default Case")
         }
@@ -183,7 +190,7 @@ class MainJobForm extends React.Component<any, any>{
     }
 
     handleClose = () => {
-        
+ 
         this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2});
         browserHistory.push('/');
     };

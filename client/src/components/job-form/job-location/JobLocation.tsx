@@ -51,7 +51,7 @@ class JobLocation extends React.Component<any, any>{
         return (
             <div className="job-applicant-container">
                 <label className="title">{positionDesired} </label>
-                <RadioButtonGroup defaultSelected={
+                <RadioButtonGroup valueSelected={
                     this.state.form.position_desired !== "Any available position" && this.state.form.position_desired !== "Clerical / Office" && this.state.form.position_desired !== "Industrial / Factory / Warehouse" ? "other" : this.state.form.position_desired
                 } name="position_desired" onChange={(event: any) => {
                     this.handleTargetEvents(event);
@@ -75,9 +75,15 @@ class JobLocation extends React.Component<any, any>{
                         label={other}
                     />
                 </RadioButtonGroup>
-                {this.state.position && this.state.form.position_desired !== "Any available position" && this.state.form.position_desired !== "Clerical / Office" && this.state.form.position_desired !== "Industrial / Factory / Warehouse" ?
+                {this.state.position || this.state.form.position_desired !== "Any available position" && this.state.form.position_desired !== "Clerical / Office" && this.state.form.position_desired !== "Industrial / Factory / Warehouse" ?
                     <TextField
                         name="position_desired"
+                        value={this.state.form.position_desired}
+                        onChange={(event: any) => {
+                            formRef.location_preference = event.target.value
+                            this.setState(formRef);
+                        }
+                        }
                         hintText=""
                         onFocus={() => { }}
                         fullWidth={true}

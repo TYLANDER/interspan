@@ -27,13 +27,28 @@ class Education extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        localStorage.removeItem("education-form");
+        this.props.handleNext("education-form",this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
+    componentWillMount(){
+        if(localStorage.getItem('education-form') !== null)
+        {
+            let data:any = localStorage.getItem('education-form');
+            data = JSON.parse(data)
+            this.setState({
+                form:data,
+                school:data.schoolLocationList.length,
+                skills: data.specialTrainingList.length
+            })
+        }
+    }
+
     handleTargetEvents = (arrayRef:string, ind:number, event?: any) =>{
         let formRef= this.state.form;
+
         if(arrayRef && Array.isArray(formRef[arrayRef]))
             formRef[arrayRef][ind][event.target.name] = event.target.value;
         else formRef[event.target.name]= event.target.value;
@@ -53,6 +68,11 @@ class Education extends React.Component<any, any>{
             this.setState({ formRef, school: this.state.school - 1 })
         }
     }
+    handleText = (arrRef:string,ind:number,event?:any) => {
+        let formRef= this.state.form;
+        formRef[arrRef][ind][event.target.name] = event.target.value;
+        this.setState(formRef)
+    }
     handleSpecialTrainingList = (action:string)=>{
         let formRef = this.state.form["specialTrainingList"]
         if(action === "add"){
@@ -66,7 +86,6 @@ class Education extends React.Component<any, any>{
             this.setState({ formRef, skills: this.state.skills - 1 })
         }
     }
-
     render() {
         let school = [];
         let skills = [];
@@ -74,14 +93,19 @@ class Education extends React.Component<any, any>{
             school.push(
                 <div key={i}>
                     <TextField
+                    key={i}
                         hintText=""
                         name="name"
+                        value={this.state.form.schoolLocationList[i].name}
                         onBlur={this.handleTargetEvents.bind(this,"schoolLocationList",i)}
+                        onChange = {this.handleText.bind(this,"schoolLocationList",i)}
                         floatingLabelText="Name of High School / College"
                     />
                     <TextField
                         hintText=""
+                        value={this.state.form.schoolLocationList[i].location}
                         name="location"
+                        onChange = {this.handleText.bind(this,"schoolLocationList",i)}
                         onBlur={this.handleTargetEvents.bind(this,"schoolLocationList",i)}
                         floatingLabelText="Location of High School / College"
                     />
@@ -92,6 +116,8 @@ class Education extends React.Component<any, any>{
                 <div key={i}>
                     <TextField
                         hintText=""
+                        value={this.state.form.specialTrainingList[i].skill}
+                        onChange = {this.handleText.bind(this,"specialTrainingList",i)}
                         name="skill"
                         onBlur={this.handleTargetEvents.bind(this,"specialTrainingList",i)}
                         floatingLabelText="Special skills or experience"
@@ -99,10 +125,11 @@ class Education extends React.Component<any, any>{
                 </div>);
         }
         const {question, values, skillsAndExperience} = this.state.selectedJson;
+        let formRef = this.state.form;
         return (
             <div className="job-applicant-container">
                 <label className="title">{question.one}</label>
-                <RadioButtonGroup name="highestEducation"  onChange={(event: any) => 
+                <RadioButtonGroup valueSelected={formRef.highestEducation} name="highestEducation"  onChange={(event: any) => 
                     this.handleTargetEvents(event, 0,event)
                     }>
                     <RadioButton

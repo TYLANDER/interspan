@@ -21,8 +21,17 @@ class PersonalInfo extends React.Component<any, any>{
             selectedJson: nextProp.jsonData
         })
     }
+    componentWillMount() {
+        if (localStorage.getItem('personal-form') !== null) {
+            let data: any = localStorage.getItem('personal-form');
+            data = JSON.parse(data)
+            this.setState({
+                form: data
+            })
+        }
+    }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        this.props.handleNext("personal-form", this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
@@ -34,6 +43,7 @@ class PersonalInfo extends React.Component<any, any>{
     }
     render() {
         const { questions, yes, no, description } = this.state.selectedJson;
+        let formRef = this.state.form;
         return (
             <div className="job-applicant-container">
                 <TextField
@@ -42,18 +52,36 @@ class PersonalInfo extends React.Component<any, any>{
                     fullWidth={true}
                     multiLine={true}
                     name="employment_history"
+                    value={formRef.employment_history}
+                    onChange={(event: any) => {
+                        formRef.employment_history = event.target.value
+                        this.setState(formRef);
+                    }
+                    }
                 />
                 <br />
                 <label className="title">{questions.two}</label>
-                <br/>
+                <br />
                 <TextField
                     floatingLabelText={questions.name}
                     onBlur={this.handleTargetEvents}
+                    value={formRef.emergency_name}
+                    onChange={(event: any) => {
+                        formRef.emergency_name = event.target.value
+                        this.setState(formRef);
+                    }
+                    }
                     name="emergency_name"
                 />
                 <TextField
                     floatingLabelText={questions.phone}
                     onBlur={this.handleTargetEvents}
+                    value={formRef.emergency_number}
+                    onChange={(event: any) => {
+                        formRef.emergency_number = event.target.value
+                        this.setState(formRef);
+                    }
+                    }
                     name="emergency_number"
                 />
 
@@ -63,10 +91,11 @@ class PersonalInfo extends React.Component<any, any>{
                     {questions.three}
                 </label>
 
-                <RadioButtonGroup name="comittedCrimeBefore" defaultSelected={'No'}
-                    onChange={(event: any) => {
-                        (event.target.value === 'Yes' ? this.setState({ convictedCrime: true }) : this.setState({ convictedCrime: false }))
-                    }}>
+                <RadioButtonGroup name="crime" valueSelected={formRef.crime !== 'No' ? "Yes" : "No"} onChange={(event: any) => {
+                    formRef.crime = event.target.value
+                    this.setState(formRef);
+                    event.target.value === 'Yes' ? this.setState({ convictedCrime: true }) : this.setState({ convictedCrime: false })
+                }}>
 
                     <RadioButton
                         value="Yes"
@@ -77,7 +106,7 @@ class PersonalInfo extends React.Component<any, any>{
                         label={no}
                     />
                 </RadioButtonGroup>
-                {this.state.convictedCrime ?
+                {this.state.convictedCrime || formRef.crime !== "No" ?
                     <div>
                         <p>{questions.four}</p>
                         <TextField
@@ -85,6 +114,12 @@ class PersonalInfo extends React.Component<any, any>{
                             onBlur={this.handleTargetEvents}
                             fullWidth={true}
                             multiLine={true}
+                            onChange={(event: any) => {
+                                formRef.crime = event.target.value
+                                this.setState(formRef);
+                            }
+                            }
+                            value={formRef.crime}
                             name="crime"
                         />
                     </div>
