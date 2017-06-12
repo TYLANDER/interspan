@@ -29,6 +29,13 @@ export function jobReducer(state = INITIAL_STATE, action: IAction) {
             return Object.assign({}, state, { data: action.payload, isLoading: false ,success:true,isError:false});
         case JobActions.ADD_JOB_FAILURE:
             return Object.assign({}, state, {err: action.payload, isLoading: false ,success:false,isError:true});
+        case JobActions.APPLY_JOB:
+            return Object.assign({}, state, {isLoading: true});
+        case JobActions.APPLY_JOB_SUCCESS:
+            return Object.assign({}, state, { data: action.payload, isLoading: false ,success:true,isError:false});
+        case JobActions.APPLY_JOB_FAILURE:
+            return Object.assign({}, state, {err: action.payload, isLoading: false ,success:false,isError:true});
+
         default:
             return state;
     }

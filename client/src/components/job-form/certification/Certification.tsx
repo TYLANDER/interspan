@@ -18,7 +18,7 @@ class Certification extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext(this.state.form);
+        this.props.handleNext('certification-form',this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });

@@ -6,7 +6,11 @@ export default class JobActions {
 
     static ADD_JOB: string = 'ADD_JOB';
     static ADD_JOB_SUCCESS: string = 'ADD_JOB_SUCCESS';
-     static ADD_JOB_FAILURE: string = 'ADD_JOB_FAILURE';
+    static ADD_JOB_FAILURE: string = 'ADD_JOB_FAILURE';
+
+    static APPLY_JOB: string = 'APPLY_JOB';
+    static APPLY_JOB_FAILURE: string = 'APPLY_JOB_FAILURE';
+    static APPLY_JOB_SUCCESS: string = 'APPLY_JOB_SUCCESS';
 
     static CHANGE_LANGUAGE: string = "CHANGE_LANGUAGE"
 
@@ -21,6 +25,14 @@ export default class JobActions {
         console.log('ACTION Of Add Jobs');
         return {
             type: JobActions.ADD_JOB,
+            payload:payload
+        };
+    }
+
+    static applyJob(payload:any) {
+        console.log('ACTION Of Add Jobs');
+        return {
+            type: JobActions.APPLY_JOB,
             payload:payload
         };
     }

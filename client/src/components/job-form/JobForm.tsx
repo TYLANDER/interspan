@@ -80,6 +80,9 @@ class MainJobForm extends React.Component<any, any>{
             case 'reference-form':
                 localStorage.setItem(url,JSON.stringify(e));
                 break;
+             case 'certification-form':
+                localStorage.setItem(url,JSON.stringify(e));
+                break;
             default:
                 console.log("Default Case")
         }
@@ -188,10 +191,31 @@ class MainJobForm extends React.Component<any, any>{
         let userSelectedJson = nextProp.language === "en" ? this.jobDataEn : this.jobDataSp;
         this.setState({ selectedJson: userSelectedJson })
     }
+    parsingLocalStorage=(value:any)=>{
+        let data:any =localStorage.getItem(value);
+        return JSON.parse(data);
+    }
 
     handleClose = () => {
- 
+        // let applicationForm:any = localStorage.getItem('application-form')
+        let formData= {
+            "application-form": this.parsingLocalStorage('application-form'),
+            "job-location": this.parsingLocalStorage('job-location'),
+            "education-form": this.parsingLocalStorage('education-form'),
+            "certification-form": this.parsingLocalStorage('certification-form'),
+            "communication-form": this.parsingLocalStorage('communication-form'),
+            "employment-form": this.parsingLocalStorage('employment-form'),
+            "equal-form": this.parsingLocalStorage('equal-form'),
+            "media-form": this.parsingLocalStorage('media-form'),
+            "personal-form": this.parsingLocalStorage('personal-form'),
+            "reference-form": this.parsingLocalStorage('reference-form'),
+            "skills-form": this.parsingLocalStorage('skills-form'),
+            "transportation-form": this.parsingLocalStorage('transportation-form'),
+            "work-hour": this.parsingLocalStorage('work-hour'),
+
+        }
         this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2});
+        this.props.applyJob(formData);
         browserHistory.push('/');
     };
     render() {

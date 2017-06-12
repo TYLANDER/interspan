@@ -5,6 +5,7 @@ let config = {
         password: process.env.MYSQL_PASSWORD,
         database: process.env.MYSQL_DATABASE,
         socketPath: '',
+        multipleStatements:true
     }
 }
 
@@ -14,6 +15,7 @@ let devConfig = {
         password: 'test',
         database: 'admin',
         socketPath: '',
+        multipleStatements:true
     }
 }
 

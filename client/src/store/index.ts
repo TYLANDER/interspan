@@ -20,7 +20,8 @@ export const rootEpic = combineEpics(
     AuthEpic.loginEpic,
     JobEpic.getAllJobsEpic,
     JobEpic.postJobEpic,
-    AuthEpic.signupEpic
+    AuthEpic.signupEpic,
+    JobEpic.applyJobEpic
 );
 
 // Application Reducers

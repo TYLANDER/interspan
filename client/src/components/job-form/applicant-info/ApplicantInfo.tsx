@@ -9,11 +9,11 @@ class ApplicantInfo extends React.Component<any, any>{
     }
     state = {
         employee: false,
-        selectedJson:this.props.jsonData,
+        selectedJson: this.props.jsonData,
         form: {
             street_address: "",
             city: "",
-            state:"",
+            state: "",
             zip: "",
             home_telephone: "",
             alternate_telephone: "",
@@ -26,13 +26,12 @@ class ApplicantInfo extends React.Component<any, any>{
         },
         appliedBefore: ""
     };
-    componentWillMount(){
-        if(localStorage.getItem('application-form') !== null)
-        {
-            let data:any = localStorage.getItem('application-form');
+    componentWillMount() {
+        if (localStorage.getItem('application-form') !== null) {
+            let data: any = localStorage.getItem('application-form');
             data = JSON.parse(data)
             this.setState({
-                form:data
+                form: data
             })
 
             console.log(data);
@@ -44,13 +43,13 @@ class ApplicantInfo extends React.Component<any, any>{
         })
     }
     handleNext = () => {
-        this.props.handleNext("application-form",this.state.form);
+        this.props.handleNext("application-form", this.state.form);
     }
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const {streetAddress, city, state, zip, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
+        const { streetAddress, city, state, zip, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
         const formRef = this.state.form;
         return (
             <div className="job-applicant-container">
@@ -59,9 +58,9 @@ class ApplicantInfo extends React.Component<any, any>{
                     value={this.state.form.street_address}
                     fullWidth={true}
                     multiLine={true}
-                    onChange={(event:any)=>{
-                    formRef.street_address=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.street_address = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     floatingLabelText={streetAddress}
@@ -75,14 +74,14 @@ class ApplicantInfo extends React.Component<any, any>{
                     value={this.state.form.city}
                     onFocus={() => { }}
                     fullWidth={true}
-                    onChange={(event:any)=>{
-                    formRef.city=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.city = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     floatingLabelText={city}
                     onBlur={(event: any) => {
-                       
+
                         formRef.city = event.target.value
                         this.setState(formRef);
                     }}
@@ -90,9 +89,9 @@ class ApplicantInfo extends React.Component<any, any>{
                 <TextField
                     hintText=""
                     onFocus={() => { }}
-                    onChange={(event:any)=>{
-                    formRef.state=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.state = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     fullWidth={true}
@@ -106,9 +105,9 @@ class ApplicantInfo extends React.Component<any, any>{
                 <TextField
                     hintText=""
                     value={this.state.form.zip}
-                    onChange={(event:any)=>{
-                    formRef.zip=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.zip = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     onFocus={() => { }}
@@ -124,9 +123,9 @@ class ApplicantInfo extends React.Component<any, any>{
                     type="tel"
                     onFocus={() => { }}
                     value={this.state.form.home_telephone}
-                    onChange={(event:any)=>{
-                    formRef.home_telephone=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.home_telephone = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     fullWidth={true}
@@ -140,9 +139,9 @@ class ApplicantInfo extends React.Component<any, any>{
                     hintText=""
                     type="tel"
                     onFocus={() => { }}
-                    onChange={(event:any)=>{
-                    formRef.alternate_telephone=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.alternate_telephone = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     fullWidth={true}
@@ -158,9 +157,9 @@ class ApplicantInfo extends React.Component<any, any>{
                     type="tel"
                     onFocus={() => { }}
                     fullWidth={true}
-                    onChange={(event:any)=>{
-                    formRef.cellular_telephone=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.cellular_telephone = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     value={this.state.form.cellular_telephone}
@@ -174,9 +173,9 @@ class ApplicantInfo extends React.Component<any, any>{
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    onChange={(event:any)=>{
-                    formRef.email=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.email = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     floatingLabelText={email}
@@ -189,9 +188,10 @@ class ApplicantInfo extends React.Component<any, any>{
                 <br />
                 <b>{areYou18} </b>
 
-                <RadioButtonGroup name="age" valueSelected={this.state.form.years_old}  onChange={(event: any) => {
-                        formRef.years_old = event.target.value
-                        this.setState(formRef)}}>
+                <RadioButtonGroup name="age" valueSelected={this.state.form.years_old} onChange={(event: any) => {
+                    formRef.years_old = event.target.value
+                    this.setState(formRef)
+                }}>
 
                     <RadioButton
                         value="yes"
@@ -203,11 +203,12 @@ class ApplicantInfo extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <b>{employment} </b>
-                <RadioButtonGroup name="employement" valueSelected={this.state.form.employement !==''? this.state.form.employement !== 'no' ?"yes":"no":""} onChange={(event: any) => {
-                        this.state.appliedBefore = event.target.value
-                        formRef.employement = event.target.value
-                        this.setState(formRef);
-                        event.target.value === 'yes' ? this.setState({ employee: true }) : this.setState({ employee: false })}}>
+                <RadioButtonGroup name="employement" valueSelected={this.state.form.employement !== '' ? this.state.form.employement !== 'no' ? "yes" : "no" : ""} onChange={(event: any) => {
+                    this.state.appliedBefore = event.target.value
+                    formRef.employement = event.target.value
+                    this.setState(formRef);
+                    event.target.value === 'yes' ? this.setState({ employee: true }) : this.setState({ employee: false })
+                }}>
                     <RadioButton
                         value="yes"
                         label={yes}
@@ -217,18 +218,19 @@ class ApplicantInfo extends React.Component<any, any>{
                         label={no}
                     />
                 </RadioButtonGroup>
-                {this.state.employee ||  this.state.form.employement !== 'no'?
+                {this.state.employee || this.state.form.employement !== 'no' ?
                     <DatePicker floatingLabelText={employementYes}
-                        onChange={(event: any,date:any) => {
+                        onChange={(event: any, date: any) => {
                             formRef.employement = date.toISOString()
                             this.setState(formRef);
                         }}
-                    /> 
+                    />
                     : ''}
                 <b>{legallyEligible}</b>
                 <RadioButtonGroup name="eligible" valueSelected={this.state.form.eligible} onChange={(event: any) => {
-                        formRef.eligible = event.target.value
-                        this.setState(formRef)}}>
+                    formRef.eligible = event.target.value
+                    this.setState(formRef)
+                }}>
 
                     <RadioButton
                         value="yes"
@@ -243,7 +245,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     hintText=""
                     onFocus={() => { }}
                     fullWidth={true}
-                    value = {this.state.form.begin_work}
+                    value={this.state.form.begin_work}
                     floatingLabelText={workStatus}
                     onChange={(event:any)=>{
                     formRef.begin_work=event.target.value 
