@@ -1,8 +1,8 @@
 {
     "headings": {
         "applicationInformation": "Informaction Del Aplicante",
-        "jobLocation": "Trabajo/Ubicacion",
-        "educationTraining": "Educacion/Entrenameinto",
+        "jobLocation": "Preferencia laboral",
+        "educationTraining": "Educacion",
         "certification": "certificacion",
         "employementHistory": "Historia De Trabajo",
         "personalInformation": "Informacion Personal",

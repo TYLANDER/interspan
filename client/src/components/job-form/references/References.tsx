@@ -94,6 +94,7 @@ class References extends React.Component<any, any>{
                     floatingLabelText={name}
                     value = {this.state.form.references[i].name}
                     name="name"
+                    style={{marginRight:"50px"}}
                     onChange = {this.handleText.bind(this,"references",i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
@@ -101,6 +102,7 @@ class References extends React.Component<any, any>{
                     floatingLabelText={relation}
                     name="relation"
                     value = {this.state.form.references[i].relation}
+                    style={{marginRight:"50px"}}
                     onChange = {this.handleText.bind(this,"references",i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
@@ -118,6 +120,7 @@ class References extends React.Component<any, any>{
                 <TextField
                     floatingLabelText={name}
                     name="name"
+                    style={{marginRight:"50px"}}
                     value = {this.state.form.friendRef[i].name}
                     onChange = {this.handleText.bind(this,"friendRef",i)}
                     onBlur={this.handleTargetEvents.bind(this, "friendRef", i)}

@@ -11,8 +11,8 @@ import PersonalInfo from './personal-info/PersonalInfo';
 import LightIndustrialSkill from './light-industrial-skills/lightIndustrialSkills';
 import Media from './media/Media';
 import EqualOpportunity from './equal-opportunity/EqualOpportunity';
-import WorkHour from './work-hours/WorkHours';
-import Communication from './communication/Communication';
+// import WorkHour from './work-hours/WorkHours';
+// import Communication from './communication/Communication';
 import Transportation from './transportation/Transportation';
 import References from './references/References';
 import Dialog from 'material-ui/Dialog';
@@ -59,12 +59,12 @@ class MainJobForm extends React.Component<any, any>{
              case 'equal-form':
                 localStorage.setItem(url,JSON.stringify(e));
                 break;
-            case 'work-hour':
-                localStorage.setItem(url,JSON.stringify(e));
-                break;
-            case 'communication-form':
-                localStorage.setItem(url,JSON.stringify(e));
-                break;
+            // case 'work-hour':
+            //     localStorage.setItem(url,JSON.stringify(e));
+            //     break;
+            // case 'communication-form':
+            //     localStorage.setItem(url,JSON.stringify(e));
+            //     break;
              case 'transportation-form':
                 localStorage.setItem(url,JSON.stringify(e));
                 break;
@@ -91,7 +91,7 @@ class MainJobForm extends React.Component<any, any>{
         console.log(this.state.visited)
         this.setState({
             stepIndex: stepIndex + 1,
-            finished: stepIndex >= 12,
+            finished: stepIndex >= 10,
             visited: this.state.visited.concat(stepIndex)
         });
 
@@ -109,28 +109,28 @@ class MainJobForm extends React.Component<any, any>{
             case 0:
                 return <ApplicantInfo handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.applicationInformation} />;
             case 1:
-                return <JobLocation handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.jobLocation} />;
+                return <JobLocation handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.jobLocation} jsonData1={this.state.selectedJson.WorkHours} />;
             case 2:
                 return <Education handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.educationTraining} />;
             case 3:
                 return <EmployementHistory handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.employmentHistory} />;
             case 4:
-                return <PersonalInfo handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.personalInformation} />;
+                return <PersonalInfo handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.personalInformation} jsonData1={this.state.selectedJson.communication} />;
             case 5:
                 return <LightIndustrialSkill handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.lightIndustrialAndWarehousePositions} />;
             case 6:
                 return <Media handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.media} />;
             case 7:
                 return <EqualOpportunity handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.equalOpportunity} />;
+            // case 8:
+            //     return <WorkHour jsonData={this.state.selectedJson.WorkHours} handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} />;
+            // case 9:
+            //     return <Communication handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} />;
             case 8:
-                return <WorkHour handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.WorkHours} />;
-            case 9:
-                return <Communication handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.communication} />;
-            case 10:
                 return <Transportation handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.transportation} />;
-            case 11:
+            case 9:
                 return <References handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.references} />;
-            case 12:
+            case 10:
                 return <Certification handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.certification} />;
             default:
                 return 'You\'re a long way from home sonny jim!';
@@ -172,15 +172,15 @@ class MainJobForm extends React.Component<any, any>{
                 return this.props.titleChanged(headings.media);
             case 7:
                 return this.props.titleChanged(headings.equalOpportunity);
+            // case 8:
+            //     return this.props.titleChanged(headings.workHours);
+            // case 9:
+            //     return this.props.titleChanged(headings.communication);
             case 8:
-                return this.props.titleChanged(headings.workHours);
-            case 9:
-                return this.props.titleChanged(headings.communication);
-            case 10:
                 return this.props.titleChanged(headings.transportation);
-            case 11:
+            case 9:
                 return this.props.titleChanged(headings.references);
-            case 12:
+            case 10:
                 return this.props.titleChanged(headings.certification);
             default:
                 return this.props.titleChanged("You'r all set!")
@@ -203,7 +203,6 @@ class MainJobForm extends React.Component<any, any>{
             "job-location": this.parsingLocalStorage('job-location'),
             "education-form": this.parsingLocalStorage('education-form'),
             "certification-form": this.parsingLocalStorage('certification-form'),
-            "communication-form": this.parsingLocalStorage('communication-form'),
             "employment-form": this.parsingLocalStorage('employment-form'),
             "equal-form": this.parsingLocalStorage('equal-form'),
             "media-form": this.parsingLocalStorage('media-form'),
@@ -211,9 +210,8 @@ class MainJobForm extends React.Component<any, any>{
             "reference-form": this.parsingLocalStorage('reference-form'),
             "skills-form": this.parsingLocalStorage('skills-form'),
             "transportation-form": this.parsingLocalStorage('transportation-form'),
-            "work-hour": this.parsingLocalStorage('work-hour'),
-
         }
+
         this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2});
         this.props.applyJob(formData);
         browserHistory.push('/');
@@ -258,20 +256,20 @@ class MainJobForm extends React.Component<any, any>{
                         <Step>
                             <StepButton completed={stepIndex === 7 ? false : this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={() => this.setState({ stepIndex: 7 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.equalOpportunity}</StepButton>
                         </Step>
-                        <Step>
+                        {/*<Step>
                             <StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.workHours}</StepButton>
-                        </Step>
-                        <Step>
+                        </Step>*/}
+                        {/*<Step>
                             <StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.communication}</StepButton>
+                        </Step>*/}
+                        <Step>
+                            <StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.transportation}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.transportation}</StepButton>
+                            <StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.references}</StepButton>
                         </Step>
                         <Step>
-                            <StepButton completed={stepIndex === 11 ? false : this.state.visited.indexOf(11) !== -1} disabled={this.state.visited.indexOf(10) == -1} onClick={() => this.setState({ stepIndex: 11 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.references}</StepButton>
-                        </Step>
-                        <Step>
-                            <StepButton completed={stepIndex === 12 ? false : this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={() => this.setState({ stepIndex: 12 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.certification}</StepButton>
+                            <StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.certification}</StepButton>
                         </Step>
 
 
@@ -288,11 +286,11 @@ class MainJobForm extends React.Component<any, any>{
                         <Step><StepButton completed={stepIndex === 5 ? false : this.state.visited.indexOf(5) !== -1} disabled={this.state.visited.indexOf(4) == -1} onClick={() => this.setState({ stepIndex: 5 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                         <Step><StepButton completed={stepIndex === 6 ? false : this.state.visited.indexOf(6) !== -1} disabled={this.state.visited.indexOf(5) == -1} onClick={() => this.setState({ stepIndex: 6 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                         <Step><StepButton completed={stepIndex === 7 ? false : this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={() => this.setState({ stepIndex: 7 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
+                        {/*<Step><StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>*/}
+                        {/*<Step><StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>*/}
                         <Step><StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                         <Step><StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                         <Step><StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex === 11 ? false : this.state.visited.indexOf(11) !== -1} disabled={this.state.visited.indexOf(10) == -1} onClick={() => this.setState({ stepIndex: 11 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                        <Step><StepButton completed={stepIndex === 12 ? false : this.state.visited.indexOf(12) !== -1} disabled={this.state.visited.indexOf(11) == -1} onClick={() => this.setState({ stepIndex: 12 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                     </Stepper>
                 </div>
                 <div className="stepper-content">

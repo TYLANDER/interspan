@@ -56,7 +56,7 @@
   color: gray !important;
   font-size: 22px;
 }
-.slide-in {
+.navbar-container .slide-in {
     animation: slide-in 0.5s ease;
     -webkit-animation: slide-in 1.0s ease;
 }

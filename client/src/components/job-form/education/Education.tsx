@@ -120,7 +120,7 @@ class Education extends React.Component<any, any>{
                         onChange = {this.handleText.bind(this,"specialTrainingList",i)}
                         name="skill"
                         onBlur={this.handleTargetEvents.bind(this,"specialTrainingList",i)}
-                        floatingLabelText="Special skills or experience"
+                        floatingLabelText="Special Training / Skills"
                     />
                 </div>);
         }

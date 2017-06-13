@@ -16,8 +16,6 @@ class ApplicantInfo extends React.Component<any, any>{
             state: "",
             zip: "",
             home_telephone: "",
-            alternate_telephone: "",
-            cellular_telephone: "",
             email: "",
             years_old: "",
             employement: '',
@@ -49,7 +47,7 @@ class ApplicantInfo extends React.Component<any, any>{
         this.props.handlePrev({ name: 123, idx: 1 });
     }
     render() {
-        const { streetAddress, city, state, zip, email, homeTelephone, cellularTelephone, alternateTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
+        const { streetAddress, city, state, zip, email, homeTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
         const formRef = this.state.form;
         return (
             <div className="job-applicant-container">
@@ -135,7 +133,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                <TextField
+                {/*<TextField
                     hintText=""
                     type="tel"
                     onFocus={() => { }}
@@ -151,8 +149,8 @@ class ApplicantInfo extends React.Component<any, any>{
                         formRef.alternate_telephone = event.target.value
                         this.setState(formRef);
                     }}
-                />
-                <TextField
+                />*/}
+                {/*<TextField
                     hintText=""
                     type="tel"
                     onFocus={() => { }}
@@ -168,7 +166,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         formRef.cellular_telephone = event.target.value
                         this.setState(formRef);
                     }}
-                />
+                />*/}
                 <TextField
                     hintText=""
                     onFocus={() => { }}

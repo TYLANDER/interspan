@@ -1,8 +1,8 @@
 {
     "headings": {
         "applicationInformation": "Application Information",
-        "jobLocation": "Job / Location",
-        "educationTraining": "Education / Training",
+        "jobLocation": "Job Preferences",
+        "educationTraining": "Education",
         "certification": "Certification",
         "employementHistory": "Employment History",
         "personalInformation": "Personal Information",
@@ -25,7 +25,7 @@
         "zip": "Zip",
         "socialSecurity": "Social Security",
         "email": "Email",
-        "homeTelephone": "Home Telephone",
+        "homeTelephone": "Primary Telephone",
         "cellularTelephone": "Cellular Telephone",
         "alternateTelephone": "Alternate Telephone",
         "areYou18": "Are you at least 18 years old?",
@@ -59,7 +59,8 @@
             "ged": "GED",
             "trade": "Trade/Business/ Technical School",
             "attendedCollege": "Attended some College",
-            "collegeDegree": "College Degree"
+            "collegeDegree": "College Degree",
+            "specialSkills":"Special Training / Skills"
         },
         "skillsAndExperience": {
             "heading": "List any special training skills, and experience.",

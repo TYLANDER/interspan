@@ -52,9 +52,10 @@ class Home extends React.Component<any, any> {
     handleJobApply() {
         browserHistory.push('/login');
     }
-
+    styleChanged=(event:any) => {
+        console.log(event);
+    }
     render() {
-
         this.panelArray = (
             this.state.panelArray.map((jobObj: any, i: number) => {
                 return (

@@ -227,7 +227,7 @@ class NavBar extends React.Component<any, any> {
                 iconElementRight={languageSelect}
                 style={{ backgroundColor: '#2e469e', transition: "none" }}
                 titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
-                showMenuIconButton={true}
+                showMenuIconButton={this.props.router.location.pathname === "/job"?true:false}
             />
 
         </div>;
