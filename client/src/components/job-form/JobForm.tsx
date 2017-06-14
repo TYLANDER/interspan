@@ -199,17 +199,17 @@ class MainJobForm extends React.Component<any, any>{
     handleClose = () => {
         // let applicationForm:any = localStorage.getItem('application-form')
         let formData= {
-            "application-form": this.parsingLocalStorage('application-form'),
-            "job-location": this.parsingLocalStorage('job-location'),
+            "application_form": this.parsingLocalStorage('application-form'),
+            "job_location": this.parsingLocalStorage('job-location'),
             "education-form": this.parsingLocalStorage('education-form'),
-            "certification-form": this.parsingLocalStorage('certification-form'),
-            "employment-form": this.parsingLocalStorage('employment-form'),
-            "equal-form": this.parsingLocalStorage('equal-form'),
-            "media-form": this.parsingLocalStorage('media-form'),
-            "personal-form": this.parsingLocalStorage('personal-form'),
-            "reference-form": this.parsingLocalStorage('reference-form'),
-            "skills-form": this.parsingLocalStorage('skills-form'),
-            "transportation-form": this.parsingLocalStorage('transportation-form'),
+            "certification_form": this.parsingLocalStorage('certification-form'),
+            "employment_form": this.parsingLocalStorage('employment-form'),
+            "equal_form": this.parsingLocalStorage('equal-form'),
+            "media_form": this.parsingLocalStorage('media-form'),
+            "personal_form": this.parsingLocalStorage('personal-form'),
+            "reference_form": this.parsingLocalStorage('reference-form'),
+            "skills_form": this.parsingLocalStorage('skills-form'),
+            "transportation_form": this.parsingLocalStorage('transportation-form'),
         }
 
         this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2});
