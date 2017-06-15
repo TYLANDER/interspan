@@ -45,6 +45,9 @@
   font-weight: 400;
   color:#414141;
 }
+.apply-paper:hover{
+  border:0.1px solid grey;
+}
 .apply-paper{
   width: 305px;
   margin: 10px;

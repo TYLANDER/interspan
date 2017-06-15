@@ -3,6 +3,7 @@ import './JobForm.css';
 // import { Link } from 'react-router';
 import { Step, Stepper, StepButton } from 'material-ui/Stepper';
 import ApplicantInfo from './applicant-info/ApplicantInfo';
+import {CircularProgress} from "material-ui";
 import JobLocation from './job-location/JobLocation';
 import Education from './education/Education';
 import Certification from './certification/Certification';
@@ -201,7 +202,7 @@ class MainJobForm extends React.Component<any, any>{
         let formData= {
             "application_form": this.parsingLocalStorage('application-form'),
             "job_location": this.parsingLocalStorage('job-location'),
-            "education-form": this.parsingLocalStorage('education-form'),
+            "education_form": this.parsingLocalStorage('education-form'),
             "certification_form": this.parsingLocalStorage('certification-form'),
             "employment_form": this.parsingLocalStorage('employment-form'),
             "equal_form": this.parsingLocalStorage('equal-form'),
@@ -214,7 +215,6 @@ class MainJobForm extends React.Component<any, any>{
 
         this.setState({ open: false ,finished:false,stepIndex:this.state.stepIndex-2});
         this.props.applyJob(formData);
-        browserHistory.push('/');
     };
     render() {
         const actions = [
@@ -227,7 +227,10 @@ class MainJobForm extends React.Component<any, any>{
         ];
         const { finished, stepIndex } = this.state;
         const { headings } = this.state.selectedJson;
+        this.props.jobObj.success?browserHistory.push("/"):null;
         return (
+            this.props.jobObj.isLoading?<CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
+                    style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> :
             <div className="main-job-form-container">
                 <div className="md-stepper">
                     <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>

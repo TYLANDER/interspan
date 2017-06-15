@@ -49,7 +49,7 @@ class AddJob extends React.Component<any, any> {
         let users = Object.assign(this.state.userObj, values);
         //returning form value
         console.log(users);
-        // this.props.postJob(users);
+        this.props.postJob(users);
     }
 
     formCard = () => {

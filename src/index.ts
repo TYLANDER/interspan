@@ -23,7 +23,7 @@ app.use(methodOverride());
 app.use(allowCrossDomain);
 app.use(express.static('client/build'));
 app.use([
-    '/signup','/job','/login',
+    '/signup','/job','/login',"/add","about","employee"
 ], (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
