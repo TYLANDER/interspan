@@ -11,5 +11,5 @@ export default class path {
     static GET_JOB = path.baseUrl+"api/jobs/jobs";
     static POST_JOB = path.baseUrl+"api/jobs/jobs";
 
-    static APPLY_JOB = "http://localhost:3306/api/apply";
+    static APPLY_JOB = path.baseUrl+"api/apply";
 }

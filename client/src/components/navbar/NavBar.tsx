@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { AppBar, RaisedButton, FlatButton, Drawer, SelectField, MenuItem, Chip, Menu, IconButton, IconMenu } from 'material-ui';
+import { AppBar, RaisedButton, FlatButton, Drawer, SelectField, MenuItem, Chip, Menu, IconButton,IconMenu} from 'material-ui';
+import Done from 'material-ui/svg-icons/action/done';
+import Arrow from 'material-ui/svg-icons/av/play-arrow';
+import NotIntrested from 'material-ui/svg-icons/av/not-interested';
+
 // import IconButton from 'material-ui/IconButton';
 import './NavBar.css';
 import { connect } from 'react-redux';
@@ -8,12 +12,20 @@ import { Subject } from 'rxjs';
 import JobActions from "../../store/action/jobs";
 import { withRouter } from "react-router";
 import Carrot from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-
+import { StateManage } from "../../service/stateManage";
 class NavBar extends React.Component<any, any> {
 
     $authObservar: Subject<any>;
+    stateData: any;
     constructor(props: any) {
         super(props);
+        // // setTimeout(() =>{
+        StateManage.$subject.subscribe((data) => {
+            console.log('datadatadatadatadata',data);
+            this.stateData = data;
+        });
+        // }, 5000);
+
     }
 
     state = {
@@ -23,7 +35,8 @@ class NavBar extends React.Component<any, any> {
         isLogin: false,
         anchorEl: {},
         opens: false,
-        openDrawer: false
+        openDrawer: false,
+        headings: {}
     };
 
     handleLanguage = (event: any, index: any, value: any) => {
@@ -54,6 +67,10 @@ class NavBar extends React.Component<any, any> {
         }
         else
             console.log("User not logged in");
+        this.props.router.location.pathname === '/job' ? StateManage.$subject.subscribe((data) => {
+            this.stateData = data;
+        }) : null;
+
 
     }
 
@@ -94,18 +111,21 @@ class NavBar extends React.Component<any, any> {
     logOut = () => {
         console.log("FUNCTION TESTED")
         localStorage.removeItem('user-info');
+        localStorage.clear();
         this.setState({ isLogin: false })
         browserHistory.push('/')
     }
 
     render() {
+        let obj = {};
+        console.log(obj);
         let username: any = localStorage.getItem('user-info');
         username = JSON.parse(username);
         const languageSelect = (
             this.props.router.location.pathname === "/job" ?
                 <div style={{ marginTop: "-6px", display: "inline" }}>
                     {this.state.isLogin ? <Chip style={{ display: "inline-flex", backgroundColor: "transparent", margin: "-22px" }} labelColor="white" labelStyle={{ fontWeight: 500, fontSize: "16px" }}>
-                        {username[0].first_name}
+                        {username[0].first_naisLoggedInme}
                     </Chip>
                         : <Chip style={{ display: "inline-flex", backgroundColor: "transparent", margin: "-22px" }} labelColor="white" labelStyle={{ fontWeight: 500, fontSize: "16px" }}>
                             N/A
@@ -227,34 +247,50 @@ class NavBar extends React.Component<any, any> {
                 iconElementRight={languageSelect}
                 style={{ backgroundColor: '#2e469e', transition: "none" }}
                 titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
-                showMenuIconButton={this.props.router.location.pathname === "/job"?true:false}
+                showMenuIconButton={this.props.router.location.pathname === "/job" ? true : false}
             />
 
         </div>;
-
         return (
             <div>
-                 <Drawer
-                        docked={false}
-                        width={200}
-                        open={this.state.openDrawer}
-                        onRequestChange={(openDrawer) => this.setState({ openDrawer: openDrawer })}
-                    >
-                        <AppBar
-                            zDepth={1}
-                            style={{ backgroundColor: '#2e469e', transition: "none" }}
-                            titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
-                            showMenuIconButton={false}
-                        />
-                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/add");this.setState({openDrawer:false})}}>Add Jobs</MenuItem>
-                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/");;this.setState({openDrawer:false})}}>View Jobs</MenuItem>
-                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/about");;this.setState({openDrawer:false})}}>About Interspan</MenuItem>
-                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/employee");;this.setState({openDrawer:false})}}>For Employers</MenuItem>
-                        <MenuItem style={{color:"#373e9b",fontFamily:"SFUI_Text"}} onTouchTap={()=>{this.props.router.push("/hire");;this.setState({openDrawer:false})}}>What we hire for</MenuItem>
-                    </Drawer>
-            <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : `navbar-global-container-color`}`}>
-                {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
-            </div>
+                {this.stateData? <Drawer
+                    docked={false}
+                    width={270}
+                    open={this.state.openDrawer}
+                    onRequestChange={(openDrawer) => this.setState({ openDrawer: openDrawer })}
+                >
+                    <AppBar
+                        zDepth={1}
+                        style={{ backgroundColor: '#2e469e', transition: "none" }}
+                        titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
+                        showMenuIconButton={false}
+                    />
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 0?<Arrow />:this.stateData.visited.indexOf(0) !== -1 ?<Done />:<NotIntrested />}>{this.stateData.selectedJson.headings.applicationInformation}</MenuItem>
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 1?<Arrow />:this.stateData.visited.indexOf(1) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(0) === -1}>{this.stateData.selectedJson.headings.jobLocation}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 2?<Arrow />:this.stateData.visited.indexOf(2) !== -1 ?<Done />:<NotIntrested />}  disabled={this.stateData.visited.indexOf(1) === -1}>{this.stateData.selectedJson.headings.educationTraining}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 3?<Arrow />:this.stateData.visited.indexOf(3) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(2) === -1}>{this.stateData.selectedJson.headings.employementHistory}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 4?<Arrow />:this.stateData.visited.indexOf(4) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(3) === -1}>{this.stateData.selectedJson.headings.personalInformation}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 5?<Arrow />:this.stateData.visited.indexOf(5) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(4) === -1}>{this.stateData.selectedJson.headings.lightIndustrialSkills}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 6?<Arrow />:this.stateData.visited.indexOf(6) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(5) === -1}>{this.stateData.selectedJson.headings.media}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 7?<Arrow />:this.stateData.visited.indexOf(7) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(6) === -1}>{this.stateData.selectedJson.headings.equalOpportunity}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 8?<Arrow />:this.stateData.visited.indexOf(8) !== -1 ?<Done />:<NotIntrested />} disabled={this.stateData.visited.indexOf(7) === -1}>{this.stateData.selectedJson.headings.transportation}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} disabled={this.stateData.visited.indexOf(8) === -1} rightIcon={this.stateData.stepIndex === 9?<Arrow />:this.stateData.visited.indexOf(9) !== -1 ?<Done />:<NotIntrested />}>{this.stateData.selectedJson.headings.references}</MenuItem>
+
+                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} disabled={this.stateData.visited.indexOf(9) === -1} rightIcon={this.stateData.stepIndex === 10?<Arrow />:this.stateData.visited.indexOf(10) !== -1 ?<Done />:<NotIntrested />}>{this.stateData.selectedJson.headings.certification}</MenuItem>
+
+                </Drawer>:null}
+               
+                <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : `navbar-global-container-color`}`}>
+                    {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
+                </div>
             </div>
 
         );

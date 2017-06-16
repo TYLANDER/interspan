@@ -49,8 +49,13 @@ class Home extends React.Component<any, any> {
         this.setState({ panelArray: this.state.panelArray });
     }
 
-    handleJobApply() {
-        browserHistory.push('/login');
+    handleJobApply(key:any) {
+        if(key){
+            localStorage.setItem('job-id',"1");
+        }
+        browserHistory.push('/job');
+        localStorage.setItem("job-id",key)
+        console.log(key);
     }
     styleChanged=(event:any) => {
         console.log(event);
@@ -102,12 +107,12 @@ class Home extends React.Component<any, any> {
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
                                 <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49' }}
-                                    className="apply-job-btn" onClick={this.handleJobApply} />
+                                    className="apply-job-btn" onClick={this.handleJobApply.bind(this,jobObj.id)} />
                             </div>
                             :
                             <div className="text-left footer-container">
                                 <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply} />
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply.bind(this,jobObj.id)} />
                             </div>
                         }
                     </Paper>
@@ -126,7 +131,7 @@ class Home extends React.Component<any, any> {
                     <p className="apply-desc">
                         We have open positions now, and applying is easy.
                     </p>
-                    <RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply} />
+                    <RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply.bind(this,localStorage.getItem('job-id'))} />
                     <h2>Positions</h2>
                 </div>
                 <div className="paper-parent">

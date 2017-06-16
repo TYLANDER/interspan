@@ -5,6 +5,15 @@ import { AboutUs, EmployeeInfo, HireFor} from './components';
 
 class AppRoutes extends React.Component<any, any> {
 
+    authenticated(){
+        if(!localStorage.getItem('user-info')){
+            browserHistory.push("/login");
+        }
+        else{
+            console.log("Login Successfull");
+        }
+    }
+
     render() {
         return (
             <Router history={browserHistory}>
@@ -15,7 +24,7 @@ class AppRoutes extends React.Component<any, any> {
                     <Route path="about" component={AboutUs} />
                     <Route path="hire" component={HireFor} />
                     <Route path="add" component={AddJob} />
-                    <Route path="job" component={JobForm} />
+                    <Route path="job" component={JobForm} onEnter={this.authenticated}/>
                     <Route path="signup" component={Signup} />
                     <Route component={Dashboard} >
                         <IndexRoute component={Home} />
