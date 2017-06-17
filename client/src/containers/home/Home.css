@@ -46,7 +46,7 @@
   color:#414141;
 }
 .apply-paper:hover{
-  border:0.1px solid grey;
+  box-shadow: rgba(9, 13, 31, 0.1) 0px 4px 8px 4px !important;
 }
 .apply-paper{
   width: 305px;
