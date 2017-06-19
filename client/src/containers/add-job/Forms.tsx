@@ -3,34 +3,42 @@ import { TextField, SelectField, MenuItem, TimePicker } from 'material-ui';
 import { SubmitActionButton } from "./Submit";
 
 class Forms extends React.Component<any, any> {
-    state: any = {
-        title_error: false,
-        title_message: '',
-        title_success: false,
-        title_val: '',
+    constructor(props: any) {
+        super(props);
+        /** state of the component **/
+        this.state = {
+            /** Title feild state **/
+            title_error: false,
+            title_message: '',
+            title_success: false,
+            title_val: '',
 
-        location_message: '',
-        location_error: false,
-        location_success: false,
-        location_val: '',
+            /** Location feild state **/
+            location_message: '',
+            location_error: false,
+            location_success: false,
+            location_val: '',
 
-        description_message: '',
-        description_error: false,
-        description_success: false,
-        description_val: '',
+            /** Description feild state **/
+            description_message: '',
+            description_error: false,
+            description_success: false,
+            description_val: '',
 
-        compensation_message: '',
-        compensation_error: false,
-        compensation_success: false,
-        compensation_val: '',
+            /** Compensation feild state **/
+            compensation_message: '',
+            compensation_error: false,
+            compensation_success: false,
+            compensation_val: '',
 
-        duration: 'part-time',
+            /** Duration and time feild state **/
+            duration: 'part-time',
+            toTime: "4:00PM",
+            fromTime: "8:00AM"
+        };
+    }
 
-        toTime:"4:00PM",
-        fromTime:"8:00AM"
-
-    };
-    // title Validation
+    //Handling title validation
     istitleAddress(value: any) {
         if (value.trim() == '') {
             this.setState({
@@ -46,6 +54,7 @@ class Forms extends React.Component<any, any> {
             });
         }
     }
+    
     // Confirm location Validation
     islocation(value: any) {
         if (value.trim() == '') {
@@ -95,8 +104,8 @@ class Forms extends React.Component<any, any> {
         }
     }
 
-    handleChange = (event: any, index: any, duration: any) => this.setState({ duration });
-
+    //Handling duration select box
+    handleDurationChange = (event: any, index: any, duration: any) => this.setState({ duration });
 
     validation() {
         if (this.state.title_val.trim() == '' || this.state.location_val.trim() == '' || this.state.description_val.trim() == '' || this.state.compensation_val.trim() == '') {
@@ -150,36 +159,38 @@ class Forms extends React.Component<any, any> {
             }
         }
         else if (!this.state.title_error && !this.state.location_error && !this.state.description_error && !this.state.compensation_error) {
-            this.props.clickEvent({ title: this.state.title_val, location: this.state.location_val, description: this.state.description_val, compensation: this.state.compensation_val, duration:this.state.duration , hours:this.state.toTime + "-" + this.state.fromTime})
+            this.props.clickEvent({ title: this.state.title_val, location: this.state.location_val, description: this.state.description_val, compensation: this.state.compensation_val, duration: this.state.duration, hours: this.state.toTime + "-" + this.state.fromTime })
         }
 
     }
-    handleChangeToTime = (event:any,date:any) => {
-        interface toTime{
-            hour:string,
+
+    //handling time duration state
+    handleChangeToTime = (event: any, date: any) => {
+        interface toTime {
+            hour: string,
             minute: string
         }
-        let options:toTime= {
+        let options: toTime = {
             hour: "numeric",
             minute: "numeric"
         }
-        this.setState({toTime:new Date(date).toLocaleString("en-US",options).replace(" ","")})
-        
+        this.setState({ toTime: new Date(date).toLocaleString("en-US", options).replace(" ", "") })
+
 
     }
-
-    handleChangeFromTime = (event:any, date:any)=>{
-        interface fromTime{
+    handleChangeFromTime = (event: any, date: any) => {
+        interface fromTime {
             hour: string,
             minute: string
         }
 
-        let options:fromTime = {
+        let options: fromTime = {
             hour: 'numeric',
             minute: 'numeric'
         }
-        this.setState({fromTime: new Date(date).toLocaleString('en-Us',options).replace(" ","")})
+        this.setState({ fromTime: new Date(date).toLocaleString('en-Us', options).replace(" ", "") })
     }
+
     render() {
         return (
             <div className="fields-container">
@@ -213,7 +224,7 @@ class Forms extends React.Component<any, any> {
                 <SelectField
                     floatingLabelText="Duration"
                     value={this.state.duration}
-                    onChange={this.handleChange}
+                    onChange={this.handleDurationChange}
                 >
                     <MenuItem value={'part-time'} primaryText="part-time" />
                     <MenuItem value={'half-time'} primaryText="half-time" />
@@ -224,12 +235,12 @@ class Forms extends React.Component<any, any> {
                 <label> Hours </label>
                 <TimePicker
                     hintText="From"
-                    defaultTime={new Date(2017, 12,12 , 8, 0, 0)}
+                    defaultTime={new Date(2017, 12, 12, 8, 0, 0)}
                     onChange={this.handleChangeFromTime}
                 />
                 <TimePicker
                     hintText="To"
-                    defaultTime={new Date(2017, 12,12 , 16, 0, 0)}
+                    defaultTime={new Date(2017, 12, 12, 16, 0, 0)}
                     onChange={this.handleChangeToTime}
                 />
                 <TextField

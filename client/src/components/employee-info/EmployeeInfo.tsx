@@ -2,7 +2,6 @@ import * as React from 'react';
 import './EmployeeInfo.css';
 
 class EmployeeInfo extends React.Component<any, any> {
-
     render() {
         return (
             <div className="employeeInfo-container">

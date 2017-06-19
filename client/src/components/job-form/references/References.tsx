@@ -5,6 +5,7 @@ import { TextField, FlatButton } from 'material-ui';
 class References extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             reference: 1,
             family: 1,
@@ -22,33 +23,45 @@ class References extends React.Component<any, any>{
             }
         };
     }
+
+    //Getting reference form data from local storage
     componentWillMount() {
         if (localStorage.getItem('reference-form') !== null) {
             let data: any = localStorage.getItem('reference-form');
             data = JSON.parse(data)
             this.setState({
                 form: data,
-                family:data.friendRef.length,
+                family: data.friendRef.length,
                 reference: data.references.length
             })
         }
     }
+
+    //Handling next state
     handleNext = () => {
         this.props.handleNext("reference-form", this.state.form);
     }
+
+    //Handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
+
+    //Handling input form state of the component
     handleTargetEvents = (arrayRef: string, ind: number, event?: any) => {
         let formRef = this.state.form;
         formRef[arrayRef][ind][event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
+    //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //Making and managing multiple references lists
     handleReference = (action: string) => {
         let formRef = this.state.form["references"];
         if (action === "add") {
@@ -64,6 +77,8 @@ class References extends React.Component<any, any>{
             this.setState({ reference: this.state.reference - 1, formRef })
         }
     }
+
+    //Making and managing multiple friend references list
     handleFriend = (action: string) => {
         let formRef = this.state.form["friendRef"];
         if (action === "add") {
@@ -78,39 +93,41 @@ class References extends React.Component<any, any>{
             this.setState({ family: this.state.family - 1, formRef })
         }
     }
-     handleText = (arrRef:string,ind:number,event?:any) => {
-        let formRef= this.state.form;
+
+    //Handling input state of component
+    handleText = (arrRef: string, ind: number, event?: any) => {
+        let formRef = this.state.form;
         formRef[arrRef][ind][event.target.name] = event.target.value;
         this.setState(formRef)
     }
+    
     render() {
         const { name, relation, telephone, friends } = this.state.selectedJson;
         var reference = [];
         var family = [];
-
         for (let i = 0; i < this.state.reference; i++) {
             reference.push(<div key={i}>
                 <TextField
                     floatingLabelText={name}
-                    value = {this.state.form.references[i].name}
+                    value={this.state.form.references[i].name}
                     name="name"
-                    style={{marginRight:"50px"}}
-                    onChange = {this.handleText.bind(this,"references",i)}
+                    style={{ marginRight: "50px" }}
+                    onChange={this.handleText.bind(this, "references", i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
                 <TextField
                     floatingLabelText={relation}
                     name="relation"
-                    value = {this.state.form.references[i].relation}
-                    style={{marginRight:"50px"}}
-                    onChange = {this.handleText.bind(this,"references",i)}
+                    value={this.state.form.references[i].relation}
+                    style={{ marginRight: "50px" }}
+                    onChange={this.handleText.bind(this, "references", i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
                 <TextField
                     floatingLabelText={telephone}
                     name="telephone"
-                    value = {this.state.form.references[i].telephone}
-                    onChange = {this.handleText.bind(this,"references",i)}
+                    value={this.state.form.references[i].telephone}
+                    onChange={this.handleText.bind(this, "references", i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
             </div>);
@@ -120,16 +137,16 @@ class References extends React.Component<any, any>{
                 <TextField
                     floatingLabelText={name}
                     name="name"
-                    style={{marginRight:"50px"}}
-                    value = {this.state.form.friendRef[i].name}
-                    onChange = {this.handleText.bind(this,"friendRef",i)}
+                    style={{ marginRight: "50px" }}
+                    value={this.state.form.friendRef[i].name}
+                    onChange={this.handleText.bind(this, "friendRef", i)}
                     onBlur={this.handleTargetEvents.bind(this, "friendRef", i)}
                 />
                 <TextField
                     floatingLabelText={relation}
                     name="relation"
-                    onChange = {this.handleText.bind(this,"friendRef",i)}
-                    value = {this.state.form.friendRef[i].relation}
+                    onChange={this.handleText.bind(this, "friendRef", i)}
+                    value={this.state.form.friendRef[i].relation}
                     onBlur={this.handleTargetEvents.bind(this, "friendRef", i)}
                 />
             </div>);

@@ -12,7 +12,19 @@ import { browserHistory } from 'react-router';
 import AuthActions from "../../store/action/auth";
 
 class Signup extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
 
+        //State of component
+        this.state = {
+            isAuthenticated: false,
+            userObj: {},
+            loading: false,
+            step: 0
+        };
+    }
+
+    //Customize theme
     muiTheme: any = getMuiTheme({
         palette: {
             textColor: indigo900
@@ -26,52 +38,50 @@ class Signup extends React.Component<any, any> {
         }
     });
 
-    state: any = {
-        isAuthenticated: false,
-        userObj: {},
-        loading: false,
-        step: 0
-    };
-
+    //Navigate to home page
     handleHomePage() {
         browserHistory.push('/');
     }
+
     componentWillReceiveProps(newProps: any) {
+        //Check processing state 
         newProps.authObj.isProcessing ? this.setState({ loading: true }) : this.setState({ loading: false });
         newProps.authObj.isRegistered ? browserHistory.push('/job') : null;
-        newProps.authObj.isError.status ? this.setState({step:0},()=>{
+
+        //Handling api error state
+        newProps.authObj.isError.status ? this.setState({ step: 0 }, () => {
             alert("Email Already Exist");
-        }) :null;
+        }) : null;
     }
-    
+
+    //Action dispatch and send form data to epic
     handleJobPage = () => {
         this.props.signUp(this.state.userObj);
-
     }
 
-    handleNext = (values:any) => {
+    //Handling next state
+    handleNext = (values: any) => {
         let users = Object.assign(this.state.userObj, values);
         //returning form value
-        console.log(users);
-        if(this.state.step == 2 )
+        if (this.state.step == 2)
             this.props.signUp(users);
-
         else
             this.setState({
                 step: this.state.step + 1
             })
     }
-
+    
+    //Signup form stepper state
     formCard = () => {
         switch (this.state.step) {
-            case 0: return <UsernameForm  clickEvent={this.handleNext} />;
-            case 1: return <UserEmailForm  clickEvent={this.handleNext} />
+            case 0: return <UsernameForm clickEvent={this.handleNext} />;
+            case 1: return <UserEmailForm clickEvent={this.handleNext} />
             case 2: return <UserSSNForm clickEvent={this.handleNext} />
-            default: return <UsernameForm  clickEvent={this.handleNext} />;
+            default: return <UsernameForm clickEvent={this.handleNext} />;
         }
     }
-    render() {
 
+    render() {
         return (
             <MuiThemeProvider muiTheme={this.muiTheme}>
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"

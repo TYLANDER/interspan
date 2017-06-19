@@ -3,24 +3,31 @@ import { TextField } from 'material-ui';
 import { SignupActionButton } from "./actionButtons";
 
 class UserEmailForm extends React.Component<any, any> {
-    state: any = {
-        email_error: false,
-        email_message: '',
-        email_success: false,
-        email_val: '',
 
-        pass_message: '',
-        pass_error: false,
-        pass_success: false,
-        pass_val: '',
-
-        repeat_pass_error: false,
-        repeat_pass_val: '',
-        repeat_pass_success: false,
-        repeat_pass_message: '',
+    constructor(props: any) {
+        super(props);
         
-    };
-    // Email Validation
+        //state of the component 
+        this.state = {
+            email_error: false,
+            email_message: '',
+            email_success: false,
+            email_val: '',
+
+            pass_message: '',
+            pass_error: false,
+            pass_success: false,
+            pass_val: '',
+
+            repeat_pass_error: false,
+            repeat_pass_val: '',
+            repeat_pass_success: false,
+            repeat_pass_message: '',
+        };
+
+    }
+
+    // Email validation handler
     isEmailAddress(value: any) {
         if (value.trim() == '') {
             this.setState({
@@ -43,10 +50,10 @@ class UserEmailForm extends React.Component<any, any> {
         this.setState({
             email_error: false,
             email_success: true,
-            email_val:value.toLowerCase()
+            email_val: value.toLowerCase()
         });
-        // this.props.collection({ email: value });
     }
+
     // Confirm Password Validation
     isPassword(value: any) {
         if (value.trim() == '') {
@@ -55,11 +62,11 @@ class UserEmailForm extends React.Component<any, any> {
                 pass_message: 'Password field is required',
             });
         }
-        else{
+        else {
             this.setState({
                 pass_error: false,
                 pass_success: true,
-                pass_val:value
+                pass_val: value
             });
         }
     }
@@ -80,7 +87,7 @@ class UserEmailForm extends React.Component<any, any> {
                 repeat_pass_message: 'Password not matched',
             });
         }
-        else{
+        else {
             this.setState({
                 repeat_pass_error: false,
                 repeat_pass_val: value,
@@ -89,9 +96,10 @@ class UserEmailForm extends React.Component<any, any> {
         }
     }
 
-    validation  (){
+    //On submit validation
+    validation() {
         if (this.state.email_val.trim() == '' || this.state.pass_val.trim() == '' || this.state.repeat_pass_val.trim() == '') {
-            if (this.state.email_val.trim() == '' &&  this.state.pass_val.trim() == '' && this.state.repeat_pass_val.trim() == '') {
+            if (this.state.email_val.trim() == '' && this.state.pass_val.trim() == '' && this.state.repeat_pass_val.trim() == '') {
                 this.setState({
                     email_error: true,
                     email_message: 'Please enter email address',
@@ -106,21 +114,21 @@ class UserEmailForm extends React.Component<any, any> {
                     repeat_pass_success: false
                 });
             }
-            else if (this.state.email_val.trim() == '' ) {
+            else if (this.state.email_val.trim() == '') {
                 this.setState({
                     email_error: true,
                     email_message: 'Please enter email address',
                     email_success: false,
                 });
             }
-            else if (this.state.pass_val.trim() == '' ) {
+            else if (this.state.pass_val.trim() == '') {
                 this.setState({
                     pass_error: true,
                     pass_message: 'Please enter password',
                     pass_success: false,
                 });
             }
-            else if (this.state.repeat_pass_val.trim() == '' ) {
+            else if (this.state.repeat_pass_val.trim() == '') {
                 this.setState({
                     repeat_pass_error: true,
                     repeat_pass_message: 'Password not matched',
@@ -133,6 +141,7 @@ class UserEmailForm extends React.Component<any, any> {
         }
 
     }
+
     render() {
         return (
             <div className="fields-container">
@@ -142,7 +151,6 @@ class UserEmailForm extends React.Component<any, any> {
                     errorText={this.state.email_error ? this.state.email_message : ''}
                     fullWidth={true}
                     name="email"
-                    onFocus={() => console.log('FOCUS')}
                     onBlur={(event: any) => {
                         this.isEmailAddress(event.target.value);
                     }}
@@ -156,13 +164,11 @@ class UserEmailForm extends React.Component<any, any> {
                     fullWidth={true}
                     ref="password"
                     type="password"
-                    onFocus={() => console.log('FOCUS')}
                     onBlur={(event: any) => {
                         this.isPassword(event.target.value);
                     }}
                     floatingLabelText="Password"
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
-
                 />
 
                 <TextField
@@ -170,13 +176,11 @@ class UserEmailForm extends React.Component<any, any> {
                     errorText={this.state.repeat_pass_message ? this.state.repeat_pass_message : ''}
                     fullWidth={true}
                     type="password"
-                    onFocus={() => console.log('FOCUS')}
                     onBlur={(event: any) => {
                         this.isConfirmPassword(event.target.value);
                     }}
                     floatingLabelText="Confirm Password"
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
-
                 />
                 <SignupActionButton clicked={this.validation.bind(this)} />
             </div>

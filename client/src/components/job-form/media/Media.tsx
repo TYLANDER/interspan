@@ -5,6 +5,7 @@ import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 class Media extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             position: false,
             interspan: false,
@@ -18,6 +19,8 @@ class Media extends React.Component<any, any>{
             }
         };
     }
+
+    //Getting media form data from local storage
     componentWillMount() {
         if (localStorage.getItem('media-form') !== null) {
             let data: any = localStorage.getItem('media-form');
@@ -29,44 +32,51 @@ class Media extends React.Component<any, any>{
             console.log(data);
         }
     }
+
+    //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //Handling next state
     handleNext = () => {
         let formRef = this.state.form;
-        switch(this.state.form.about_interspan)
-        {
+        switch (this.state.form.about_interspan) {
             case "Referred from job site":
                 formRef.employee_description = "";
                 formRef.friend_description = "";
                 this.setState(formRef);
                 break;
             case "Referred by InterSpan, Inc. employee":
-                formRef.job_description ="";
+                formRef.job_description = "";
                 formRef.friend_description = "";
                 this.setState(formRef);
                 break;
             case "Referred by friend":
-                formRef.employee_description ="";
+                formRef.employee_description = "";
                 formRef.job_description = "";
                 this.setState(formRef);
                 break;
             default:
                 console.log("not valid");
-
         }
         this.props.handleNext('media-form', this.state.form);
     }
+
+    //Handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
+
+    //Handling input form state of the component
     handleTargetEvents = (event: any) => {
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
     render() {
         let formRef = this.state.form;
         const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
@@ -87,7 +97,6 @@ class Media extends React.Component<any, any>{
                         }
                         else {
                             this.setState({ position: false, interspan: false, friend: false });
-                            {/*this.handleTargetEvents(event);*/ }
                         }
                         this.handleTargetEvents(event);
                     }}>
@@ -116,9 +125,8 @@ class Media extends React.Component<any, any>{
                         value="Referred by friend"
                         label={referredFriend}
                     />
-
                 </RadioButtonGroup>
-                {this.state.position || this.state.form.about_interspan === "Referred from job site"?
+                {this.state.position || this.state.form.about_interspan === "Referred from job site" ?
                     <TextField
                         name="job_description"
                         hintText=""

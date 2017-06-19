@@ -10,18 +10,20 @@ import AuthActions from '../../../src/store/action/auth';
 import { connect } from 'react-redux';
 
 class Home extends React.Component<any, any> {
-    state = {
-        panelArray: [{ showMore: false }]
-    };
     gettingData = false;
     panelArray: any;
-
     constructor(props: any) {
         super(props);
+
+        //Retreive all jobs from database
         if (!this.props.allJobs.length && !this.props.allJobs.data) {
             this.props.getAllJobs();
         }
+        this.state = {
+            panelArray: [{ showMore: false }]
+        };
     }
+
     componentWillReceiveProps(nextProps: any) {
         if (!nextProps.isLoading)
             if (nextProps.allJobs && nextProps.allJobs.data.length) {
@@ -33,6 +35,7 @@ class Home extends React.Component<any, any> {
                 this.setState({ panelArray: alljobs });
             }
     }
+
     componentWillMount() {
         if (this.props.allJobs.data && this.props.allJobs.data.length)
             if (this.props.allJobs && this.props.allJobs.data.length) {
@@ -44,34 +47,32 @@ class Home extends React.Component<any, any> {
                 this.setState({ panelArray: alljobs });
             }
     }
+
+    //Handling show more description on card
     showDescription(obj: any, ind: any) {
         this.state.panelArray[ind].showMore = !this.state.panelArray[ind].showMore;
         this.setState({ panelArray: this.state.panelArray });
     }
 
-    handleJobApply(key:any) {
-        if(key){
-            localStorage.setItem('job-id',"1");
+    //Save job id in local storage
+    handleJobApply(key: any) {
+        if (key) {
+            localStorage.setItem('job-id', "1");
         }
         browserHistory.push('/job');
-        localStorage.setItem("job-id",key)
-        console.log(key);
+        localStorage.setItem("job-id", key)
     }
-    styleChanged=(event:any) => {
-        console.log(event);
-    }
+
     render() {
         this.panelArray = (
             this.state.panelArray.map((jobObj: any, i: number) => {
                 return (
                     <Paper zDepth={2} key={i} className="apply-paper" style={{ borderRadius: '2px', boxShadow: '0 4px 8px 0 rgba(9, 13, 31, 0.1), rgba(9, 13, 31, 0.1) 0px 6px 8px' }}>
                         <div className="paper-container">
-
                             {jobObj.showMore ?
                                 <img src={require('../../assets/window-close.svg')} className="cross-btn"
                                     onClick={this.showDescription.bind(this, jobObj, i)} />
                                 : null}
-
                             <h3>{jobObj.title}</h3>
                             <div className="text-left">
                                 <div>
@@ -86,7 +87,6 @@ class Home extends React.Component<any, any> {
                                     <span className="label-title">Hours: </span>
                                     <span>{jobObj.hours}</span>
                                 </div>
-
                                 {jobObj.showMore ?
                                     <div className="showMoreDesc-container">
                                         <div>
@@ -103,16 +103,15 @@ class Home extends React.Component<any, any> {
                             </div>
                         </div>
                         <div className="paper-bar"></div>
-
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49' }}
-                                    className="apply-job-btn" onClick={this.handleJobApply.bind(this,jobObj.id)} />
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49' }}
+                                    className="apply-job-btn" onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)'}} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply.bind(this,jobObj.id)} />
+                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>
@@ -127,11 +126,10 @@ class Home extends React.Component<any, any> {
                     <div className="title-desc">
                         InterSpan provides quality employees to companies that need them.
                     </div>
-
                     <p className="apply-desc">
                         We have open positions now, and applying is easy.
                     </p>
-                    <RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply.bind(this,localStorage.getItem('job-id'))} />
+                    <RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
                     <h2>Positions</h2>
                 </div>
                 <div className="paper-parent">

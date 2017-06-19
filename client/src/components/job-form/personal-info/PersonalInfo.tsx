@@ -5,6 +5,7 @@ import { TextField, RadioButtonGroup, RadioButton } from 'material-ui';
 class PersonalInfo extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             convictedCrime: false,
             selectedJson: this.props.jsonData,
@@ -20,12 +21,16 @@ class PersonalInfo extends React.Component<any, any>{
             }
         };
     }
+
+    //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData,
             selectedJson1: nextProp.jsonData1
         })
     }
+
+    //Getting personal form data from local storage
     componentWillMount() {
         if (localStorage.getItem('personal-form') !== null) {
             let data: any = localStorage.getItem('personal-form');
@@ -35,12 +40,18 @@ class PersonalInfo extends React.Component<any, any>{
             })
         }
     }
+
+    //Handling next state
     handleNext = () => {
         this.props.handleNext("personal-form", this.state.form);
     }
+
+    //Handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
+
+    //Handling input form state of the component
     handleTargetEvents = (event: any) => {
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
@@ -48,8 +59,7 @@ class PersonalInfo extends React.Component<any, any>{
     }
     render() {
         const { questions, yes, no, description } = this.state.selectedJson;
-        const {fluent, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions} = this.state.selectedJson1;
-
+        const { fluent, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions } = this.state.selectedJson1;
         let formRef = this.state.form;
         return (
             <div className="job-applicant-container">
@@ -91,19 +101,16 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                     name="emergency_number"
                 />
-
                 <br />
                 <br />
                 <label className="title">
                     {questions.three}
                 </label>
-
                 <RadioButtonGroup name="crime" valueSelected={formRef.crime !== 'No' ? "Yes" : "No"} onChange={(event: any) => {
                     formRef.crime = event.target.value
                     this.setState(formRef);
                     event.target.value === 'Yes' ? this.setState({ convictedCrime: true }) : this.setState({ convictedCrime: false })
                 }}>
-
                     <RadioButton
                         value="Yes"
                         label={yes}
@@ -131,9 +138,8 @@ class PersonalInfo extends React.Component<any, any>{
                         />
                     </div>
                     : null}
-
-                     <label className="title">{fluent}</label>
-                <RadioButtonGroup name="language" defaultSelected={formRef.language} onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <label className="title">{fluent}</label>
+                <RadioButtonGroup name="language" defaultSelected={formRef.language} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="yes"
                         label={yes}
@@ -144,7 +150,7 @@ class PersonalInfo extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <label className="title">{levelOfCommunication}</label>
-                <RadioButtonGroup name="level_communication" defaultSelected={formRef.level_communication} onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="level_communication" defaultSelected={formRef.level_communication} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="Understand/Speak no English"
                         label={understandSpeak}
@@ -167,7 +173,6 @@ class PersonalInfo extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

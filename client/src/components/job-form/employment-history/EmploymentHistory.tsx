@@ -5,6 +5,7 @@ import { TextField, DatePicker, FlatButton } from 'material-ui';
 class EmploymentHistory extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             employed: 1,
             selectedJson: this.props.jsonData,
@@ -26,6 +27,8 @@ class EmploymentHistory extends React.Component<any, any>{
             }
         };
     }
+
+    //getting employment history form data from local storage
     componentWillMount() {
         if (localStorage.getItem('employment-form') !== null) {
             let data: any = localStorage.getItem('employment-form');
@@ -36,17 +39,25 @@ class EmploymentHistory extends React.Component<any, any>{
             })
         }
     }
+
+    //selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //handling next state
     handleNext = () => {
         this.props.handleNext("employment-form", this.state.form);
     }
+
+    //handling previous state
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
+
+    //handling input form state of the component
     handleTargetEvents = (arrayRef: string, ind: number, event: any, date?: any) => {
         console.log(event);
         let formRef = this.state.form;
@@ -55,6 +66,8 @@ class EmploymentHistory extends React.Component<any, any>{
         else formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
+    //making and manage multiple employee list
     handleHistoryDetails = (action: string) => {
         let formRef = this.state.form["EmploymentHistory"];
         if (action === "add") {
@@ -78,12 +91,15 @@ class EmploymentHistory extends React.Component<any, any>{
         }
     }
 
+    //handling date state of the component
     handleTargetDate = (arrayRef: string, ind: number, name: string, event?: any, date?: any) => {
         let formRef = this.state.form;
         console.log("asasdsdasd", name);
         formRef[arrayRef][ind][name] = date.toISOString();
         this.setState(formRef);
     }
+
+    //handling input form state of the component
     handleText = (arrRef: string, ind: number, event?: any) => {
         let formRef = this.state.form;
         formRef[arrRef][ind][event.target.name] = event.target.value;
@@ -99,7 +115,6 @@ class EmploymentHistory extends React.Component<any, any>{
             history.push(
                 <div key={i}>
                     {this.state.employed > 1 ? <h3> {i + 1} - Employment History </h3> : ""}
-
                     <TextField
                         value={formRef.EmploymentHistory[i].company_name}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
@@ -152,20 +167,20 @@ class EmploymentHistory extends React.Component<any, any>{
                     />
                     <DatePicker floatingLabelText={to} defaultDate={new Date(formRef.EmploymentHistory[i].employment_end)} name="employment_end" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_end")} />
                     <b>{payRate} </b>
-                    <TextField 
-                        type="number" 
-                        floatingLabelText={start} 
-                        name="pay_rate_start" 
+                    <TextField
+                        type="number"
+                        floatingLabelText={start}
+                        name="pay_rate_start"
                         onChange={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                         value={formRef.EmploymentHistory[i].pay_rate_start}
-                        
-                         />
-                    <TextField 
-                    type="number" 
-                    floatingLabelText={end} 
-                    name="pay_rate_end" 
-                    value={formRef.EmploymentHistory[i].pay_rate_end}
-                    onChange={this.handleTargetEvents.bind(this, "EmploymentHistory", i)} />
+
+                    />
+                    <TextField
+                        type="number"
+                        floatingLabelText={end}
+                        name="pay_rate_end"
+                        value={formRef.EmploymentHistory[i].pay_rate_end}
+                        onChange={this.handleTargetEvents.bind(this, "EmploymentHistory", i)} />
                     <TextField
                         hintText={reasonForleaving}
                         floatingLabelText={reasonForleaving}
@@ -176,7 +191,6 @@ class EmploymentHistory extends React.Component<any, any>{
                         name="leaving_reason"
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                     />
-
                 </div>);
         }
         return (
@@ -192,7 +206,6 @@ class EmploymentHistory extends React.Component<any, any>{
                 <br />
                 <label className="title">{doNotContact}</label>
                 <br />
-
                 <TextField
                     floatingLabelText={employeeNumber}
                     fullWidth={true}
@@ -209,9 +222,9 @@ class EmploymentHistory extends React.Component<any, any>{
                     fullWidth={true}
                     multiLine={true}
                     value={formRef.no_contact_reason}
-                    onChange={(event:any)=>{
-                    formRef.no_contact_reason=event.target.value 
-                    this.setState(formRef);
+                    onChange={(event: any) => {
+                        formRef.no_contact_reason = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     name="no_contact_reason"
@@ -222,5 +235,4 @@ class EmploymentHistory extends React.Component<any, any>{
         );
     }
 }
-
 export default EmploymentHistory;

@@ -3,21 +3,24 @@ import { TextField } from 'material-ui';
 import { SignupActionButton } from './actionButtons';
 
 class UserSSNForm extends React.Component<any, any> {
-    state ={
-        err_message:"",
-        social_security:""
+    constructor(props: any) {
+        super(props);
+        //satte of component
+        this.state = {
+            err_message: "",
+            social_security: ""
+        }
     }
+
+    //Validation for social security number
     validation = () => {
         if (this.state.social_security.trim() == '') {
-            this.setState({err_message:"Enter Social Security Number"});
+            this.setState({ err_message: "Enter Social Security Number" });
         }
         else {
-            this.setState({err_message:""},
-                ()=>{
-                    this.props.clickEvent({social_security: this.state.social_security})
-                }
+            this.setState({ err_message: "" },
+                () => this.props.clickEvent({ social_security: this.state.social_security })
             );
-            
         }
     }
 
@@ -27,8 +30,7 @@ class UserSSNForm extends React.Component<any, any> {
                 <label className="title">Enter Social Security Number</label>
                 <TextField
                     hintText=""
-                    onFocus={() => { }}
-                    onBlur={(event: any) => this.setState({social_security:event.target.value})}
+                    onBlur={(event: any) => this.setState({ social_security: event.target.value })}
                     errorText={this.state.err_message ? this.state.err_message : ''}
                     fullWidth={true}
                     floatingLabelText="Social Security Number"

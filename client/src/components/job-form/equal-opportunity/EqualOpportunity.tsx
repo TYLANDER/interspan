@@ -5,6 +5,7 @@ import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 class EqualOpportunity extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             other: false,
             selectedJson: this.props.jsonData,
@@ -15,6 +16,8 @@ class EqualOpportunity extends React.Component<any, any>{
             }
         };
     }
+
+    //getting equal opportunity form data from local storage
     componentWillMount() {
         if (localStorage.getItem('equal-form') !== null) {
             let data: any = localStorage.getItem('equal-form');
@@ -22,26 +25,33 @@ class EqualOpportunity extends React.Component<any, any>{
             this.setState({
                 form: data
             })
-
-            console.log(data);
         }
     }
+
+    //selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //handling next state
     handleNext = () => {
         this.props.handleNext("equal-form", this.state.form);
     }
+
+    //handling previous state
     handlePrev = () => {
         this.props.handlePrev({ name: 123, idx: 1 });
     }
+
+    //handling input form state of the component
     handleTargetEvents = (event: any) => {
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
     render() {
         const { content, gender, male, female, raceEthnicity, veteranStatus, asian, black, hispanic,
             nativeAmerican, white, other, veteran, vietname, disableVeteran } = this.state.selectedJson;
@@ -63,13 +73,11 @@ class EqualOpportunity extends React.Component<any, any>{
                         label={female}
                     />
                 </RadioButtonGroup>    <br /><br />
-
                 <label className="title">{raceEthnicity}</label>
                 <RadioButtonGroup name="race" defaultSelected={
                     formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
                         "other" : formRef.race
                 }
-
                     onChange={(event: any) => {
                         this.handleTargetEvents(event);
                         (event.target.value === 'other' ? this.setState({ other: true }) :
@@ -101,7 +109,6 @@ class EqualOpportunity extends React.Component<any, any>{
                         label={other}
                     />
                 </RadioButtonGroup>
-
                 {this.state.other || formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
                     <TextField
                         floatingLabelText={other}
@@ -115,7 +122,6 @@ class EqualOpportunity extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents}
                     /> : null
                 } <br /><br />
-
                 <label className="title">{veteranStatus} </label>
                 <RadioButtonGroup name="veteran" defaultSelected={formRef.veteran} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
@@ -131,12 +137,10 @@ class EqualOpportunity extends React.Component<any, any>{
                         label={disableVeteran}
                     />
                 </RadioButtonGroup>
-
                 <br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );
     }
 }
-
 export default EqualOpportunity;

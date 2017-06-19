@@ -1,13 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-
 import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
 
 // Application State IAppState
 import IAppState from './IAppState';
 
-// reducers
+// Reducers
 import AuthReducer from './reducer/auth';
 import jobReducer from './reducer/jobs';
 
@@ -30,7 +29,7 @@ export const rootReducer = combineReducers<IAppState>({
     jobReducer
 });
 
-// for initialize in application
+// For initialize in application
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
 const createStoreWithMiddleware = applyMiddleware(epicMiddleware)(createStore);

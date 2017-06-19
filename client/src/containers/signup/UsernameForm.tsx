@@ -3,16 +3,21 @@ import { TextField } from 'material-ui';
 import { SignupActionButton } from "./actionButtons";
 
 class UsernameForm extends React.Component<any, any> {
-    state = {
-        first_name_error: false,
-        first_name: "",
-        last_name: "",
-        first_name_messages: '',
-        first_name_success: false,
-        last_name_error: false,
-        last_name_messages: '',
-        last_name_success: false,
-    };
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            first_name_error: false,
+            first_name: "",
+            last_name: "",
+            first_name_messages: '',
+            first_name_success: false,
+            last_name_error: false,
+            last_name_messages: '',
+            last_name_success: false,
+        };
+    }
+
+    // First name validation
     isFirstName(value: any) {
         if (value.trim() == '') {
             this.setState({
@@ -32,14 +37,13 @@ class UsernameForm extends React.Component<any, any> {
             });
             return;
         }
-
-        // this.props.collection({ first_name: value });
         this.setState({
             first_name_error: false,
             first_name_success: true,
             first_name: value
         });
     }
+
     //Last Name Validation
     isLastName(value: any) {
         if (value.trim() == '') {
@@ -60,13 +64,14 @@ class UsernameForm extends React.Component<any, any> {
             });
             return;
         }
-        // this.props.collection({ last_name: value });
         this.setState({
             last_name_error: false,
             last_name_success: true,
             last_name: value
         });
     }
+
+    //On submit form validation
     validation = () => {
         if (this.state.first_name.trim() == '' || this.state.last_name.trim() == '') {
             if (this.state.last_name.trim() == '') {
@@ -97,7 +102,6 @@ class UsernameForm extends React.Component<any, any> {
                     hintText=""
                     errorText={this.state.first_name_error ? this.state.first_name_messages : ''}
                     fullWidth={true}
-                    onFocus={() => { }}
                     onBlur={(event: any) => {
                         this.isFirstName(event.target.value);
                     }}
@@ -109,7 +113,6 @@ class UsernameForm extends React.Component<any, any> {
                 <TextField
                     hintText=""
                     errorText={this.state.last_name_error ? this.state.last_name_messages : ''}
-                    onFocus={() => { }}
                     onBlur={(event: any) => {
                         this.isLastName(event.target.value);
                     }}

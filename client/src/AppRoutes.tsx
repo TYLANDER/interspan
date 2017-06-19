@@ -5,6 +5,7 @@ import { AboutUs, EmployeeInfo, HireFor} from './components';
 
 class AppRoutes extends React.Component<any, any> {
 
+    //Checking user auth for route protection
     authenticated(){
         if(!localStorage.getItem('user-info')){
             browserHistory.push("/login");

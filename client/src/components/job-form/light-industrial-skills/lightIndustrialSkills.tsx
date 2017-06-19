@@ -6,6 +6,7 @@ import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 class lightIndustrialSkills extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             forklift: false,
             palletJack: false,
@@ -29,6 +30,8 @@ class lightIndustrialSkills extends React.Component<any, any>{
             }
         };
     }
+
+    //Getting skills form data from local storage
     componentWillMount() {
         if (localStorage.getItem('skills-form') !== null) {
             let data: any = localStorage.getItem('skills-form');
@@ -36,22 +39,27 @@ class lightIndustrialSkills extends React.Component<any, any>{
             this.setState({
                 form: data
             })
-
-            console.log(data);
         }
     }
 
+    //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //handling next state
     handleNext = () => {
         this.props.handleNext("skills-form", this.state.form);
     }
+
+    //Handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
+
+    //Handling input form state of the component
     handleTargetEvents = (event: any) => {
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
@@ -87,7 +95,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         label={tenYearsOrMore}
                     />
                 </RadioButtonGroup>
-
                 <label className="title">{questions.two}</label>
                 <RadioButtonGroup name="experience_with" defaultSelected={formRef.experience_with} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
@@ -150,7 +157,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         value="None of the above"
                         label={noneOfAbove}
                     />
-
                 </RadioButtonGroup>
                 <label className="title">{questions.three}</label>
                 <RadioButtonGroup name="lifting" defaultSelected={formRef.lifting} onChange={(event: any) => { this.handleTargetEvents(event) }}>
@@ -175,7 +181,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         label={sixtyOneOrMore}
                     />
                 </RadioButtonGroup>
-
                 <br />
                 <div className="sections">
                     <label className="inline-fields">{questions.four}</label>
@@ -194,7 +199,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.five}</label>
                     <RadioButtonGroup name="stand_hours" defaultSelected={formRef.stand_hours} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -211,7 +215,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.six}</label>
                     <RadioButtonGroup name="walking_job" className="right" defaultSelected={formRef.walking_job} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -228,7 +231,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.seven}?</label>
                     <RadioButtonGroup name="stand_bend" className="right" defaultSelected={formRef.stand_bend} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -245,7 +247,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.eight}</label>
                     <RadioButtonGroup name="basic_maths" className="right" defaultSelected={formRef.basic_maths} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -262,7 +263,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.nine}</label>
                     <RadioButtonGroup name="tape_mesurement" className="right" defaultSelected={formRef.tape_mesurement} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -279,7 +279,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.ten}</label>
                     <RadioButtonGroup name="use_calculator" className="right" defaultSelected={formRef.use_calculator} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -312,7 +311,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.twelve}</label>
                     <RadioButtonGroup name="operated_forklift" className="right" defaultSelected={formRef.operated_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ forklift: false }) : this.setState({ forklift: true }) }}>
                         <RadioButton
@@ -328,7 +326,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                             labelStyle={{ color: "gray", fontWeight: 500 }}
                         />
                     </RadioButtonGroup>
-
                     {this.state.forklift || formRef.operated_forklift !== "false" ?
                         <TextField
                             hintText=""
@@ -345,7 +342,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                         : null}
                     <br /><br />
-
                     <label className="inline-fields">{questions.thirteen}</label>
                     <RadioButtonGroup name="certified_forklift" className="right" defaultSelected={formRef.certified_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -362,9 +358,8 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                     </RadioButtonGroup>
                     <br /><br />
-
                     <label className="inline-fields">{questions.fourteen}</label>
-                    <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack !== "true" ? "false" :"true"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
+                    <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack !== "true" ? "false" : "true"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
                         <RadioButton
                             className="inline-radio"
                             value="true"
@@ -378,7 +373,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                             labelStyle={{ color: "gray", fontWeight: 500 }}
                         />
                     </RadioButtonGroup>
-
                     {this.state.palletJack || formRef.operated_pallet_jack !== "true" ?
                         <TextField
                             hintText=""
@@ -395,7 +389,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                         />
                         : null}
                     <br /><br />
-
                     <label className="inline-fields">{questions.fifteen}</label>
                     <RadioButtonGroup name="steel_shoes" defaultSelected={formRef.steel_shoes} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                         <RadioButton
@@ -413,7 +406,6 @@ class lightIndustrialSkills extends React.Component<any, any>{
                     </RadioButtonGroup>
                 </div>
                 <br /><br />
-
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

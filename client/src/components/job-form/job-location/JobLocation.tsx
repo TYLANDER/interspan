@@ -6,11 +6,12 @@ class JobLocation extends React.Component<any, any>{
 
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             position: false,
             location: false,
             selectedJson: this.props.jsonData,
-            selectedJson1:this.props.jsonData1,
+            selectedJson1: this.props.jsonData1,
             form: {
                 position_desired: "",
                 location_preference: "",
@@ -28,6 +29,8 @@ class JobLocation extends React.Component<any, any>{
             }
         };
     }
+
+    //Getting job location form data from local storage
     componentWillMount() {
         if (localStorage.getItem('job-location') !== null) {
             let data: any = localStorage.getItem('job-location');
@@ -35,32 +38,38 @@ class JobLocation extends React.Component<any, any>{
             this.setState({
                 form: data
             })
-
-            console.log(data);
         }
     }
+
+    //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData,
-            selectedJson1:nextProp.jsonData1
+            selectedJson1: nextProp.jsonData1
         })
     }
+
+    //Handling input form state of the component
     handleTargetEvents = (event: any) => {
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
+    //Handling input form state of the component
     handleNext = () => {
         this.props.handleNext('job-location', this.state.form);
     }
+
+    //Handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
+
     render() {
         const { positionDesired, avalaiblePosition, clericalOffice, industrialFactory, other, locationPreference, anyAvailableSite, site, payRateExpected, perHour } = this.state.selectedJson;
         const { title, questions, yes, no } = this.state.selectedJson1;
         const formRef = this.state.form;
-
         return (
             <div className="work-hours-container">
                 <label className="title">{positionDesired} </label>
@@ -70,7 +79,6 @@ class JobLocation extends React.Component<any, any>{
                     this.handleTargetEvents(event);
                     event.target.value === 'other' ? this.setState({ position: true }) : this.setState({ position: false })
                 }}>
-
                     <RadioButton
                         value="Any available position"
                         label={avalaiblePosition}
@@ -108,7 +116,6 @@ class JobLocation extends React.Component<any, any>{
                     this.handleTargetEvents(event);
                     event.target.value === 'site' ? this.setState({ location: true }) : this.setState({ location: false })
                 }}>
-
                     <RadioButton
                         value="Any available site"
                         label={anyAvailableSite}
@@ -123,7 +130,6 @@ class JobLocation extends React.Component<any, any>{
                         name="location_preference"
                         hintText=""
                         value={this.state.form.location_preference}
-                        onFocus={() => { }}
                         fullWidth={true}
                         onChange={(event: any) => {
                             formRef.location_preference = event.target.value
@@ -142,14 +148,13 @@ class JobLocation extends React.Component<any, any>{
                     }
                     }
                     value={this.state.form.pay_rate}
-                    onFocus={() => { }}
                     fullWidth={true}
                     floatingLabelText={payRateExpected}
                     onBlur={this.handleTargetEvents}
                 />
-                                <label className="title">{title}</label><br /><br />
+                <label className="title">{title}</label><br /><br />
                 <p className="inline-fields">{questions.one}</p>
-                <RadioButtonGroup name="available_fulltime" defaultSelected={formRef.available_fulltime} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="available_fulltime" defaultSelected={formRef.available_fulltime} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -166,7 +171,7 @@ class JobLocation extends React.Component<any, any>{
                 <ul>
                     <li>
                         <p className="inline-fields">{questions.four}</p>
-                        <RadioButtonGroup name="any_shift" defaultSelected={formRef.any_shift} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                        <RadioButtonGroup name="any_shift" defaultSelected={formRef.any_shift} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -182,7 +187,7 @@ class JobLocation extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.five}</p>
-                        <RadioButtonGroup name="day_7_4" defaultSelected={formRef.day_7_4} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                        <RadioButtonGroup name="day_7_4" defaultSelected={formRef.day_7_4} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -198,7 +203,7 @@ class JobLocation extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.six}</p>
-                        <RadioButtonGroup name="evening_4_12" className="right"  defaultSelected={formRef.evening_4_12} onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                        <RadioButtonGroup name="evening_4_12" className="right" defaultSelected={formRef.evening_4_12} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -214,7 +219,7 @@ class JobLocation extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.seven}</p>
-                        <RadioButtonGroup name="night_11_7" className="right"  defaultSelected={formRef.night_11_7} onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                        <RadioButtonGroup name="night_11_7" className="right" defaultSelected={formRef.night_11_7} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -230,7 +235,7 @@ class JobLocation extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.eight}</p>
-                        <RadioButtonGroup name="day_12_6_6" defaultSelected={formRef.day_12_6_6} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                        <RadioButtonGroup name="day_12_6_6" defaultSelected={formRef.day_12_6_6} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -246,7 +251,7 @@ class JobLocation extends React.Component<any, any>{
                     </li>
                     <li>
                         <p className="inline-fields">{questions.nine}</p>
-                        <RadioButtonGroup name="night_12_6_6" defaultSelected={formRef.night_12_6_6} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                        <RadioButtonGroup name="night_12_6_6" defaultSelected={formRef.night_12_6_6} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                             <RadioButton
                                 className="inline-radio"
                                 value="Yes"
@@ -262,7 +267,7 @@ class JobLocation extends React.Component<any, any>{
                     </li>
                 </ul>
                 <p className="inline-fields">{questions.ten}</p>
-                <RadioButtonGroup name="do_overtime" defaultSelected={formRef.do_overtime} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="do_overtime" defaultSelected={formRef.do_overtime} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -276,7 +281,7 @@ class JobLocation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <br /><br />
                 <p className="inline-fields">{questions.eleven}</p>
-                <RadioButtonGroup name="work_on_weekends" defaultSelected={formRef.work_on_weekends} className="right" onChange={(event: any) => {this.handleTargetEvents(event)}}>
+                <RadioButtonGroup name="work_on_weekends" defaultSelected={formRef.work_on_weekends} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
@@ -291,10 +296,10 @@ class JobLocation extends React.Component<any, any>{
                 <br /><br />
                 <TextField
                     fullWidth={true}
-                    value= {formRef.unavailability}
-                    onChange={(event:any)=>{
-                    formRef.unavailability=event.target.value 
-                    this.setState(formRef);
+                    value={formRef.unavailability}
+                    onChange={(event: any) => {
+                        formRef.unavailability = event.target.value
+                        this.setState(formRef);
                     }
                     }
                     floatingLabelText={questions.twelve}
@@ -306,5 +311,4 @@ class JobLocation extends React.Component<any, any>{
         );
     }
 }
-
 export default JobLocation;

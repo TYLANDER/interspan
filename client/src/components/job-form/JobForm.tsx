@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './JobForm.css';
-// import { Link } from 'react-router';
 import { Step, Stepper, StepButton } from 'material-ui/Stepper';
 import ApplicantInfo from './applicant-info/ApplicantInfo';
 import { CircularProgress } from "material-ui";
@@ -12,24 +11,24 @@ import PersonalInfo from './personal-info/PersonalInfo';
 import LightIndustrialSkill from './light-industrial-skills/lightIndustrialSkills';
 import Media from './media/Media';
 import EqualOpportunity from './equal-opportunity/EqualOpportunity';
-// import WorkHour from './work-hours/WorkHours';
-// import Communication from './communication/Communication';
 import Transportation from './transportation/Transportation';
 import References from './references/References';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { withRouter, browserHistory } from "react-router"
-import {StateManage} from "../../service/stateManage";
-class MainJobForm extends React.Component<any, any>{
+import { StateManage } from "../../service/stateManage";
 
+class MainJobForm extends React.Component<any, any>{
     jobDataEn: any = {};
     jobDataSp: any = {};
     selectedJson: any = {};
 
     constructor(props: any) {
         super(props);
+        //import json of both language
         this.jobDataEn = require('../../assets/json/job-en');
         this.jobDataSp = require('../../assets/json/job-sp');
+        //state of the component
         this.state = {
             finished: false,
             stepIndex: 0,
@@ -37,10 +36,11 @@ class MainJobForm extends React.Component<any, any>{
             visited: [],
             open: true
         };
-        StateManage.$subject.next(this.state);
-
+        //Observable binding with state of component
+        StateManage.stepperObserver.next(this.state);
     }
 
+    //handling state of the form and store form in local storage
     handleNext = (url: any, e: any) => {
         switch (url) {
             case 'application-form':
@@ -61,12 +61,6 @@ class MainJobForm extends React.Component<any, any>{
             case 'equal-form':
                 localStorage.setItem(url, JSON.stringify(e));
                 break;
-            // case 'work-hour':
-            //     localStorage.setItem(url,JSON.stringify(e));
-            //     break;
-            // case 'communication-form':
-            //     localStorage.setItem(url,JSON.stringify(e));
-            //     break;
             case 'transportation-form':
                 localStorage.setItem(url, JSON.stringify(e));
                 break;
@@ -88,17 +82,15 @@ class MainJobForm extends React.Component<any, any>{
             default:
                 console.log("Default Case")
         }
-        console.log(e);
         const { stepIndex } = this.state;
-        console.log(this.state.visited)
         this.setState({
             stepIndex: stepIndex + 1,
             finished: stepIndex >= 10,
             visited: this.state.visited.concat(stepIndex)
         });
-
     }
 
+    //handling state of the form
     handlePrev = (e: any) => {
         const { stepIndex } = this.state;
         if (stepIndex > 0) {
@@ -106,6 +98,7 @@ class MainJobForm extends React.Component<any, any>{
         }
     }
 
+    //Calling Specific component on each form state
     getStepContent(stepIndex: any) {
         switch (stepIndex) {
             case 0:
@@ -124,10 +117,6 @@ class MainJobForm extends React.Component<any, any>{
                 return <Media handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.media} />;
             case 7:
                 return <EqualOpportunity handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.equalOpportunity} />;
-            // case 8:
-            //     return <WorkHour jsonData={this.state.selectedJson.WorkHours} handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} />;
-            // case 9:
-            //     return <Communication handleNext={(url:any,e: any) => this.handleNext(url,e)} handlePrev={(e: any) => this.handlePrev(e)} />;
             case 8:
                 return <Transportation handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.transportation} />;
             case 9:
@@ -138,26 +127,19 @@ class MainJobForm extends React.Component<any, any>{
                 return 'You\'re a long way from home sonny jim!';
         }
     }
-    titleBar() {
-        const { headings } = this.state.selectedJson;
-        switch (this.state.stepIndex) {
-            case 1:
-                this.props.titleChanged(headings.applicationInformation);
-            default:
-                console.log("Not Found");
-        };
-    }
+
     componentWillMount() {
         const { headings } = this.state.selectedJson;
         if (this.state.stepIndex === 0) {
             this.props.titleChanged(headings.applicationInformation)
         }
-            StateManage.$subject.next(this.state);
-
+        StateManage.stepperObserver.next(this.state);
     }
+
     componentDidUpdate() {
         const { headings } = this.state.selectedJson;
 
+        //Change navbar title according to that job component stepper state
         switch (this.state.stepIndex) {
             case 0:
                 return this.props.titleChanged(headings.applicationInformation);
@@ -175,10 +157,6 @@ class MainJobForm extends React.Component<any, any>{
                 return this.props.titleChanged(headings.media);
             case 7:
                 return this.props.titleChanged(headings.equalOpportunity);
-            // case 8:
-            //     return this.props.titleChanged(headings.workHours);
-            // case 9:
-            //     return this.props.titleChanged(headings.communication);
             case 8:
                 return this.props.titleChanged(headings.transportation);
             case 9:
@@ -189,22 +167,26 @@ class MainJobForm extends React.Component<any, any>{
                 return this.props.titleChanged("You'r all set!")
         }
     }
+
     componentWillReceiveProps(nextProp: any) {
-        // console.log(nextProp.language);
+        //select user selected language
         let userSelectedJson = nextProp.language === "en" ? this.jobDataEn : this.jobDataSp;
         this.setState({ selectedJson: userSelectedJson })
     }
+
+    //save specific form state data in local storage
     parsingLocalStorage = (value: any) => {
         let data: any = localStorage.getItem(value);
         data = JSON.parse(data);
         let user: any = localStorage.getItem('user-info');
         let job_id: any = localStorage.getItem('job-id');
-        data = Object.assign({user_id:JSON.parse(user)[0].id,job_id:parseInt(job_id)},data);
+        data = Object.assign({ user_id: JSON.parse(user)[0].id, job_id: parseInt(job_id) }, data);
         return data;
     }
 
+    //dialog close function
     handleClose = () => {
-        // let applicationForm:any = localStorage.getItem('application-form')
+        //Saving Form Data
         let formData = {
             "application_form": this.parsingLocalStorage('application-form'),
             "job_location": this.parsingLocalStorage('job-location'),
@@ -218,14 +200,14 @@ class MainJobForm extends React.Component<any, any>{
             "skills_form": this.parsingLocalStorage('skills-form'),
             "transportation_form": this.parsingLocalStorage('transportation-form'),
         }
-
         this.setState({ open: false, finished: false, stepIndex: this.state.stepIndex - 2 });
+        //dispatch action and send data to server
         this.props.applyJob(formData);
-        console.log(formData);
     };
-    render() {
-    StateManage.$subject.next(this.state);
 
+    render() {
+        StateManage.stepperObserver.next(this.state);
+        //action button of dialog box
         const actions = [
             <FlatButton
                 label="Done"
@@ -236,14 +218,16 @@ class MainJobForm extends React.Component<any, any>{
         ];
         const { finished, stepIndex } = this.state;
         const { headings } = this.state.selectedJson;
+        //after success job submitted. It route to main page
         this.props.jobObj.success ? browserHistory.push("/") : null;
         return (
+            //checking the state of loader
             this.props.jobObj.isLoading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
                 style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> :
                 <div className="main-job-form-container">
+                    {/*Stepper for Desktop*/}
                     <div className="md-stepper">
                         <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>
-
                             <Step>
                                 <StepButton completed={stepIndex === 0 ? false : this.state.visited.indexOf(0) !== -1} onClick={() => this.setState({ stepIndex: 0 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.applicationInformation}</StepButton>
                             </Step>
@@ -268,12 +252,6 @@ class MainJobForm extends React.Component<any, any>{
                             <Step>
                                 <StepButton completed={stepIndex === 7 ? false : this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={() => this.setState({ stepIndex: 7 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.equalOpportunity}</StepButton>
                             </Step>
-                            {/*<Step>
-                            <StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.workHours}</StepButton>
-                        </Step>*/}
-                            {/*<Step>
-                            <StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.communication}</StepButton>
-                        </Step>*/}
                             <Step>
                                 <StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.transportation}</StepButton>
                             </Step>
@@ -283,11 +261,9 @@ class MainJobForm extends React.Component<any, any>{
                             <Step>
                                 <StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.certification}</StepButton>
                             </Step>
-
-
                         </Stepper>
                     </div>
-
+                    {/*stepper for mobile*/}
                     <div className="sm-stepper">
                         <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}  >
                             <Step><StepButton completed={stepIndex === 0 ? false : this.state.visited.indexOf(0) !== -1} onClick={() => this.setState({ stepIndex: 0 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
@@ -298,8 +274,6 @@ class MainJobForm extends React.Component<any, any>{
                             <Step><StepButton completed={stepIndex === 5 ? false : this.state.visited.indexOf(5) !== -1} disabled={this.state.visited.indexOf(4) == -1} onClick={() => this.setState({ stepIndex: 5 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                             <Step><StepButton completed={stepIndex === 6 ? false : this.state.visited.indexOf(6) !== -1} disabled={this.state.visited.indexOf(5) == -1} onClick={() => this.setState({ stepIndex: 6 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                             <Step><StepButton completed={stepIndex === 7 ? false : this.state.visited.indexOf(7) !== -1} disabled={this.state.visited.indexOf(6) == -1} onClick={() => this.setState({ stepIndex: 7 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
-                            {/*<Step><StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>*/}
-                            {/*<Step><StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>*/}
                             <Step><StepButton completed={stepIndex === 8 ? false : this.state.visited.indexOf(8) !== -1} disabled={this.state.visited.indexOf(7) == -1} onClick={() => this.setState({ stepIndex: 8 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                             <Step><StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                             <Step><StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
@@ -316,7 +290,6 @@ class MainJobForm extends React.Component<any, any>{
                             >
                                 You're all set! We will be in touch
         </Dialog>) : (
-
                                 <div>
                                     <div>{this.getStepContent(stepIndex)}</div>
                                 </div>

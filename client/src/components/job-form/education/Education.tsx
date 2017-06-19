@@ -5,11 +5,12 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 class Education extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             school: 1,
             skills: 1,
-            selectedJson:this.props.jsonData,
-            form:{
+            selectedJson: this.props.jsonData,
+            form: {
                 highestEducation: "",
                 schoolLocationList: [{
                     name: "",
@@ -21,71 +22,86 @@ class Education extends React.Component<any, any>{
             }
         };
     }
+
+    //selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //handling next state
     handleNext = () => {
         localStorage.removeItem("education-form");
-        this.props.handleNext("education-form",this.state.form);
+        this.props.handleNext("education-form", this.state.form);
     }
+
+    //handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
-    componentWillMount(){
-        if(localStorage.getItem('education-form') !== null)
-        {
-            let data:any = localStorage.getItem('education-form');
+
+    //getting education form data from local storage
+    componentWillMount() {
+        if (localStorage.getItem('education-form') !== null) {
+            let data: any = localStorage.getItem('education-form');
             data = JSON.parse(data)
             this.setState({
-                form:data,
-                school:data.schoolLocationList.length,
+                form: data,
+                school: data.schoolLocationList.length,
                 skills: data.specialTrainingList.length
             })
         }
     }
 
-    handleTargetEvents = (arrayRef:string, ind:number, event?: any) =>{
-        let formRef= this.state.form;
+    //handling input form state of the component
+    handleTargetEvents = (arrayRef: string, ind: number, event?: any) => {
+        let formRef = this.state.form;
 
-        if(arrayRef && Array.isArray(formRef[arrayRef]))
+        if (arrayRef && Array.isArray(formRef[arrayRef]))
             formRef[arrayRef][ind][event.target.name] = event.target.value;
-        else formRef[event.target.name]= event.target.value;
+        else formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
-    handleSchoolLocationList = (action:string)=>{
+
+    //making and manage high schools list
+    handleSchoolLocationList = (action: string) => {
         let formRef = this.state.form["schoolLocationList"];
-        if(action === "add"){
+        if (action === "add") {
             formRef.push({
-                    name: "",
-                    location: ""
-                }); 
+                name: "",
+                location: ""
+            });
             this.setState({ formRef, school: this.state.school + 1 })
         }
-        else{
-            formRef.pop();            
+        else {
+            formRef.pop();
             this.setState({ formRef, school: this.state.school - 1 })
         }
     }
-    handleText = (arrRef:string,ind:number,event?:any) => {
-        let formRef= this.state.form;
+
+    //handling input form state of the component
+    handleText = (arrRef: string, ind: number, event?: any) => {
+        let formRef = this.state.form;
         formRef[arrRef][ind][event.target.name] = event.target.value;
         this.setState(formRef)
     }
-    handleSpecialTrainingList = (action:string)=>{
+
+    //making and manage skills list
+    handleSpecialTrainingList = (action: string) => {
         let formRef = this.state.form["specialTrainingList"]
-        if(action === "add"){
+        if (action === "add") {
             formRef.push({
-                    skill: ""
-                }); 
+                skill: ""
+            });
             this.setState({ formRef, skills: this.state.skills + 1 })
         }
-        else{
+        else {
             formRef.pop();
             this.setState({ formRef, skills: this.state.skills - 1 })
         }
     }
+
     render() {
         let school = [];
         let skills = [];
@@ -93,20 +109,20 @@ class Education extends React.Component<any, any>{
             school.push(
                 <div key={i}>
                     <TextField
-                    key={i}
+                        key={i}
                         hintText=""
                         name="name"
                         value={this.state.form.schoolLocationList[i].name}
-                        onBlur={this.handleTargetEvents.bind(this,"schoolLocationList",i)}
-                        onChange = {this.handleText.bind(this,"schoolLocationList",i)}
+                        onBlur={this.handleTargetEvents.bind(this, "schoolLocationList", i)}
+                        onChange={this.handleText.bind(this, "schoolLocationList", i)}
                         floatingLabelText="Name of High School / College"
                     />
                     <TextField
                         hintText=""
                         value={this.state.form.schoolLocationList[i].location}
                         name="location"
-                        onChange = {this.handleText.bind(this,"schoolLocationList",i)}
-                        onBlur={this.handleTargetEvents.bind(this,"schoolLocationList",i)}
+                        onChange={this.handleText.bind(this, "schoolLocationList", i)}
+                        onBlur={this.handleTargetEvents.bind(this, "schoolLocationList", i)}
                         floatingLabelText="Location of High School / College"
                     />
                 </div>);
@@ -117,21 +133,21 @@ class Education extends React.Component<any, any>{
                     <TextField
                         hintText=""
                         value={this.state.form.specialTrainingList[i].skill}
-                        onChange = {this.handleText.bind(this,"specialTrainingList",i)}
+                        onChange={this.handleText.bind(this, "specialTrainingList", i)}
                         name="skill"
-                        onBlur={this.handleTargetEvents.bind(this,"specialTrainingList",i)}
+                        onBlur={this.handleTargetEvents.bind(this, "specialTrainingList", i)}
                         floatingLabelText="Special Training / Skills"
                     />
                 </div>);
         }
-        const {question, values, skillsAndExperience} = this.state.selectedJson;
+        const { question, values, skillsAndExperience } = this.state.selectedJson;
         let formRef = this.state.form;
         return (
             <div className="job-applicant-container">
                 <label className="title">{question.one}</label>
-                <RadioButtonGroup valueSelected={formRef.highestEducation} name="highestEducation"  onChange={(event: any) => 
-                    this.handleTargetEvents(event, 0,event)
-                    }>
+                <RadioButtonGroup valueSelected={formRef.highestEducation} name="highestEducation" onChange={(event: any) =>
+                    this.handleTargetEvents(event, 0, event)
+                }>
                     <RadioButton
                         value="Elementary"
                         label={values.elementary}
@@ -176,5 +192,4 @@ class Education extends React.Component<any, any>{
         );
     }
 }
-
 export default Education;

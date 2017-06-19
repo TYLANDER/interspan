@@ -1,7 +1,5 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import * as Colors from 'material-ui/styles/colors';
-//import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-//import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 //Custom Theme to change UI at application level
 const CustomTheme = getMuiTheme({
@@ -12,7 +10,6 @@ const CustomTheme = getMuiTheme({
     primary1Color: Colors.indigo700,
     accent1Color: Colors.redA200,
     pickerHeaderColor: Colors.darkBlack,
-    // alternateTextColor: Colors.darkBlack,
   },
   appBar: {
     height: 57,
@@ -33,7 +30,6 @@ const CustomTheme = getMuiTheme({
 });
 
 function AppTheme(){
-  //return getMuiTheme(lightBaseTheme);
   return CustomTheme;
 }
 

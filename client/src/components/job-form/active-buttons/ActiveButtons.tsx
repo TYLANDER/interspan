@@ -1,21 +1,21 @@
 import * as React from 'react';
-import {RaisedButton,
-    FlatButton} from 'material-ui';
+import { RaisedButton, FlatButton } from 'material-ui';
 import "./ActiveButtons.css"
-class ActiveButtons extends React.Component<any, any>{
 
+class ActiveButtons extends React.Component<any, any>{
     stepIndex = 0;
 
+    //Handling next state of stepper
     handleNext = () => {
-     this.props.handleNext();
+        this.props.handleNext();
     }
 
+    //Handling previous state of stepper
     handlePrev = () => {
         this.props.handlePrev();
     }
-    render(){
-
-        return(
+    render() {
+        return (
             <div className="job-applicant-container">
                 <FlatButton
                     label="Back"
@@ -24,7 +24,7 @@ class ActiveButtons extends React.Component<any, any>{
                     style={{ marginRight: 12 }}
                 />
                 <RaisedButton
-                    label={this.props.finished? 'I Agree' : 'Next'}
+                    label={this.props.finished ? 'I Agree' : 'Next'}
                     primary={true}
                     disabled={this.props.disabled}
                     onTouchTap={() => this.handleNext()}

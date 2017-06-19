@@ -6,6 +6,7 @@ import { RadioButton, RadioButtonGroup, TextField } from 'material-ui';
 class Transportation extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
+        //state of component
         this.state = {
             employee: false,
             selectedJson: this.props.jsonData,
@@ -16,6 +17,8 @@ class Transportation extends React.Component<any, any>{
             }
         };
     }
+
+    //Getting transportation form data from local storage
     componentWillMount() {
         if (localStorage.getItem('transportation-form') !== null) {
             let data: any = localStorage.getItem('transportation-form');
@@ -23,26 +26,33 @@ class Transportation extends React.Component<any, any>{
             this.setState({
                 form: data
             })
-
-            console.log(data);
         }
     }
+
+    //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
             selectedJson: nextProp.jsonData
         })
     }
+
+    //Handling next state
     handleNext = () => {
         this.props.handleNext('transportation-form', this.state.form);
     }
+
+    //Handling previous state
     handlePrev = () => {
-        this.props.handlePrev({ name: 123, idx: 1 });
+        this.props.handlePrev();
     }
+
+    //Handling input form state of the component
     handleTargetEvents = (event: any) => {
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
     render() {
         const { accessReliableTransportation, employmentBusLine, rideWithAnotherEmployment, name, yes, no } = this.state.selectedJson;
         let formRef = this.state.form;
@@ -94,7 +104,6 @@ class Transportation extends React.Component<any, any>{
                 {this.state.employee || formRef.another_employee !== "No" ?
                     <TextField
                         value={this.state.form.another_employee}
-
                         floatingLabelText={name}
                         name="another_employee"
                         onBlur={this.handleTargetEvents}

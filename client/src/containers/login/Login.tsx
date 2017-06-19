@@ -10,7 +10,17 @@ import { browserHistory } from 'react-router';
 import AuthActions from "../../store/action/auth";
 
 class Login extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            isAuthenticated: false,
+            userObj: {},
+            loading: false,
+            error: false
+        };
+    }
 
+    //customize theme
     muiTheme: any = getMuiTheme({
         palette: {
             textColor: indigo900
@@ -24,49 +34,42 @@ class Login extends React.Component<any, any> {
         }
     });
 
-    state: any = {
-        isAuthenticated: false,
-        userObj: {},
-        loading: false,
-        error:false
-    };
-
-    componentWillMount() {
-        // if (!this.props.authObj.isAuthenticated)
-        //     this.props.authLogin({ username: 'Zeeshan Hanif' });
-    }
     handleHomePage() {
         browserHistory.push('/');
     }
+
     componentWillReceiveProps(newProps: any) {
+        //check processing state
         newProps.authObj.isProcessing ? this.setState({ loading: true }) : this.setState({ loading: false });
-        newProps.authObj.isError.status?this.setState({error:true}): this.setState({error:false})
+
+        //handling api errors
+        newProps.authObj.isError.status ? this.setState({ error: true }) : this.setState({ error: false })
+
+        //Navigateto apply job if email successfully login
         newProps.authObj.isAuthenticated ? browserHistory.push('/job') : null;
     }
-    
-    // handleJobPage = () => {
-    //     this.props.signUp(this.state.userObj);
 
-    // }
-
-    handleNext = (values:any) => {
+    handleNext = (values: any) => {
         let users = Object.assign(this.state.userObj, values);
-
-        //returning form value
-        console.log(users);
+        /**
+         * returning form value
+         * action dispatch
+         * send form login data to epic
+         */
         this.props.login(users);
     }
 
+    //calling login form component
     formCard = () => {
         return <Forms clickEvent={this.handleNext} />;
     }
 
     render() {
-        {this.state.error?alert(this.props.authObj.isError.msg):null}
+        { this.state.error ? alert(this.props.authObj.isError.msg) : null }
         return (
             <MuiThemeProvider muiTheme={this.muiTheme}>
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
-                    style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="signup-container">
+                    style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="login-container">
                         <div className="paper-container">
                             <Paper zDepth={2} className="md-screen">
                                 {this.formCard()}

@@ -32,7 +32,6 @@
 }
 .navbar-container .lang-select{
   width: 120px !important;
-  /*position: absolute !important;*/
     right: -3px;
     top: 4px;
     display:inline-flex !important
@@ -103,7 +102,4 @@
   .md-menu{
     display: none;
   }
-  /*.navbar-container .logo {
-    left: 20px;
-  }*/
 }

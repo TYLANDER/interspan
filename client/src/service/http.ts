@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/dom/ajax';
 
 export class HttpService {
-
+    //Get request HTTP service
     static get(url: string, headers: Object = {}): Observable<any> {
         return Observable.ajax({
             url,
@@ -13,7 +13,7 @@ export class HttpService {
             createXHR: () => new XMLHttpRequest()
         });
     }
-
+    //Post request HTTP service
     static post(url: string, body: any, headers = { 'Content-Type': 'application/json' }): Observable<any> {
         return Observable.ajax({
             url,

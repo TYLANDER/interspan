@@ -10,7 +10,19 @@ import { browserHistory } from 'react-router';
 import JobActions from "../../store/action/jobs";
 
 class AddJob extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
 
+        //State of component
+        this.state = {
+            isAuthenticated: false,
+            userObj: {},
+            loading: false,
+            error: false
+        };
+    };
+
+    //Customize internal application theme
     muiTheme: any = getMuiTheme({
         palette: {
             textColor: indigo900
@@ -24,39 +36,36 @@ class AddJob extends React.Component<any, any> {
         }
     });
 
-    state: any = {
-        isAuthenticated: false,
-        userObj: {},
-        loading: false,
-        error: false
-    };
-
-    componentWillMount() {
-        // if (!this.props.authObj.isAuthenticated)
-        //     this.props.authLogin({ username: 'Zeeshan Hanif' });
-    }
+    //Navigate to home page
     handleHomePage() {
         browserHistory.push('/');
-    }
-    componentWillReceiveProps(newProps: any) {
-        newProps.jobObj.isLoading ? this.setState({ loading: true }) : this.setState({ loading: false });
-        newProps.jobObj.isError? this.setState({ error: true }) : this.setState({ error: false })
-        newProps.jobObj.success ? browserHistory.push('/') : null;
-    }
+    };
 
+    componentWillReceiveProps(newProps: any) {
+        //Checking loading state
+        newProps.jobObj.isLoading ? this.setState({ loading: true }) : this.setState({ loading: false });
+
+        //Checking error for add job api
+        newProps.jobObj.isError ? this.setState({ error: true }) : this.setState({ error: false })
+
+        //Handling success state and navigate user to home page
+        newProps.jobObj.success ? browserHistory.push('/') : null;
+    };
 
     handleNext = (values: any) => {
         let users = Object.assign(this.state.userObj, values);
-        //returning form value
-        console.log(users);
+
+        //Dispatch action and send form data to server
         this.props.postJob(users);
     }
 
+    //Form UI component
     formCard = () => {
         return <Forms clickEvent={this.handleNext} />;
     }
 
     render() {
+        // checking error
         { this.state.error ? alert(this.props.authObj.isError.msg) : null }
         return (
             <MuiThemeProvider muiTheme={this.muiTheme}>
@@ -71,12 +80,12 @@ class AddJob extends React.Component<any, any> {
                             </div>
                         </div>
                     </div>}
-
             </MuiThemeProvider>
         );
     }
 
 }
+
 const mapStateToProps = (state: any) => {
     return {
         jobObj: state.jobReducer
@@ -85,7 +94,7 @@ const mapStateToProps = (state: any) => {
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        postJob: (payload:any) => dispatch(JobActions.addJobs(payload))
+        postJob: (payload: any) => dispatch(JobActions.addJobs(payload))
     };
 };
 
