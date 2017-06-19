@@ -1,11 +1,9 @@
 import * as React from 'react';
-// import { AppBar } from 'material-ui';
 import './HireFor.css';
 
 class HireFor extends React.Component<any, any> {
 
     render() {
-
         return (
             <div className="hire-for-container">
                 <h1>What we hire for</h1>
@@ -20,7 +18,6 @@ class HireFor extends React.Component<any, any> {
                       <a href="mailto:info@interspan">info@interspan</a>
 
                 </p>
-
             </div>
 
         );

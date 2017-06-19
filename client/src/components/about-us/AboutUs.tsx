@@ -1,11 +1,9 @@
 import * as React from 'react';
-// import { AppBar } from 'material-ui';
 import './AboutUs.css';
 
 class AboutUs extends React.Component<any, any> {
 
     render() {
-
         return (
             <div className="aboutus-container">
                 <h1>About Us: Spanning the Gap</h1>
