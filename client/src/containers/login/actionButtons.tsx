@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { FlatButton } from 'material-ui'; 
+import { FlatButton } from 'material-ui';
 
-export class SignupActionButton extends React.Component <any,any>{
-    render(){
-
+export class LoginActionButton extends React.Component<any, any>{
+    render() {
         return (
-           <div className="footer-container">
-
+            <div className="footer-container">
                 <FlatButton label="Continue"
                     className="continue-btn"
                     labelPosition="before"
