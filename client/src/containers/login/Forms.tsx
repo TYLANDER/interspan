@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from 'material-ui';
-import { LoginActionButton } from "./actionButtons";
+import LoginActionButton from "./actionButtons";
 import { Link } from "react-router";
 
 class Forms extends React.Component<any, any> {

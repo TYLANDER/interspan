@@ -16,7 +16,7 @@ import References from './references/References';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { withRouter, browserHistory } from "react-router"
-import { StateManage } from "../../service/stateManage";
+import  StateManager from "../../service/stateManage";
 
 class MainJobForm extends React.Component<any, any>{
     jobDataEn: any = {};
@@ -37,7 +37,7 @@ class MainJobForm extends React.Component<any, any>{
             open: true
         };
         //Observable binding with state of component
-        StateManage.stepperObserver.next(this.state);
+        StateManager.stepperObserver.next(this.state);
     }
 
     //handling state of the form and store form in local storage
@@ -133,7 +133,7 @@ class MainJobForm extends React.Component<any, any>{
         if (this.state.stepIndex === 0) {
             this.props.titleChanged(headings.applicationInformation)
         }
-        StateManage.stepperObserver.next(this.state);
+        StateManager.stepperObserver.next(this.state);
     }
 
     componentDidUpdate() {
@@ -206,7 +206,7 @@ class MainJobForm extends React.Component<any, any>{
     };
 
     render() {
-        StateManage.stepperObserver.next(this.state);
+        StateManager.stepperObserver.next(this.state);
         //action button of dialog box
         const actions = [
             <FlatButton

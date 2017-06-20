@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlatButton } from 'material-ui';
 
-export class LoginActionButton extends React.Component<any, any>{
+export default class LoginActionButton extends React.Component<any, any>{
     render() {
         return (
             <div className="footer-container">

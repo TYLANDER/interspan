@@ -9,7 +9,7 @@ import { browserHistory } from 'react-router';
 import JobActions from "../../store/action/jobs";
 import { withRouter } from "react-router";
 import Carrot from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
-import { StateManage } from "../../service/stateManage";
+import StateManager from "../../service/stateManage";
 class NavBar extends React.Component<any, any> {
 
     stateData: any;
@@ -19,7 +19,7 @@ class NavBar extends React.Component<any, any> {
         super(props);
 
         //Observable to detect stepper state of job form
-        StateManage.stepperObserver.subscribe((data) => {
+        StateManager.stepperObserver.subscribe((data:any) => {
             this.stateData = data;
         });
 
@@ -69,7 +69,7 @@ class NavBar extends React.Component<any, any> {
         else {
             console.log("User not logged in");
         }
-        this.props.router.location.pathname === '/job' ? StateManage.stepperObserver.subscribe((data) => {
+        this.props.router.location.pathname === '/job' ? StateManager.stepperObserver.subscribe((data:any) => {
             this.stateData = data;
         }) : null;
     }
