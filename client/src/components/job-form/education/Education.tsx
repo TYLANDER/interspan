@@ -121,6 +121,7 @@ class Education extends React.Component<any, any>{
                         hintText=""
                         value={this.state.form.schoolLocationList[i].location}
                         name="location"
+                        style={{marginLeft: "30px"}}
                         onChange={this.handleText.bind(this, "schoolLocationList", i)}
                         onBlur={this.handleTargetEvents.bind(this, "schoolLocationList", i)}
                         floatingLabelText="Location of High School / College"
@@ -179,6 +180,8 @@ class Education extends React.Component<any, any>{
                     {school}
                     <FlatButton label="Add" primary={true} onClick={() => this.handleSchoolLocationList("add")} />
                     <FlatButton label="Delete" secondary={true} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
+                    <br/>
+                    <br/>                        
                 </div>
                 <div>
                     <label className="title">{skillsAndExperience.heading}</label>
