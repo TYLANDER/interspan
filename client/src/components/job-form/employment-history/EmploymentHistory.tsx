@@ -74,6 +74,7 @@ class EmploymentHistory extends React.Component<any, any>{
             formRef.push({
                 company_name: "",
                 city: "",
+                state: "",
                 supervisor_name: "",
                 job_title: "",
                 telephone: "",
@@ -125,10 +126,19 @@ class EmploymentHistory extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                     />
                     <TextField
-                        hintText={city + ' ' + state}
+                        hintText={state}
                         value={formRef.EmploymentHistory[i].city}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
-                        floatingLabelText={city + ' ' + state}
+                        floatingLabelText={state}
+                        fullWidth={true}
+                        name="state"
+                        onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
+                    />
+                    <TextField
+                        hintText={city}
+                        value={formRef.EmploymentHistory[i].city}
+                        onChange={this.handleText.bind(this, "EmploymentHistory", i)}
+                        floatingLabelText={city}
                         fullWidth={true}
                         name="city"
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
