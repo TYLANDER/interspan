@@ -6,6 +6,12 @@ class ApplicantInfo extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         //State of component
+        let userEmail = "N/A";
+        if (localStorage.getItem("user-info")) {
+            let temp: any = localStorage.getItem("user-info");
+            temp = JSON.parse(temp);
+            userEmail = temp.email;
+        }
         this.state = {
             employee: false,
             selectedJson: this.props.jsonData,
@@ -15,7 +21,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 state: "",
                 zip: "",
                 home_telephone: "",
-                email: "",
+                email: userEmail,
                 years_old: "",
                 employement: '',
                 eligible: "",
@@ -51,7 +57,7 @@ class ApplicantInfo extends React.Component<any, any>{
     }
 
     render() {
-        const { streetAddress, city, state, zip, email, homeTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
+        const { streetAddress, city, state, zip, homeTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
         const formRef = this.state.form;
         return (
             <div className="job-applicant-container">
@@ -133,22 +139,10 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                <TextField
-                    hintText=""
-                    fullWidth={true}
-                    onChange={(event: any) => {
-                        formRef.email = event.target.value
-                        this.setState(formRef);
-                    }
-                    }
-                    floatingLabelText={email}
-                    value={this.state.form.email}
-                    onBlur={(event: any) => {
-                        formRef.email = event.target.value
-                        this.setState(formRef);
-                    }}
-                />
+                
                 <br />
+                <br />
+
                 <b>{areYou18} </b>
 
                 <RadioButtonGroup name="age" valueSelected={this.state.form.years_old} onChange={(event: any) => {
