@@ -19,7 +19,7 @@ class NavBar extends React.Component<any, any> {
         super(props);
 
         //Observable to detect stepper state of job form
-        StateManager.stepperObserver.subscribe((data:any) => {
+        StateManager.stepperObserver.subscribe((data: any) => {
             this.stateData = data;
         });
 
@@ -69,7 +69,7 @@ class NavBar extends React.Component<any, any> {
         else {
             console.log("User not logged in");
         }
-        this.props.router.location.pathname === '/job' ? StateManager.stepperObserver.subscribe((data:any) => {
+        this.props.router.location.pathname === '/job' ? StateManager.stepperObserver.subscribe((data: any) => {
             this.stateData = data;
         }) : null;
     }
@@ -215,7 +215,10 @@ class NavBar extends React.Component<any, any> {
                     </div>
 
                     <div>
-                        <h2>English | Spanish</h2>
+                        <h2>
+                            <span onClick={this.handleLanguage.bind(this, event, 1, 'en')}>  English </span> |
+                            <span onClick={this.handleLanguage.bind(this, event, 1, 'sp')}> Spanish </span>
+                        </h2>
                     </div>
                 </div>
                 : null
@@ -239,40 +242,55 @@ class NavBar extends React.Component<any, any> {
         </div>;
         return (
             <div>
-                {this.stateData ? <Drawer
-                    docked={false}
-                    width={270}
-                    open={this.state.openDrawer}
-                    onRequestChange={(openDrawer) => this.setState({ openDrawer: openDrawer })}
-                >
-                    <AppBar
-                        zDepth={1}
-                        style={{ backgroundColor: '#2e469e', transition: "none" }}
-                        titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
-                        showMenuIconButton={false}
-                    />
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 0 ? <Arrow /> : this.stateData.visited.indexOf(0) !== -1 ? <Done /> : <NotIntrested />}>{this.stateData.selectedJson.headings.applicationInformation}</MenuItem>
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 1 ? <Arrow /> : this.stateData.visited.indexOf(1) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(0) === -1}>{this.stateData.selectedJson.headings.jobLocation}</MenuItem>
+                {this.stateData ?
+                    <Drawer
+                        docked={false}
+                        width={270}
+                        open={this.state.openDrawer}
+                        onRequestChange={(openDrawer) => this.setState({ openDrawer: openDrawer })}
+                    >
+                        <AppBar
+                            zDepth={1}
+                            style={{ backgroundColor: '#2e469e', transition: "none" }}
+                            titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
+                            showMenuIconButton={false}
+                        />
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 0 ? <Arrow /> : this.stateData.visited.indexOf(0) !== -1 ? <Done /> : <NotIntrested />}>{this.stateData.selectedJson.headings.applicationInformation}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 1 ? <Arrow /> : this.stateData.visited.indexOf(1) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(0) === -1}>{this.stateData.selectedJson.headings.jobLocation}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 2 ? <Arrow /> : this.stateData.visited.indexOf(2) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(1) === -1}>{this.stateData.selectedJson.headings.educationTraining}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 2 ? <Arrow /> : this.stateData.visited.indexOf(2) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(1) === -1}>{this.stateData.selectedJson.headings.educationTraining}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 3 ? <Arrow /> : this.stateData.visited.indexOf(3) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(2) === -1}>{this.stateData.selectedJson.headings.employementHistory}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 3 ? <Arrow /> : this.stateData.visited.indexOf(3) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(2) === -1}>{this.stateData.selectedJson.headings.employementHistory}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 4 ? <Arrow /> : this.stateData.visited.indexOf(4) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(3) === -1}>{this.stateData.selectedJson.headings.personalInformation}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 4 ? <Arrow /> : this.stateData.visited.indexOf(4) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(3) === -1}>{this.stateData.selectedJson.headings.personalInformation}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 5 ? <Arrow /> : this.stateData.visited.indexOf(5) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(4) === -1}>{this.stateData.selectedJson.headings.lightIndustrialSkills}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 5 ? <Arrow /> : this.stateData.visited.indexOf(5) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(4) === -1}>{this.stateData.selectedJson.headings.lightIndustrialSkills}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 6 ? <Arrow /> : this.stateData.visited.indexOf(6) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(5) === -1}>{this.stateData.selectedJson.headings.media}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 6 ? <Arrow /> : this.stateData.visited.indexOf(6) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(5) === -1}>{this.stateData.selectedJson.headings.media}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 7 ? <Arrow /> : this.stateData.visited.indexOf(7) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(6) === -1}>{this.stateData.selectedJson.headings.equalOpportunity}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 7 ? <Arrow /> : this.stateData.visited.indexOf(7) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(6) === -1}>{this.stateData.selectedJson.headings.equalOpportunity}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 8 ? <Arrow /> : this.stateData.visited.indexOf(8) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(7) === -1}>{this.stateData.selectedJson.headings.transportation}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} rightIcon={this.stateData.stepIndex === 8 ? <Arrow /> : this.stateData.visited.indexOf(8) !== -1 ? <Done /> : <NotIntrested />} disabled={this.stateData.visited.indexOf(7) === -1}>{this.stateData.selectedJson.headings.transportation}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} disabled={this.stateData.visited.indexOf(8) === -1} rightIcon={this.stateData.stepIndex === 9 ? <Arrow /> : this.stateData.visited.indexOf(9) !== -1 ? <Done /> : <NotIntrested />}>{this.stateData.selectedJson.headings.references}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} disabled={this.stateData.visited.indexOf(8) === -1} rightIcon={this.stateData.stepIndex === 9 ? <Arrow /> : this.stateData.visited.indexOf(9) !== -1 ? <Done /> : <NotIntrested />}>{this.stateData.selectedJson.headings.references}</MenuItem>
 
-                    <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} disabled={this.stateData.visited.indexOf(9) === -1} rightIcon={this.stateData.stepIndex === 10 ? <Arrow /> : this.stateData.visited.indexOf(10) !== -1 ? <Done /> : <NotIntrested />}>{this.stateData.selectedJson.headings.certification}</MenuItem>
+                        <MenuItem style={{ color: "#373e9b", fontFamily: "SFUI_Text" }} onTouchTap={() => { this.setState({ openDrawer: false }) }} disabled={this.stateData.visited.indexOf(9) === -1} rightIcon={this.stateData.stepIndex === 10 ? <Arrow /> : this.stateData.visited.indexOf(10) !== -1 ? <Done /> : <NotIntrested />}>{this.stateData.selectedJson.headings.certification}</MenuItem>
 
-                </Drawer> : null}
+                        <MenuItem>
+                            <h3>
+                                <span
+                                    style={{ color: this.state.language === 'en' ? "#373e9b" : "black" }}
+                                    onClick={this.handleLanguage.bind(this, event, 1, 'en')}>  English
+                                    </span> |
+                                    <span
+                                    style={{ color: this.state.language === 'sp' ? "#373e9b" : "black" }}
+                                    onClick={this.handleLanguage.bind(this, event, 1, 'sp')}> Spanish
+                                    </span>
+                            </h3>
+                        </MenuItem>
+
+                    </Drawer>
+                    : null}
 
                 <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : `navbar-global-container-color`}`}>
                     {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
