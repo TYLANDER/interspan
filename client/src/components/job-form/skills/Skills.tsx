@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './lightIndustrialSkills.css';
+import './Skills.css';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 
-class lightIndustrialSkills extends React.Component<any, any>{
+class Skills extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         //state of component
@@ -412,4 +412,4 @@ class lightIndustrialSkills extends React.Component<any, any>{
     }
 }
 
-export default lightIndustrialSkills;
+export default Skills;

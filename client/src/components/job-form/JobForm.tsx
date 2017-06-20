@@ -8,7 +8,7 @@ import Education from './education/Education';
 import Certification from './certification/Certification';
 import EmployementHistory from './employment-history/EmploymentHistory';
 import PersonalInfo from './personal-info/PersonalInfo';
-import LightIndustrialSkill from './light-industrial-skills/lightIndustrialSkills';
+import Skills from './skills/Skills';
 import Media from './media/Media';
 import EqualOpportunity from './equal-opportunity/EqualOpportunity';
 import Transportation from './transportation/Transportation';
@@ -31,7 +31,7 @@ class MainJobForm extends React.Component<any, any>{
         //state of the component
         this.state = {
             finished: false,
-            stepIndex: 0,
+            stepIndex: 5,
             selectedJson: this.jobDataEn,
             visited: [],
             open: true
@@ -112,7 +112,7 @@ class MainJobForm extends React.Component<any, any>{
             case 4:
                 return <PersonalInfo handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.personalInformation} jsonData1={this.state.selectedJson.communication} />;
             case 5:
-                return <LightIndustrialSkill handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.lightIndustrialAndWarehousePositions} />;
+                return <Skills handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.lightIndustrialAndWarehousePositions} />;
             case 6:
                 return <Media handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.media} />;
             case 7:
