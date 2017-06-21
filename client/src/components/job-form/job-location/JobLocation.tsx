@@ -101,7 +101,7 @@ class JobLocation extends React.Component<any, any>{
                         name="position_desired"
                         value={this.state.form.position_desired}
                         onChange={(event: any) => {
-                            formRef.location_preference = event.target.value
+                            formRef.position_desired = event.target.value
                             this.setState(formRef);
                         }
                         }

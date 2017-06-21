@@ -12,6 +12,7 @@ export default class applyModel {
         let c: any = applyModel.savePersonalInformation(data);
         let d: any = applyModel.saveMedia(data);
         let e: any = applyModel.saveEqualOpportunity(data);
+        let y: any = applyModel.saveIndustrialSkills(data);
         let z: any = applyModel.saveTransportation(data);
         let g: any = applyModel.saveEducation(data);
         let h: any = applyModel.saveEmployementHistory(data);
@@ -22,13 +23,14 @@ export default class applyModel {
             c = await c;
             d = await d;
             e = await e;
+            y = await y;
             z = await z;
             g = await g;
             let f = await applyModel.educationSchool(g.insertId, data);
             h = await h;
-            let i = await applyModel.multipleEmployee(h.insertId,data);
+            let i = await applyModel.multipleEmployee(h.insertId, data);
             j = await j;
-            let k = await applyModel.multipleReference(j.insertId,data);
+            let k = await applyModel.multipleReference(j.insertId, data);
             callback(null, "Applied job successfully");
         }
         catch (err) {
@@ -66,6 +68,15 @@ export default class applyModel {
         })
     }
 
+    static async saveIndustrialSkills(data: any) {
+        return new Promise((resolve: any, reject: any) => {
+            connection.query(`INSERT INTO industrial_skills SET ?`, data.skills_form, function (err, result) {
+                if (err)
+                    reject(err);
+                else resolve(result);
+            });
+        })
+    }
 
     static async saveMedia(data: any) {
         return new Promise((resolve: any, reject: any) => {
@@ -139,9 +150,9 @@ export default class applyModel {
             });
         })
     }
-      static async saveEmployementHistory(data: any) {
+    static async saveEmployementHistory(data: any) {
         return new Promise((resolve: any, reject: any) => {
-            let obj = { no_contact_num: data.employment_form.no_contact_reason,no_contact_reason:data.employment_form.no_contact_reason }
+            let obj = { no_contact_num: data.employment_form.no_contact_reason, no_contact_reason: data.employment_form.no_contact_reason }
             connection.query(`INSERT INTO employment_history SET ?`, obj, function (err, result) {
                 if (err)
                     reject(err);
@@ -149,7 +160,7 @@ export default class applyModel {
             });
         })
     }
-     static async multipleEmployee(educationId: any, data: any) {
+    static async multipleEmployee(educationId: any, data: any) {
         await Promise.all(data.employment_form.EmploymentHistory.map(async (employee, idx, num, ) => {
             await applyModel.insertEmployee(employee, educationId);
         }))
@@ -169,7 +180,7 @@ export default class applyModel {
 
     static async saveReference(data: any) {
         return new Promise((resolve: any, reject: any) => {
-            let obj = { user_id:52,job_id:1 }
+            let obj = { user_id: data.reference_form.user_id, job_id: data.reference_form.job_id }
             connection.query(`INSERT INTO reference_form SET ?`, obj, function (err, result) {
                 if (err)
                     reject(err);
@@ -182,7 +193,7 @@ export default class applyModel {
         await Promise.all(data.reference_form.friendRef.map(async (friend, idx, num, ) => {
             await applyModel.insertFriend(friend, educationId);
         }))
-          await Promise.all(data.reference_form.friendRef.map(async (reference, idx, num, ) => {
+        await Promise.all(data.reference_form.friendRef.map(async (reference, idx, num, ) => {
             await applyModel.insertreferences(reference, educationId);
         }))
     }

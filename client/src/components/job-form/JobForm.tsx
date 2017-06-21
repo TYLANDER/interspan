@@ -16,7 +16,7 @@ import References from './references/References';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { withRouter, browserHistory } from "react-router"
-import  StateManager from "../../service/stateManage";
+import StateManager from "../../service/stateManage";
 
 class MainJobForm extends React.Component<any, any>{
     jobDataEn: any = {};

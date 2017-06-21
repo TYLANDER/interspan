@@ -15,8 +15,9 @@ let devConfig = {
         password: 'test',
         database: 'admin',
         socketPath: '',
+        port:5432,
         multipleStatements:true
     }
 }
 
-export default config;
+export default devConfig;

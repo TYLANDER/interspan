@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Skills.css';
 import ActiveButtons from '../active-buttons/ActiveButtons';
-import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
+import { RadioButtonGroup, RadioButton, TextField, Checkbox } from 'material-ui';
 
 class Skills extends React.Component<any, any>{
     constructor(props: any) {
@@ -12,8 +12,6 @@ class Skills extends React.Component<any, any>{
             palletJack: false,
             selectedJson: this.props.jsonData,
             form: {
-                industrial_experience: "",
-                experience_with: "",
                 lifting: "",
                 lift_weight: false,
                 stand_hours: false,
@@ -26,7 +24,22 @@ class Skills extends React.Component<any, any>{
                 operated_forklift: false,
                 certified_forklift: false,
                 operated_pallet_jack: false,
-                steel_shoes: false
+                steel_shoes: false,
+                assembly: false,
+                production_line: false,
+                production_materials: false,
+                heavy_lift: false,
+                banding_machine: false,
+                pulling_order: false,
+                ups_shipping: false,
+                data_entry: false,
+                counting_material: false,
+                working_conveyor: false,
+                gluing_boxes: false,
+                stacker: false,
+                quality_control: false,
+                weight_materials: false,
+                none_of_above: false
             }
         };
     }
@@ -65,6 +78,13 @@ class Skills extends React.Component<any, any>{
         formRef[event.target.name] = event.target.value;
         this.setState(formRef);
     }
+
+    //handle multiple skills list
+    handleTargetSkills = (event: any, value: any) => {
+        let formRef = this.state.form;
+        formRef[event.target.name] = value;
+        this.setState({ formRef });
+    }
     render() {
         const { questions, yes, no, noExperience, lessThanOneYear, oneToFiveYears, sixToTenYears, tenYearsOrMore, assembly, pullingOrders, productionLine, packingMaterials,
             loadingLifter, bandingMachine, upsShippingLabels, dataEntry, countingMaterial, workingFrom, gluingBoxes, stacker, qualityControl, weighingMaterial, noneOfAbove,
@@ -96,68 +116,96 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <label className="title">{questions.two}</label>
-                <RadioButtonGroup name="experience_with" defaultSelected={formRef.experience_with} onChange={(event: any) => { this.handleTargetEvents(event) }}>
-                    <RadioButton
-                        value="Assembly"
-                        label={assembly}
-                    />
-                    <RadioButton
-                        value="Production Line"
-                        label={productionLine}
-                    />
-                    <RadioButton
-                        value="Packing materials"
-                        label={packingMaterials}
-                    />
-                    <RadioButton
-                        value="Loading/Heavy Lifter"
-                        label={loadingLifter}
-                    />
-                    <RadioButton
-                        value="Banding machine"
-                        label={bandingMachine}
-                    />
-                    <RadioButton
-                        value="Pulling Orders"
-                        label={pullingOrders}
-                    />
-                    <RadioButton
-                        value="UPS shipping labels"
-                        label={upsShippingLabels}
-                    />
-                    <RadioButton
-                        value="Data entry to a personal computer"
-                        label={dataEntry}
-                    />
-                    <RadioButton
-                        value="Counting materials/inventory"
-                        label={countingMaterial}
-                    />
-                    <RadioButton
-                        value="Working from a conveyor belt"
-                        label={workingFrom}
-                    />
-                    <RadioButton
-                        value="Gluing boxes"
-                        label={gluingBoxes}
-                    />
-                    <RadioButton
-                        value="Stacker"
-                        label={stacker}
-                    />
-                    <RadioButton
-                        value="Quality Control"
-                        label={qualityControl}
-                    />
-                    <RadioButton
-                        value="Weighing materials"
-                        label={weighingMaterial}
-                    />
-                    <RadioButton
-                        value="None of the above"
-                        label={noneOfAbove}
-                    />
-                </RadioButtonGroup>
+                <Checkbox
+                    label={assembly}
+                    name="assembly"
+                    checked={this.state.form.assembly}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={pullingOrders}
+                    name="pulling_order"
+                    checked={this.state.form.pulling_order}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={productionLine}
+                    name="production_line"
+                    checked={this.state.form.production_line}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={packingMaterials}
+                    name="production_materials"
+                    checked={this.state.form.production_materials}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={loadingLifter}
+                    name="heavy_lift"
+                    checked={this.state.form.heavy_lift}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={bandingMachine}
+                    name="banding_machine"
+                    checked={this.state.form.banding_machine}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={upsShippingLabels}
+                    name="ups_shipping"
+                    checked={this.state.form.ups_shipping}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={dataEntry}
+                    name="data_entry"
+                    checked={this.state.form.data_entry}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={countingMaterial}
+                    name="counting_material"
+                    checked={this.state.form.counting_material}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={workingFrom}
+                    name="working_conveyor"
+                    checked={this.state.form.working_conveyor}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={gluingBoxes}
+                    name="gluing_boxes"
+                    checked={this.state.form.gluing_boxes}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={stacker}
+                    name="stacker"
+                    checked={this.state.form.stacker}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={qualityControl}
+                    name="quality_control"
+                    checked={this.state.form.quality_control}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={weighingMaterial}
+                    name="weight_materials"
+                    checked={this.state.form.weight_materials}
+                    onCheck={this.handleTargetSkills}
+                />
+                <Checkbox
+                    label={noneOfAbove}
+                    name="none_of_above"
+                    checked={this.state.form.none_of_above}
+                    onCheck={this.handleTargetSkills}
+                />
                 <label className="title">{questions.three}</label>
                 <RadioButtonGroup name="lifting" defaultSelected={formRef.lifting} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton

@@ -59,8 +59,6 @@ export default class JobEpic {
                                 payload: response
                             });
                         }
-
-
                     });
             })
 }
