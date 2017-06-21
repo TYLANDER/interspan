@@ -1,14 +1,16 @@
 # Interspan -- Workforce Staffing Company
 
 ## INSTRUCTIONS 
-- First install TypeScript globally through <code> npm install -g typescript</code>
- - Install dependencies of client and server both directories through <code> npm install </code>
- - In client directory, make client build through <code> npm run build </code>
- - Before starting server , transpile typescript of server into js through type-script compilor.
-     NOTE: if you are using visual code then press CTRL+SHIFT+B for windows to transpile typescript.
- - Now in root directory run  <code>npm start</code> to start server and enjoyed !!!
-
-## FOR DEPLOYEMENT ON GOOGLE APP ENGINE
-> First install gcloud sdk from (https://cloud.google.com/sdk/docs/) after installing run command <code>gcloud auth login</code> after successfully login run command <code> gcloud app deploy </code> in root directory of project
+ - Install TypeScript globally <code> npm install -g typescript</code>
+ - Install dependencies for client (Interspan/client) <code> yarn install </code>
+ - Install dependencies for server (Interspan/) <code> yarn install </code>
+ - Run command (In root directory) <code>yarn run build</code>
+ 
+ ### Local Setup
+    - Goto project root directory
+    - Run command <code>yarn start</code> 
     
-> NOTE: If you are facing errors so you install yarn globally and install dependencies of projects through <code>yarn install </code>
+### Deployment 
+    - Goto project root directory
+    - Run command <code>gcloud auth login</code> 
+    - Run command <code>gcloud app deploy</code> 
