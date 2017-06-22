@@ -2,6 +2,10 @@ import applyModel from './model';
 import express = require("express");
 import { responseJsonHandler } from '../../utils/helper';
 
+/**
+ * Controller for apply job
+ */
+
 export default class Controllers {
 
     static insertJobForm(req:express.Request, res: express.Response,next:express.NextFunction)
@@ -10,6 +14,4 @@ export default class Controllers {
             responseJsonHandler(err,data,res);
         }))
     }
-
-
 }

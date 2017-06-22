@@ -6,12 +6,11 @@ import * as path from "path";
 import routes from './routes';
 import { join } from 'path';
 
-//CORS middleware
+//Allow CORS middleware
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
-
     next();
 }
 
@@ -28,19 +27,23 @@ app.use([
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+//Setting routes to server
 routes(app);
 
 let port: number = process.env.PORT || 3306;
 
+//Creating server 
 const server = http.createServer(app);  
 server.listen(port);
 server.on('error', onError);  
 server.on('listening', onListening);
 
+// Handling server errors
 function onError(error: NodeJS.ErrnoException) : void {  
     throw error;
 }
 
+// Listening server
 function onListening(): void {  
     console.log('Listening on port ' + server.address().port);
 }

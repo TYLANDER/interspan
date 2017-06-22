@@ -1,4 +1,4 @@
-
+// Database configuration for production environment
 let config = {
     dbConfig: {
         user: process.env.MYSQL_USER,
@@ -9,6 +9,7 @@ let config = {
     }
 }
 
+// Database configuration for development environment
 let devConfig = {
     dbConfig: {
         user: 'test',

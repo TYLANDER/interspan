@@ -2,35 +2,37 @@ import * as express from "express";
 import connection from '../../db/connection';
 import { responseJsonHandler, CallBackFunction } from '../../utils/helper';
 
+/**
+ * Model for apply job
+ */
+
 export default class applyModel {
 
-
     static async insertJobForm(data, callback: CallBackFunction) {
-
-        let a: any = applyModel.saveApplication(data);
-        let b: any = applyModel.saveLocation(data);
-        let c: any = applyModel.savePersonalInformation(data);
-        let d: any = applyModel.saveMedia(data);
-        let e: any = applyModel.saveEqualOpportunity(data);
-        let y: any = applyModel.saveIndustrialSkills(data);
-        let z: any = applyModel.saveTransportation(data);
-        let g: any = applyModel.saveEducation(data);
-        let h: any = applyModel.saveEmployementHistory(data);
-        let j: any = applyModel.saveReference(data);
+        let application_res: any = applyModel.saveApplication(data);
+        let location_res: any = applyModel.saveLocation(data);
+        let personal_response: any = applyModel.savePersonalInformation(data);
+        let media_response: any = applyModel.saveMedia(data);
+        let equal_response: any = applyModel.saveEqualOpportunity(data);
+        let industrial_response: any = applyModel.saveIndustrialSkills(data);
+        let transportation_response: any = applyModel.saveTransportation(data);
+        let education_response: any = applyModel.saveEducation(data);
+        let employment_response: any = applyModel.saveEmployementHistory(data);
+        let reference_response: any = applyModel.saveReference(data);
         try {
-            a = await a;
-            b = await b;
-            c = await c;
-            d = await d;
-            e = await e;
-            y = await y;
-            z = await z;
-            g = await g;
-            let f = await applyModel.educationSchool(g.insertId, data);
-            h = await h;
-            let i = await applyModel.multipleEmployee(h.insertId, data);
-            j = await j;
-            let k = await applyModel.multipleReference(j.insertId, data);
+            application_res = await application_res;
+            location_res = await location_res;
+            personal_response = await personal_response;
+            media_response = await media_response;
+            equal_response = await equal_response;
+            industrial_response = await industrial_response;
+            transportation_response = await transportation_response;
+            education_response = await education_response;
+            let school_response = await applyModel.educationSchool(education_response.insertId, data);
+            employment_response = await employment_response;
+            let employee = await applyModel.multipleEmployee(employment_response.insertId, data);
+            reference_response = await reference_response;
+            let multiple_reference_response = await applyModel.multipleReference(reference_response.insertId, data);
             callback(null, "Applied job successfully");
         }
         catch (err) {
@@ -38,6 +40,7 @@ export default class applyModel {
         }
     }
 
+    // Async method for saving application form into database
     static async saveApplication(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO application_form SET ?`, data.application_form, function (err, result) {
@@ -48,6 +51,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving personal form into database
     static async savePersonalInformation(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO personal_form SET ?`, data.personal_form, function (err, result) {
@@ -58,6 +62,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving equal opportunity form into database
     static async saveEqualOpportunity(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO equal_opportunity SET ?`, data.equal_form, function (err, result) {
@@ -68,6 +73,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving skills form into database
     static async saveIndustrialSkills(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO industrial_skills SET ?`, data.skills_form, function (err, result) {
@@ -78,6 +84,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving media form into database
     static async saveMedia(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO media_form SET ?`, data.media_form, function (err, result) {
@@ -88,6 +95,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving location form into database
     static async saveLocation(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO location_form SET ?`, data.job_location, function (err, result) {
@@ -97,6 +105,8 @@ export default class applyModel {
             });
         })
     }
+
+    // Async method for saving transporation form into database
     static async saveTransportation(data: any) {
         return new Promise((resolve: any, reject: any) => {
             connection.query(`INSERT INTO transportation_form SET ?`, data.transportation_form, function (err, result) {
@@ -107,6 +117,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving education form into database
     static async saveEducation(data: any) {
         return new Promise((resolve: any, reject: any) => {
             let obj = { highestEducation: data.education_form.highestEducation }
@@ -118,6 +129,7 @@ export default class applyModel {
         })
     }
 
+    // Async method for saving multiple education and skills into database
     static async educationSchool(educationId: any, data: any) {
         await Promise.all(data.education_form.schoolLocationList.map(async (schools, idx, num, ) => {
             await applyModel.insertEducation(schools, educationId);
@@ -150,6 +162,8 @@ export default class applyModel {
             });
         })
     }
+
+    //Async method for saving employment history form into database
     static async saveEmployementHistory(data: any) {
         return new Promise((resolve: any, reject: any) => {
             let obj = { no_contact_num: data.employment_form.no_contact_reason, no_contact_reason: data.employment_form.no_contact_reason }
@@ -160,12 +174,13 @@ export default class applyModel {
             });
         })
     }
+
+   //Async method for saving multiple employee into database
     static async multipleEmployee(educationId: any, data: any) {
         await Promise.all(data.employment_form.EmploymentHistory.map(async (employee, idx, num, ) => {
             await applyModel.insertEmployee(employee, educationId);
         }))
     }
-
     static async insertEmployee(data: any, id: any) {
         return new Promise((resolve: any, reject: any) => {
             let obj = {};
@@ -178,6 +193,7 @@ export default class applyModel {
         })
     }
 
+   //Async method for saving references into database
     static async saveReference(data: any) {
         return new Promise((resolve: any, reject: any) => {
             let obj = { user_id: data.reference_form.user_id, job_id: data.reference_form.job_id }
@@ -188,7 +204,6 @@ export default class applyModel {
             });
         })
     }
-
     static async multipleReference(educationId: any, data: any) {
         await Promise.all(data.reference_form.friendRef.map(async (friend, idx, num, ) => {
             await applyModel.insertFriend(friend, educationId);
@@ -197,7 +212,6 @@ export default class applyModel {
             await applyModel.insertreferences(reference, educationId);
         }))
     }
-
     static async insertFriend(data: any, id: any) {
         return new Promise((resolve: any, reject: any) => {
             let obj = {};

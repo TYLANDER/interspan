@@ -2,6 +2,9 @@ import {router as jobsRouter} from './entity/jobs/route';
 import {router as userRouter} from './entity/user/route';
 import {router as applyRouter} from './entity/apply/route';
 
+/**
+ * Routing configutation
+ */
 
 function routes(app) { 
     app.get('/', (req, res) => {

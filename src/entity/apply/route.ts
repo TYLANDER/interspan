@@ -1,8 +1,8 @@
 import express = require("express");
-let router: express.Router = express.Router();
-
 import Controllers from "./controller";
 
+let router: express.Router = express.Router();
+// Route for job apply
 router.post('/', Controllers.insertJobForm);
 
 export {

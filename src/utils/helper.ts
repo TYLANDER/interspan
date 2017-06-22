@@ -1,3 +1,7 @@
+/**
+ * Helper function for response
+ */
+
 import express = require('express');
 
 export type CallBackFunction = (err, data) => void
