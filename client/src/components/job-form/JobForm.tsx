@@ -17,6 +17,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { withRouter, browserHistory } from "react-router"
 import StateManager from "../../service/stateManage";
+import LinearProgress from 'material-ui/LinearProgress';
 
 class MainJobForm extends React.Component<any, any>{
     jobDataEn: any = {};
@@ -31,7 +32,7 @@ class MainJobForm extends React.Component<any, any>{
         //state of the component
         this.state = {
             finished: false,
-            stepIndex: 0,
+            stepIndex:2,
             selectedJson: this.jobDataEn,
             visited: [],
             open: true
@@ -206,6 +207,7 @@ class MainJobForm extends React.Component<any, any>{
     };
 
     render() {
+        const { stepperheadings } = this.state.selectedJson;
         StateManager.stepperObserver.next(this.state);
         //action button of dialog box
         const actions = [
@@ -217,7 +219,7 @@ class MainJobForm extends React.Component<any, any>{
             />,
         ];
         const { finished, stepIndex } = this.state;
-        const { headings } = this.state.selectedJson;
+        // const { headings } = this.state.selectedJson;
         //after success job submitted. It route to main page
         this.props.jobObj.success ? browserHistory.push("/") : null;
         return (
@@ -226,8 +228,20 @@ class MainJobForm extends React.Component<any, any>{
                 style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> :
                 <div className="main-job-form-container">
                     {/*Stepper for Desktop*/}
-                    <div className="md-stepper">
-                        <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>
+                    <div className="md-stepper stepper-style">
+                        <div className="stepper-main-content">
+                            <div className="stepper-header">
+                                {stepperheadings[stepIndex]}
+                            </div>
+                            <div className="counting-stepper">
+                                <span style={{color:"#293fa3",fontWeight:"bold"}}>{stepIndex + 1}</span> <span style={{color:"#7684c4"}}>of 12</span>
+                                </div>
+                        </div>
+                        <div className="stepper-loader">
+                            <LinearProgress color="rgba(107,176,255,1)" style={Styling.progressBar} mode="determinate" value={stepIndex + 1} max={12} />
+                        </div>
+
+                        {/*<Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>
                             <Step>
                                 <StepButton completed={stepIndex === 0 ? false : this.state.visited.indexOf(0) !== -1} onClick={() => this.setState({ stepIndex: 0 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.applicationInformation}</StepButton>
                             </Step>
@@ -261,7 +275,7 @@ class MainJobForm extends React.Component<any, any>{
                             <Step>
                                 <StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}>{headings.certification}</StepButton>
                             </Step>
-                        </Stepper>
+                        </Stepper>*/}
                     </div>
                     {/*stepper for mobile*/}
                     <div className="sm-stepper">
@@ -279,21 +293,23 @@ class MainJobForm extends React.Component<any, any>{
                             <Step><StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                         </Stepper>
                     </div>
-                    <div className="stepper-content">
-                        {finished ? (
-                            <Dialog
-                                title="Congratulations!"
-                                actions={actions}
-                                modal={false}
-                                open={this.state.open}
-                                onRequestClose={this.handleClose}
-                            >
-                                You're all set! We will be in touch
+                    <div className="main-content">
+                        <div className="stepper-content">
+                            {finished ? (
+                                <Dialog
+                                    title="Congratulations!"
+                                    actions={actions}
+                                    modal={false}
+                                    open={this.state.open}
+                                    onRequestClose={this.handleClose}
+                                >
+                                    You're all set! We will be in touch
         </Dialog>) : (
-                                <div>
-                                    <div>{this.getStepContent(stepIndex)}</div>
-                                </div>
-                            )}
+                                    <div>
+                                        <div>{this.getStepContent(stepIndex)}</div>
+                                    </div>
+                                )}
+                        </div>
                     </div>
                 </div>
         );
@@ -301,4 +317,10 @@ class MainJobForm extends React.Component<any, any>{
 }
 
 export default withRouter(MainJobForm);
+
+const Styling = {
+    progressBar:{
+        height:"9px",backgroundColor:"white",borderRadius:"50px",marginTop:"7px"
+    }
+}
 

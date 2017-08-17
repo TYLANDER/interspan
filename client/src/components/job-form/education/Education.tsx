@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RadioButton, RadioButtonGroup, FlatButton, TextField } from 'material-ui';
 import ActiveButtons from '../active-buttons/ActiveButtons';
+import "./Education.css";
 
 class Education extends React.Component<any, any>{
     constructor(props: any) {
@@ -112,6 +113,7 @@ class Education extends React.Component<any, any>{
                         key={i}
                         hintText=""
                         name="name"
+                        style={Styling.textField}
                         value={this.state.form.schoolLocationList[i].name}
                         onBlur={this.handleTargetEvents.bind(this, "schoolLocationList", i)}
                         onChange={this.handleText.bind(this, "schoolLocationList", i)}
@@ -119,9 +121,9 @@ class Education extends React.Component<any, any>{
                     />
                     <TextField
                         hintText=""
+                        style={Styling.textField}
                         value={this.state.form.schoolLocationList[i].location}
                         name="location"
-                        style={{marginLeft: "30px"}}
                         onChange={this.handleText.bind(this, "schoolLocationList", i)}
                         onBlur={this.handleTargetEvents.bind(this, "schoolLocationList", i)}
                         floatingLabelText="Location of High School / College"
@@ -144,51 +146,60 @@ class Education extends React.Component<any, any>{
         const { question, values, skillsAndExperience } = this.state.selectedJson;
         let formRef = this.state.form;
         return (
-            <div className="job-applicant-container">
+            <div className="education-applicant-container">
                 <label className="title">{question.one}</label>
                 <RadioButtonGroup valueSelected={formRef.highestEducation} name="highestEducation" onChange={(event: any) =>
                     this.handleTargetEvents(event, 0, event)
                 }>
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Elementary"
                         label={values.elementary}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Trade/Business/ Technical School"
                         label={values.trade}
                     />
                     <RadioButton
                         value="High School"
+                        iconStyle={Styling.iconStyle}
+
                         label={values.highSchool}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Attended some College"
                         label={values.attendedCollege}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="GED"
                         label={values.ged}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="College Degree"
                         label={values.collegeDegree}
                     />
                 </RadioButtonGroup>
                 <br />
                 <div>
-                    <label className="title">{question.two}</label><br />
+                    <p className="sub-title">{question.two}</p><br />
                     {school}
-                    <FlatButton label="Add" primary={true} onClick={() => this.handleSchoolLocationList("add")} />
-                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
-                    <br/>
-                    <br/>                        
+                    <div className="button-group">
+                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.addButton} label={<b>Add</b>} onClick={() => this.handleSchoolLocationList("add")} />
+                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={<b>Remove</b>} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
+                    </div>
                 </div>
                 <div>
-                    <label className="title">{skillsAndExperience.heading}</label>
+                    <p className="sub-title">{skillsAndExperience.heading}</p>
                     <label className="title">{skillsAndExperience.content}</label>
                     {skills}
-                    <FlatButton label="Add" primary={true} onClick={() => this.handleSpecialTrainingList("add")} />
-                    <FlatButton label="Delete" secondary={true} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
+                    <div className="button-group">
+                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.addButton} label={<b>Add</b>} primary={true} onClick={() => this.handleSpecialTrainingList("add")} />
+                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={<b>Remove</b>} secondary={true} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
+                    </div>
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
@@ -196,3 +207,43 @@ class Education extends React.Component<any, any>{
     }
 }
 export default Education;
+
+const Styling = {
+    textField: {
+        display: "block",
+        width: "55%"
+    },
+    radioButtonLabel: {
+        fontSize: "16px",
+        marginBottom: "13px",
+        display: "block"
+    },
+    radioButtonStyle: {
+        display: "inline-block",
+        width: "65px"
+    },
+    iconStyle: {
+        width: "17px",
+        marginRight: "5px"
+    },
+    addButton: {
+        height: "41px",
+        borderRadius: "5px",
+        lineHeight: "41px",
+        background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
+    },
+    deleteButton: {
+        marginLeft: "9px",
+        border: "2px solid #f2f2f2",
+        borderRadius: "5px",
+        height: "44px",
+        width: '110px',
+        lineHeight: "41px",
+        color:"#2e2e2e"
+    },
+    buttonLabel: {
+        textTransform:"none",
+        fontSize:"16px",
+        
+    }
+}

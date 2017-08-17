@@ -1,14 +1,53 @@
-.work-hours-container .inline-radio{
+.job-location-container .inline-radio{
     display: inline-block !important;
-    width: 150px !important;
+    width: 58px !important;
+    margin-top:5px;
+    font-size:15px;
+    font-weight: 400 !important
 }
-.work-hours-container .inline-fields{
-    float: left;
+.job-location-container .inline-fields{
+    font-size:14px;
+    font-weight: 600;
 }
-.work-hours-container .right{
-    float:right;
-}
-.work-hours-container .inline{
+
+.job-location-container .inline{
     display: inline;
-    
+}
+
+.job-location-container .box-child{
+    height:105px;
+    border-bottom:1px solid #eeefef;
+    padding:25px;
+}
+.job-location-container .note{
+    font-size:16px;
+    width:84%;
+    margin-top:20px;
+    margin-left:1px;
+    line-height: 30px
+}
+.job-location-container .textArea{
+    width:50%;
+    height:80px;
+    border:2px solid #eeefef;
+    border-radius: 8px;
+    padding:10px;
+    resize: none;
+    margin-bottom:40px
+}
+.job-location-container .box-child:last-child{
+    border: 0
+}
+
+.job-location-container .box-container{
+    border:1px solid #eeefef;
+    border-radius: 4px;
+    margin-bottom:40px;
+    margin-top:-30px;
+}
+.job-location-container .title{
+    font-size: 17px;
+    margin-bottom: 19px;
+    margin-top:15px;
+    margin-left:4px;
 }

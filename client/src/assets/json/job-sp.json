@@ -15,6 +15,22 @@
         "references": "Referencias",
         "employerUse": "Employer's Use"
     },
+    "stepperheadings": [
+       "Información del contacto",
+        "Preferencia laboral",
+        "Educacion",
+        "certificacion",
+        "Historia De Trabajo",
+        "Informacion Personal",
+        "Habilidades En Areas Industriales",
+        "Medio",
+        "Igualdad De Oportunidades",
+        "Horario De Trabajo",
+        "Comunicacion",
+        "Transporte",
+        "Referencias",
+        "Employer's Use"
+    ],
     "applicationInformation": {
         "lastName": "Apellido",
         "firstName": "Nombre",

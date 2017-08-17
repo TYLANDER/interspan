@@ -2,6 +2,28 @@
 .main-job-form-container .sm-stepper{
     display: none;
 }
+.main-job-form-container .stepper-style{
+    height:100px;
+    display:flex;
+    background-color: #f6f6f6;
+    flex-direction: column;
+    margin:0 auto;
+    align-items: center;
+    justify-content: center;
+}
+.main-job-form-container .stepper-main-content{
+    display:flex;
+    flex:6;
+    justify-content: space-between;
+    width: 272px;
+    align-items: flex-end
+}
+.main-job-form-container .stepper-loader{
+    display:flex;
+    flex:5;
+    width: 272px;
+    align-items: flex-start
+}
 @media (max-width: 600px){
     .main-job-form-container .md-stepper{
         display: none;
@@ -15,18 +37,54 @@
 }
 
 .main-job-form-container .stepper-content{
-     margin: 0 16px;
+     border:1px solid #f2f2f2;
+     background-color: white;
+     margin:50px auto;
+     padding:26px;
+     border-radius: 9px;
 }
-.main-job-form-container .stepper-content label {
-    font-weight: 500;
+.main-job-form-container .main-content{
+    background-color: #fafbfb;
+    /*margin: 0 16px;*/
+    display:flex;
+    justify-content: center;
 }
+.main-job-form-container input[type=radio]:checked ~ div label{
+   font-weight: 600 !important;
+   opacity:1;
+    color:#2e2e2e;
+}
+
+.main-job-form-container input[type=radio] ~ div label{
+    font-weight: 400;
+    opacity:0.5
+}
+
+/*.main-job-form-container .active label{
+   font-weight: 600;
+}*/
+
+.main-job-form-container input[type=radio]:checked{
+   font-weight: bold !important;
+   color:red !important;
+}
+
+
+/*.main-job-form-container .stepper-content label{
+    font-weight: 400;
+}*/
 .main-job-form-container .stepper-content label.title {
     font-weight: 600 !important;
 }
+.main-job-form-container .stepper-header{
+    color:#2e2e2e;
+}
+.main-job-form-container .counting-stepper{
+    color:#2e2e2e;
+}
 @media (min-width: 1050px){
     .stepper-content{
-        width: calc(100vw / 12 * 8) !important;
+        width: calc(100vw / 12 * 5.2) !important;
         max-width:1110px;
-        margin: 0 auto !important;
     }
 }

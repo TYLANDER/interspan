@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { RaisedButton, FlatButton } from 'material-ui';
+import {FlatButton } from 'material-ui';
 import "./ActiveButtons.css"
+// import ArrowBack from 'material-ui/svg-icons/action/trending-flat';
 
 class ActiveButtons extends React.Component<any, any>{
     stepIndex = 0;
@@ -18,15 +19,15 @@ class ActiveButtons extends React.Component<any, any>{
         return (
             <div className="job-applicant-container">
                 <FlatButton
-                    label="Back"
+                    icon={<img width="35px" height="15px" src={require("../../../assets/arrow.png")}/>}
                     onTouchTap={() => this.handlePrev()}
                     disabled={this.stepIndex === -1}
-                    style={{ marginRight: 12 }}
+                    style={{ marginRight: 12 ,border:"2px solid #f2f2f2",borderRadius:"6px",height:"44px",lineHeight:"41px"}}
                 />
-                <RaisedButton
-                    label={this.props.finished ? 'I Agree' : 'Next'}
-                    primary={true}
+                <FlatButton
+                    label={this.props.finished ? <b>I Agree</b> : <b>Next</b>}
                     disabled={this.props.disabled}
+                    style={{width:"300px",height:"41px",borderRadius:"8px",lineHeight:"41px",background:"linear-gradient(to right,#3e7fff,#6bb0ff)", color:"white"}}
                     onTouchTap={() => this.handleNext()}
                 />
             </div>

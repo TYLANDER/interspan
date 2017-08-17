@@ -15,6 +15,22 @@
         "references": "References",
         "employerUse": "Employer's Use"
     },
+    "stepperheadings": [
+        "Contact Information",
+        "Job Preferences",
+        "Education",
+        "Certification",
+        "Employment History",
+        "Personal Information",
+        "Skills",
+        "Media",
+        "Equal Opportunity",
+        "Work Hours",
+        "Communication",
+        "Transportation",
+        "References",
+        "Employer's Use"
+    ],
     "applicationInformation": {
         "lastName": "Last Name",
         "firstName": "First Name",
@@ -196,8 +212,8 @@
             "eleven": "Are you willing to work a Saturday shift?or a Sunday shift?",
             "twelve": "Please list any specific hours or weekdays that you know you are unavailable for work"
         },
-        "yes": "YES",
-        "no": "NO"
+        "yes": "Yes",
+        "no": "No"
     },
     "communication": {
         "title": "LANGUAGE",

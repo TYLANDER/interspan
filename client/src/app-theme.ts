@@ -7,7 +7,7 @@ const CustomTheme = getMuiTheme({
     // Need to change based on requirments
     textColor: Colors.black,
     primary2Color: Colors.indigo700,
-    primary1Color: Colors.indigo700,
+    primary1Color: Colors.greenA700,
     accent1Color: Colors.redA200,
     pickerHeaderColor: Colors.darkBlack,
   },
@@ -15,13 +15,16 @@ const CustomTheme = getMuiTheme({
     height: 57,
     color: Colors.white
   },
+  radioButton:{
+  
+  },
   raisedButton: {
     primaryColor: '#2D459E',
     primaryTextColor: Colors.white
   },
   textField: {
     focusColor: '#2e469e',
-    textColor: '#2e469e'
+    textColor: '#2e469e',
   },
   stepper: 
   {
