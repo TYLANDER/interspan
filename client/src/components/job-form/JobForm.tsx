@@ -20,7 +20,6 @@ import StateManager from "../../service/stateManage";
 import LinearProgress from 'material-ui/LinearProgress';
 import Footer from "../footer/footer";
 import Styling from "./jobTheme";
-
 class MainJobForm extends React.Component<any, any>{
     jobDataEn: any = {};
     jobDataSp: any = {};
@@ -132,43 +131,43 @@ class MainJobForm extends React.Component<any, any>{
     }
 
     componentWillMount() {
-        const { headings } = this.state.selectedJson;
-        if (this.state.stepIndex === 0) {
-            this.props.titleChanged(headings.applicationInformation)
-        }
+        // const { headings } = this.state.selectedJson;
+        // if (this.state.stepIndex === 0) {
+        //     this.props.titleChanged(headings.applicationInformation)
+        // }
         StateManager.stepperObserver.next(this.state);
     }
 
     componentDidUpdate() {
-        const { headings } = this.state.selectedJson;
+        // const { headings } = this.state.selectedJson;
 
         //Change navbar title according to that job component stepper state
-        switch (this.state.stepIndex) {
-            case 0:
-                return this.props.titleChanged(headings.applicationInformation);
-            case 1:
-                return this.props.titleChanged(headings.jobLocation);
-            case 2:
-                return this.props.titleChanged(headings.educationTraining);
-            case 3:
-                return this.props.titleChanged(headings.employementHistory);
-            case 4:
-                return this.props.titleChanged(headings.personalInformation);
-            case 5:
-                return this.props.titleChanged(headings.lightIndustrialSkills);
-            case 6:
-                return this.props.titleChanged(headings.media);
-            case 7:
-                return this.props.titleChanged(headings.equalOpportunity);
-            case 8:
-                return this.props.titleChanged(headings.transportation);
-            case 9:
-                return this.props.titleChanged(headings.references);
-            case 10:
-                return this.props.titleChanged(headings.certification);
-            default:
-                return this.props.titleChanged("You'r all set!")
-        }
+        // switch (this.state.stepIndex) {
+        //     case 0:
+        //         return this.props.titleChanged(headings.applicationInformation);
+        //     case 1:
+        //         return this.props.titleChanged(headings.jobLocation);
+        //     case 2:
+        //         return this.props.titleChanged(headings.educationTraining);
+        //     case 3:
+        //         return this.props.titleChanged(headings.employementHistory);
+        //     case 4:
+        //         return this.props.titleChanged(headings.personalInformation);
+        //     case 5:
+        //         return this.props.titleChanged(headings.lightIndustrialSkills);
+        //     case 6:
+        //         return this.props.titleChanged(headings.media);
+        //     case 7:
+        //         return this.props.titleChanged(headings.equalOpportunity);
+        //     case 8:
+        //         return this.props.titleChanged(headings.transportation);
+        //     case 9:
+        //         return this.props.titleChanged(headings.references);
+        //     case 10:
+        //         return this.props.titleChanged(headings.certification);
+        //     default:
+        //         return this.props.titleChanged("You'r all set!")
+        // }
     }
 
     componentWillReceiveProps(nextProp: any) {

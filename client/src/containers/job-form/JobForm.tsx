@@ -12,7 +12,7 @@ class JobForm extends React.Component<any, any>{
     render(){
         return(
             <div className="job-form-container">
-                <MainJobForm language={this.props.language} applyJob={this.props.applyJob} jobObj={this.props.jobObj} titleChanged={this.props.titleStatus}/>
+                <MainJobForm language={this.props.language} applyJob={this.props.applyJob} jobObj={this.props.jobObj} />
             </div>
         );
     }

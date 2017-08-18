@@ -19,7 +19,7 @@ class ActiveButtons extends React.Component<any, any>{
         return (
             <div className="job-applicant-container">
                 <FlatButton
-                    icon={<img width="35px" height="15px" src={require("../../../assets/arrow.png")} />}
+                    icon={<img width="100%" src={require("../../../assets/arrow.jpg")} />}
                     onTouchTap={() => this.handlePrev()}
                     disabled={this.stepIndex === -1}
                     style={{ marginRight: 12, border: "2px solid #f2f2f2", borderRadius: "6px", height: "44px", lineHeight: "41px" }}

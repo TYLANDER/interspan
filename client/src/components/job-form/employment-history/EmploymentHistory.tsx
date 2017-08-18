@@ -257,11 +257,11 @@ class EmploymentHistory extends React.Component<any, any>{
                     }
                     name="no_contact_reason"
                     onBlur={this.handleTargetEvents.bind(this, null, i)}
-                />                <br />
-
+                />
+                <br />
                 <FlatButton style={Styling.addButton} label={<b>Add</b>} labelStyle={Styling.buttonLabel} primary={true} onTouchTap={() => this.handleHistoryDetails("add")} />
                 <FlatButton style={Styling.deleteButton} label={<b>Remove</b>} labelStyle={Styling.buttonLabel} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete")} />
-                    <div className="content-space"></div>
+                <div className="content-space"></div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

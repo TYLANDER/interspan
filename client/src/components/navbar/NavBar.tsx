@@ -119,19 +119,21 @@ class NavBar extends React.Component<any, any> {
                             </Chip>}
                     <SelectField
                         className="lang-select"
-                        labelStyle={{ color: "white", textOverflow: "none", paddingLeft: "30px" }}
+                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "43px", paddingTop: "-40px", paddingLeft: "15px"}}
                         value={this.state.language}
                         underlineStyle={{ display: 'none' }}
                         onChange={this.handleLanguage}
+                        iconStyle={{ display: "block", marginTop: "-7px"}}
+                        menuStyle={{ width: "70px" }}
                     >
-                        <MenuItem value="en" primaryText="English" />
-                        <MenuItem value="sp" primaryText="Spanish" />
+                        <MenuItem value="en" primaryText="EN" />
+                        <MenuItem value="sp" primaryText="SP" />
                     </SelectField>
-
+                    <img className="dashboard-icon" src={require("../../assets/dash-icon.jpg")} />
                 </div>
                 : <p></p>
         )
-        const title = (this.props.router.location.pathname === "/job" ? this.props.title : "Let's get started")
+        // const title = (this.props.router.location.pathname === "/job" ? this.props.title : "Let's get started")
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
@@ -228,13 +230,15 @@ class NavBar extends React.Component<any, any> {
         const globalMenu = <div>
             <AppBar
                 zDepth={1}
-                title={title}
                 className="icon-menu-hamburger"
-                onLeftIconButtonTouchTap={
+                onRightIconButtonTouchTap={
                     this.drawerToggle.bind(this)
                 }
+                iconElementLeft={<img src={require("../../assets/logo.jpg")} />}
+                iconStyleLeft={{ marginLeft: "25px" }}
                 iconElementRight={languageSelect}
-                style={{ backgroundColor: '#2e469e', transition: "none" }}
+                iconStyleRight={{ marginRight: "25px" }}
+                style={{ backgroundColor: "white", transition: "none" }}
                 titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
                 showMenuIconButton={this.props.router.location.pathname === "/job" ? true : false}
             />
@@ -292,7 +296,7 @@ class NavBar extends React.Component<any, any> {
                     </Drawer>
                     : null}
 
-                <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : `navbar-global-container-color`}`}>
+                <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : ``}`}>
                     {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
                 </div>
             </div>

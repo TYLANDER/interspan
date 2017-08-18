@@ -10,7 +10,7 @@ class App extends React.Component<any, any> {
         this.state = {
             isMenuOpened: false,
             isMenuActive: false,
-            titleStatus: ""
+            // titleStatus: ""
         };
     }
 
@@ -19,10 +19,10 @@ class App extends React.Component<any, any> {
         this.setState({ isMenuOpened: !this.state.isMenuOpened, isMenuActive: !this.state.isMenuActive });
     }
 
-    //Title state changed
-    titleChanged = (title: any) => {
-        this.setState({ titleStatus: title });
-    }
+    // //Title state changed
+    // titleChanged = (title: any) => {
+    //     this.setState({ titleStatus: title });
+    // }
 
     render() {
         const menuClass = this.state.isMenuActive ? "child-page-active" : "child-page";
@@ -31,7 +31,7 @@ class App extends React.Component<any, any> {
                 <div>
                     <NavBar {...this.props} menuAction={this.menuOpened} title={this.state.titleStatus} />
                     <div className={menuClass}>
-                        {React.cloneElement(this.props.children, { titleStatus: this.titleChanged })}
+                        {React.cloneElement(this.props.children)}
                     </div>
                 </div>
             </MuiThemeProvider>
