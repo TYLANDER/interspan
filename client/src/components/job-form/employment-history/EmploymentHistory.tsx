@@ -1,6 +1,9 @@
 import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { TextField, DatePicker, FlatButton } from 'material-ui';
+import Styling from "../jobTheme";
+import "./EmployeementHistory.css";
+import DateRange from "material-ui/svg-icons/action/date-range";
 
 class EmploymentHistory extends React.Component<any, any>{
     constructor(props: any) {
@@ -117,6 +120,7 @@ class EmploymentHistory extends React.Component<any, any>{
                 <div key={i}>
                     {this.state.employed > 1 ? <h3> {i + 1} - Employment History </h3> : ""}
                     <TextField
+                        style={Styling.textField}
                         value={formRef.EmploymentHistory[i].company_name}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
                         hintText={companyName}
@@ -127,6 +131,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     />
                     <TextField
                         hintText={state}
+                        style={Styling.textField}
                         value={formRef.EmploymentHistory[i].city}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
                         floatingLabelText={state}
@@ -136,6 +141,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     />
                     <TextField
                         hintText={city}
+                        style={Styling.textField}
                         value={formRef.EmploymentHistory[i].city}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
                         floatingLabelText={city}
@@ -145,6 +151,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     />
                     <TextField
                         hintText={nameOfSupervisor}
+                        style={Styling.textField}
                         value={formRef.EmploymentHistory[i].supervisor_name}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
                         floatingLabelText={nameOfSupervisor}
@@ -153,6 +160,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                     />
                     <TextField
+                        style={Styling.textField}
                         hintText={stateJobTitle}
                         value={formRef.EmploymentHistory[i].job_title}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
@@ -163,6 +171,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                     />
                     <TextField
+                        style={Styling.textField}
                         hintText={telephone}
                         value={formRef.EmploymentHistory[i].telephone}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
@@ -172,12 +181,17 @@ class EmploymentHistory extends React.Component<any, any>{
                         name="telephone"
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                     />
-                    <b>{employed}</b>
-                    <DatePicker floatingLabelText={from} defaultDate={new Date(formRef.EmploymentHistory[i].employment_start)} name="employment_start" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_start")}
+                    <label className="title">{employed}</label>
+                    <DatePicker style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={from} defaultDate={new Date(formRef.EmploymentHistory[i].employment_start)} name="employment_start" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_start")}
                     />
-                    <DatePicker floatingLabelText={to} defaultDate={new Date(formRef.EmploymentHistory[i].employment_end)} name="employment_end" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_end")} />
-                    <b>{payRate} </b>
+                    <span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span>
+                    <p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p>
+                    <DatePicker style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={to} defaultDate={new Date(formRef.EmploymentHistory[i].employment_end)} name="employment_end" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_end")} />
+                    <span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span>
+                    <p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p>
+                    <label className="title">{payRate} </label>
                     <TextField
+                        style={Styling.textField}
                         type="number"
                         floatingLabelText={start}
                         name="pay_rate_start"
@@ -186,12 +200,14 @@ class EmploymentHistory extends React.Component<any, any>{
 
                     />
                     <TextField
+                        style={Styling.textField}
                         type="number"
                         floatingLabelText={end}
                         name="pay_rate_end"
                         value={formRef.EmploymentHistory[i].pay_rate_end}
                         onChange={this.handleTargetEvents.bind(this, "EmploymentHistory", i)} />
                     <TextField
+                        style={Styling.textField}
                         hintText={reasonForleaving}
                         floatingLabelText={reasonForleaving}
                         multiLine={true}
@@ -204,19 +220,20 @@ class EmploymentHistory extends React.Component<any, any>{
                 </div>);
         }
         return (
-            <div className="job-applicant-container">
+            <div className="employement-applicant-container">
                 {history}
                 <br />
-                <FlatButton label="Add" primary={true} onTouchTap={() => this.handleHistoryDetails("add")} />
-                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete")} />
+                <FlatButton style={Styling.addButton} label={<b>Add</b>} labelStyle={Styling.buttonLabel} primary={true} onTouchTap={() => this.handleHistoryDetails("add")} />
+                <FlatButton style={Styling.deleteButton} label={<b>Remove</b>} labelStyle={Styling.buttonLabel} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete")} />
                 <br />
                 <br />
-                <label className="title">{note}</label>
+                <p className='subTitle'>{note}</p>
                 <br />
                 <br />
-                <label className="title">{doNotContact}</label>
+                <label className="doNot">{doNotContact}</label>
                 <br />
                 <TextField
+                    style={Styling.textField}
                     floatingLabelText={employeeNumber}
                     fullWidth={true}
                     name="no_contact_num"
@@ -228,6 +245,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     } onBlur={this.handleTargetEvents.bind(this, null, i)}
                 />
                 <TextField
+                    style={Styling.textField}
                     floatingLabelText={reason}
                     fullWidth={true}
                     multiLine={true}
@@ -239,10 +257,15 @@ class EmploymentHistory extends React.Component<any, any>{
                     }
                     name="no_contact_reason"
                     onBlur={this.handleTargetEvents.bind(this, null, i)}
-                />
+                />                <br />
+
+                <FlatButton style={Styling.addButton} label={<b>Add</b>} labelStyle={Styling.buttonLabel} primary={true} onTouchTap={() => this.handleHistoryDetails("add")} />
+                <FlatButton style={Styling.deleteButton} label={<b>Remove</b>} labelStyle={Styling.buttonLabel} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete")} />
+                    <div className="content-space"></div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );
     }
 }
 export default EmploymentHistory;
+

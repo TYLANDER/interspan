@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RadioButton, RadioButtonGroup, FlatButton, TextField } from 'material-ui';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import "./Education.css";
+import Styling from "../jobTheme";
 
 class Education extends React.Component<any, any>{
     constructor(props: any) {
@@ -208,42 +209,26 @@ class Education extends React.Component<any, any>{
 }
 export default Education;
 
-const Styling = {
-    textField: {
-        display: "block",
-        width: "55%"
-    },
-    radioButtonLabel: {
-        fontSize: "16px",
-        marginBottom: "13px",
-        display: "block"
-    },
-    radioButtonStyle: {
-        display: "inline-block",
-        width: "65px"
-    },
-    iconStyle: {
-        width: "17px",
-        marginRight: "5px"
-    },
-    addButton: {
-        height: "41px",
-        borderRadius: "5px",
-        lineHeight: "41px",
-        background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
-    },
-    deleteButton: {
-        marginLeft: "9px",
-        border: "2px solid #f2f2f2",
-        borderRadius: "5px",
-        height: "44px",
-        width: '110px',
-        lineHeight: "41px",
-        color:"#2e2e2e"
-    },
-    buttonLabel: {
-        textTransform:"none",
-        fontSize:"16px",
-        
-    }
-}
+// const Styling = {
+//     textField: {
+//         display: "block",
+//         width: "55%"
+//     },
+//     radioButtonLabel: {
+//         fontSize: "16px",
+//         marginBottom: "13px",
+//         display: "block"
+//     },
+//     radioButtonStyle: {
+//         display: "inline-block",
+//         width: "65px"
+//     },
+//     iconStyle: {
+//         width: "17px",
+//         marginRight: "5px"
+//     },
+//     buttonLabel: {
+//         textTransform:"none",
+//         fontSize:"16px",
+//     }
+// }

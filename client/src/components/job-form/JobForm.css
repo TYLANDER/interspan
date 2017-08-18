@@ -50,10 +50,16 @@
     justify-content: center;
 }
 .main-job-form-container input[type=radio]:checked ~ div label{
-   font-weight: 600 !important;
-   opacity:1;
+    font-weight: 600 !important;
+    opacity:1;
     color:#2e2e2e;
 }
+.main-job-form-container input[type=checkbox] ~ div label{
+    font-weight: 400;
+    color:#2e2e2e;
+    font-size:16px;
+}
+
 
 .main-job-form-container input[type=radio] ~ div label{
     font-weight: 400;

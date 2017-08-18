@@ -2,7 +2,8 @@ import * as React from 'react';
 import { TextField, RadioButton, RadioButtonGroup, DatePicker } from 'material-ui';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 // import * as Colors from 'material-ui/styles/colors';
-
+import DateRange from "material-ui/svg-icons/action/date-range";
+import Styling from "../jobTheme";
 class ApplicantInfo extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -187,12 +188,12 @@ class ApplicantInfo extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 {this.state.employee || this.state.form.employement !== 'no' ?
-                    <div style={Styling.radioButtonGroupStyling} ><DatePicker textFieldStyle={Styling.textField} floatingLabelText={employementYes}
+                    <div style={Styling.radioButtonGroupStyling} ><DatePicker style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={employementYes}
                         onChange={(event: any, date: any) => {
                             formRef.employement = date.toISOString()
                             this.setState(formRef);
                         }}
-                    /><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
+                    /><span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
                     : ''}
                 <b style={Styling.radioButtonLabel}>{legallyEligible}</b>
                 <RadioButtonGroup className="radio-label" name="eligible" valueSelected={this.state.form.eligible} onChange={(event: any) => {
@@ -212,7 +213,6 @@ class ApplicantInfo extends React.Component<any, any>{
                         value="no"
                         label={no}
                         iconStyle={Styling.iconStyle}
-
                     />
                 </RadioButtonGroup>
                 <TextField
@@ -238,35 +238,43 @@ class ApplicantInfo extends React.Component<any, any>{
 
 export default ApplicantInfo;
 
-const Styling = {
-    textField: {
-        display: "block",
-        width: "55%"
-    },
-    radioButtonLabel: {
-        fontSize: "16px",
-        marginBottom: "13px",
-        display: "block"
-    },
-    radioButtonStyle: {
-        display: "inline-block",
-        width: "65px"
-    },
-    iconStyle: {
-        width: "17px",
-        marginRight: "7px"
-    },
-    radioButtonGroupStyling: {
-        marginBottom: "36px"
-    },
-    dateNoteStyle: {
-        color: "#293fa3",
-        fontSize: "12px",
-    },
-    LastLine: {
-        display: "block",
-        width: "55%",
-        marginBottom: "36px"
-
-    }
-}
+// const Styling = {
+//     textField: {
+//         display: "block",
+//         width: "55%"
+//     },
+//     radioButtonLabel: {
+//         fontSize: "16px",
+//         marginBottom: "13px",
+//         display: "block"
+//     },
+//     dateIcon:{
+//         width:"16px",
+//         height:"16px",
+//         marginLeft:"-15px"
+//     },
+//     radioButtonStyle: {
+//         display: "inline-block",
+//         width: "65px"
+//     },
+//     iconStyle: {
+//         width: "17px",
+//         marginRight: "7px"
+//     },
+//     radioButtonGroupStyling: {
+//         marginBottom: "36px"
+//     },
+//     dateNoteStyle: {
+//         color: "#293fa3",
+//         fontSize: "12px",
+//     },
+//     date: {
+//         display: "inline-block",
+//         width:"100%"
+//     },
+//     LastLine: {
+//         display: "block",
+//         width: "55%",
+//         marginBottom: "36px"
+//     }
+// }

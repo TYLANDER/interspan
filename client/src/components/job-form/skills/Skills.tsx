@@ -2,6 +2,9 @@ import * as React from 'react';
 import './Skills.css';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButtonGroup, RadioButton, TextField, Checkbox } from 'material-ui';
+import Styling from "../jobTheme";
+import Check from "material-ui/svg-icons/av/stop";
+
 
 class Skills extends React.Component<any, any>{
     constructor(props: any) {
@@ -91,116 +94,151 @@ class Skills extends React.Component<any, any>{
             lessThanTenLbs, upToTenLbs, experience, upToTwentyLbs, upToSixtyLbs, sixtyOneOrMore } = this.state.selectedJson;
         let formRef = this.state.form;
         return (
-            <div className="job-applicant-container">
+            <div className="skills-applicant-container">
                 <label className="title">{questions.one}</label>
-                <RadioButtonGroup defaultSelected={formRef.industrial_experience} name="industrial_experience" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <RadioButtonGroup style={Styling.radioButtonGroupStyling} defaultSelected={formRef.industrial_experience} name="industrial_experience" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="No experience"
                         label={noExperience}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Less than 1 year"
                         label={lessThanOneYear}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="1 to 5 years"
                         label={oneToFiveYears}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="6 to 10 years"
                         label={sixToTenYears}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="10 years or moreNo"
                         label={tenYearsOrMore}
                     />
                 </RadioButtonGroup>
                 <label className="title">{questions.two}</label>
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={assembly}
                     name="assembly"
                     checked={this.state.form.assembly}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={pullingOrders}
                     name="pulling_order"
                     checked={this.state.form.pulling_order}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={productionLine}
                     name="production_line"
                     checked={this.state.form.production_line}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={packingMaterials}
                     name="production_materials"
                     checked={this.state.form.production_materials}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={loadingLifter}
                     name="heavy_lift"
                     checked={this.state.form.heavy_lift}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={bandingMachine}
                     name="banding_machine"
                     checked={this.state.form.banding_machine}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={upsShippingLabels}
                     name="ups_shipping"
                     checked={this.state.form.ups_shipping}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={dataEntry}
                     name="data_entry"
                     checked={this.state.form.data_entry}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={countingMaterial}
                     name="counting_material"
                     checked={this.state.form.counting_material}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={workingFrom}
                     name="working_conveyor"
                     checked={this.state.form.working_conveyor}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={gluingBoxes}
                     name="gluing_boxes"
                     checked={this.state.form.gluing_boxes}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={stacker}
                     name="stacker"
                     checked={this.state.form.stacker}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={qualityControl}
                     name="quality_control"
                     checked={this.state.form.quality_control}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={weighingMaterial}
                     name="weight_materials"
                     checked={this.state.form.weight_materials}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
+                    checkedIcon={<Check />}
+                    iconStyle={Styling.iconStyle}
                     label={noneOfAbove}
                     name="none_of_above"
                     checked={this.state.form.none_of_above}

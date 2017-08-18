@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { TextField, RadioButtonGroup, RadioButton } from 'material-ui';
+import Styling from "../jobTheme";
+import "./PersonalInfo.css";
 
 class PersonalInfo extends React.Component<any, any>{
     constructor(props: any) {
@@ -62,8 +64,10 @@ class PersonalInfo extends React.Component<any, any>{
         const { fluent, billingual, ESL, levelOfCommunication, understandSpeak, understandEnglish, understandInstructions } = this.state.selectedJson1;
         let formRef = this.state.form;
         return (
-            <div className="job-applicant-container">
+            <div className="personal-applicant-container">
                 <TextField
+                    style={Styling.textField}
+                    floatingLabelStyle={Styling.TextLabelStyle}
                     floatingLabelText={questions.one}
                     onBlur={this.handleTargetEvents}
                     fullWidth={true}
@@ -77,9 +81,11 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                 />
                 <br />
-                <label className="title">{questions.two}</label>
-                <br />
+                <p className="title">{questions.two}</p>
                 <TextField
+                    floatingLabelStyle={Styling.TextLabelStyle}
+                    style={Styling.textField}
+                    fullWidth={true}
                     floatingLabelText={questions.name}
                     onBlur={this.handleTargetEvents}
                     value={formRef.emergency_name}
@@ -91,6 +97,9 @@ class PersonalInfo extends React.Component<any, any>{
                     name="emergency_name"
                 />
                 <TextField
+                    floatingLabelStyle={Styling.TextLabelStyle}
+                    style={Styling.textField}
+                    fullWidth={true}
                     floatingLabelText={questions.phone}
                     onBlur={this.handleTargetEvents}
                     value={formRef.emergency_number}
@@ -102,11 +111,10 @@ class PersonalInfo extends React.Component<any, any>{
                     name="emergency_number"
                 />
                 <br />
-                <br />
-                <label className="title">
+                <label className="sub-title">
                     {questions.three}
                 </label>
-                <RadioButtonGroup name="crime" valueSelected={formRef.crime !== 'No' ? "Yes" : "No"} onChange={(event: any) => {
+                <RadioButtonGroup className="radio-label" style={Styling.radioButtonGroupStyling} name="crime" valueSelected={formRef.crime !== 'No' ? "Yes" : "No"} onChange={(event: any) => {
                     formRef.crime = event.target.value
                     this.setState(formRef);
                     event.target.value === 'Yes' ? this.setState({ convictedCrime: true }) : this.setState({ convictedCrime: false })
@@ -114,19 +122,25 @@ class PersonalInfo extends React.Component<any, any>{
                     <RadioButton
                         value="Yes"
                         label={yes}
+                        iconStyle={Styling.iconStyle}
+                        style={Styling.radioButtonStyle}
                     />
                     <RadioButton
                         value="No"
                         label={no}
+                        iconStyle={Styling.iconStyle}
+                        style={Styling.radioButtonStyle}
                     />
                 </RadioButtonGroup>
                 {this.state.convictedCrime || formRef.crime !== "No" ?
                     <div>
-                        <p>{questions.four}</p>
+                        <p className="question">{questions.four}</p>
                         <TextField
+                            floatingLabelStyle={Styling.TextLabelStyle}
+                            style={Styling.textField}
+                            fullWidth={true}
                             floatingLabelText={description}
                             onBlur={this.handleTargetEvents}
-                            fullWidth={true}
                             multiLine={true}
                             onChange={(event: any) => {
                                 formRef.crime = event.target.value
@@ -138,36 +152,47 @@ class PersonalInfo extends React.Component<any, any>{
                         />
                     </div>
                     : null}
-                <label className="title">{fluent}</label>
-                <RadioButtonGroup name="language" defaultSelected={formRef.language} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label className="sub-title">
+                    {fluent}</label>
+                <RadioButtonGroup className="radio-label" style={Styling.radioButtonGroupStyling} name="language" defaultSelected={formRef.language} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
+                        style={Styling.radioButtonStyle}
                         value="yes"
                         label={yes}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
+                        style={Styling.radioButtonStyle}
                         value="no"
+                        iconStyle={Styling.iconStyle}
                         label={no}
                     />
                 </RadioButtonGroup>
-                <label className="title">{levelOfCommunication}</label>
+                <hr />
+                <label className="sub-title">{levelOfCommunication}</label>
                 <RadioButtonGroup name="level_communication" defaultSelected={formRef.level_communication} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="Understand/Speak no English"
                         label={understandSpeak}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Understand a few English instructions"
                         label={understandEnglish}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Understand most English instructions"
                         label={understandInstructions}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Learning English as ESL"
                         label={ESL}
                     />
                     <RadioButton
+                        iconStyle={Styling.iconStyle}
                         value="Bilingual English/Spanish"
                         label={billingual}
                     />

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
 import ActiveButtons from '../active-buttons/ActiveButtons';
-import "./JobLocation.css"
+import "./JobLocation.css";
+import Styling from "../jobTheme";
+
 class JobLocation extends React.Component<any, any>{
 
     constructor(props: any) {
@@ -354,29 +356,3 @@ class JobLocation extends React.Component<any, any>{
     }
 }
 export default JobLocation;
-
-const Styling = {
-    textField: {
-        display: "block",
-        width: "55%"
-    },
-    radioButtonLabel: {
-        fontSize: "16px",
-        marginBottom: "13px",
-        display: "block"
-    },
-    radioButtonStyle: {
-        display: "inline-block",
-        width: "65px"
-    },
-    iconStyle: {
-        width: "17px",
-        marginRight: "5px"
-    },
-    prefered: {
-        marginTop: "36px",
-        fontSize: "16px",
-        marginLeft:"0px"
-    }
-    
-}
