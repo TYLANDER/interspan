@@ -45,6 +45,7 @@ var Styling = {
     addButton: {
         height: "41px",
         borderRadius: "5px",
+        fontFamily:"SFUI_Text",
         lineHeight: "41px",
         background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
     },
@@ -55,7 +56,9 @@ var Styling = {
         height: "44px",
         width: '110px',
         lineHeight: "41px",
-        color: "#2e2e2e"
+        color: "#2e2e2e",
+        ontFamily:"SFUI_Text",
+
     },
     buttonLabel: {
         textTransform: "none",
@@ -65,9 +68,12 @@ var Styling = {
         display: "inline-block",
         width: "55%"
     },
-    TextLabelStyle:{
-        fontSize:"16px"
+    TextLabelStyle: {
+        fontSize: "16px"
     },
+    progressBar: {
+        height: "9px", backgroundColor: "white", borderRadius: "50px", marginTop: "7px"
+    }
 }
 
 export default Styling;

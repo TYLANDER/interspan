@@ -18,6 +18,8 @@ import FlatButton from 'material-ui/FlatButton';
 import { withRouter, browserHistory } from "react-router"
 import StateManager from "../../service/stateManage";
 import LinearProgress from 'material-ui/LinearProgress';
+import Footer from "../footer/footer";
+import Styling from "./jobTheme";
 
 class MainJobForm extends React.Component<any, any>{
     jobDataEn: any = {};
@@ -311,16 +313,11 @@ class MainJobForm extends React.Component<any, any>{
                                 )}
                         </div>
                     </div>
+                    <Footer />
                 </div>
         );
     }
 }
 
 export default withRouter(MainJobForm);
-
-const Styling = {
-    progressBar:{
-        height:"9px",backgroundColor:"white",borderRadius:"50px",marginTop:"7px"
-    }
-}
 

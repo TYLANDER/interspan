@@ -208,27 +208,3 @@ class Education extends React.Component<any, any>{
     }
 }
 export default Education;
-
-// const Styling = {
-//     textField: {
-//         display: "block",
-//         width: "55%"
-//     },
-//     radioButtonLabel: {
-//         fontSize: "16px",
-//         marginBottom: "13px",
-//         display: "block"
-//     },
-//     radioButtonStyle: {
-//         display: "inline-block",
-//         width: "65px"
-//     },
-//     iconStyle: {
-//         width: "17px",
-//         marginRight: "5px"
-//     },
-//     buttonLabel: {
-//         textTransform:"none",
-//         fontSize:"16px",
-//     }
-// }
