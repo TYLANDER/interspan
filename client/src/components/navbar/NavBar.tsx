@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { AppBar, RaisedButton, FlatButton, Drawer, SelectField, MenuItem, Chip, Menu, IconButton, IconMenu } from 'material-ui';
-import Done from 'material-ui/svg-icons/action/done';
-import Arrow from 'material-ui/svg-icons/av/play-arrow';
-import NotIntrested from 'material-ui/svg-icons/av/not-interested';
+import { AppBar, Card, RaisedButton, FlatButton, SelectField, MenuItem, Chip, Menu, IconButton, IconMenu } from 'material-ui';
+// import Done from 'material-ui/svg-icons/action/done';
+// import Arrow from 'material-ui/svg-icons/av/play-arrow';
+// import NotIntrested from 'material-ui/svg-icons/av/not-interested';
+import Cancelled from 'material-ui/svg-icons/navigation/cancel';
+import Done from 'material-ui/svg-icons/action/check-circle';
 import './NavBar.css';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -14,15 +16,12 @@ class NavBar extends React.Component<any, any> {
 
     stateData: any;
     state: any;
-
     constructor(props: any) {
         super(props);
-
         //Observable to detect stepper state of job form
         StateManager.stepperObserver.subscribe((data: any) => {
             this.stateData = data;
         });
-
         this.state = {
             open: false,
             isAuthenticated: false,
@@ -31,7 +30,8 @@ class NavBar extends React.Component<any, any> {
             anchorEl: {},
             opens: false,
             openDrawer: false,
-            headings: {}
+            headings: {},
+            jobMenuOpen: false
         };
 
     }
@@ -119,17 +119,17 @@ class NavBar extends React.Component<any, any> {
                             </Chip>}
                     <SelectField
                         className="lang-select"
-                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "43px", paddingTop: "-40px", paddingLeft: "15px"}}
+                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "43px", paddingTop: "-40px", paddingLeft: "15px" }}
                         value={this.state.language}
                         underlineStyle={{ display: 'none' }}
                         onChange={this.handleLanguage}
-                        iconStyle={{ display: "block", marginTop: "-7px"}}
-                        menuStyle={{ width: "70px" }}
+                        iconStyle={{ display: "block", marginTop: "-7px" }}
+                        menuStyle={{ width: "70px", zIndex: "-99999" }}
                     >
                         <MenuItem value="en" primaryText="EN" />
                         <MenuItem value="sp" primaryText="SP" />
                     </SelectField>
-                    <img className="dashboard-icon" src={require("../../assets/dash-icon.jpg")} />
+                    <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: true }) }} className="dashboard-icon" src={require("../../assets/dash-icon.jpg")} />
                 </div>
                 : <p></p>
         )
@@ -180,14 +180,13 @@ class NavBar extends React.Component<any, any> {
                         onTouchTap={this.handleToggle}
                     />
                 }
-
             </div>
         );
 
         const homeMenu = <div>
             <AppBar
                 zDepth={1}
-                style={{ backgroundColor: 'rgb(255,255,255)', transition: "none" }}
+                style={{backgroundColor: 'rgb(255,255,255)', transition: "none" }}
                 iconElementLeft={
                     <img src={require('../../assets/logo.png')} className="logo" alt="logo" />
                 }
@@ -231,22 +230,18 @@ class NavBar extends React.Component<any, any> {
             <AppBar
                 zDepth={1}
                 className="icon-menu-hamburger"
-                onRightIconButtonTouchTap={
-                    this.drawerToggle.bind(this)
-                }
                 iconElementLeft={<img src={require("../../assets/logo.jpg")} />}
                 iconStyleLeft={{ marginLeft: "25px" }}
                 iconElementRight={languageSelect}
                 iconStyleRight={{ marginRight: "25px" }}
-                style={{ backgroundColor: "white", transition: "none" }}
+                style={{ zIndex:1,backgroundColor: "white", transition: "none" }}
                 titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
                 showMenuIconButton={this.props.router.location.pathname === "/job" ? true : false}
             />
-
         </div>;
         return (
             <div>
-                {this.stateData ?
+                {/*{this.stateData ?
                     <Drawer
                         docked={false}
                         width={270}
@@ -294,8 +289,59 @@ class NavBar extends React.Component<any, any> {
                         </MenuItem>
 
                     </Drawer>
+                    : null}*/}
+                {(this.state.jobMenuOpen) ?
+                    <div className="job-sub-menu slide-in-job">
+                        <div className="job-sub-navbar">
+                        <SelectField
+                            className="lang-select"
+                            labelStyle={{ color: "black", textOverflow: "none", lineHeight: "43px", paddingTop: "-40px", paddingLeft: "15px" }}
+                            value={this.state.language}
+                            underlineStyle={{ display: 'none' }}
+                            onChange={this.handleLanguage}
+                            iconStyle={{ display: "block", marginTop: "-7px" }}
+                            menuStyle={{ width: "70px"}}
+                        >
+                            <MenuItem value="en" primaryText="EN" />
+                            <MenuItem value="sp" primaryText="SP" />
+                        </SelectField>
+                        <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: false }) }} className="dashboard-icon" src={require("../../assets/dash-icon.jpg")} />
+                        </div>
+                        <Card className={this.stateData.visited.indexOf(0) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.applicationInformation}</span>{this.stateData.visited.indexOf(0) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(1) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.jobLocation}</span>{this.stateData.visited.indexOf(1) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(2) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.educationTraining}</span>{this.stateData.visited.indexOf(2) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(3) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.employementHistory}</span>{this.stateData.visited.indexOf(3) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(4) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.personalInformation}</span>{this.stateData.visited.indexOf(4) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(5) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.lightIndustrialSkills}</span>{this.stateData.visited.indexOf(5) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(6) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.media}</span>{this.stateData.visited.indexOf(6) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(7) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.equalOpportunity}</span>{this.stateData.visited.indexOf(7) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(8) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.transportation}</span>{this.stateData.visited.indexOf(8) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(9) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.references}</span>{this.stateData.visited.indexOf(9) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                        <Card className={this.stateData.visited.indexOf(10) !== -1 ? "categories" : "categories categories-disabled"}>
+                            <li><span>{this.stateData.selectedJson.headings.certification}</span>{this.stateData.visited.indexOf(10) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                        </Card>
+                    </div>
                     : null}
-
                 <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : ``}`}>
                     {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
                 </div>
