@@ -7,12 +7,11 @@
 
 .footer-container-main .copyright{
     color:#9b9b9b;
-    font-size:7.5pt;
+    font-size:9pt;
     margin-right:5%;
-    font-family: "SFUI_Text";
 
 }
 .footer-container-main .icon{
     margin-left: 5%;
-    margin-right:80px
+    margin-right:80px;
 }

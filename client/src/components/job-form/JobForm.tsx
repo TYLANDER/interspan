@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './JobForm.css';
-import { Step, Stepper, StepButton } from 'material-ui/Stepper';
+// import { Step, Stepper, StepButton } from 'material-ui/Stepper';
 import ApplicantInfo from './applicant-info/ApplicantInfo';
 import { CircularProgress } from "material-ui";
 import JobLocation from './job-location/JobLocation';
@@ -229,17 +229,17 @@ class MainJobForm extends React.Component<any, any>{
                 style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> :
                 <div className="main-job-form-container">
                     {/*Stepper for Desktop*/}
-                    <div className="md-stepper stepper-style">
+                    <div className="stepper-style">
                         <div className="stepper-main-content">
                             <div className="stepper-header">
                                 {stepperheadings[stepIndex]}
                             </div>
                             <div className="counting-stepper">
-                                <span style={{color:"#293fa3",fontWeight:"bold"}}>{stepIndex + 1}</span> <span style={{color:"#7684c4"}}>of 12</span>
+                                <span>{stepIndex + 1}</span> <span>of 12</span>
                                 </div>
                         </div>
                         <div className="stepper-loader">
-                            <LinearProgress color="rgba(107,176,255,1)" style={Styling.progressBar} mode="determinate" value={stepIndex + 1} max={12} />
+                            <LinearProgress style={Styling.progressBar} mode="determinate" value={stepIndex + 1} max={12} />
                         </div>
 
                         {/*<Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>
@@ -279,7 +279,7 @@ class MainJobForm extends React.Component<any, any>{
                         </Stepper>*/}
                     </div>
                     {/*stepper for mobile*/}
-                    <div className="sm-stepper">
+                    {/*<div className="sm-stepper">
                         <Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}  >
                             <Step><StepButton completed={stepIndex === 0 ? false : this.state.visited.indexOf(0) !== -1} onClick={() => this.setState({ stepIndex: 0 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                             <Step><StepButton completed={stepIndex === 1 ? false : this.state.visited.indexOf(1) !== -1} disabled={this.state.visited.indexOf(0) === -1} onClick={() => this.setState({ stepIndex: 1 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
@@ -293,7 +293,7 @@ class MainJobForm extends React.Component<any, any>{
                             <Step><StepButton completed={stepIndex === 9 ? false : this.state.visited.indexOf(9) !== -1} disabled={this.state.visited.indexOf(8) == -1} onClick={() => this.setState({ stepIndex: 9 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                             <Step><StepButton completed={stepIndex === 10 ? false : this.state.visited.indexOf(10) !== -1} disabled={this.state.visited.indexOf(9) == -1} onClick={() => this.setState({ stepIndex: 10 })} style={{ backgroundColor: 'rgba(0,0,0,0)' }} disableTouchRipple={true} disableFocusRipple={true}></StepButton></Step>
                         </Stepper>
-                    </div>
+                    </div>*/}
                     <div className="main-content">
                         <div className="stepper-content">
                             {finished ? (

@@ -4,9 +4,9 @@ import "./footer.css";
 class Footer extends React.Component<any, any> {
     render() {
         return (
-            <div className="footer-container-main">
+            <div className="md-stepper footer-container-main">
                 <div className="icon">
-                    <img src={require("../../assets/logo.jpg")} />
+                    <img style={{width:"50px"}} src={require("../../assets/logos.png")} />
                 </div>
                 <div className="social-media">
                     <a href="#"><img width="40px" src={require("../../assets/insta.jpg")} /></a>

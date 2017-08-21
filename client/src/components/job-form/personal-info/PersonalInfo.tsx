@@ -66,7 +66,7 @@ class PersonalInfo extends React.Component<any, any>{
         return (
             <div className="personal-applicant-container">
                 <TextField
-                    style={Styling.textField}
+                    className="text-area"
                     floatingLabelStyle={Styling.TextLabelStyle}
                     floatingLabelText={questions.one}
                     onBlur={this.handleTargetEvents}
@@ -84,7 +84,7 @@ class PersonalInfo extends React.Component<any, any>{
                 <p className="title">{questions.two}</p>
                 <TextField
                     floatingLabelStyle={Styling.TextLabelStyle}
-                    style={Styling.textField}
+                    className="text-area"
                     fullWidth={true}
                     floatingLabelText={questions.name}
                     onBlur={this.handleTargetEvents}
@@ -98,7 +98,7 @@ class PersonalInfo extends React.Component<any, any>{
                 />
                 <TextField
                     floatingLabelStyle={Styling.TextLabelStyle}
-                    style={Styling.textField}
+                    className="text-area"
                     fullWidth={true}
                     floatingLabelText={questions.phone}
                     onBlur={this.handleTargetEvents}
@@ -137,7 +137,7 @@ class PersonalInfo extends React.Component<any, any>{
                         <p className="question">{questions.four}</p>
                         <TextField
                             floatingLabelStyle={Styling.TextLabelStyle}
-                            style={Styling.textField}
+                            className="text-area"
                             fullWidth={true}
                             floatingLabelText={description}
                             onBlur={this.handleTargetEvents}

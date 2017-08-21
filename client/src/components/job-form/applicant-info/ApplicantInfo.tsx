@@ -65,8 +65,8 @@ class ApplicantInfo extends React.Component<any, any>{
             <div className="job-applicant-container">
                 <TextField
                     hintText=""
+                    className="text-area"
                     underlineStyle={{ bottom: "4px" }}
-                    style={Styling.textField}
                     value={this.state.form.street_address}
                     multiLine={true}
                     onChange={(event: any) => {
@@ -82,7 +82,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 />
                 <TextField
                     hintText=""
-                    style={Styling.textField}
+                    className="text-area"
                     value={this.state.form.city}
                     underlineStyle={{ bottom: "4px" }}
                     onChange={(event: any) => {
@@ -99,7 +99,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 />
                 <TextField
                     hintText=""
-                    style={Styling.textField}
+                    className="text-area"
                     underlineStyle={{ bottom: "4px" }}
                     onChange={(event: any) => {
                         formRef.state = event.target.value
@@ -116,7 +116,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 <TextField
                     hintText=""
                     underlineStyle={{ bottom: "4px" }}
-                    style={Styling.textField}
+                    className="text-area"
                     value={this.state.form.zip}
                     onChange={(event: any) => {
                         formRef.zip = event.target.value
@@ -133,7 +133,7 @@ class ApplicantInfo extends React.Component<any, any>{
                     hintText=""
                     type="tel"
                     underlineStyle={{ bottom: "4px" }}
-                    style={Styling.textField}
+                    className="text-area"
                     value={this.state.form.home_telephone}
                     onChange={(event: any) => {
                         formRef.home_telephone = event.target.value
@@ -148,7 +148,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 />
                 <br />
                 <br />
-                <b style={Styling.radioButtonLabel}>{areYou18} </b>
+                <p style={Styling.radioButtonLabel}>{areYou18} </p>
                 <RadioButtonGroup className="radio-label" style={Styling.radioButtonGroupStyling} name="age" defaultSelected={this.state.form.years_old} onChange={(event: any) => {
                     formRef.years_old = event.target.value;
                     this.setState(formRef)
@@ -159,6 +159,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         value="yes"
                         iconStyle={Styling.iconStyle}
                         label={yes}
+                        labelStyle={{ transform: "lower-case" }}
                     />
                     <RadioButton
                         style={Styling.radioButtonStyle}
@@ -167,7 +168,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>
-                <b style={Styling.radioButtonLabel}>{employment} </b>
+                <p style={Styling.radioButtonLabel}>{employment} </p>
                 <RadioButtonGroup className="radio-label" name="employement" valueSelected={this.state.form.employement !== '' ? this.state.form.employement !== 'no' ? "yes" : "no" : ""} onChange={(event: any) => {
                     this.state.appliedBefore = event.target.value
                     formRef.employement = event.target.value
@@ -188,14 +189,14 @@ class ApplicantInfo extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 {this.state.employee || this.state.form.employement !== 'no' ?
-                    <div style={Styling.radioButtonGroupStyling} ><DatePicker style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={employementYes}
+                    <div style={Styling.radioButtonGroupStyling} ><DatePicker className="dateTextFeild" textFieldStyle={Styling.date} floatingLabelText={employementYes}
                         onChange={(event: any, date: any) => {
                             formRef.employement = date.toISOString()
                             this.setState(formRef);
                         }}
                     /><span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
                     : ''}
-                <b style={Styling.radioButtonLabel}>{legallyEligible}</b>
+                <p style={Styling.radioButtonLabel}>{legallyEligible}</p>
                 <RadioButtonGroup className="radio-label" name="eligible" valueSelected={this.state.form.eligible} onChange={(event: any) => {
                     formRef.eligible = event.target.value
                     this.setState(formRef)
@@ -217,6 +218,7 @@ class ApplicantInfo extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <TextField
                     hintText=""
+                    className="text-area"
                     style={Styling.LastLine}
                     value={this.state.form.begin_work}
                     floatingLabelText={workStatus}

@@ -6,8 +6,7 @@
     font-weight: 400 !important
 }
 .job-location-container .inline-fields{
-    font-size:14px;
-    font-weight: 600;
+    font-size:16px;
 }
 
 .job-location-container .inline{
@@ -47,7 +46,12 @@
 }
 .job-location-container .title{
     font-size: 17px;
-    margin-bottom: 19px;
+    margin-bottom: 11px;
     margin-top:15px;
-    margin-left:4px;
+    margin-left:1px;
+}
+@media (max-width: 630px) {
+    .job-location-container .box-child{
+        height:131px;
+    }
 }

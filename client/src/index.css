@@ -12,6 +12,22 @@
     font-family: SFUI_Display_Light;
     src: url('./assets/fonts/SFUI/SFUI_DISPLAY_LIGHT.ttf');
 }
+@font-face {
+    font-family: Karla;
+    src: url('./assets/fonts/Karla/Karla-Regular.ttf');
+}
+@font-face {
+    font-family: Karla-Bold;
+    src: url('./assets/fonts/Karla/Karla-Bold.ttf');
+}
+@font-face {
+    font-family: Karla-Italic;
+    src: url('./assets/fonts/Karla/Karla-Italic.ttf');
+}
+@font-face {
+    font-family: Karla-Bold-Italic;
+    src: url('./assets/fonts/Karla/Karla-BoldItalic.ttf');
+}
 
 body {
   margin: 0;

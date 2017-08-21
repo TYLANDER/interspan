@@ -74,7 +74,7 @@ class JobLocation extends React.Component<any, any>{
         const formRef = this.state.form;
         return (
             <div className="job-location-container">
-                <label className="title">{positionDesired} </label>
+                <p className="title">{positionDesired} </p>
                 <RadioButtonGroup className="radio-label" valueSelected={
                     this.state.form.position_desired !== "Any available position" && this.state.form.position_desired !== "Clerical / Office" && this.state.form.position_desired !== "Industrial / Factory / Warehouse" ? "other" : this.state.form.position_desired
                 } name="position_desired" onChange={(event: any) => {
@@ -107,7 +107,7 @@ class JobLocation extends React.Component<any, any>{
                 </RadioButtonGroup>
                 {this.state.position || this.state.form.position_desired !== "Any available position" && this.state.form.position_desired !== "Clerical / Office" && this.state.form.position_desired !== "Industrial / Factory / Warehouse" ?
                     <TextField
-                        style={Styling.textField}
+                        className="text-area"
                         name="position_desired"
                         value={this.state.form.position_desired}
                         onChange={(event: any) => {
@@ -121,7 +121,7 @@ class JobLocation extends React.Component<any, any>{
                         floatingLabelText={other}
                         onBlur={this.handleTargetEvents}
                     /> : ''}
-                <label className="title">{locationPreference} </label>
+                <p className="title">{locationPreference} </p>
                 <RadioButtonGroup className="radio-label" name="location_preference" defaultSelected={this.state.form.location_preference !== "Any available site" ? "site" : this.state.form.location_preference} onChange={(event: any) => {
                     this.handleTargetEvents(event);
                     event.target.value === 'site' ? this.setState({ location: true }) : this.setState({ location: false })
@@ -141,7 +141,7 @@ class JobLocation extends React.Component<any, any>{
                     <TextField
                         name="location_preference"
                         hintText=""
-                        style={Styling.textField}
+                        className="text-area"
                         value={this.state.form.location_preference}
                         fullWidth={true}
                         onChange={(event: any) => {
@@ -154,7 +154,7 @@ class JobLocation extends React.Component<any, any>{
                     /> : ''}
                 <TextField
                     name="pay_rate"
-                    style={Styling.textField}
+                    className="text-area"
                     hintText={perHour}
                     onChange={(event: any) => {
                         formRef.pay_rate = event.target.value
@@ -168,7 +168,7 @@ class JobLocation extends React.Component<any, any>{
                 />
 
                 <p style={Styling.prefered} className="title">{title}</p>
-                <label className="inline-fields">{questions.one}</label>
+                <p className="inline-fields">{questions.one}</p>
                 <RadioButtonGroup name="available_fulltime" defaultSelected={formRef.available_fulltime} className="radio-label right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"

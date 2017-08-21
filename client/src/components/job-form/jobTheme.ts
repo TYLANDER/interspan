@@ -1,12 +1,10 @@
 var Styling = {
-    textField: {
-        display: "block",
-        width: "53%"
-    },
     radioButtonLabel: {
         fontSize: "16px",
         marginBottom: "13px",
-        display: "block"
+        display: "block",
+        color: "#2E2E2E",
+        fontFamily: "'Roboto', sans-serif"
     },
     dateIcon: {
         width: "16px",
@@ -15,7 +13,9 @@ var Styling = {
     },
     radioButtonStyle: {
         display: "inline-block",
-        width: "65px"
+        width: "65px",
+        fontSize: "16px",
+        fontFamily: "'Roboto', sans-serif"
     },
     iconStyle: {
         width: "17px",
@@ -25,16 +25,14 @@ var Styling = {
         marginBottom: "36px"
     },
     dateNoteStyle: {
-        color: "#293fa3",
-        fontSize: "11px",
+        color: "#3B7CFF",
+        fontSize: "10px",
     },
     date: {
         display: "inline-block",
         width: "100%"
     },
     LastLine: {
-        display: "block",
-        width: "55%",
         marginBottom: "36px"
     },
     prefered: {
@@ -45,7 +43,7 @@ var Styling = {
     addButton: {
         height: "41px",
         borderRadius: "5px",
-        fontFamily:"SFUI_Text",
+        fontFamily: "SFUI_Text",
         lineHeight: "41px",
         background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
     },
@@ -57,7 +55,7 @@ var Styling = {
         width: '110px',
         lineHeight: "41px",
         color: "#2e2e2e",
-        ontFamily:"SFUI_Text",
+        ontFamily: "SFUI_Text",
 
     },
     buttonLabel: {

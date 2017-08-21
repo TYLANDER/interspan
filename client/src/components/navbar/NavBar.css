@@ -37,8 +37,9 @@
 }
 .navbar-container .lang-select, .job-sub-navbar .lang-select{
   width: 64px !important;
-  right: -3px;
-  top: 8px;
+  right: 50px;
+  top:-6px;
+  position:absolute !important;
   height:34px !important;
   border-radius: 7px;
   border:1px solid #f2f2f2;
@@ -47,8 +48,22 @@
   align-items: center;
   z-index: -9000 !important;
 }
+.navbar-container .logo-navbar{
+  width:50px;
+  margin-top:8px;
+  margin-left:25px;
+}
+.navbar-container .navbar-right-icon{
+  position:relative;
+  margin-right:25px;
+}
 .navbar-container .dashboard-icon{
   margin-top:4px;
+  margin-left:10px;
+  cursor:pointer
+}
+.navbar-container .close-icon{
+  margin-top:6px;
   margin-left:10px;
   cursor:pointer
 }
@@ -69,14 +84,13 @@
     align-items: center;
     position: fixed;
     flex-direction: column;
-    z-index: 10;
-    top: 0;
     left:0;
     background-color: #feffff;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .job-sub-menu .job-sub-navbar{
     opacity: 1;
+    display:block;
     position: absolute;
     top:20px;
     right:360px;
@@ -91,19 +105,22 @@
 }
 .job-sub-menu .categories-disabled{
   opacity: 0.4;
+  color:#414141;
+
 }
 .job-sub-menu .categories{
   margin-bottom: 8px;
   height:45px;
   align-items: center;
   display:flex;
-  width:24%;
+  font-family: 'Roboto',sans-serif;
+  width:420px !important;
   position: relative;
   border-radius:4px !important;
-  font-family: "SFUI_Text" !important;
   font-size:16px;
-  padding-left:19px;
+  padding-left:36px;
   box-shadow: rgba(9, 13, 31, 0.1) 0px 4px 8px 0px, rgba(9, 13, 31, 0.1) 0px 7px 20px !important
+  /*box-shadow: 0px 6px 12px rgba(46, 46, 46, 0.08);*/
 }
 .navbar-container .sub-menu .menu-info {
   margin-top: 25px !important;
@@ -154,14 +171,27 @@
   margin: 0 7px 0 0 !important;
 }
 @media (max-width: 630px) {
+  .navbar-container{
+      border-bottom:1px solid #eeefef
+  }
   .navbar-container .hamburger-icon{
     display: inline !important;
   }
   .navbar-container .close:hover{
     transform: rotate(85deg)
   }
+  .navbar-container .navbar-right-icon   
+  {
+    margin-right:17px;
+  }
+  .job-sub-menu .categories{
+    width:90% !important;
+  }
+  .navbar-container .logo-navbar{
+    margin-left: 0;
+  }
   .navbar-container .lang-select{
-  right: 2px;
+  right: 46px;
 }
   .md-menu{
     display: none;

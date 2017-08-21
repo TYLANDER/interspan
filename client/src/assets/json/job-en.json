@@ -49,8 +49,8 @@
         "employementYes": "Month and Year",
         "legallyEligible": "Are you legally eligible for employement in the United State",
         "workStatus": "When would you be able to begin work?",
-        "yes": "YES",
-        "no": "NO"
+        "yes": "Yes",
+        "no": "No"
     },
     "jobLocation": {
         "positionDesired": "Position Desired",
@@ -117,8 +117,8 @@
             "four": "If “Yes”, describe in full. (A conviction will not necessarily disqualify you from employment but will be considered in relation to specific job requirements)"
         },
         "description": "Description",
-        "yes": "YES",
-        "no": "NO"
+        "yes": "Yes",
+        "no": "No"
     },
     "lightIndustrialAndWarehousePositions": {
         "questions": {

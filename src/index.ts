@@ -30,7 +30,7 @@ app.use([
 //Setting routes to server
 routes(app);
 
-let port: number = process.env.PORT || 3306;
+let port: number = process.env.PORT || 3300;
 
 //Creating server 
 const server = http.createServer(app);  

@@ -114,7 +114,7 @@ class Education extends React.Component<any, any>{
                         key={i}
                         hintText=""
                         name="name"
-                        style={Styling.textField}
+                        className="text-area"
                         value={this.state.form.schoolLocationList[i].name}
                         onBlur={this.handleTargetEvents.bind(this, "schoolLocationList", i)}
                         onChange={this.handleText.bind(this, "schoolLocationList", i)}
@@ -122,7 +122,7 @@ class Education extends React.Component<any, any>{
                     />
                     <TextField
                         hintText=""
-                        style={Styling.textField}
+                        className="text-area"
                         value={this.state.form.schoolLocationList[i].location}
                         name="location"
                         onChange={this.handleText.bind(this, "schoolLocationList", i)}
@@ -148,7 +148,7 @@ class Education extends React.Component<any, any>{
         let formRef = this.state.form;
         return (
             <div className="education-applicant-container">
-                <label className="title">{question.one}</label>
+                <p className="title">{question.one}</p>
                 <RadioButtonGroup valueSelected={formRef.highestEducation} name="highestEducation" onChange={(event: any) =>
                     this.handleTargetEvents(event, 0, event)
                 }>
@@ -186,11 +186,11 @@ class Education extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <br />
                 <div>
-                    <p className="sub-title">{question.two}</p><br />
+                    <p className="sub-title">{question.two}</p>
                     {school}
                     <div className="button-group">
                         <FlatButton labelStyle={Styling.buttonLabel} style={Styling.addButton} label={<b>Add</b>} onClick={() => this.handleSchoolLocationList("add")} />
-                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={<b>Remove</b>} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
+                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={"Remove"} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
                     </div>
                 </div>
                 <div>
@@ -199,7 +199,7 @@ class Education extends React.Component<any, any>{
                     {skills}
                     <div className="button-group">
                         <FlatButton labelStyle={Styling.buttonLabel} style={Styling.addButton} label={<b>Add</b>} primary={true} onClick={() => this.handleSpecialTrainingList("add")} />
-                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={<b>Remove</b>} secondary={true} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
+                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={"Remove"} secondary={true} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
                     </div>
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
