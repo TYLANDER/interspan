@@ -178,8 +178,8 @@ class ApplicantInfo extends React.Component<any, any>{
                     <RadioButton
                         style={Styling.radioButtonStyle}
                         value="yes"
-                        label={yes}
                         iconStyle={Styling.iconStyle}
+                        label={yes}
                     />
                     <RadioButton
                         style={Styling.radioButtonStyle}

@@ -4,6 +4,7 @@ var Styling = {
         marginBottom: "13px",
         display: "block",
         color: "#2E2E2E",
+        marginLeft:"-7px",
         fontFamily: "'Roboto', sans-serif"
     },
     dateIcon: {
@@ -45,6 +46,7 @@ var Styling = {
         borderRadius: "5px",
         fontFamily: "SFUI_Text",
         lineHeight: "41px",
+        marginLeft:"-7px",
         background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
     },
     deleteButton: {

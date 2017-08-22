@@ -19,17 +19,14 @@
         "Contact Information",
         "Job Preferences",
         "Education",
-        "Certification",
         "Employment History",
         "Personal Information",
         "Skills",
         "Media",
         "Equal Opportunity",
-        "Work Hours",
-        "Communication",
         "Transportation",
         "References",
-        "Employer's Use"
+        "Certification"
     ],
     "applicationInformation": {
         "lastName": "Last Name",
@@ -76,7 +73,7 @@
             "trade": "Trade/Business/ Technical School",
             "attendedCollege": "Attended some College",
             "collegeDegree": "College Degree",
-            "specialSkills":"Special Training / Skills"
+            "specialSkills": "Special Training / Skills"
         },
         "skillsAndExperience": {
             "heading": "List any special training skills, and experience.",
@@ -222,9 +219,9 @@
         "no": "NO",
         "levelOfCommunication": "Level of communication: (non-English speakers only)",
         "understandSpeak": "Understand/Speak no English",
-        "ESL":"Learning English as ESL",
+        "ESL": "Learning English as ESL",
         "understandEnglish": "Understand a few English instructions",
-        "billingual":"Bilingual English/Spanish",
+        "billingual": "Bilingual English/Spanish",
         "understandInstructions": "Understand most English instructions"
     },
     "transportation": {
@@ -232,8 +229,8 @@
         "employmentBusLine": "Do you need employment on the bus line?",
         "rideWithAnotherEmployment": "Do you need to ride with another employee?",
         "name": "Name",
-        "yes":"YES",
-        "no":"NO"
+        "yes": "YES",
+        "no": "NO"
     },
     "references": {
         "name": "Name",

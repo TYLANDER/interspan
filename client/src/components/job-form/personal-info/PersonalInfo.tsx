@@ -66,7 +66,7 @@ class PersonalInfo extends React.Component<any, any>{
         return (
             <div className="personal-applicant-container">
                 <TextField
-                    className="text-area"
+                    className="text-area long-feild"
                     floatingLabelStyle={Styling.TextLabelStyle}
                     floatingLabelText={questions.one}
                     onBlur={this.handleTargetEvents}
@@ -80,7 +80,7 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                     }
                 />
-                <br />
+                <br /><br />
                 <p className="title">{questions.two}</p>
                 <TextField
                     floatingLabelStyle={Styling.TextLabelStyle}
@@ -110,10 +110,10 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                     name="emergency_number"
                 />
-                <br />
-                <label className="sub-title">
+                <br /> <br />
+                <p className="sub-title">
                     {questions.three}
-                </label>
+                </p>
                 <RadioButtonGroup className="radio-label" style={Styling.radioButtonGroupStyling} name="crime" valueSelected={formRef.crime !== 'No' ? "Yes" : "No"} onChange={(event: any) => {
                     formRef.crime = event.target.value
                     this.setState(formRef);
@@ -134,7 +134,7 @@ class PersonalInfo extends React.Component<any, any>{
                 </RadioButtonGroup>
                 {this.state.convictedCrime || formRef.crime !== "No" ?
                     <div>
-                        <p className="question">{questions.four}</p>
+                        <p className="title">{questions.four}</p>
                         <TextField
                             floatingLabelStyle={Styling.TextLabelStyle}
                             className="text-area"
@@ -150,10 +150,11 @@ class PersonalInfo extends React.Component<any, any>{
                             value={formRef.crime}
                             name="crime"
                         />
+                        <br /><br />
                     </div>
                     : null}
-                <label className="sub-title">
-                    {fluent}</label>
+                <p className="sub-title">
+                    {fluent}</p>
                 <RadioButtonGroup className="radio-label" style={Styling.radioButtonGroupStyling} name="language" defaultSelected={formRef.language} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         style={Styling.radioButtonStyle}

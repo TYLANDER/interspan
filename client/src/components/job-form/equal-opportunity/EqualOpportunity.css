@@ -2,3 +2,21 @@
     text-align: justify;
     text-justify: inter-word;
 }
+
+.equal-opprtunity-container .title{
+    font-size: 17px;
+    margin-bottom: 11px;
+    margin-top:15px;
+    margin-left:1px;
+}
+
+@media(max-width:630px){
+    .equal-opprtunity-container .title
+    {
+        margin-left:-7px;
+    }
+    .equal-opprtunity-container .paragraph{
+        margin-left: -7px;
+        margin-right: 7px;
+    }
+}

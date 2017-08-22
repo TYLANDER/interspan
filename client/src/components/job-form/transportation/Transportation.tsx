@@ -2,7 +2,6 @@ import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import './Transportation.css';
 import { RadioButton, RadioButtonGroup, TextField } from 'material-ui';
-
 class Transportation extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -104,6 +103,7 @@ class Transportation extends React.Component<any, any>{
                 {this.state.employee || formRef.another_employee !== "No" ?
                     <TextField
                         value={this.state.form.another_employee}
+                        className="text-area"
                         floatingLabelText={name}
                         name="another_employee"
                         onBlur={this.handleTargetEvents}

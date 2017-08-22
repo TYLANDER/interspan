@@ -1,16 +1,18 @@
 .skills-applicant-container .inline-radio{
     display: inline-block !important;
-    width: 110px !important;
+    width: 68px !important;
+    font-size:16px;
 }
-.skills-applicant-container .inline-fields{
+/*.skills-applicant-container .inline-fields{
     float: left;
 }
 .skills-applicant-container .right{
     float:right;
 }
+
 .skills-applicant-container .inline{
-    display: inline;
-}
+    display: inline-block;
+}*/
 
 .skills-applicant-container .title{
     font-size:16px;
@@ -19,33 +21,18 @@
 }
 
 @media (max-width:1213px){
-    .skills-applicant-container .sections{
+    /*.skills-applicant-container .sections{
         display:grid;
         grid-template-columns: repeat(3, 0fr);
         grid-auto-rows: minmax(55px, auto);
         grid-gap:2px;
-}
-.skills-applicant-container .inline-fields{
-    float: left;
-    grid-column:4;
-}
+    }
+    .skills-applicant-container .inline-fields{
+        float: left;
+        grid-column:4;
+    }
     .skills-applicant-container .right{
-   grid-column:7;
-  float:right
-}
-}
-@media (max-width:601px){
-
-    .skills-applicant-container .right{
-    grid-column:8;
-    float:right;
+        grid-column:7;
+        float:right
+    }*/
     }
-    .skills-applicant-container .inline-radio  {
-    width:58px !important
-    }
-    .skills-applicant-container .inline-radio > div > div {
-    width: 50px !important;
-    margin-right:-22px !important
-    }
-
-}

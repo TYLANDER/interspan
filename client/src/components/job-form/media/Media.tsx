@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
+import "./Media.css";
+import Styling from "../jobTheme";
 
 class Media extends React.Component<any, any>{
     constructor(props: any) {
@@ -81,8 +83,8 @@ class Media extends React.Component<any, any>{
         let formRef = this.state.form;
         const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
         return (
-            <div className="job-applicant-container">
-                <label className="title">{questions}</label>
+            <div className="media-applicant-container">
+                <p className="title">{questions}</p>
                 <RadioButtonGroup name="about_interspan"
                     defaultSelected={formRef.about_interspan}
                     onChange={(event: any) => {
@@ -103,33 +105,40 @@ class Media extends React.Component<any, any>{
                     <RadioButton
                         value="Radio Station"
                         label={radio}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Richmond Times Newspaper"
                         label={richMond}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Job search on Internet"
                         label={jobSearch}
+                        iconStyle={Styling.iconStyle}
                     />
 
                     <RadioButton
                         value="Referred from job site"
+                        iconStyle={Styling.iconStyle}
                         label={referredJob}
                     />
                     <RadioButton
                         value="Referred by InterSpan, Inc. employee"
                         label={referredInterSpan}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Referred by friend"
                         label={referredFriend}
+                        iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>
                 {this.state.position || this.state.form.about_interspan === "Referred from job site" ?
                     <TextField
                         name="job_description"
                         hintText=""
+                        className="text-area"
                         value={formRef.job_description}
                         onBlur={this.handleTargetEvents}
                         fullWidth={true}
@@ -145,6 +154,7 @@ class Media extends React.Component<any, any>{
                         hintText=""
                         value={formRef.employee_description}
                         name="employee_description"
+                        className="text-area"
                         onChange={(event: any) => {
                             formRef.employee_description = event.target.value
                             this.setState(formRef);
@@ -159,6 +169,7 @@ class Media extends React.Component<any, any>{
                         hintText=""
                         value={formRef.friend_description}
                         name="friend_description"
+                        className="text-area"
                         onChange={(event: any) => {
                             formRef.friend_description = event.target.value
                             this.setState(formRef);
@@ -168,6 +179,7 @@ class Media extends React.Component<any, any>{
                         fullWidth={true}
                         floatingLabelText={friend}
                     /> : null}
+                    <br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

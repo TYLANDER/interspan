@@ -1,0 +1,12 @@
+.media-applicant-container .title{
+    font-size: 17px;
+    margin-bottom: 11px;
+    margin-top:15px;
+    margin-left:1px;
+}
+
+@media(max-width:630px){
+    .media-applicant-container .title{
+        margin-left:-7px;
+    }
+}

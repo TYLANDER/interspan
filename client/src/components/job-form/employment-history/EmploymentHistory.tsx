@@ -182,11 +182,11 @@ class EmploymentHistory extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                     />
                     <p className="title">{employed}</p>
-                    <DatePicker style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={from} defaultDate={new Date(formRef.EmploymentHistory[i].employment_start)} name="employment_start" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_start")}
+                    <DatePicker className="dateTextFeild" style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={from} defaultDate={new Date(formRef.EmploymentHistory[i].employment_start)} name="employment_start" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_start")}
                     />
                     <span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span>
                     <p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p>
-                    <DatePicker style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={to} defaultDate={new Date(formRef.EmploymentHistory[i].employment_end)} name="employment_end" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_end")} />
+                    <DatePicker className="dateTextFeild" style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={to} defaultDate={new Date(formRef.EmploymentHistory[i].employment_end)} name="employment_end" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_end")} />
                     <span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span>
                     <p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p>
                     <p className="title">{payRate} </p>

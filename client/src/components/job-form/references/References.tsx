@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { TextField, FlatButton } from 'material-ui';
+import "./References.css";
+import Styling from "../jobTheme";
 
 class References extends React.Component<any, any>{
     constructor(props: any) {
@@ -153,15 +155,16 @@ class References extends React.Component<any, any>{
         }
         return (
             <div className="transportation-container">
-                <label className="title"> References </label> <br />
+                <p className="title"> References </p> <br />
                 {reference}
-                <FlatButton label="Add" primary={true} onClick={() => this.handleReference("add")} />
-                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.reference === 1 ? null : this.handleReference("delete")} />
+                <FlatButton style={Styling.addButton} label="Add" onClick={() => this.handleReference("add")} />
+                <FlatButton style={Styling.deleteButton} label="Delete" onTouchTap={() => this.state.reference === 1 ? null : this.handleReference("delete")} />
                 <br /><br />
-                <label className="title">{friends}</label>
+                <p className="title">{friends}</p>
                 {family}
-                <FlatButton label="Add" primary={true} onClick={() => this.handleFriend("add")} />
-                <FlatButton label="Delete" secondary={true} onTouchTap={() => this.state.family === 1 ? null : this.handleFriend("delete")} />
+                <FlatButton style={Styling.addButton} label="Add" onClick={() => this.handleFriend("add")} />
+                <FlatButton style={Styling.deleteButton} label="Delete" onTouchTap={() => this.state.family === 1 ? null : this.handleFriend("delete")} />
+                <br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

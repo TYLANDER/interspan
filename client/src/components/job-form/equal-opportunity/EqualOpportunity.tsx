@@ -2,6 +2,8 @@ import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import './EqualOpportunity.css';
 import { RadioButtonGroup, RadioButton, TextField } from 'material-ui';
+import Styling from "../jobTheme";
+
 class EqualOpportunity extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -58,22 +60,24 @@ class EqualOpportunity extends React.Component<any, any>{
         let formRef = this.state.form;
         return (
             <div className="equal-opprtunity-container">
-                <label className="title">Equal Opportunity Information (Voluntary, responses not required)</label>
+                <p className="title">Equal Opportunity Information (Voluntary, responses not required)</p>
                 <p className="paragraph">
                     {content}
                 </p><br /><br />
-                <label className="title">{gender}</label>
+                <p className="title">{gender}</p>
                 <RadioButtonGroup name="gender" valueSelected={formRef.gender} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="male"
                         label={male}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="female"
                         label={female}
+                        iconStyle={Styling.iconStyle}
                     />
-                </RadioButtonGroup>    <br /><br />
-                <label className="title">{raceEthnicity}</label>
+                </RadioButtonGroup> <br /><br />
+                <p className="title">{raceEthnicity}</p>
                 <RadioButtonGroup name="race" defaultSelected={
                     formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
                         "other" : formRef.race
@@ -86,26 +90,32 @@ class EqualOpportunity extends React.Component<any, any>{
                     <RadioButton
                         value="asian"
                         label={asian}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="black"
                         label={black}
+                        iconStyle={Styling.iconStyle}
                     />
 
                     <RadioButton
                         value="hispanic"
                         label={hispanic}
+                                                iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="native american"
                         label={nativeAmerican}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="white"
+                        iconStyle={Styling.iconStyle}
                         label={white}
                     />
                     <RadioButton
                         value="other"
+                        iconStyle={Styling.iconStyle}
                         label={other}
                     />
                 </RadioButtonGroup>
@@ -113,8 +123,9 @@ class EqualOpportunity extends React.Component<any, any>{
                     <TextField
                         floatingLabelText={other}
                         name="race"
+                        className="text-area"
                         onChange={(event: any) => {
-                            formRef.race= event.target.value
+                            formRef.race = event.target.value
                             this.setState(formRef);
                         }
                         }
@@ -122,19 +133,22 @@ class EqualOpportunity extends React.Component<any, any>{
                         onBlur={this.handleTargetEvents}
                     /> : null
                 } <br /><br />
-                <label className="title">{veteranStatus} </label>
+                <p className="title">{veteranStatus} </p>
                 <RadioButtonGroup name="veteran" defaultSelected={formRef.veteran} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="veteran"
                         label={veteran}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Vietnam Era Veteran"
                         label={vietname}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Disabled Veteran"
                         label={disableVeteran}
+                        iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>
                 <br /><br />

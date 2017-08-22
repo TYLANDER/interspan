@@ -235,11 +235,11 @@ class MainJobForm extends React.Component<any, any>{
                                 {stepperheadings[stepIndex]}
                             </div>
                             <div className="counting-stepper">
-                                <span>{stepIndex + 1}</span> <span>of 12</span>
+                                <span>{stepIndex + 1}</span> <span>of 11</span>
                                 </div>
                         </div>
                         <div className="stepper-loader">
-                            <LinearProgress style={Styling.progressBar} mode="determinate" value={stepIndex + 1} max={12} />
+                            <LinearProgress style={Styling.progressBar} mode="determinate" value={stepIndex + 1} max={11} />
                         </div>
 
                         {/*<Stepper activeStep={stepIndex} style={{ 'flexWrap': 'wrap' }}>

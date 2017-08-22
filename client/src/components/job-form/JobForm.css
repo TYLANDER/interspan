@@ -41,11 +41,17 @@
 }
 .main-job-form-container .dateTextFeild{
         display: inline-block !important;
-        width:55% !important
+        width:55% !important;
 }
 @media (max-width: 630px){
     .main-job-form-container .md-stepper{
         display: none;
+    }
+    .main-job-form-container .dateTextFeild{
+        margin-left:-7px;
+    }
+    .main-job-form-container .long-feild label{
+        font-size: 13px !important;
     }
     .main-job-form-container .sm-stepper{
         display: block !important;
@@ -59,7 +65,7 @@
         margin-left:20px;
     }
     .main-job-form-container .stepper-loader {
-        width:100%;
+        width:95%;
         height:11px;
     }
     .main-job-form-container .stepper-loader > div{
