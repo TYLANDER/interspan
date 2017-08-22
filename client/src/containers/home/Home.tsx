@@ -3,11 +3,16 @@ import './Home.css';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import CircularProgress from 'material-ui/CircularProgress';
-import { RaisedButton } from 'material-ui';
+// import { RaisedButton } from 'material-ui';
 import { browserHistory } from 'react-router';
 import JobActions from '../../../src/store/action/jobs';
 import AuthActions from '../../../src/store/action/auth';
 import { connect } from 'react-redux';
+import Styling from "../../components/job-form/jobTheme";
+import Footer from "../../components/footer/footer";
+import "../../assets/carousel.css";
+
+const Carousel = require('react-responsive-carousel').Carousel;
 
 class Home extends React.Component<any, any> {
     gettingData = false;
@@ -74,18 +79,21 @@ class Home extends React.Component<any, any> {
                                     onClick={this.showDescription.bind(this, jobObj, i)} />
                                 : null}
                             <h3>{jobObj.title}</h3>
-                            <div className="text-left">
+                            <div className="text-left alignment">
                                 <div>
+                                    <span><img className="icon" src={require('../../assets/location.png')} /></span>
                                     <span className="label-title">Location: </span>
-                                    <span>{jobObj.location}</span>
+                                    <span className="label-desc">{jobObj.location}</span>
                                 </div>
                                 <div>
+                                    <span><img className="icon" src={require('../../assets/duration.png')} /></span>
                                     <span className="label-title">Duration: </span>
-                                    <span>{jobObj.duration}</span>
+                                    <span className="label-desc">{jobObj.duration}</span>
                                 </div>
                                 <div>
+                                    <span><img className="icon" src={require('../../assets/hour.png')} /></span>
                                     <span className="label-title">Hours: </span>
-                                    <span>{jobObj.hours}</span>
+                                    <span className="label-desc">{jobObj.hours}</span>
                                 </div>
                                 {jobObj.showMore ?
                                     <div className="showMoreDesc-container">
@@ -110,8 +118,8 @@ class Home extends React.Component<any, any> {
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'SFUI_Text' }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
+                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily: 'SFUI_Text', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>
@@ -122,21 +130,68 @@ class Home extends React.Component<any, any> {
             <div className="home-container">
                 {this.props.children}
                 <div className="home-header-container">
-                    <h2 className="title"> We span the gap</h2>
+                    <div className="content">
+                        <h2 className="title"> We span the gap</h2>
+                        <div className="title-desc">
+                            InterSpan provides quality employees to companies that need them.
+                    </div>
+                        <p className="apply-desc">
+                            We have open positions now, and applying is easy.
+                    </p>
+                        <FlatButton labelStyle={Styling.buttonLabel} className="get-started-button" style={Styling.addButton} label={<b>Get Started</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
+                        <div className="scroll-down">
+                            <span className="icon">
+                                <img src={require("../../assets/arrow-down.svg")} />
+                            </span>
+                            <span className="text">
+                                SCROLL DOWN
+                       </span>
+
+                        </div>
+                    </div>
+                    <div className="header-image">
+                        <img src={require("../../assets/header-image.png")} />
+                    </div>
+                    {/*<h2 className="title"> We span the gap</h2>
                     <div className="title-desc">
                         InterSpan provides quality employees to companies that need them.
                     </div>
                     <p className="apply-desc">
                         We have open positions now, and applying is easy.
-                    </p>
-                    <RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
-                    <h2>Positions</h2>
+                    </p>*/}
+                    {/*<RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
+                    <h2>Positions</h2>*/}
                 </div>
-                <div className="paper-parent">
-                    {this.props.isLoading ?
-                        <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)" style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} />
-                        : this.panelArray}
+                <div className="paper-parent-container">
+                    <h2 className="paper-title">Positions</h2>
+                    <div className="paper-parent">
+                        {this.props.isLoading ?
+                            <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)" style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} />
+                            : this.panelArray}
+                    </div>
                 </div>
+                <div className="slider-section">
+                    <Carousel showThumb={true} showStatus={false} showArrows={true} emulateTouch>
+                        <div className="carousel-contents">
+                            <p className="carousel-title">
+                                -- Jesse Hudson, UI/UX designer
+                            </p>
+                            <p className="contents">
+                                "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."
+                            </p>
+                        </div>
+                        <div className="carousel-contents">
+                            <p className="carousel-title">
+                                -- Jesse Hudson, UI/UX designer
+                            </p>
+                            <p className="contents">
+                                "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."
+                            </p>
+                        </div>
+
+                    </Carousel>
+                </div>
+                <Footer />
             </div>
         );
     }

@@ -2,8 +2,10 @@ import * as React from 'react';
 import { TextField, RadioButton, RadioButtonGroup, DatePicker } from 'material-ui';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 // import * as Colors from 'material-ui/styles/colors';
-import DateRange from "material-ui/svg-icons/action/date-range";
+// import DateRange from "material-ui/svg-icons/action/date-range";
 import Styling from "../jobTheme";
+
+
 class ApplicantInfo extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -194,7 +196,7 @@ class ApplicantInfo extends React.Component<any, any>{
                             formRef.employement = date.toISOString()
                             this.setState(formRef);
                         }}
-                    /><span><DateRange style={Styling.dateIcon} color={"#bec2c9"} /></span><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
+                    /><span><img src={require("../../../assets/Date.png")} style={Styling.dateIcon} /></span><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
                     : ''}
                 <p style={Styling.radioButtonLabel}>{legallyEligible}</p>
                 <RadioButtonGroup className="radio-label" name="eligible" valueSelected={this.state.form.eligible} onChange={(event: any) => {

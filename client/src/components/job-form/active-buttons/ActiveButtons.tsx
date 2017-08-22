@@ -19,7 +19,7 @@ class ActiveButtons extends React.Component<any, any>{
         return (
             <div className="button-container">
                 <FlatButton
-                    icon={<img className="arrow-button" src={require("../../../assets/arrow.jpg")} />}
+                    icon={<img className="arrow-button" src={require("../../../assets/arrow.svg")} />}
                     onTouchTap={() => this.handlePrev()}
                     disabled={this.stepIndex === -1}
                     className="first-button"

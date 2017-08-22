@@ -9,7 +9,7 @@ import './NavBar.css';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import JobActions from "../../store/action/jobs";
-import { withRouter } from "react-router";
+import { withRouter, Link } from "react-router";
 import Carrot from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import StateManager from "../../service/stateManage";
 class NavBar extends React.Component<any, any> {
@@ -110,20 +110,20 @@ class NavBar extends React.Component<any, any> {
         username = JSON.parse(username);
         const languageSelect = (
             this.props.router.location.pathname === "/job" ?
-                <div className="navbar-right-icon" style={{ marginTop: "-6px", display: "inline" }}>
+                <div className="navbar-right-icon" style={{ marginTop: "2px", display: "inline-block" }}>
                     <SelectField
                         className="lang-select"
-                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "43px", paddingTop: "-40px", paddingLeft: "15px" }}
+                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "40px", paddingLeft: "15px" }}
                         value={this.state.language}
                         underlineStyle={{ display: 'none' }}
                         onChange={this.handleLanguage}
                         iconStyle={{ display: "block", marginTop: "-7px" }}
-                        menuStyle={{ width: "70px", zIndex: "-99999" }}
+                        menuStyle={{ width: "70px" }}
                     >
                         <MenuItem value="en" primaryText="EN" />
                         <MenuItem value="sp" primaryText="SP" />
                     </SelectField>
-                    {this.state.jobMenuOpen?<img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: false }) }} className="close-icon" src={require("../../assets/close.jpg")} />:<img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: true }) }} className="dashboard-icon" src={require("../../assets/dash-icon.jpg")} />
+                    {this.state.jobMenuOpen ? <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: false }) }} className="close-icon" src={require("../../assets/close.png")} /> : <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: true }) }} className="dashboard-icon" src={require("../../assets/dash-icon.png")} />
                     }
                 </div>
                 : <p></p>
@@ -132,12 +132,14 @@ class NavBar extends React.Component<any, any> {
         const menu = (
             <div className="menu-container">
                 <span className="md-menu">
-                    <FlatButton label="Employers" className="app-box-shadow" labelStyle={{ textTransform: 'capitalize' }}
-                        onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)} />
-                    <FlatButton label="About" className="app-box-shadow" labelStyle={{ textTransform: 'capitalize' }}
-                        onTouchTap={this.handleStaticUrl.bind(null, 'about', false)} />
-                    <RaisedButton primary label="Apply" onTouchTap={this.props.logout} className="app-box-shadow"
-                        labelStyle={{ textTransform: 'capitalize' }}
+                    <Link className="navigation-button-about" to="/about">About</Link>
+                    {/*<FlatButton label="About" className="navigation-button-about" labelStyle={{ textTransform: 'capitalize' }}
+                        onTouchTap={this.handleStaticUrl.bind(null, 'about', false)} />*/}
+                    {/*<FlatButton label="Employers" className="navigation-button" labelStyle={{ textTransform: 'capitalize' }}
+                        onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)} />*/}
+                    <Link className="navigation-button" to="/employee">Employers</Link>
+                    <RaisedButton label="Apply" onTouchTap={this.props.logout} className="apply-button"
+                        labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)"}}
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
                     {this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
                         iconStyle={{ height: "15px", marginLeft: "-10px", display: "inline", marginTop: "0px" }}
@@ -181,14 +183,14 @@ class NavBar extends React.Component<any, any> {
         const homeMenu = <div>
             <AppBar
                 zDepth={1}
-                style={{ backgroundColor: 'rgb(255,255,255)', transition: "none" }}
+                style={{ backgroundColor: 'transparent', transition: "none" }}
                 iconElementLeft={
-                    <img src={require('../../assets/logo.png')} className="logo" alt="logo" />
+                    <img src={require('../../assets/logos.png')} className="logo" alt="logo" />
                 }
                 iconElementRight={menu}
                 onTitleTouchTap={this.handleHomePage}
             />
-            {(this.state.open) ?
+            {/*{(this.state.open) ?
                 <div className="sub-menu slide-in">
                     <div onClick={this.handleStaticUrl.bind(this, 'signup', true)}>Apply Now</div>
                     <div onClick={this.handleStaticUrl.bind(this, 'about', true)}>About Interspan</div>
@@ -218,14 +220,14 @@ class NavBar extends React.Component<any, any> {
                     </div>
                 </div>
                 : null
-            }
+            }*/}
         </div>;
 
         const globalMenu = <div>
             <AppBar
                 zDepth={1}
                 className="icon-menu-hamburger"
-                iconElementLeft={this.state.jobMenuOpen?<span></span>:<img className="logo-navbar" src={require("../../assets/logos.png")} />}
+                iconElementLeft={this.state.jobMenuOpen ? <span></span> : <img className="logo-navbar" src={require("../../assets/logos.png")} />}
                 iconElementRight={languageSelect}
                 style={{ zIndex: 1, backgroundColor: "white", transition: "none" }}
                 titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}

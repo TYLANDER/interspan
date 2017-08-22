@@ -10,7 +10,7 @@ var Styling = {
     dateIcon: {
         width: "16px",
         height: "16px",
-        marginLeft: "-15px"
+        marginLeft: "-18px"
     },
     radioButtonStyle: {
         display: "inline-block",

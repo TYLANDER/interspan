@@ -6,8 +6,14 @@
 .navbar-home-container-color{
   background-color: #fbfef9;
 }
-.navbar-global-container-color{
+.navbar-container-color{
   /*background-color:white !important;*/
+  display:block;
+  margin:0 auto;
+  position:absolute;
+  top:10px;
+  left:0;
+  right:0;
 }
 .navbar-left-icon{
   margin-left:100px !important;
@@ -26,27 +32,28 @@
   border-radius: 0;
 }
 .navbar-container .logo{
-  width: 150px;
-  height: 48px;
+  /*width: 150px;
+  height: 48px;*/
   position: absolute;
-  left: 35px;
-  top:0
+  left: 5px;
+  top:8px
 }
 .navbar-container .hamburger-icon{
   display: none !important;
 }
-.navbar-container .lang-select, .job-sub-navbar .lang-select{
+.navbar-container .lang-select{
   width: 64px !important;
-  right: 50px;
-  top:-6px;
-  position:absolute !important;
-  height:34px !important;
+  /*right: 45px;
+  top:10px;*/
+  /*position:absolute !important;*/
+  height:32px !important;
   border-radius: 7px;
   border:1px solid #f2f2f2;
   display:inline-flex !important;
   justify-content: center;
   align-items: center;
-  z-index: -9000 !important;
+  margin-right:8px;
+  /*z-index: -9000 !important;*/
 }
 .navbar-container .logo-navbar{
   width:50px;
@@ -58,13 +65,11 @@
   margin-right:25px;
 }
 .navbar-container .dashboard-icon{
-  margin-top:4px;
-  margin-left:10px;
-  cursor:pointer
+  margin-top:10px;
+  cursor:pointer;
 }
 .navbar-container .close-icon{
-  margin-top:6px;
-  margin-left:10px;
+  margin-top:12px;
   cursor:pointer
 }
 .navbar-container .sub-menu{
@@ -75,14 +80,27 @@
   position:absolute;
   overflow: auto;
 }
+.navbar-container .navigation-button-about{
+    opacity: 0.48;
+    min-width:36px !important;
+    color:#2e2e2e;
+    margin-right:12px;
+}
+.navbar-container .navigation-button{
+    min-width:36px !important;
+    margin-right:12px;
+}
+.navbar-container .apply-button > button ,.navbar-container .apply-button  {
+    box-shadow:none !important;
+    border-radius: 8px !important;
+    border:1px solid #f2f2f2;
+}
 .job-sub-menu{
-    height: 100%;
     min-width: 100%;
-    margin:0 auto;
+    margin:80px auto;
     display:flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
     flex-direction: column;
     left:0;
     background-color: #feffff;
@@ -173,6 +191,9 @@
 @media (max-width: 630px) {
   .navbar-container{
       border-bottom:1px solid #eeefef
+  }
+  .job-sub-menu{
+    margin-top:20px ;
   }
   .navbar-container .hamburger-icon{
     display: inline !important;
