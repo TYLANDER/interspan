@@ -18,6 +18,9 @@
 .navbar-left-icon{
   margin-left:100px !important;
 }
+.navbar-container .menu-container{
+  margin-right:36px !important;
+}
 .navbar-container > div > div{
   box-shadow: none !important;
   background-color: #fbfef9;
@@ -81,14 +84,16 @@
   overflow: auto;
 }
 .navbar-container .navigation-button-about{
-    opacity: 0.48;
+    opacity: 0.58;
     min-width:36px !important;
-    color:#2e2e2e;
-    margin-right:12px;
+    color:white;
+    margin-right:20px;
 }
 .navbar-container .navigation-button{
     min-width:36px !important;
-    margin-right:12px;
+    color:white;
+    margin-right:20px;
+    font-weight: 600;
 }
 .navbar-container .apply-button > button ,.navbar-container .apply-button  {
     box-shadow:none !important;
@@ -188,18 +193,28 @@
 .navbar-container .menu-container .md-menu button{
   margin: 0 7px 0 0 !important;
 }
-@media (max-width: 630px) {
+@media (max-width: 680px) {
+  .navbar-container .menu-container{
+      margin-right:0px !important;
+  }
+  .navbar-container .navigation-button-about , .navbar-container .navigation-button{
+    color:#2e2e2e;
+  }
   .navbar-container{
       border-bottom:1px solid #eeefef
   }
   .job-sub-menu{
     margin-top:20px ;
   }
+  .navbar-container .menu-container{
+    margin-top: 4px;
+    margin-right: 8px !important;  
+  }
   .navbar-container .hamburger-icon{
-    display: inline !important;
+    /*display: inline !important;*/
   }
   .navbar-container .close:hover{
-    transform: rotate(85deg)
+    /*transform: rotate(85deg)*/
   }
   .navbar-container .navbar-right-icon   
   {

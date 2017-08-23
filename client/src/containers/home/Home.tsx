@@ -130,28 +130,39 @@ class Home extends React.Component<any, any> {
             <div className="home-container">
                 {this.props.children}
                 <div className="home-header-container">
-                    <div className="content">
-                        <h2 className="title"> We span the gap</h2>
-                        <div className="title-desc">
-                            InterSpan provides quality employees to companies that need them.
+                    <div className="header-body">
+                        <img className="background-image" src={require('../../assets/back.png')} />
+                        <img className="background-image-mobile" src={require('../../assets/back-mobile.png')} />
+                        <div className="content">
+                            <h2 className="title"> We span the gap</h2>
+                            <div className="title-desc">
+                                InterSpan provides quality employees to companies that need them.
                     </div>
-                        <p className="apply-desc">
-                            We have open positions now, and applying is easy.
+                            <p className="apply-desc">
+                                We have open positions now, and applying is easy.
                     </p>
-                        <FlatButton labelStyle={Styling.buttonLabel} className="get-started-button" style={Styling.addButton} label={<b>Get Started</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
-                        <div className="scroll-down">
-                            <span className="icon">
-                                <img src={require("../../assets/arrow-down.svg")} />
-                            </span>
-                            <span className="text">
-                                SCROLL DOWN
-                       </span>
+                            <FlatButton labelStyle={Styling.buttonLabel} className="get-started-button" style={Styling.addButton} label={<b>Get Started</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
+                            <FlatButton labelStyle={Styling.buttonLabel} className="home-apply-button" style={Styling.addButton} label={<b>Apply</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
 
                         </div>
+                        <div className="header-image">
+                            <img src={require("../../assets/header-image.png")} />
+                        </div>
+
                     </div>
-                    <div className="header-image">
-                        <img src={require("../../assets/header-image.png")} />
+                    <div className="scroll-down">
+                        <span className="icon-mobile">
+                            <img src={require("../../assets/mobile-arrow.png")} />
+                        </span>
+                        <span className="icon">
+                            <img src={require("../../assets/arrow-down.svg")} />
+                        </span>
+
+                        <span className="text">
+                            SCROLL DOWN
+                       </span>
                     </div>
+
                     {/*<h2 className="title"> We span the gap</h2>
                     <div className="title-desc">
                         InterSpan provides quality employees to companies that need them.

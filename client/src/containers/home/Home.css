@@ -16,6 +16,12 @@
 .home-container .slider-section{
   min-height: 476px;
 }
+  .home-container .scroll-down .icon-mobile{
+  display:none;
+}
+.home-container .background-image-mobile{
+  display:none;
+}
 .home-container .slider-section .carousel-title{
   color:#3B7CFF;
   font-size:18px;
@@ -23,7 +29,7 @@
 }
 .home-container .slider-section .contents
 {
-  width:810px;
+  max-width:810px;
   font-size:21px;
   text-align: center;
 }
@@ -31,10 +37,10 @@
   font-size: 17.4pt;
   display: block;
   margin-top:15px;
-  max-width: 500px;
   font-family: "SFUI_Display_Light";
   color:#2e2e2e;
   opacity:0.72;
+  max-width:425px;
 }
 .paper-container .h3{
   color:#414141;
@@ -45,8 +51,6 @@
   font-size: 11.9pt;  
   font-stretch: normal;
   font-weight: 400;
-  text-align: left;
-  font-family: "SFUI_Text";
   opacity:0.48;
 }
 .home-header-container .get-started-button{
@@ -55,7 +59,6 @@
   margin-left:0px !important;
 }
 .home-header-container .content{
-  margin-top:80px;
   margin-left:66px;
 }
 .home-container .scroll-down .text{
@@ -66,11 +69,22 @@
   font-family: "SFUI_Text";
   font-weight: 600;
 }
-.home-header-container .header-image > img{
-  width:500px;
+.home-container .header-image > img{
+  max-width: 412px;
+  margin-bottom: 35px;
+  margin-right: 132px;
+}
+.home-header-container .background-image{
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  right: 0;
+  max-width: 891px
 }
 .home-container .scroll-down{
-  margin-top:120px;
+  margin-top: 52px;
+  cursor: pointer;
+  margin-left: 76px;
   cursor: pointer;
 }
 .home-container .paper-parent-container{
@@ -115,31 +129,129 @@
   margin-bottom:35px;
   width:128px
 }
-.home-header-container{
+.home-header-container .header-body{
   padding-left: 11px;
-  min-height:640px;
   display:flex;
   align-items: center;
+  position:relative;
   justify-content: space-around;
+  flex-wrap: nowrap;
+  padding-top:90px
+
+
+}
+.home-header-container{
+  min-height:640px;
+}
+.home-apply-button{
+    display: none !important;
+    margin: 0 auto;
+}
+@media (max-width: 800px){
+  .home-header-container{
+    flex-wrap: wrap;
+  } 
+
+  .content{
+    text-align: center;
+  }
+  .home-header-container .apply-desc{
+    text-align: center;
+  }
+  .home-apply-button{
+    display: block !important;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+  .get-started-button{
+    display: none !important;
+  }
 }
 .home-header-container h2{
   font-family: "SFUI Display";
 }
+
 @media (max-width: 945px) {
   .apply-paper {
      width: 98% !important;
-    margin: 7px;
+     margin: 7px;
   }
 }
 
-@media (max-width: 625px) {
+@media (max-width: 680px) {
   .apply-paper {
     width: 96% !important;
     margin: 0 0 20px 8px ;
   }
-  .home-container .title-desc{
-    font-size: 5vw !important;
+  .home-container .scroll-down .icon{
+    display:none;
   }
+  .home-container .scroll-down .icon-mobile{
+    display:inline;
+    margin-left:10px;
+  }
+  .home-container .scroll-down .icon-mobile > img {
+      width:18px;
+  }
+
+  .home-container .scroll-down{
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-bottom: 17px;
+  }
+  .home-container .scroll-down .text{
+    color:white;
+    opacity:1;
+  }
+  .home-container .paper-parent-container{
+    padding:15px;
+  }
+  .home-container .paper-parent-container .paper-title{
+    margin-left: 4px;
+    margin-top: 63px;
+  }
+  .home-container .background-image-mobile{
+    display:block;
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    left: 0;
+    height:100%;
+  } 
+  .home-container .background-image{
+    display:none;
+  }
+  .home-container .header-image > img{
+    max-width:355px;
+    margin-right:0px;
+    margin-top:50px
+
+  }
+  .home-header-container .header-body{
+    flex-wrap: wrap !important;
+    padding-left:0px
+  }
+  .home-header-container .content{
+    margin-left:0px;
+    text-align: center;
+    margin-top:40px;
+  }
+  .home-header-container .home-apply-button{
+    text-align: center;
+    display: block !important;
+    margin:0 auto !important;
+    margin-top:40px !important;
+
+  }
+  .home-container .title-desc{
+    font-size: 7vw !important;
+    text-align: center;
+    max-width: none;
+  }
+  .home-container .apply-desc{
+      font-size: 5vw !important;
+      text-align: center;
+        }
 }
 .apply-paper .paper-container{
   padding: 20px 27px 23px 24px;

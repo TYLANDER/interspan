@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar, Card, RaisedButton, FlatButton, SelectField, MenuItem, Menu, IconButton, IconMenu } from 'material-ui';
+import { AppBar, Card, RaisedButton, FlatButton, SelectField, MenuItem} from 'material-ui';
 // import Done from 'material-ui/svg-icons/action/done';
 // import Arrow from 'material-ui/svg-icons/av/play-arrow';
 // import NotIntrested from 'material-ui/svg-icons/av/not-interested';
@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import JobActions from "../../store/action/jobs";
 import { withRouter, Link } from "react-router";
-import Carrot from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+// import Carrot from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import StateManager from "../../service/stateManage";
 class NavBar extends React.Component<any, any> {
 
@@ -131,7 +131,7 @@ class NavBar extends React.Component<any, any> {
         // const title = (this.props.router.location.pathname === "/job" ? this.props.title : "Let's get started")
         const menu = (
             <div className="menu-container">
-                <span className="md-menu">
+                <span>
                     <Link className="navigation-button-about" to="/about">About</Link>
                     {/*<FlatButton label="About" className="navigation-button-about" labelStyle={{ textTransform: 'capitalize' }}
                         onTouchTap={this.handleStaticUrl.bind(null, 'about', false)} />*/}
@@ -141,7 +141,7 @@ class NavBar extends React.Component<any, any> {
                     <RaisedButton label="Apply" onTouchTap={this.props.logout} className="apply-button"
                         labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)"}}
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
-                    {this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
+                    {/*{this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
                         iconStyle={{ height: "15px", marginLeft: "-10px", display: "inline", marginTop: "0px" }}
                         iconButtonElement={<IconButton style={{ height: "0px" }}><Carrot style={{ height: "10px" }} /></IconButton>}
                         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
@@ -155,7 +155,7 @@ class NavBar extends React.Component<any, any> {
                     </div>
                         :
                         null
-                    }
+                    }*/}
                 </span>
 
                 {(this.state.open) ?
@@ -183,7 +183,7 @@ class NavBar extends React.Component<any, any> {
         const homeMenu = <div>
             <AppBar
                 zDepth={1}
-                style={{ backgroundColor: 'transparent', transition: "none" }}
+                style={{ backgroundColor: 'transparent', transition: "none"}}
                 iconElementLeft={
                     <img src={require('../../assets/logos.png')} className="logo" alt="logo" />
                 }
