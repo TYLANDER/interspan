@@ -1,3 +1,52 @@
-.aboutus-container p{
-  text-indent: 65px;
+.aboutus-content .first{
+  color:#2e2e2e;
+  font-size:20px;
+  padding-bottom:20px;
+  line-height: 28px;
+  border-bottom:1px solid #f2f2f2;
+}
+.aboutus-content .second , .aboutus-content .last{
+  margin-top:30px;
+  color:#2e2e2e;
+  font-size:16px;
+  line-height: 28px;
+  padding-bottom:20px;
+  opacity: 0.72;
+  border-bottom:1px solid #f2f2f2;
+}
+.aboutus-content .last{
+  border:0;
+}
+.aboutus-content{
+  padding-top:150px;
+  padding-right:190px;
+  padding-left:190px;
+  padding-bottom:50px;
+}
+.home-container .contact-us{
+  min-height:260px;
+  background: url("../../assets/bg.png");
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+.home-container .contact-us .text{
+  color:white;
+  font-size:19px;
+  max-width:300px;
+  text-align: center;
+  margin-bottom:20px;
+}
+
+@media(max-width:630px){
+  .aboutus-content {
+    padding-top: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+  .home-container .contact-us{
+    margin-bottom:30px
+  }
 }
