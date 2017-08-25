@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Login.css';
-import { Paper, CircularProgress } from 'material-ui';
+import {CircularProgress } from 'material-ui';
 import { indigo900 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -71,9 +71,14 @@ class Login extends React.Component<any, any> {
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
                     style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="login-container">
                         <div className="paper-container">
-                            <Paper zDepth={2} className="md-screen">
+                            <div className="login-header">
+                                <div className="shadow-image"></div>
+                                <p>Good Afternoon</p>
+                                {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
+                                </div>
+                            <div className="md-screen login-view">
                                 {this.formCard()}
-                            </Paper>
+                            </div>
                             <div className="sm-screen">
                                 {this.formCard()}
                             </div>

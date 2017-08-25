@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"node build-client.ts && tsc src/index --outDir dist --lib es2015",
+    "build": "node build-client.ts && tsc src/index --outDir dist --lib es2015",
     "start": "node ./dist/index.js",
     "client": "node start-client.ts"
   },
@@ -20,7 +20,8 @@
     "express": "^4.15.2",
     "method-override": "^2.3.8",
     "morgan": "^1.8.1",
-    "mysql": "^2.13.0"
+    "mysql": "^2.13.0",
+    "react-svg-loader": "^1.1.1"
   },
   "devDependencies": {
     "@types/express": "^4.0.35",

@@ -99,7 +99,7 @@ class Forms extends React.Component<any, any> {
     render() {
         return (
             <div className="fields-container">
-                <label className="title">Login</label>
+                <label className="title">Sign into your account here</label>
                 <TextField
                     ref="email"
                     errorText={this.state.email_error ? this.state.email_message : ''}
@@ -111,7 +111,6 @@ class Forms extends React.Component<any, any> {
                     floatingLabelStyle={this.state.email_success ? styles.floating : styles.floatingFailure}
                     floatingLabelText="Email Address"
                 />
-
                 <TextField
                     hintText=""
                     errorText={this.state.pass_error ? this.state.pass_message : ''}

@@ -4,18 +4,22 @@
     height:100px;
     align-items: center;
     flex-wrap: wrap;
+    border-top:1px solid #f2f2f2;
+    padding-top:40px
+
 }
 
 .footer-container-main .copyright{
     color:#9b9b9b;
     font-size:9pt;
     margin-right:5%;
+    font-family: 'Roboto';
+    font-weight: 500;
 }
 .footer-container-main .icon{
     margin-left: 5%;
     margin-right:80px;
 }
-
 @media(max-width:680px){
     .footer-container-main .copyright{
         display: block;
@@ -25,6 +29,11 @@
         border-top: 1px solid #eeefef;
         padding-top: 11px;
         padding-bottom: 18px;
+    }
+    .footer-container-main{
+        border-top:none;
+        padding-top:none;
+
     }
     .footer-container-main .social-media{
         margin-right:20px;

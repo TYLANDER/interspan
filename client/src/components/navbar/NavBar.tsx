@@ -188,7 +188,7 @@ class NavBar extends React.Component<any, any> {
                     <img src={require('../../assets/logos.png')} className="logo" alt="logo" />
                 }
                 iconElementRight={menu}
-                onTitleTouchTap={this.handleHomePage}
+                onLeftIconButtonTouchTap={this.handleHomePage}
             />
             {/*{(this.state.open) ?
                 <div className="sub-menu slide-in">
@@ -226,11 +226,12 @@ class NavBar extends React.Component<any, any> {
         const globalMenu = <div>
             <AppBar
                 zDepth={1}
-                className="icon-menu-hamburger"
+                className={this.props.router.location.pathname === "/login"?"navbar-login-items":"icon-menu-hamburger"}
                 iconElementLeft={this.state.jobMenuOpen ? <span></span> : <img className="logo-navbar" src={require("../../assets/logos.png")} />}
-                iconElementRight={languageSelect}
+                iconElementRight={this.props.router.location.pathname === "/login"?<img className="dash-icon" src={require("../../assets/dash-icon.png")} />:languageSelect}
+                title={this.props.router.location.pathname==="/login"?"Let's get started":null}
                 style={{ zIndex: 1, backgroundColor: "white", transition: "none" }}
-                titleStyle={{ color: 'white', fontFamily: 'SFUI Display' }}
+                titleStyle={{ color: '#2e2e2e', fontFamily: "'Roboto',sans-serif" }}
                 showMenuIconButton={this.props.router.location.pathname === "/job" ? true : false}
             />
         </div>;
@@ -286,7 +287,7 @@ class NavBar extends React.Component<any, any> {
                     </Drawer>
                     : null}*/}
 
-                <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : ``}`}>
+                <div className={`navbar-container ${!this.state.isAuthenticated ? `navbar-container-color` : `navbar-defaults`}`}>
                     {(!this.state.isAuthenticated ? homeMenu : globalMenu)}
                     {(this.state.jobMenuOpen) ?
                         <div className="job-sub-menu slide-in-job">

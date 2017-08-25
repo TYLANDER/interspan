@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import Styling from "../../components/job-form/jobTheme";
 import Footer from "../../components/footer/footer";
 import "../../assets/carousel.css";
-
 const Carousel = require('react-responsive-carousel').Carousel;
 
 class Home extends React.Component<any, any> {
@@ -118,8 +117,8 @@ class Home extends React.Component<any, any> {
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily: 'SFUI_Text', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
+                                <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'SFUI_Text' }} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily: 'SFUI_Text', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>
@@ -134,7 +133,7 @@ class Home extends React.Component<any, any> {
                         <img className="background-image" src={require('../../assets/back.png')} />
                         <img className="background-image-mobile" src={require('../../assets/back-mobile.png')} />
                         <div className="content">
-                            <h2 className="title"> We span the gap</h2>
+                            <p className="title"> We span the gap</p>
                             <div className="title-desc">
                                 InterSpan provides quality employees to companies that need them.
                     </div>
@@ -173,12 +172,15 @@ class Home extends React.Component<any, any> {
                     {/*<RaisedButton primary label="Apply" labelStyle={{ textTransform: 'capitalize' }} className="apply" onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
                     <h2>Positions</h2>*/}
                 </div>
+                {/*<div className="width-limit">*/}
                 <div className="paper-parent-container">
+                    <div className="main-paper-parent">
                     <h2 className="paper-title">Positions</h2>
                     <div className="paper-parent">
                         {this.props.isLoading ?
                             <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)" style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} />
                             : this.panelArray}
+                    </div>
                     </div>
                 </div>
                 <div className="slider-section">
@@ -201,6 +203,7 @@ class Home extends React.Component<any, any> {
                         </div>
 
                     </Carousel>
+                {/*</div>*/}
                 </div>
                 <Footer />
             </div>

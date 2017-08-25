@@ -203,7 +203,7 @@
     width: 100%; }
     @media (max-width: 680px) {
       .carousel .control-dots {
-            bottom: 125px; } }
+        bottom: 125px; } }
     .carousel .control-dots .dot {
       -webkit-transition: opacity 0.25s ease-in;
       -moz-transition: opacity 0.25s ease-in;

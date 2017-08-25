@@ -5,7 +5,31 @@
 .home-container .title{
   color: #2e2e2e;
   font-size: 41px; 
+  font-family: 'Roboto',sans-serif;
 }
+.home-container .main-paper-parent{
+  max-width: 1266px;
+  margin: 0 auto;
+}
+.home-container .contact-us{
+  min-height:260px;
+  background: url("../../assets/bg.png");
+  background-size:cover;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home-container .contact-us .text{
+  color:white;
+  font-size:24px;
+  max-width:300px;
+  font-family: 'Roboto',sans-serif;
+  text-align: center;
+  margin-bottom:20px;
+}
+
 .home-container .slider-section .carousel-contents{
   min-height:476px;
   display:flex;
@@ -34,13 +58,12 @@
   text-align: center;
 }
 .home-container .title-desc{
-  font-size: 17.4pt;
+  font-size: 16.4pt;
   display: block;
   margin-top:15px;
-  font-family: "SFUI_Display_Light";
   color:#2e2e2e;
-  opacity:0.72;
-  max-width:425px;
+  opacity:0.62;
+  max-width:460px;
 }
 .paper-container .h3{
   color:#414141;
@@ -59,7 +82,7 @@
   margin-left:0px !important;
 }
 .home-header-container .content{
-  margin-left:66px;
+  /*margin-left:66px;*/
 }
 .home-container .scroll-down .text{
   margin-left: 22px;
@@ -69,42 +92,40 @@
   font-family: "SFUI_Text";
   font-weight: 600;
 }
-.home-container .header-image > img{
-  max-width: 412px;
-  margin-bottom: 35px;
-  margin-right: 132px;
-}
 .home-header-container .background-image{
   position: absolute;
   z-index: -2;
   top: 0;
   right: 0;
-  max-width: 891px
+  max-width: 82vw;
 }
 .home-container .scroll-down{
-  margin-top: 52px;
+  margin-top: 35px;
   cursor: pointer;
-  margin-left: 76px;
+  margin-left: 210px;
   cursor: pointer;
 }
 .home-container .paper-parent-container{
   background-color:#fafbfb;
-  padding:75px;
-
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 .home-container .paper-parent-container .paper-title{
   color:#2e2e2e;
   margin-bottom: 53px;
   margin-left: 8px;
+  font-family: 'Roboto';
+  font-weight: 400;
 }
 .home-container .paper-parent{
   flex-wrap: wrap;
   /*-webkit-rows: 20em;
   -moz-rows: 20em;
   rows: 20em;*/
-  -webkit-columns: 20em;
-  -moz-columns: 20em;
-  columns: 20em;
+  -webkit-columns: 20em 3;
+  -moz-columns: 20em 3;
+  columns: 20em 3;
+  /*max-width: 1000px;*/
 }
 .paper-parent h3 {
   font-family: "SFUI Display";
@@ -115,7 +136,7 @@
   box-shadow: rgba(9, 13, 31, 0.1) 0px 4px 8px 4px !important;
 }
 .apply-paper{
-  width: 305px;
+  width: 312px;
   margin: 10px;
   display: inline-block;
   vertical-align: top;
@@ -147,12 +168,20 @@
     display: none !important;
     margin: 0 auto;
 }
+.home-container .header-image > img{
+    /*max-width:355px;*/
+    margin-right:0px;
+    margin-top:50px;
+    max-width: 412px;
+    margin-bottom: 35px;
+    width: 100%;
+    height: auto; 
+  }
 @media (max-width: 800px){
   .home-header-container{
     flex-wrap: wrap;
   } 
-
-  .content{
+  .home-header-container .content{
     text-align: center;
   }
   .home-header-container .apply-desc{
@@ -176,15 +205,45 @@
      width: 98% !important;
      margin: 7px;
   }
+  .home-header-container .background-image {
+    left: 33px;
+    max-width: initial;
 }
 
+}
 @media (max-width: 680px) {
   .apply-paper {
     width: 96% !important;
     margin: 0 0 20px 8px ;
   }
+  .apply-paper .more-button > div > span{
+    font-size:12px !important;
+    font-weight: bold !important
+  }
+  .apply-paper .footer-container{
+    padding-top:3px !important;
+    padding-left: 10px !important;
+  }
+    .apply-paper .apply-button-style > div > span{
+    font-size:12px !important;
+    font-weight: bold !important;
+    padding-left:7px !important
+  }
+
+  .apply-paper .paper-container{
+    padding-bottom:17px !important;
+  }
+  .paper-parent .paper-container h3{
+    font-size:20px !important;
+  }
   .home-container .scroll-down .icon{
     display:none;
+  }
+  .home-container .label-title{
+    font-size:13px;
+  }
+    .home-container .label-desc{
+    font-size:13px;
   }
   .home-container .scroll-down .icon-mobile{
     display:inline;
@@ -221,12 +280,6 @@
   .home-container .background-image{
     display:none;
   }
-  .home-container .header-image > img{
-    max-width:355px;
-    margin-right:0px;
-    margin-top:50px
-
-  }
   .home-header-container .header-body{
     flex-wrap: wrap !important;
     padding-left:0px
@@ -244,13 +297,14 @@
 
   }
   .home-container .title-desc{
-    font-size: 7vw !important;
     text-align: center;
-    max-width: none;
+    max-width: 334px;
+    margin:16px auto;
   }
   .home-container .apply-desc{
-      font-size: 5vw !important;
+      /*font-size: 5vw !important;*/
       text-align: center;
+      max-width: 338px;
         }
 }
 .apply-paper .paper-container{
@@ -275,6 +329,8 @@
 
 .apply-paper .showMoreDesc-container{
   margin-top: 15px;
+  max-height:10000px;
+  
 }
 .apply-paper .paper-container .label-title{
   line-height: 1.89;
