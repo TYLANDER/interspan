@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Login.css';
-import {CircularProgress } from 'material-ui';
+import { CircularProgress } from 'material-ui';
 import { indigo900 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -63,6 +63,27 @@ class Login extends React.Component<any, any> {
     formCard = () => {
         return <Forms clickEvent={this.handleNext} />;
     }
+    getMessage = () => {
+        var myDate = new Date();
+        /* hour is before noon */
+        if (myDate.getHours() < 12) {
+            return "Good Morning!";
+        }
+        else
+            /* Hour is from noon to 5pm (actually to 5:59 pm) */
+            if (myDate.getHours() >= 12 && myDate.getHours() <= 17) {
+                return "Good Afternoon!";
+            }
+            else
+                /* the hour is after 5pm, so it is between 6pm and midnight */
+                if (myDate.getHours() > 17 && myDate.getHours() <= 24) {
+                    return "Good Evening!"
+                }
+                else
+            /* the hour is not between 0 and 24, so something is wrong */ {
+                    return "I'm not sure what time it is!";
+                }
+    }
 
     render() {
         { this.state.error ? alert(this.props.authObj.isError.msg) : null }
@@ -73,9 +94,9 @@ class Login extends React.Component<any, any> {
                         <div className="paper-container">
                             <div className="login-header">
                                 <div className="shadow-image"></div>
-                                <p>Good Afternoon</p>
+                                <p>{this.getMessage()}</p>
                                 {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
-                                </div>
+                            </div>
                             <div className="md-screen login-view">
                                 {this.formCard()}
                             </div>

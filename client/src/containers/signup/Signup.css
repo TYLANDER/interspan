@@ -1,9 +1,96 @@
 .signup-container .paper-container{
-    max-width: 500px;
-    display: block;
+    /*max-width: 500px;*/
+    /*display: block;
     margin:0 auto;
-    margin-top: 50px;
+    margin-top: 50px;*/
 }
+.signup-container .signup-header{
+    height:250px;   
+    max-height: 250px;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("../../assets/first-screen.png");
+    background-position: center;
+    background-size: cover;
+}
+.signup-container .signup-header-second{
+    height:250px;   
+    max-height: 250px;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("../../assets/second-screen.png");
+    background-position: center;
+    background-size: cover;
+}
+.signup-container .signup-header-third{
+    height:250px;   
+    max-height: 250px;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("../../assets/third-screen.png");
+    background-position: center;
+    background-size: cover;
+
+}
+
+.signup-container .fields-container .error-icon{
+    position: relative;
+    top: -65px;
+    left: 95%;
+}
+.signup-container .fields-container .create-account{
+    color:#387cff;
+    font-size:16px;
+    font-family:"Roboto", sans-serif;
+    line-height: 22px;
+}
+
+.signup-container .fields-container .forget-password{
+    color:#387cff;
+    font-size:16px;
+    font-family:"Roboto", sans-serif;
+    line-height: 22px;
+    float: right;
+}
+
+.signup-container .sm-screen .help-button{
+    position: fixed;
+    left: 18px;
+    right: 18px;
+    bottom: 87px;
+}
+
+.signup-container .signup-header .shadow-image,.signup-container .signup-header-second .shadow-image,.signup-container .signup-header-third .shadow-image{
+    background-color:#2e2e2e;
+    left: 0;
+    right:0;
+    width:100%;
+    height: 100%;
+    opacity:0.48;
+    position:absolute
+}
+.signup-container .signup-header p , .signup-container .signup-header-second p,.signup-container .signup-header-third p{
+    color:white;
+    font-family:"Roboto",sans-serif;
+    font-size:26px;
+    z-index: 10
+}
+.signup-container .signup-view{
+    max-width: 450px;
+    display: block;
+    margin: 0 auto;
+    margin-top:60px;
+}
+
 .signup-container .fields-container{
     padding: 30px;
 }
@@ -16,9 +103,15 @@
     font-family: "SFUI_Text";
     font-Size:14px
 }
+.signup-container .loader{
+    height:4px;
+
+}
+.signup-container .loader .progress{
+    background: linear-gradient(269.82deg, #E0E2E5 49.18%, #72B5FE 143.13%, #72B5FE 143.16%, #6DB3FF 147.54%);
+}
 .signup-container .paper-container .footer-container{
     text-align: right;
-    padding: 5px;
     color: black;
 }
 .signup-container .paper-container .footer-container .back-btn{
@@ -35,7 +128,7 @@
     margin-left: -7px !important;
 }
 .signup-container .md-screen{
-        display: block;
+    display: block;
 }
 .signup-container .sm-screen{
     display: none;
@@ -44,18 +137,32 @@
 .signup-container .sm-screen .footer-container{
     position: fixed;
     z-index: 10;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ededed;
+    left: 18px;
+    right: 18px;
+    bottom: 20px;
 }
+.signup-container .sm-screen .fields-container{
+    padding: 30px 19px 30px 19px;
+    /*margin-bottom: 500px;*/
+}
+
 
 @media (max-width: 600px){
     .signup-container .md-screen{
         display: none !important;
     }
+    .signup-container .signup-header{
+        height: 128px;
+        max-height: 128px;  
+    }
+    .signup-container .create-account{
+        font-size:15px !important;
+    }
+    .signup-container .forget-password{
+        font-size:15px !important;
+    }
+
     .signup-container .sm-screen{
         display: block !important;
-        margin-top: -44px;
     }
 }

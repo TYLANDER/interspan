@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Signup.css';
-import { Paper, CircularProgress } from 'material-ui';
+import { CircularProgress } from 'material-ui';
 import { indigo900 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -20,7 +20,9 @@ class Signup extends React.Component<any, any> {
             isAuthenticated: false,
             userObj: {},
             loading: false,
-            step: 0
+            step: 0,
+            width: 33.33,
+            title: "Enter your first & last name"
         };
     }
 
@@ -63,14 +65,32 @@ class Signup extends React.Component<any, any> {
     handleNext = (values: any) => {
         let users = Object.assign(this.state.userObj, values);
         //returning form value
-        if (this.state.step == 2)
-            this.props.signUp(users);
-        else
+        if (this.state.step + 1 === 1) {
+            this.refs.admin['className'] = "signup-header-second"
             this.setState({
-                step: this.state.step + 1
+                step: this.state.step + 1,
+                width: this.state.width + 33.33,
+                title: "Email & password details"
             })
+        }
+        else if (this.state.step + 1 === 2) {
+            this.refs.admin['className'] = "signup-header-third"
+            this.setState({
+                step: this.state.step + 1,
+                width: this.state.width + 33.33,
+                title: "Enter social security number"
+            })
+        }
+
+        else if (this.state.step == 2)
+            this.props.signUp(users);
+        // else
+        //     this.setState({
+        //         step: this.state.step + 1,
+        //         width: this.state.width + 33.33
+        //     })
     }
-    
+
     //Signup form stepper state
     formCard = () => {
         switch (this.state.step) {
@@ -87,9 +107,19 @@ class Signup extends React.Component<any, any> {
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
                     style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="signup-container">
                         <div className="paper-container">
-                            <Paper zDepth={2} className="md-screen">
+                            <div className="loader">
+                                <div style={{ width: this.state.width + "%" }} className="progress">
+                                </div>
+                            </div>
+                            <div ref="admin" className="signup-header">
+                                <div className="shadow-image"></div>
+                                <p>{this.state.title}</p>
+                                {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
+                            </div>
+                            <div className="md-screen signup-view">
+                                {/*<button onClick={()=>this.refs.admin['className']='notnot'}>CLICK</button>*/}
                                 {this.formCard()}
-                            </Paper>
+                            </div>
                             <div className="sm-screen">
                                 {this.formCard()}
                             </div>

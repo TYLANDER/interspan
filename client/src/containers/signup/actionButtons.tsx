@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { FlatButton } from 'material-ui'; 
+import { FlatButton } from 'material-ui';
+import Styling from "../../components/job-form/jobTheme";
 
-export class SignupActionButton extends React.Component <any,any>{
-    render(){
+export class SignupActionButton extends React.Component<any, any>{
+    render() {
 
         return (
-           <div className="footer-container">
-
-                <FlatButton label="Continue"
+            <div className="footer-container">
+                <FlatButton label="Next"
                     className="continue-btn"
                     labelPosition="before"
                     primary={true}
-                    labelStyle={{ color: '#2e469e', fontSize: '16px' }}
-                    icon={<img src={require('../../assets/angle-right.svg')} className="btn-icon continue" alt="logo" />}
+                    fullWidth
+                    style={Styling.defaultButton}
+                    labelStyle={Styling.defaultLabelButton}
                     onClick={this.props.clicked} />
             </div>
         )

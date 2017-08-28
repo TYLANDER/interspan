@@ -99,7 +99,7 @@ class Forms extends React.Component<any, any> {
     render() {
         return (
             <div className="fields-container">
-                <label className="title">Sign into your account here</label>
+                <label className="title">Sign into your account here:</label>
                 <TextField
                     ref="email"
                     errorText={this.state.email_error ? this.state.email_message : ''}
@@ -109,8 +109,9 @@ class Forms extends React.Component<any, any> {
                         this.isEmailAddress(event.target.value);
                     }}
                     floatingLabelStyle={this.state.email_success ? styles.floating : styles.floatingFailure}
-                    floatingLabelText="Email Address"
+                    floatingLabelText="Email address"
                 />
+                {this.state.email_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     errorText={this.state.pass_error ? this.state.pass_message : ''}
@@ -121,9 +122,14 @@ class Forms extends React.Component<any, any> {
                         this.isPassword(event.target.value);
                     }}
                     floatingLabelText="Password"
+                    style={{ marginBottom: "50px" }}
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
                 />
-                <Link to="/signup" style={{ color: "rgb(46, 70, 158)" }}>Create new account</Link>
+                {this.state.password_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
+               <div className="help-button">
+                <Link to="/signup" className="create-account">Already have account?</Link>
+                <Link to="#" className="forget-password">Forgotten password?</Link>
+                </div>
                 <LoginActionButton clicked={this.validation.bind(this)} />
             </div>
         );

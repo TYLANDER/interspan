@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { TextField } from 'material-ui';
 import { SignupActionButton } from "./actionButtons";
+import { Link } from 'react-router';
 
 class UserEmailForm extends React.Component<any, any> {
 
     constructor(props: any) {
         super(props);
-        
+
         //state of the component 
         this.state = {
             email_error: false,
@@ -145,7 +146,6 @@ class UserEmailForm extends React.Component<any, any> {
     render() {
         return (
             <div className="fields-container">
-                <label className="title">Enter Email Address</label>
                 <TextField
                     ref="email"
                     errorText={this.state.email_error ? this.state.email_message : ''}
@@ -157,7 +157,7 @@ class UserEmailForm extends React.Component<any, any> {
                     floatingLabelStyle={this.state.email_success ? styles.floating : styles.floatingFailure}
                     floatingLabelText="Email Address"
                 />
-
+                {this.state.email_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     errorText={this.state.pass_error ? this.state.pass_message : ''}
@@ -170,18 +170,25 @@ class UserEmailForm extends React.Component<any, any> {
                     floatingLabelText="Password"
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
                 />
-
+                {this.state.pass_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
-                    errorText={this.state.repeat_pass_message ? this.state.repeat_pass_message : ''}
+                    errorText={this.state.repeat_pass_error ? this.state.repeat_pass_message : ''}
                     fullWidth={true}
                     type="password"
                     onBlur={(event: any) => {
                         this.isConfirmPassword(event.target.value);
                     }}
+                    style={{ marginBottom: "30px" }}
                     floatingLabelText="Confirm Password"
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
                 />
+                {this.state.repeat_pass_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
+                <div className="help-button">
+                    <Link to="/login" className="create-account">Already have account?</Link>
+                    <Link to="#" className="forget-password">Forgotten password?</Link>
+                </div>
+
                 <SignupActionButton clicked={this.validation.bind(this)} />
             </div>
         );

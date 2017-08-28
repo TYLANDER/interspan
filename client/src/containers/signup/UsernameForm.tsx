@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'material-ui';
 import { SignupActionButton } from "./actionButtons";
+import { Link } from "react-router";
 
 class UsernameForm extends React.Component<any, any> {
     constructor(props: any) {
@@ -97,7 +98,6 @@ class UsernameForm extends React.Component<any, any> {
     render() {
         return (
             <div className="fields-container">
-                <label className="title">Enter your name</label>
                 <TextField
                     hintText=""
                     errorText={this.state.first_name_error ? this.state.first_name_messages : ''}
@@ -109,7 +109,7 @@ class UsernameForm extends React.Component<any, any> {
 
                     floatingLabelText="First Name"
                 />
-
+                {this.state.first_name_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     errorText={this.state.last_name_error ? this.state.last_name_messages : ''}
@@ -118,8 +118,15 @@ class UsernameForm extends React.Component<any, any> {
                     }}
                     floatingLabelStyle={this.state.last_name_success ? styles.floating : styles.floatingFailure}
                     fullWidth={true}
+                    style={{ marginBottom: "30px" }}
                     floatingLabelText="Last Name"
                 />
+                {this.state.last_name_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
+                <div className="help-button">
+                    <Link to="/login" className="create-account">Already have account?</Link>
+                    <Link to="#" className="forget-password">Forgotten password?</Link>
+                </div>
+
                 <SignupActionButton clicked={this.validation} />
             </div>
         );

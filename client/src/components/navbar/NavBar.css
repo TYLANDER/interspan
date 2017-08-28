@@ -95,6 +95,9 @@
     color:white;
     margin-right:20px;
 }
+.navbar-container .title-bar img{
+  display:none;
+}
 .navbar-container .navigation-button{
     min-width:36px !important;
     color:white;
@@ -137,6 +140,9 @@
   color:#414141;
 
 }
+  .navbar-container .sm-screen .menu-container{
+    display:none;
+  }
 .job-sub-menu .categories{
   margin-bottom: 8px;
   height:45px;
@@ -200,6 +206,22 @@
   margin: 0 7px 0 0 !important;
 }
 @media (max-width: 680px) {
+  .navbar-container .sm-screen .dash-icon{
+    display:none;
+  }
+  .navbar-container .title-bar .title{
+    display: none;
+  }
+  .navbar-container .title-bar img{
+    display: inline-block
+  }
+  .navbar-container .navbar-login-items{
+    padding-left:15px !important;
+  }
+  .navbar-container .sm-screen .menu-container{
+    display:inline-block;
+  }
+
   .navbar-container .menu-container{
       margin-right:0px !important;
   }

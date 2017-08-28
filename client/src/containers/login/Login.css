@@ -5,7 +5,7 @@
     /*margin-top: 50px;*/
 }
 .login-container .login-header .shadow-image{
-    background-color:#2e2e2e;
+    background-color:#2e2e2e;            
     left: 0;
     right:0;
     width:100%;
@@ -51,14 +51,33 @@
 }
 .login-container .fields-container .title{
     color: #2e2e2e;
-    font-weight: 500;
-    font-size:20px;
-    font-family: "Roboto" sans-serif;
-    margin-bottom:46px;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: "Roboto",sans-serif;
+    margin-bottom: 26px;
+    line-height: 28px
 }
+.login-container .fields-container .create-account{
+    color:#387cff;
+    font-size:16px;
+    font-family:"Roboto", sans-serif;
+    line-height: 22px;
+}
+.login-container .fields-container .error-icon{
+    position: relative;
+    top: -65px;
+    left: 95%;
+}
+.login-container .fields-container .forget-password{
+    color:#387cff;
+    font-size:16px;
+    font-family:"Roboto", sans-serif;
+    line-height: 22px;
+    float: right;
+}
+
 .login-container .paper-container .footer-container{
     text-align: right;
-    padding: 5px;
     color: black;
 }
 .login-container .paper-container .footer-container .back-btn{
@@ -84,19 +103,40 @@
 .login-container .sm-screen .footer-container{
     position: fixed;
     z-index: 10;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ededed;
+    left: 18px;
+    right: 18px;
+    bottom: 20px;
 
+}
+.login-container .sm-screen .fields-container{
+    padding: 30px 19px 30px 19px;
+    /*margin-bottom: 500px;*/
+}
+
+.login-container .sm-screen .help-button{
+    position: fixed;
+    left: 18px;
+    right: 18px;
+    bottom: 87px;
 }
 
 @media (max-width: 600px){
     .login-container .md-screen{
         display: none !important;
     }
+    .login-container .login-header{
+        height: 128px;
+        max-height: 128px;  
+    }
     .login-container .sm-screen{
         display: block !important;
-        margin-top: -44px;
+        /*margin-top: -44px;*/
     }
+    .login-container .create-account{
+        font-size:15px !important;
+    }
+    .login-container .forget-password{
+        font-size:15px !important;
+    }
+
 }

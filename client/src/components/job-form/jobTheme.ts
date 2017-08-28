@@ -4,7 +4,7 @@ var Styling = {
         marginBottom: "13px",
         display: "block",
         color: "#2E2E2E",
-        marginLeft:"-7px",
+        marginLeft: "-7px",
         fontFamily: "'Roboto', sans-serif"
     },
     dateIcon: {
@@ -41,12 +41,24 @@ var Styling = {
         fontSize: "16px",
         marginLeft: "0px"
     },
+    defaultButton: {
+        background: "linear-gradient(82.69deg, #6DB3FF 48.38%, #3B7CFF 148.38%)",
+        height: "44px",
+        borderRadius: "5px",
+        marginTop:"20px",
+        fontSize:"19px"
+    },
+    defaultLabelButton: {
+        color: "white",
+        fontFamily: "'Roboto',sans-serif",
+
+    },
     addButton: {
         height: "41px",
         borderRadius: "5px",
         fontFamily: "SFUI_Text",
         lineHeight: "41px",
-        marginLeft:"-7px",
+        marginLeft: "-7px",
         background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
     },
     deleteButton: {
