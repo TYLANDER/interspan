@@ -11,11 +11,6 @@ class Forms extends React.Component<any, any> {
             email_message: '',
             email_success: false,
             email_val: '',
-
-            pass_message: '',
-            pass_error: false,
-            pass_success: false,
-            pass_val: '',
         };
     }
 
@@ -46,35 +41,14 @@ class Forms extends React.Component<any, any> {
         });
     }
 
-    // Password validation handler
-    isPassword(value: any) {
-        if (value.trim() == '') {
-            this.setState({
-                pass_error: true,
-                pass_message: 'Password field is required',
-            });
-        }
-        else {
-            this.setState({
-                pass_error: false,
-                pass_success: true,
-                pass_val: value
-            });
-        }
-    }
-
     //On submit validation
     validation() {
-        if (this.state.email_val.trim() == '' || this.state.pass_val.trim() == '') {
-            if (this.state.email_val.trim() == '' && this.state.pass_val.trim() == '') {
+        if (this.state.email_val.trim() == '') {
+            if (this.state.email_val.trim() == '') {
                 this.setState({
                     email_error: true,
                     email_message: 'Please enter email address',
                     email_success: false,
-
-                    pass_error: true,
-                    pass_message: 'Please enter password',
-                    pass_success: false,
                 });
             }
             else if (this.state.email_val.trim() == '') {
@@ -84,22 +58,15 @@ class Forms extends React.Component<any, any> {
                     email_success: false,
                 });
             }
-            else if (this.state.pass_val.trim() == '') {
-                this.setState({
-                    pass_error: true,
-                    pass_message: 'Please enter password',
-                    pass_success: false,
-                });
-            }
         }
-        else if (!this.state.email_error && !this.state.pass_error) {
-            this.props.clickEvent({ email: this.state.email_val, password: this.state.pass_val })
+        else if (!this.state.email_error) {
+            this.props.clickEvent({ email: this.state.email_val })
         }
     }
     render() {
         return (
             <div className="fields-container">
-                <label className="title">Sign into your account here:</label>
+                <label className="title">We'll email you instructions on how to reset it.</label>
                 <TextField
                     ref="email"
                     errorText={this.state.email_error ? this.state.email_message : ''}
@@ -108,27 +75,14 @@ class Forms extends React.Component<any, any> {
                     onBlur={(event: any) => {
                         this.isEmailAddress(event.target.value);
                     }}
+                    style={{marginBottom:"36px"}}
                     floatingLabelStyle={this.state.email_success ? styles.floating : styles.floatingFailure}
                     floatingLabelText="Email address"
                 />
                 {this.state.email_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
-                <TextField
-                    hintText=""
-                    errorText={this.state.pass_error ? this.state.pass_message : ''}
-                    fullWidth={true}
-                    ref="password"
-                    type="password"
-                    onBlur={(event: any) => {
-                        this.isPassword(event.target.value);
-                    }}
-                    floatingLabelText="Password"
-                    style={{ marginBottom: "50px" }}
-                    floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
-                />
-                {this.state.password_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
-               <div className="help-button">
-                <Link to="/signup" className="create-account">Already have account?</Link>
-                <Link to="/forget" className="forget-password">Forgotten password?</Link>
+                <div className="help-button">
+                    <Link to="/signup" className="create-account">Dont have account yet?</Link>
+                    <Link to="/forget" className="forget-password">Forgotten password?</Link>
                 </div>
                 <LoginActionButton clicked={this.validation.bind(this)} />
             </div>

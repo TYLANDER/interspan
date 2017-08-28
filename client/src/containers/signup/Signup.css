@@ -151,7 +151,7 @@
     .signup-container .md-screen{
         display: none !important;
     }
-    .signup-container .signup-header{
+    .signup-container .signup-header ,.signup-container .signup-header-second , .signup-container .signup-header-third {
         height: 128px;
         max-height: 128px;  
     }
@@ -161,7 +161,6 @@
     .signup-container .forget-password{
         font-size:15px !important;
     }
-
     .signup-container .sm-screen{
         display: block !important;
     }

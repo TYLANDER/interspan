@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import { App, Login, Signup, Dashboard, Home, JobForm, AddJob} from './containers';
-import { AboutUs, EmployeeInfo, HireFor} from './components';
+import { App, Login, Signup, Dashboard, Forget, Home, JobForm, AddJob } from './containers';
+import { AboutUs, EmployeeInfo, HireFor } from './components';
 
 class AppRoutes extends React.Component<any, any> {
 
     //Checking user auth for route protection
-    authenticated(){
-        if(!localStorage.getItem('user-info')){
+    authenticated() {
+        if (!localStorage.getItem('user-info')) {
             browserHistory.push("/login");
         }
-        else{
+        else {
             console.log("Login Successfull");
         }
     }
@@ -25,8 +25,9 @@ class AppRoutes extends React.Component<any, any> {
                     <Route path="about" component={AboutUs} />
                     <Route path="hire" component={HireFor} />
                     <Route path="add" component={AddJob} />
-                    <Route path="job" component={JobForm} onEnter={this.authenticated}/>
+                    <Route path="job" component={JobForm} onEnter={this.authenticated} />
                     <Route path="signup" component={Signup} />
+                    <Route path="forget" component={Forget} />
                     <Route component={Dashboard} >
                         <IndexRoute component={Home} />
                         <Route path="home" component={Home} />

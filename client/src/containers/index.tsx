@@ -5,6 +5,7 @@ import Dashboard from './dashboard/Dashboard';
 import Home from './home/Home';
 import JobForm from './job-form/JobForm';
 import AddJob from "./add-job/add-job";
+import Forget from  "./forget-password/forget";
 
 export {
     App,
@@ -13,5 +14,6 @@ export {
     Dashboard,
     Home,
     JobForm,
-    AddJob
+    AddJob,
+    Forget
 };
