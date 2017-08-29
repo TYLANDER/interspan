@@ -73,7 +73,7 @@ class Login extends React.Component<any, any> {
                         <div className="paper-container">
                             <div className="forget-header">
                                 <div className="shadow-image"></div>
-                                <p></p>
+                                <p>Forget your password?</p>
                                 {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
                             </div>
                             <div className="md-screen forget-view">

@@ -27,7 +27,7 @@
     background-size: cover;
     background-color: black;
 }
-.forget-password-container .login-header p{
+.forget-password-container .forget-header p{
     color:white;
     font-family:"Roboto",sans-serif;
     font-size:26px;

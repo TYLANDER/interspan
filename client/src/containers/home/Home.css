@@ -11,6 +11,33 @@
   max-width: 1266px;
   margin: 0 auto;
 }
+.home-container .arrow-next{
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 9%;
+}
+
+.home-container .arrow-prev{
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: 9%;
+
+}
+@media(max-width:1032px){
+  .home-container .arrow-prev{
+     right:3%;
+  }
+  .home-container .arrow-next{
+    left:3%
+  }
+}
+@media(max-width:906px){
+  .home-container .arrow-prev , .home-container .arrow-next{
+    display:none;
+  }
+}
 .home-container .contact-us{
   min-height:260px;
   background: url("../../assets/bg.png");
@@ -39,6 +66,8 @@
 }
 .home-container .slider-section{
   min-height: 476px;
+  position: relative;
+
 }
   .home-container .scroll-down .icon-mobile{
   display:none;
@@ -100,7 +129,7 @@
   max-width: 82vw;
 }
 .home-container .scroll-down{
-  margin-top: 35px;
+  /*margin-top: 35px;*/
   cursor: pointer;
   margin-left: 210px;
   cursor: pointer;
@@ -127,6 +156,7 @@
   columns: 20em 3;
   /*max-width: 1000px;*/
 }
+
 .paper-parent h3 {
   font-family: "SFUI Display";
   font-weight: 400;
@@ -206,8 +236,8 @@
      margin: 7px;
   }
   .home-header-container .background-image {
-    left: 33px;
     max-width: initial;
+    width:95%
 }
 
 }

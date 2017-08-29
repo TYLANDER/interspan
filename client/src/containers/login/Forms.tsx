@@ -122,10 +122,10 @@ class Forms extends React.Component<any, any> {
                         this.isPassword(event.target.value);
                     }}
                     floatingLabelText="Password"
-                    style={{ marginBottom: "50px" }}
+                    style={{ marginBottom: "30px" }}
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
                 />
-                {this.state.password_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
+                {this.state.pass_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
                <div className="help-button">
                 <Link to="/signup" className="create-account">Already have account?</Link>
                 <Link to="/forget" className="forget-password">Forgotten password?</Link>

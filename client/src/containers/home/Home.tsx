@@ -11,11 +11,13 @@ import { connect } from 'react-redux';
 import Styling from "../../components/job-form/jobTheme";
 import Footer from "../../components/footer/footer";
 import "../../assets/carousel.css";
+
 const Carousel = require('react-responsive-carousel').Carousel;
 
 class Home extends React.Component<any, any> {
     gettingData = false;
     panelArray: any;
+    carouselRef: any;
     constructor(props: any) {
         super(props);
 
@@ -24,7 +26,8 @@ class Home extends React.Component<any, any> {
             this.props.getAllJobs();
         }
         this.state = {
-            panelArray: [{ showMore: false }]
+            panelArray: [{ showMore: false }],
+            carouselElement: ""
         };
     }
 
@@ -57,7 +60,9 @@ class Home extends React.Component<any, any> {
         this.state.panelArray[ind].showMore = !this.state.panelArray[ind].showMore;
         this.setState({ panelArray: this.state.panelArray });
     }
-
+    componentDidMount() {
+        this.setState({ carouselElement: this.carouselRef })
+    }
     //Save job id in local storage
     handleJobApply(key: any) {
         if (key) {
@@ -149,7 +154,7 @@ class Home extends React.Component<any, any> {
                         </div>
 
                     </div>
-                    <div className="scroll-down">
+                    <div className="scroll-down" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
                             <img src={require("../../assets/mobile-arrow.png")} />
                         </span>
@@ -175,16 +180,24 @@ class Home extends React.Component<any, any> {
                 {/*<div className="width-limit">*/}
                 <div className="paper-parent-container">
                     <div className="main-paper-parent">
-                    <h2 className="paper-title">Positions</h2>
-                    <div className="paper-parent">
-                        {this.props.isLoading ?
-                            <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)" style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} />
-                            : this.panelArray}
-                    </div>
+                        <h2 className="paper-title">Positions</h2>
+                        <div className="paper-parent">
+                            {this.props.isLoading ?
+                                <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)" style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} />
+                                : this.panelArray}
+                        </div>
                     </div>
                 </div>
                 <div className="slider-section">
-                    <Carousel showThumb={true} showStatus={false} showArrows={true} emulateTouch>
+                    <Carousel ref={(event: any) => this.carouselRef = event} showThumb={false} showStatus={false} showArrows={false} emulateTouch>
+                        <div className="carousel-contents">
+                            <p className="carousel-title">
+                                -- Jesse Hudson, UI/UX designer
+                            </p>
+                            <p className="contents">
+                                "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."
+                            </p>
+                        </div>
                         <div className="carousel-contents">
                             <p className="carousel-title">
                                 -- Jesse Hudson, UI/UX designer
@@ -203,7 +216,14 @@ class Home extends React.Component<any, any> {
                         </div>
 
                     </Carousel>
-                {/*</div>*/}
+                    <div className="arrow-next">
+                        <img src={require("../../assets/arrow-caro.png")} onClick={() => this.state.carouselElement.decrement()} />
+                    </div>
+                    <div className="arrow-prev">
+                        <img src={require("../../assets/prev-carp.png")} onClick={() => this.state.carouselElement.increment()} />
+                    </div>
+
+                    {/*</div>*/}
                 </div>
                 <Footer />
             </div>
