@@ -7,6 +7,14 @@ var Styling = {
         marginLeft: "-7px",
         fontFamily: "'Roboto', sans-serif"
     },
+    radioButtonError:{
+        fontSize: "16px",
+        marginBottom: "13px",
+        display: "block",
+        color: "red",
+        marginLeft: "-7px",
+        fontFamily: "'Roboto', sans-serif",
+    },
     dateIcon: {
         width: "16px",
         height: "16px",
@@ -45,13 +53,21 @@ var Styling = {
         background: "linear-gradient(82.69deg, #6DB3FF 48.38%, #3B7CFF 148.38%)",
         height: "44px",
         borderRadius: "5px",
-        marginTop:"20px",
-        fontSize:"19px"
+        marginTop: "20px",
+        fontSize: "19px"
     },
     defaultLabelButton: {
         color: "white",
         fontFamily: "'Roboto',sans-serif",
 
+    },
+    errorIcon: {
+        position: "relative",
+        top: "-65px",
+        left:"95%"
+    },
+    errorMsg: {
+        marginTop: "10px"
     },
     addButton: {
         height: "41px",

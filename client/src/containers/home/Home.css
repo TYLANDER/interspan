@@ -16,6 +16,8 @@
     top: 50%;
     bottom: 50%;
     left: 9%;
+    cursor: pointer;
+
 }
 
 .home-container .arrow-prev{
@@ -23,7 +25,7 @@
     top: 50%;
     bottom: 50%;
     right: 9%;
-
+    cursor: pointer;
 }
 @media(max-width:1032px){
   .home-container .arrow-prev{

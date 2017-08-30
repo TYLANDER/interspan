@@ -18,6 +18,11 @@
     width: 272px;
     align-items: flex-end
 }
+.main-job-form-container .error-icon{
+    position: absolute;
+    margin-top: 42px;
+    margin-left: -18px;
+}
 .main-job-form-container .text-area{
     display: block;
     width: 54% !important;

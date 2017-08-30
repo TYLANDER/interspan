@@ -5,7 +5,6 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 // import DateRange from "material-ui/svg-icons/action/date-range";
 import Styling from "../jobTheme";
 
-
 class ApplicantInfo extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -31,8 +30,40 @@ class ApplicantInfo extends React.Component<any, any>{
                 eligible: "",
                 begin_work: ""
             },
+            error: {
+                address: { addressError: false, msg: "" },
+                city: { cityError: false, msg: "" },
+                state: { stateError: false, msg: "" },
+                zip: { zipError: false, msg: "" },
+                home: { homeError: false, msg: "" },
+                years: { yearsError: false, msg: "" },
+                employement: { employementError: false, msg: "" },
+                eligible: { eligibleError: false, msg: "" },
+                begin_work: { begin_workError: false, msg: "" }
+            },
             appliedBefore: ""
         };
+    }
+    validationCheck = (event: any, name: any) => {
+        if (event.target.value === "") {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = true;
+            currentState["msg"] = name + " field is required";
+            this.setState(currentState);
+        }
+        else {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = false;
+            currentState["msg"] = name + "";
+            this.setState(currentState);
+
+        }
+    }
+    setError = (event: any) => {
+        let current = this.state.error[event];
+        current[event + "Error"] = true;
+        current["msg"] = event + " field is required";
+        this.setState(current)
     }
     //getting application form data from local storage
     componentWillMount() {
@@ -53,7 +84,46 @@ class ApplicantInfo extends React.Component<any, any>{
     }
     //Increment in state of the stepper
     handleNext = () => {
-        this.props.handleNext("application-form", this.state.form);
+        // let obj = this.state.form;
+        // let Obj:any = new Map(Object.entries(obj));
+        // console.log(Obj)
+        // Obj.forEach((val:any,key:any) => {
+        //     if(!val){
+        //         console.log(key)
+        //     }
+        // });
+        if (this.state.form.street_address && this.state.form.city && this.state.form.state && this.state.form.zip && this.state.form.home_telephone && this.state.form.years_old && this.state.form.employement && this.state.form.eligible && this.state.form.begin_work) {
+            this.props.handleNext("application-form", this.state.form);
+        }
+        else {
+            if (!this.state.form.street_address) {
+                this.setError('address')
+            }
+            if (!this.state.form.city) {
+                this.setError('city')
+            }
+            if (!this.state.form.state) {
+                this.setError('state')
+            }
+            if (!this.state.form.zip) {
+                this.setError('zip')
+            }
+            if (!this.state.home_telephone) {
+                this.setError('home')
+            }
+            if (!this.state.form.years_old) {
+                this.setError('years')
+            }
+            if (!this.state.form.employement) {
+                this.setError('employement')
+            }
+            if (!this.state.form.eligible) {
+                this.setError('eligible')
+            }
+            if (!this.state.form.begin_work) {
+                this.setError('begin_work')
+            }
+        }
     }
     //Decrement in state of the stepper
     handlePrev = () => {
@@ -61,6 +131,7 @@ class ApplicantInfo extends React.Component<any, any>{
     }
 
     render() {
+        console.log(this.state);
         const { streetAddress, city, state, zip, homeTelephone, areYou18, employment, employementYes, legallyEligible, workStatus, yes, no } = this.state.selectedJson;
         const formRef = this.state.form;
         return (
@@ -68,6 +139,8 @@ class ApplicantInfo extends React.Component<any, any>{
                 <TextField
                     hintText=""
                     className="text-area"
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.address.addressError ? this.state.error.address.msg : null}
                     underlineStyle={{ bottom: "4px" }}
                     value={this.state.form.street_address}
                     multiLine={true}
@@ -78,13 +151,17 @@ class ApplicantInfo extends React.Component<any, any>{
                     }
                     floatingLabelText={streetAddress}
                     onBlur={(event: any) => {
+                        this.validationCheck(event, "address");
                         formRef.street_address = event.target.value
                         this.setState(formRef);
                     }}
                 />
+                {this.state.error.address.addressError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     className="text-area"
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.city.cityError ? this.state.error.city.msg : null}
                     value={this.state.form.city}
                     underlineStyle={{ bottom: "4px" }}
                     onChange={(event: any) => {
@@ -94,14 +171,17 @@ class ApplicantInfo extends React.Component<any, any>{
                     }
                     floatingLabelText={city}
                     onBlur={(event: any) => {
-
+                        this.validationCheck(event, "city");
                         formRef.city = event.target.value
                         this.setState(formRef);
                     }}
                 />
+                {this.state.error.city.cityError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     className="text-area"
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.state.stateError ? this.state.error.state.msg : null}
                     underlineStyle={{ bottom: "4px" }}
                     onChange={(event: any) => {
                         formRef.state = event.target.value
@@ -111,15 +191,19 @@ class ApplicantInfo extends React.Component<any, any>{
                     value={this.state.form.state}
                     floatingLabelText={state}
                     onBlur={(event: any) => {
-                        formRef.state = event.target.value
+                        this.validationCheck(event, 'state');
+                        formRef.state = event.target.value;
                         this.setState(formRef);
                     }}
                 />
+                {this.state.error.state.stateError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     underlineStyle={{ bottom: "4px" }}
                     className="text-area"
                     value={this.state.form.zip}
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.zip.zipError ? this.state.error.zip.msg : null}
                     onChange={(event: any) => {
                         formRef.zip = event.target.value
                         this.setState(formRef);
@@ -127,14 +211,18 @@ class ApplicantInfo extends React.Component<any, any>{
                     }
                     floatingLabelText={zip}
                     onBlur={(event: any) => {
+                        this.validationCheck(event, 'zip')
                         formRef.zip = event.target.value
                         this.setState(formRef);
                     }}
                 />
+                {this.state.error.zip.zipError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <TextField
                     hintText=""
                     type="tel"
                     underlineStyle={{ bottom: "4px" }}
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.home.homeError ? this.state.error.home.msg : null}
                     className="text-area"
                     value={this.state.form.home_telephone}
                     onChange={(event: any) => {
@@ -144,14 +232,17 @@ class ApplicantInfo extends React.Component<any, any>{
                     }
                     floatingLabelText={homeTelephone}
                     onBlur={(event: any) => {
+                        this.validationCheck(event, 'home')
                         formRef.home_telephone = event.target.value
                         this.setState(formRef);
                     }}
                 />
+                {this.state.error.home.homeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <br />
                 <br />
-                <p style={Styling.radioButtonLabel}>{areYou18} </p>
+                <p style={this.state.error.years.yearsError ? Styling.radioButtonError : Styling.radioButtonLabel}>{areYou18} </p>
                 <RadioButtonGroup className="radio-label" style={Styling.radioButtonGroupStyling} name="age" defaultSelected={this.state.form.years_old} onChange={(event: any) => {
+                    this.validationCheck(event, 'years')
                     formRef.years_old = event.target.value;
                     this.setState(formRef)
                 }}>
@@ -170,9 +261,10 @@ class ApplicantInfo extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>
-                <p style={Styling.radioButtonLabel}>{employment} </p>
+                <p style={this.state.error.employement.employementError ? Styling.radioButtonError : Styling.radioButtonLabel}>{employment} </p>
                 <RadioButtonGroup className="radio-label" name="employement" valueSelected={this.state.form.employement !== '' ? this.state.form.employement !== 'no' ? "yes" : "no" : ""} onChange={(event: any) => {
                     this.state.appliedBefore = event.target.value
+                    this.validationCheck(event, 'employement')
                     formRef.employement = event.target.value
                     this.setState(formRef);
                     event.target.value === 'yes' ? this.setState({ employee: true }) : this.setState({ employee: false })
@@ -198,8 +290,9 @@ class ApplicantInfo extends React.Component<any, any>{
                         }}
                     /><span><img src={require("../../../assets/Date.png")} style={Styling.dateIcon} /></span><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
                     : ''}
-                <p style={Styling.radioButtonLabel}>{legallyEligible}</p>
+                <p style={this.state.error.eligible.eligibleError ? Styling.radioButtonError : Styling.radioButtonLabel}>{legallyEligible}</p>
                 <RadioButtonGroup className="radio-label" name="eligible" valueSelected={this.state.form.eligible} onChange={(event: any) => {
+                    this.validationCheck(event, 'eligible')
                     formRef.eligible = event.target.value
                     this.setState(formRef)
                 }}>
@@ -220,6 +313,8 @@ class ApplicantInfo extends React.Component<any, any>{
                 </RadioButtonGroup>
                 <TextField
                     hintText=""
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.begin_work.begin_workError ? this.state.error.begin_work.msg : null}
                     className="text-area"
                     style={Styling.LastLine}
                     value={this.state.form.begin_work}
@@ -230,10 +325,12 @@ class ApplicantInfo extends React.Component<any, any>{
                     }
                     }
                     onBlur={(event: any) => {
+                        this.validationCheck(event, 'begin_work')
                         formRef.begin_work = event.target.value
                         this.setState(formRef);
                     }}
                 />
+                {this.state.error.begin_work.begin_workError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

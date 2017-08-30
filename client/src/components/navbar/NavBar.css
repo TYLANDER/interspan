@@ -47,7 +47,7 @@
   bottom: 14px;
   /*right: 45px;
   top:10px;*/
-  /*position:absolute !important;*/
+  position:static !important;
   height:32px !important;
   border-radius: 7px;
   border:1px solid #f2f2f2;
