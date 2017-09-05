@@ -27,6 +27,11 @@ class EmploymentHistory extends React.Component<any, any>{
                 }],
                 no_contact_num: "",
                 no_contact_reason: ""
+            },
+            error: {
+                EmploymentHistory: [{
+                    company_name: { company_nameError: false, msg: "" }
+                }]
             }
         };
     }
@@ -42,6 +47,23 @@ class EmploymentHistory extends React.Component<any, any>{
             })
         }
     }
+    validationEmployementCheck = (event: any, name: any, index: any) => {
+        console.log(index)
+        if (event.target.value === "") {
+            let currentState = this.state.error.EmploymentHistory[index];
+            currentState = currentState[name]
+            currentState[name + "Error"] = true;
+            currentState["msg"] = name + " field is required";
+            this.setState(currentState);
+        }
+        else {
+            let currentState = this.state.error.EmploymentHistory[index];
+            currentState = currentState[name]
+            currentState[name + "Error"] = false;
+            currentState["msg"] = name + "";
+            this.setState(currentState);
+        }
+    }
 
     //selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
@@ -52,7 +74,15 @@ class EmploymentHistory extends React.Component<any, any>{
 
     //handling next state
     handleNext = () => {
-        this.props.handleNext("employment-form", this.state.form);
+        // if (this.state.form.no_contact_num && this.state.form.no_contact_reason) {
+            this.props.handleNext("employment-form", this.state.form);
+        // }
+        // else {
+        //     if (!this.state.form.street_address) {
+        //         // this.setError('address')
+        //     }
+
+        // }
     }
 
     //handling previous state
@@ -73,25 +103,29 @@ class EmploymentHistory extends React.Component<any, any>{
     //making and manage multiple employee list
     handleHistoryDetails = (action: string) => {
         let formRef = this.state.form["EmploymentHistory"];
+        let formRefError = this.state.error["EmploymentHistory"];
         if (action === "add") {
             formRef.push({
                 company_name: "",
                 city: "",
-                state: "",
                 supervisor_name: "",
                 job_title: "",
                 telephone: "",
-                employment_start: {},
-                employment_end: {},
+                employment_start: new Date().toISOString(),
+                employment_end: new Date().toISOString(),
                 pay_rate_start: "",
                 pay_rate_end: "",
                 leaving_reason: ""
             });
-            this.setState({ employed: this.state.employed + 1, formRef })
+            formRefError.push({
+                company_name: { company_nameError: false, msg: "" }
+            })
+            this.setState({ employed: this.state.employed + 1, formRef, formRefError })
         }
         else {
             formRef.pop();
-            this.setState({ employed: this.state.employed - 1, formRef })
+            formRefError.pop();
+            this.setState({ employed: this.state.employed - 1, formRef,formRefError })
         }
     }
 
@@ -121,13 +155,18 @@ class EmploymentHistory extends React.Component<any, any>{
                     {this.state.employed > 1 ? <h3> {i + 1} - Employment History </h3> : ""}
                     <TextField
                         className="text-area"
+                        errorStyle={Styling.errorMsg}
+                        errorText={this.state.error.EmploymentHistory[i].company_name.company_nameError ? this.state.error.EmploymentHistory[i].company_name.msg : null}
                         value={formRef.EmploymentHistory[i].company_name}
                         onChange={this.handleText.bind(this, "EmploymentHistory", i)}
                         hintText={companyName}
                         floatingLabelText={companyName}
                         fullWidth={true}
                         name="company_name"
-                        onBlur={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
+                        onBlur={(event: any) => {
+                            this.validationEmployementCheck(event, 'company_name', i)
+                            this.handleTargetEvents.bind(this, "EmploymentHistory", i);
+                        }}
                     />
                     <TextField
                         hintText={state}

@@ -18,6 +18,20 @@ class Media extends React.Component<any, any>{
                 job_description: "",
                 employee_description: "",
                 friend_description: ""
+            },
+            error: {
+                about_interspan: {
+                    about_interspanError: false, msg: ""
+                },
+                job_description: {
+                    job_descriptionError: false, msg: ""
+                },
+                friend_description: {
+                    friend_descriptionError: false, msg: ""
+                },
+                employee_description: {
+                    employee_descriptionError: false, msg: ""
+                }
             }
         };
     }
@@ -35,6 +49,22 @@ class Media extends React.Component<any, any>{
         }
     }
 
+    validationCheck = (event: any, name: any) => {
+        if (event.target.value === "") {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = true;
+            currentState["msg"] = name + " field is required";
+            this.setState(currentState);
+        }
+        else {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = false;
+            currentState["msg"] = name + "";
+            this.setState(currentState);
+
+        }
+    }
+
     //Selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
@@ -42,29 +72,58 @@ class Media extends React.Component<any, any>{
         })
     }
 
+    setError = (event: any) => {
+        let current = this.state.error[event];
+        current[event + "Error"] = true;
+        current["msg"] = event + " field is required";
+        this.setState(current)
+    }
     //Handling next state
     handleNext = () => {
         let formRef = this.state.form;
-        switch (this.state.form.about_interspan) {
-            case "Referred from job site":
-                formRef.employee_description = "";
-                formRef.friend_description = "";
-                this.setState(formRef);
-                break;
-            case "Referred by InterSpan, Inc. employee":
-                formRef.job_description = "";
-                formRef.friend_description = "";
-                this.setState(formRef);
-                break;
-            case "Referred by friend":
-                formRef.employee_description = "";
-                formRef.job_description = "";
-                this.setState(formRef);
-                break;
-            default:
-                console.log("not valid");
+        if (this.state.form.about_interspan) {
+            switch (this.state.form.about_interspan) {
+                case "Referred from job site":
+                    formRef.employee_description = "";
+                    if (!this.state.form.job_description) {
+                        this.setError('job_description')
+                    }
+                    formRef.friend_description = "";
+                    this.setState(formRef);
+                    break;
+                case "Referred by InterSpan, Inc. employee":
+                    formRef.job_description = "";
+                    if (!this.state.form.friend_description) {
+                        this.setError('friend_description')
+                    }
+                    formRef.friend_description = "";
+                    this.setState(formRef);
+                    break;
+                case "Referred by friend":
+                    formRef.employee_description = "";
+                    if (!this.state.form.employee_description) {
+                        this.setError('employee_description')
+                    }
+                    formRef.job_description = "";
+                    this.setState(formRef);
+                    break;
+                default:
+                    let forming = this.state.error;
+                    forming.job_description.job_descriptionError = false;
+                    forming.friend_description.friend_descriptionError = false;
+                    forming.employee_description.employee_descriptionError = false;
+                    this.setState(forming);
+                    console.log("not valid");
+            }
         }
-        this.props.handleNext('media-form', this.state.form);
+        if (this.state.form.about_interspan && !this.state.error.job_description.job_descriptionError && !this.state.error.friend_description.friend_descriptionError && !this.state.error.employee_description.employee_descriptionError) {
+            this.props.handleNext('media-form', this.state.form);
+        }
+        else {
+            if (!this.state.form.about_interspan) {
+                this.setError('about_interspan')
+            }
+        }
     }
 
     //Handling previous state
@@ -84,7 +143,7 @@ class Media extends React.Component<any, any>{
         const { questions, radio, richMond, site, name, friend, jobSearch, referredJob, referredInterSpan, referredFriend } = this.state.selectedJson;
         return (
             <div className="media-applicant-container">
-                <p className="title">{questions}</p>
+                <p style={this.state.error.about_interspan.about_interspanError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{questions}</p>
                 <RadioButtonGroup name="about_interspan"
                     defaultSelected={formRef.about_interspan}
                     onChange={(event: any) => {
@@ -139,8 +198,10 @@ class Media extends React.Component<any, any>{
                         name="job_description"
                         hintText=""
                         className="text-area"
+                        errorStyle={Styling.errorMsg}
+                        errorText={this.state.error.job_description.job_descriptionError ? this.state.error.job_description.msg : null}
                         value={formRef.job_description}
-                        onBlur={this.handleTargetEvents}
+                        onBlur={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, 'job_description') }}
                         fullWidth={true}
                         onChange={(event: any) => {
                             formRef.job_description = event.target.value
@@ -153,14 +214,17 @@ class Media extends React.Component<any, any>{
                     <TextField
                         hintText=""
                         value={formRef.employee_description}
+                        errorStyle={Styling.errorMsg}
+                        errorText={this.state.error.employee_description.employee_descriptionError ? this.state.error.employee_description.msg : null}
                         name="employee_description"
                         className="text-area"
                         onChange={(event: any) => {
+                            this.validationCheck(event, 'employee_description')
                             formRef.employee_description = event.target.value
                             this.setState(formRef);
                         }
                         }
-                        onBlur={this.handleTargetEvents}
+                        onBlur={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, 'employee_description') }}
                         fullWidth={true}
                         floatingLabelText={name}
                     /> : null}
@@ -170,16 +234,18 @@ class Media extends React.Component<any, any>{
                         value={formRef.friend_description}
                         name="friend_description"
                         className="text-area"
+                        errorStyle={Styling.errorMsg}
+                        errorText={this.state.error.friend_description.friend_descriptionError ? this.state.error.friend_description.msg : null}
                         onChange={(event: any) => {
                             formRef.friend_description = event.target.value
                             this.setState(formRef);
                         }
                         }
-                        onBlur={this.handleTargetEvents}
+                        onBlur={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, 'friend_description') }}
                         fullWidth={true}
                         floatingLabelText={friend}
                     /> : null}
-                    <br /><br />
+                <br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

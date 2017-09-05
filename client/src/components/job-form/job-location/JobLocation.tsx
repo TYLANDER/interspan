@@ -131,20 +131,16 @@ class JobLocation extends React.Component<any, any>{
             if (!this.state.form.day_12_6_6) {
                 this.setError('day_12_6_6')
             }
-            if(!this.state.form.night_12_6_6)
-            {
+            if (!this.state.form.night_12_6_6) {
                 this.setError('night_12_6_6');
             }
-            if(!this.state.form.do_overtime)
-            {
+            if (!this.state.form.do_overtime) {
                 this.setError('do_overtime');
             }
-            if(!this.state.work_on_weekends)
-            {
+            if (!this.state.work_on_weekends) {
                 this.setError('work_on_weekends');
             }
-            if(!this.state.unavailability)
-            {
+            if (!this.state.unavailability) {
                 this.setError('unavailability')
             }
         }
@@ -208,7 +204,7 @@ class JobLocation extends React.Component<any, any>{
                         onFocus={() => { }}
                         fullWidth={true}
                         floatingLabelText={other}
-                        onBlur={()=>{this.handleTargetEvents}}
+                        onBlur={() => { this.handleTargetEvents }}
                     /> : ''}
                 <p style={this.state.error.location.locationError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{locationPreference} </p>
                 <RadioButtonGroup className="radio-label" name="location_preference" defaultSelected={this.state.form.location_preference !== "Any available site" ? "site" : this.state.form.location_preference} onChange={(event: any) => {
@@ -256,9 +252,9 @@ class JobLocation extends React.Component<any, any>{
                     value={this.state.form.pay_rate}
                     fullWidth={true}
                     floatingLabelText={payRateExpected}
-                    onBlur={()=>{this.handleTargetEvents;this.validationCheck(event,'pay_rate')}}
+                    onBlur={() => { this.handleTargetEvents; this.validationCheck(event, 'pay_rate') }}
                 />
-
+                {this.state.error.pay_rate.pay_rateError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
                 <p style={Styling.prefered} className="title">{title}</p>
                 <p style={this.state.error.available.availableError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.one}</p>
                 <RadioButtonGroup name="available_fulltime" defaultSelected={formRef.available_fulltime} className="radio-label right" onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, 'available') }}>
@@ -279,8 +275,8 @@ class JobLocation extends React.Component<any, any>{
                 <p className="inline-fields">{questions.three}</p><br />
                 <div className="box-container">
                     <div className="box-child">
-                        <p style={this.state.error.any_shift.any_shiftError?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.four}</p>
-                        <RadioButtonGroup name="any_shift" className="right" onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"any_shift") }}>
+                        <p style={this.state.error.any_shift.any_shiftError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.four}</p>
+                        <RadioButtonGroup name="any_shift" className="right" onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "any_shift") }}>
                             <RadioButton
                                 className="inline-radio"
                                 iconStyle={Styling.iconStyle}
@@ -297,8 +293,8 @@ class JobLocation extends React.Component<any, any>{
                         <br />
                     </div>
                     <div className="box-child">
-                        <p style={this.state.error.day_7_4.day_7_4Error?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.five}</p>
-                        <RadioButtonGroup name="day_7_4" defaultSelected={formRef.day_7_4} className="right" onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"day_7_4") }}>
+                        <p style={this.state.error.day_7_4.day_7_4Error ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.five}</p>
+                        <RadioButtonGroup name="day_7_4" defaultSelected={formRef.day_7_4} className="right" onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "day_7_4") }}>
                             <RadioButton
                                 className="inline-radio"
                                 iconStyle={Styling.iconStyle}
@@ -315,8 +311,8 @@ class JobLocation extends React.Component<any, any>{
                         <br /><br />
                     </div>
                     <div className="box-child">
-                        <p style={this.state.error.evening_4_12.evening_4_12Error?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.six}</p>
-                        <RadioButtonGroup name="evening_4_12" className="right" defaultSelected={formRef.evening_4_12} onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"evening_4_12") }}>
+                        <p style={this.state.error.evening_4_12.evening_4_12Error ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.six}</p>
+                        <RadioButtonGroup name="evening_4_12" className="right" defaultSelected={formRef.evening_4_12} onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "evening_4_12") }}>
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
@@ -333,8 +329,8 @@ class JobLocation extends React.Component<any, any>{
                         <br /><br />
                     </div>
                     <div className="box-child">
-                        <p style={this.state.error.night_11_7.night_11_7Error?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.seven}</p>
-                        <RadioButtonGroup name="night_11_7" className="right" defaultSelected={formRef.night_11_7} onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"night_11_7") }}>
+                        <p style={this.state.error.night_11_7.night_11_7Error ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.seven}</p>
+                        <RadioButtonGroup name="night_11_7" className="right" defaultSelected={formRef.night_11_7} onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "night_11_7") }}>
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
@@ -351,8 +347,8 @@ class JobLocation extends React.Component<any, any>{
                         <br /><br />
                     </div>
                     <div className="box-child">
-                        <p style={this.state.error.day_12_6_6.day_12_6_6Error?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.eight}</p>
-                        <RadioButtonGroup name="day_12_6_6" defaultSelected={formRef.day_12_6_6} className="right" onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"day_12_6_6") }}>
+                        <p style={this.state.error.day_12_6_6.day_12_6_6Error ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.eight}</p>
+                        <RadioButtonGroup name="day_12_6_6" defaultSelected={formRef.day_12_6_6} className="right" onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "day_12_6_6") }}>
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
@@ -369,8 +365,8 @@ class JobLocation extends React.Component<any, any>{
                         <br /><br />
                     </div>
                     <div className="box-child">
-                        <p style={this.state.error.night_12_6_6.night_12_6_6Error?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.nine}</p>
-                        <RadioButtonGroup name="night_12_6_6" defaultSelected={formRef.night_12_6_6} onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"night_12_6_6") }}>
+                        <p style={this.state.error.night_12_6_6.night_12_6_6Error ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.nine}</p>
+                        <RadioButtonGroup name="night_12_6_6" defaultSelected={formRef.night_12_6_6} onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "night_12_6_6") }}>
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
@@ -387,8 +383,8 @@ class JobLocation extends React.Component<any, any>{
                         <br /><br />
                     </div>
                 </div>
-                <p style={this.state.error.do_overtime.do_overtimeError?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.ten}</p>
-                <RadioButtonGroup name="do_overtime" defaultSelected={formRef.do_overtime} onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"do_overtime") }}>
+                <p style={this.state.error.do_overtime.do_overtimeError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.ten}</p>
+                <RadioButtonGroup name="do_overtime" defaultSelected={formRef.do_overtime} onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "do_overtime") }}>
                     <RadioButton
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
@@ -403,8 +399,8 @@ class JobLocation extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <hr />
-                <p style={this.state.error.work_on_weekends.work_on_weekendsError?Styling.radioButtonError:Styling.radioButtonLabel} className="inline-fields">{questions.eleven}</p>
-                <RadioButtonGroup name="work_on_weekends" defaultSelected={formRef.work_on_weekends} className="right" onChange={(event: any) => { this.handleTargetEvents(event);this.validationCheck(event,"work_on_weekends") }}>
+                <p style={this.state.error.work_on_weekends.work_on_weekendsError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.eleven}</p>
+                <RadioButtonGroup name="work_on_weekends" defaultSelected={formRef.work_on_weekends} className="right" onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "work_on_weekends") }}>
                     <RadioButton
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
@@ -434,16 +430,16 @@ class JobLocation extends React.Component<any, any>{
                     hintText="Please, type here"
                 />*/}
                 <textarea name="unavailability"
-                    onBlur={(event:any)=>{this.handleTargetEvents(event);this.validationCheck(event,"unavailability")}}
+                    onBlur={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, "unavailability") }}
                     value={formRef.unavailability}
-                    style={this.state.error.unavailability.unavailabilityError?{borderColor:'red'}:{borderColor:"none"}}
+                    style={this.state.error.unavailability.unavailabilityError ? { borderColor: 'red' } : { borderColor: "none" }}
                     onChange={(event: any) => {
                         formRef.unavailability = event.target.value
                         this.setState(formRef);
                     }
                     }
                     className="textArea" placeholder="Please type here" />
-                    {/*{this.state.error.unavailability.unavailabilityError ? <p>{this.state.error.unavailability.msg}</p> : null}*/}
+                {/*{this.state.error.unavailability.unavailabilityError ? <p>{this.state.error.unavailability.msg}</p> : null}*/}
 
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>

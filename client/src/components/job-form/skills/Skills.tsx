@@ -15,19 +15,20 @@ class Skills extends React.Component<any, any>{
             palletJack: false,
             selectedJson: this.props.jsonData,
             form: {
+                industrial_experience: "",
                 lifting: "",
-                lift_weight: false,
-                stand_hours: false,
-                walking_job: false,
+                lift_weight: "",
+                stand_hours: "",
+                walking_job: "",
                 stand_bend: false,
-                basic_maths: false,
+                basic_maths: "",
                 tape_mesurement: false,
                 use_calculator: false,
-                use_pc: false,
-                operated_forklift: false,
-                certified_forklift: false,
-                operated_pallet_jack: false,
-                steel_shoes: false,
+                use_pc: "",
+                operated_forklift: "",
+                certified_forklift: "",
+                operated_pallet_jack: "",
+                steel_shoes: "",
                 assembly: false,
                 production_line: false,
                 production_materials: false,
@@ -43,8 +44,62 @@ class Skills extends React.Component<any, any>{
                 quality_control: false,
                 weight_materials: false,
                 none_of_above: false
+            },
+            error: {
+                industrial_experience: {
+                    industrial_experienceError: false, msg: ""
+                },
+                lifting: {
+                    liftingError: false, msg: ""
+                },
+                stand_hours: {
+                    stand_hoursError: false, msg: ""
+                },
+                lift_weight: {
+                    lift_weightError: false, msg: ""
+                },
+                walking_job: {
+                    walking_jobError: false, msg: ""
+                },
+                stand_bend: {
+                    stand_bendError: false, msg: ""
+                },
+                basic_maths: {
+                    basic_mathsError: false, msg: ""
+                },
+                tape_mesurement: {
+                    tape_mesurementError: false, msg: ""
+                },
+                use_calculator: {
+                    use_calculatorError: false, msg: ""
+                },
+                use_pc: {
+                    use_pcError: false, msg: ""
+                },
+                operated_forklift: {
+                    operated_forkliftError: false, msg: ""
+                },
+                certified_forklift: {
+                    certified_forkliftError: false, msg: ""
+                },
+                operated_pallet_jack: {
+                    operated_pallet_jackError: false, msg: ""
+                },
+                steel_shoes:{
+                    steel_shoesError:false, msg: ""
+                },
+                // experience:{
+                //     experienceError:false , msg :""
+                // }
             }
         };
+    }
+
+    setError = (event: any) => {
+        let current = this.state.error[event];
+        current[event + "Error"] = true;
+        current["msg"] = event + " field is required";
+        this.setState(current)
     }
 
     //Getting skills form data from local storage
@@ -67,7 +122,58 @@ class Skills extends React.Component<any, any>{
 
     //handling next state
     handleNext = () => {
-        this.props.handleNext("skills-form", this.state.form);
+        if (this.state.form.industrial_experience  && this.state.form.steel_shoes && this.state.form.operated_pallet_jack && this.state.form.certified_forklift && this.state.form.operated_forklift && this.state.form.use_pc && this.state.form.use_calculator && this.state.form.tape_mesurement && this.state.form.basic_maths && this.state.form.stand_bend && this.state.form.walking_job && this.state.form.lift_weight && this.state.form.lifting && this.state.form.stand_hours) {
+            this.props.handleNext("skills-form", this.state.form);
+        }
+        else {
+            if (!this.state.form.industrial_experience) {
+                this.setError('industrial_experience');
+            }
+            if (!this.state.form.lifting) {
+                this.setError('lifting');
+            }
+            if (!this.state.form.stand_hours) {
+                this.setError('stand_hours');
+            }
+            if (!this.state.form.lift_weight) {
+                this.setError('lift_weight');
+            }
+            if (!this.state.form.walking_job) {
+                this.setError('walking_job')
+            }
+            if (!this.state.form.stand_bend) {
+                this.setError('stand_bend')
+            }
+            if (!this.state.form.basic_maths) {
+                this.setError('basic_maths')
+            }
+            if (!this.state.form.tape_mesurement) {
+                this.setError('tape_mesurement')
+            }
+            if (!this.state.form.use_calculator) {
+                this.setError('use_calculator')
+            }
+            if (!this.state.form.use_pc) {
+                this.setError('use_pc')
+            }
+            if (!this.state.form.operated_forklift) {
+                this.setError('operated_forklift')
+            }
+            if (!this.state.form.certified_forklift) {
+                this.setError('certified_forklift')
+            }
+            if (!this.state.form.operated_pallet_jack) {
+                this.setError('operated_pallet_jack')
+            }
+            if(!this.state.form.steel_shoes)
+            {
+                this.setError('steel_shoes')
+            }
+            // if(!this.state.form.assembly || !this.state.form.pulling_order || !this.state.form.production_line || !this.state.form.production_materials || !this.state.form.loadingLifter || !this.state.form.banding_machine || !this.state.form.ups_shipping || !this.state.form.data_entry || !this.state.form.counting_material || !this.state.form.working_conveyor || !this.state.form.gluing_boxes || !this.state.form.stacker || !this.state.form.quality_control || !this.state.form.weight_materials || !this.state.form.none_of_above)
+            // {
+            //     this.setError('experience')
+            // }
+        }
     }
 
     //Handling previous state
@@ -80,6 +186,21 @@ class Skills extends React.Component<any, any>{
         let formRef = this.state.form;
         formRef[event.target.name] = event.target.value;
         this.setState(formRef);
+    }
+
+    validationCheck = (event: any, name: any) => {
+        if (event.target.value === "") {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = true;
+            currentState["msg"] = name + " field is required";
+            this.setState(currentState);
+        }
+        else {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = false;
+            currentState["msg"] = name + "";
+            this.setState(currentState);
+        }
     }
 
     //handle multiple skills list
@@ -95,8 +216,8 @@ class Skills extends React.Component<any, any>{
         let formRef = this.state.form;
         return (
             <div className="skills-applicant-container">
-                <p className="title">{questions.one}</p>
-                <RadioButtonGroup style={Styling.radioButtonGroupStyling} defaultSelected={formRef.industrial_experience} name="industrial_experience" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <p style={this.state.error.industrial_experience.industrial_experienceError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{questions.one}</p>
+                <RadioButtonGroup style={Styling.radioButtonGroupStyling} defaultSelected={formRef.industrial_experience} name="industrial_experience" onChange={(event: any) => { this.validationCheck(event, 'industrial_experience'); this.handleTargetEvents(event); }}>
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="No experience"
@@ -130,7 +251,7 @@ class Skills extends React.Component<any, any>{
                     label={assembly}
                     name="assembly"
                     checked={this.state.form.assembly}
-                    onCheck={this.handleTargetSkills}
+                    onCheck={(event:any)=>{this.handleTargetSkills(event,true)}}
                 />
                 <Checkbox
                     checkedIcon={<Check />}
@@ -244,8 +365,8 @@ class Skills extends React.Component<any, any>{
                     checked={this.state.form.none_of_above}
                     onCheck={this.handleTargetSkills}
                 />
-                <p className="title">{questions.three}</p>
-                <RadioButtonGroup name="lifting" defaultSelected={formRef.lifting} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <p style={this.state.error.lifting.liftingError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{questions.three}</p>
+                <RadioButtonGroup name="lifting" defaultSelected={formRef.lifting} onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, 'lifting') }}>
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Less than 10 lbs."
@@ -273,8 +394,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br />
-                <label className="inline-fields">{questions.four}</label>
-                <RadioButtonGroup name="lift_weight" defaultSelected={formRef.lift_weight} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.lift_weight.lift_weightError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.four}</label>
+                <RadioButtonGroup name="lift_weight" defaultSelected={formRef.lift_weight} className="right" onChange={(event: any) => { this.validationCheck(event, 'lift_weight'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -291,8 +412,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.five}</label>
-                <RadioButtonGroup name="stand_hours" defaultSelected={formRef.stand_hours} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.stand_hours.stand_hoursError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.five}</label>
+                <RadioButtonGroup name="stand_hours" defaultSelected={formRef.stand_hours} className="right" onChange={(event: any) => { this.validationCheck(event, 'stand_hours'); this.handleTargetEvents(event); }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -309,8 +430,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.six}</label>
-                <RadioButtonGroup name="walking_job" className="right" defaultSelected={formRef.walking_job} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.walking_job.walking_jobError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.six}</label>
+                <RadioButtonGroup name="walking_job" className="right" defaultSelected={formRef.walking_job} onChange={(event: any) => { this.validationCheck(event, 'walking_job'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -327,8 +448,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.seven}?</label>
-                <RadioButtonGroup name="stand_bend" className="right" defaultSelected={formRef.stand_bend} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.stand_bend.stand_bendError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.seven}?</label>
+                <RadioButtonGroup name="stand_bend" className="right" defaultSelected={formRef.stand_bend} onChange={(event: any) => { this.validationCheck(event, 'stand_bend'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
@@ -345,8 +466,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.eight}</label>
-                <RadioButtonGroup name="basic_maths" className="right" defaultSelected={formRef.basic_maths} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.basic_maths.basic_mathsError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.eight}</label>
+                <RadioButtonGroup name="basic_maths" className="right" defaultSelected={formRef.basic_maths} onChange={(event: any) => { this.validationCheck(event, 'basic_maths'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -363,8 +484,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.nine}</label>
-                <RadioButtonGroup name="tape_mesurement" className="right" defaultSelected={formRef.tape_mesurement} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.tape_mesurement.tape_mesurementError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.nine}</label>
+                <RadioButtonGroup name="tape_mesurement" className="right" defaultSelected={formRef.tape_mesurement} onChange={(event: any) => { this.validationCheck(event, 'tape_mesurement'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -381,8 +502,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.ten}</label>
-                <RadioButtonGroup name="use_calculator" className="right" defaultSelected={formRef.use_calculator} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.use_calculator.use_calculatorError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.ten}</label>
+                <RadioButtonGroup name="use_calculator" className="right" defaultSelected={formRef.use_calculator} onChange={(event: any) => { this.validationCheck(event, 'use_calculator'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
@@ -399,8 +520,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.eleven}</label>
-                <RadioButtonGroup name="use_pc" className="right" defaultSelected={formRef.use_pc} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.use_pc.use_pcError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.eleven}</label>
+                <RadioButtonGroup name="use_pc" className="right" defaultSelected={formRef.use_pc} onChange={(event: any) => { this.validationCheck(event, 'use_pc'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
@@ -417,8 +538,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.twelve}</label>
-                <RadioButtonGroup name="operated_forklift" className="right" defaultSelected={formRef.operated_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ forklift: false }) : this.setState({ forklift: true }) }}>
+                <label style={this.state.error.operated_forklift.operated_forkliftError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.twelve}</label>
+                <RadioButtonGroup name="operated_forklift" className="right" defaultSelected={formRef.operated_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.validationCheck(event, 'operated_forklift'); this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ forklift: false }) : this.setState({ forklift: true }) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -438,20 +559,23 @@ class Skills extends React.Component<any, any>{
                     <TextField
                         hintText=""
                         value={formRef.operated_forklift}
+                        errorStyle={Styling.errorMsg}
+                        errorText={this.state.error.operated_forklift.operated_forkliftError ? this.state.error.operated_forklift.msg : null}
                         onChange={(event: any) => {
+                            this.validationCheck(event, 'operated_forklift')
                             formRef.operated_forklift = event.target.value
                             this.setState(formRef);
                         }
                         }
-                        onBlur={(event: any) => { this.handleTargetEvents(event) }}
+                        onBlur={(event: any) => { this.validationCheck(event, 'operated_forklift'); this.handleTargetEvents(event) }}
                         fullWidth={true}
                         floatingLabelText={experience}
                         name="operated_forklift"
                     />
                     : null}
                 <br /><br />
-                <label className="inline-fields">{questions.thirteen}</label>
-                <RadioButtonGroup name="certified_forklift" className="right" defaultSelected={formRef.certified_forklift !== "false" ? "true" : "false"} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.certified_forklift.certified_forkliftError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.thirteen}</label>
+                <RadioButtonGroup name="certified_forklift" className="right" defaultSelected={formRef.certified_forklift} onChange={(event: any) => { this.validationCheck(event, 'certified_forklift'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -468,8 +592,8 @@ class Skills extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 <br /><br />
-                <label className="inline-fields">{questions.fourteen}</label>
-                <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack !== "true" ? "false" : "true"} onChange={(event: any) => { this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
+                <label style={this.state.error.operated_pallet_jack.operated_pallet_jackError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.fourteen}</label>
+                <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack?'false':'true'} onChange={(event: any) => { this.validationCheck(event, 'operated_pallet_jack'); this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
@@ -485,12 +609,15 @@ class Skills extends React.Component<any, any>{
                         labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
-                {this.state.palletJack || formRef.operated_pallet_jack !== "true" ?
+                {this.state.palletJack || formRef.operated_pallet_jack !== "false" ?
                     <TextField
                         hintText=""
-                        onBlur={(event: any) => { this.handleTargetEvents(event) }}
+                        onBlur={(event: any) => {this.validationCheck(event,'operated_pallet_jack') ;this.handleTargetEvents(event) }}
                         fullWidth={true}
+                        errorStyle={Styling.errorMsg}
+                        errorText={this.state.error.operated_pallet_jack.operated_pallet_jackError ? this.state.error.operated_pallet_jack.msg : null}
                         onChange={(event: any) => {
+                            this.validationCheck(event,'operated_pallet_jack')
                             formRef.operated_pallet_jack = event.target.value
                             this.setState(formRef);
                         }
@@ -501,8 +628,8 @@ class Skills extends React.Component<any, any>{
                     />
                     : null}
                 <br /><br />
-                <label className="inline-fields">{questions.fifteen}</label>
-                <RadioButtonGroup name="steel_shoes" defaultSelected={formRef.steel_shoes} className="right" onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <label style={this.state.error.steel_shoes.steel_shoesError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.fifteen}</label>
+                <RadioButtonGroup name="steel_shoes" defaultSelected={formRef.steel_shoes} className="right" onChange={(event: any) => { this.validationCheck(event,'steel_shoes');this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"

@@ -11,7 +11,7 @@ var Styling = {
         fontSize: "16px",
         marginBottom: "13px",
         display: "block",
-        color: "red",
+        color: "rgb(244, 67, 54)",
         marginLeft: "-7px",
         fontFamily: "'Roboto', sans-serif",
     },
