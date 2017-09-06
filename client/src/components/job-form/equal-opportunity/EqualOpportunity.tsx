@@ -15,6 +15,14 @@ class EqualOpportunity extends React.Component<any, any>{
                 gender: "male",
                 race: "",
                 veteran: ""
+            },
+            error: {
+                veteran: {
+                    veteranError: false, msg: ""
+                },
+                race: {
+                    raceError: false, msg: ""
+                }
             }
         };
     }
@@ -30,6 +38,28 @@ class EqualOpportunity extends React.Component<any, any>{
         }
     }
 
+    setError = (event: any) => {
+        let current = this.state.error[event];
+        current[event + "Error"] = true;
+        current["msg"] = event + " field is required";
+        this.setState(current)
+    }
+
+    validationCheck = (event: any, name: any) => {
+        if (event.target.value === "") {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = true;
+            currentState["msg"] = name + " field is required";
+            this.setState(currentState);
+        }
+        else {
+            let currentState = this.state.error[name];
+            currentState[name + "Error"] = false;
+            currentState["msg"] = name + "";
+            this.setState(currentState);
+
+        }
+    }
     //selecting json according to selected lanugage 
     componentWillReceiveProps(nextProp: any) {
         this.setState({
@@ -39,7 +69,17 @@ class EqualOpportunity extends React.Component<any, any>{
 
     //handling next state
     handleNext = () => {
-        this.props.handleNext("equal-form", this.state.form);
+        if (this.state.form.veteran && this.state.form.race) {
+            this.props.handleNext("equal-form", this.state.form);
+        }
+        else {
+            if (!this.state.form.veteran) {
+                this.setError('veteran');
+            }
+            if (!this.state.form.race) {
+                this.setError('race');
+            }
+        }
     }
 
     //handling previous state
@@ -77,12 +117,13 @@ class EqualOpportunity extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup> <br /><br />
-                <p className="title">{raceEthnicity}</p>
+                <p style={this.state.error.race.raceError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{raceEthnicity}</p>
                 <RadioButtonGroup name="race" defaultSelected={
                     formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
                         "other" : formRef.race
                 }
                     onChange={(event: any) => {
+                        this.validationCheck(event, 'race');
                         this.handleTargetEvents(event);
                         (event.target.value === 'other' ? this.setState({ other: true }) :
                             this.setState({ other: false }))
@@ -101,7 +142,7 @@ class EqualOpportunity extends React.Component<any, any>{
                     <RadioButton
                         value="hispanic"
                         label={hispanic}
-                                                iconStyle={Styling.iconStyle}
+                        iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="native american"
@@ -120,21 +161,26 @@ class EqualOpportunity extends React.Component<any, any>{
                     />
                 </RadioButtonGroup>
                 {this.state.other || formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
-                    <TextField
-                        floatingLabelText={other}
-                        name="race"
-                        className="text-area"
-                        onChange={(event: any) => {
-                            formRef.race = event.target.value
-                            this.setState(formRef);
-                        }
-                        }
-                        value={formRef.race}
-                        onBlur={this.handleTargetEvents}
-                    /> : null
+                    <div>
+                        <TextField
+                            floatingLabelText={other}
+                            name="race"
+                            errorStyle={Styling.errorMsg}
+                            errorText={this.state.error.race.raceError ? this.state.error.race.msg : null}
+                            className="text-area"
+                            onChange={(event: any) => {
+                                this.validationCheck(event, 'race')
+                                formRef.race = event.target.value
+                                this.setState(formRef);
+                            }
+                            }
+                            value={formRef.race}
+                            onBlur={(event: any) => { this.validationCheck(event, 'race'); this.handleTargetEvents }}
+                        /> {this.state.error.race.raceError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    </div> : null
                 } <br /><br />
-                <p className="title">{veteranStatus} </p>
-                <RadioButtonGroup name="veteran" defaultSelected={formRef.veteran} onChange={(event: any) => { this.handleTargetEvents(event) }}>
+                <p style={this.state.error.veteran.veteranError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{veteranStatus} </p>
+                <RadioButtonGroup name="veteran" defaultSelected={formRef.veteran} onChange={(event: any) => { this.validationCheck(event, 'veteran'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="veteran"
                         label={veteran}

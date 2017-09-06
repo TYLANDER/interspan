@@ -22,6 +22,18 @@ class References extends React.Component<any, any>{
                     name: "",
                     relation: ""
                 }]
+            },
+            error: {
+                references: [{
+                    name: { nameError: false, msg: "" },
+                    relation: { relationError: false, msg: "" },
+                    telephone: { telephoneError: false, msg: "" }
+                }],
+                friendRef: [{
+                    name: { nameError: false, msg: "" },
+                    relation: { relationError: false, msg: "" },
+                }]
+
             }
         };
     }
@@ -30,18 +42,89 @@ class References extends React.Component<any, any>{
     componentWillMount() {
         if (localStorage.getItem('reference-form') !== null) {
             let data: any = localStorage.getItem('reference-form');
-            data = JSON.parse(data)
+            data = JSON.parse(data);
+            let dataArray = this.state.error;
+            let errorHistory: any = [];
+            let friendHistory: any = [];
+            data.references.map((arr: any) => {
+                errorHistory.push({
+                    name: { nameError: false, msg: "" },
+                    relation: { relationError: false, msg: "" },
+                    telephone: { telephoneError: false, msg: "" }
+                })
+            });
+            data.friendRef.map((arr: any) => {
+                friendHistory.push({
+                    name: { nameError: false, msg: "" },
+                    relation: { relationError: false, msg: "" },
+                })
+            })
+            dataArray.references = errorHistory;
+            dataArray.friendRef = friendHistory;
             this.setState({
                 form: data,
                 family: data.friendRef.length,
-                reference: data.references.length
+                reference: data.references.length,
+                dataArray
             })
         }
     }
+    setError = (event: any, name: any, index: any) => {
+        let current = this.state.error[event][index][name];
+        current[name + "Error"] = true;
+        current["msg"] = name + " field is required";
+        console.log(current);
+        this.setState(current)
+    }
 
+    referenceValidationCheck = (event: any, name: any, index: any) => {
+        console.log()
+    }
     //Handling next state
     handleNext = () => {
-        this.props.handleNext("reference-form", this.state.form);
+        var relationDone = false;
+        var friendDone = false;
+
+        this.state.form.references.map((arr: any, index: any) => {
+            if (arr.name && arr.relation && arr.telephone) {
+                relationDone = true;
+            }
+            else {
+                if (!arr.name) {
+                    this.setError('references', 'name', index);
+                }
+                if (!arr.relation) {
+                    this.setError('references', 'relation', index);
+                }
+                if (!arr.telephone) {
+                    this.setError('references', 'telephone', index);
+                }
+            }
+        })
+        this.state.form.friendRef.map((arr: any, index: any) => {
+            if (arr.name && arr.relation) {
+                friendDone = true;
+            }
+            else {
+                if (!arr.name) {
+                    this.setError('friendRef', 'name', index);
+                }
+                if (!arr.relation) {
+                    this.setError('friendRef', 'relation', index);
+                }
+            }
+        })
+        if (relationDone && friendDone) {
+            this.props.handleNext("reference-form", this.state.form);
+        }
+
+        // if (this.state.form.street_address) {
+        // }
+        // else {
+        //     if (!this.state.form.street_address) {
+        //         this.setError('address')
+        //     }
+        // }
     }
 
     //Handling previous state
@@ -66,33 +149,47 @@ class References extends React.Component<any, any>{
     //Making and managing multiple references lists
     handleReference = (action: string) => {
         let formRef = this.state.form["references"];
+        let formRefError = this.state.error['references'];
         if (action === "add") {
             formRef.push({
                 name: "",
                 relation: "",
                 telephone: ""
             });
-            this.setState({ reference: this.state.reference + 1, formRef })
+            formRefError.push({
+                name: { nameError: false, msg: "" },
+                relation: { relationError: false, msg: "" },
+                telephone: { telephoneError: false, msg: "" }
+            })
+            this.setState({ reference: this.state.reference + 1, formRef, formRefError })
         }
         else {
             formRef.pop();
-            this.setState({ reference: this.state.reference - 1, formRef })
+            formRefError.pop();
+            this.setState({ reference: this.state.reference - 1, formRef, formRefError })
         }
     }
 
     //Making and managing multiple friend references list
     handleFriend = (action: string) => {
         let formRef = this.state.form["friendRef"];
+        let formRefError = this.state.error['friendRef'];
+
         if (action === "add") {
             formRef.push({
                 name: "",
                 relation: ""
             });
-            this.setState({ family: this.state.family + 1, formRef })
+            formRefError.push({
+                name: { nameError: false, msg: "" },
+                relation: { relationError: false, msg: "" },
+            })
+            this.setState({ family: this.state.family + 1, formRef, formRefError })
         }
         else {
             formRef.pop();
-            this.setState({ family: this.state.family - 1, formRef })
+            formRefError.pop();
+            this.setState({ family: this.state.family - 1, formRef, formRefError })
         }
     }
 
@@ -102,7 +199,7 @@ class References extends React.Component<any, any>{
         formRef[arrRef][ind][event.target.name] = event.target.value;
         this.setState(formRef)
     }
-    
+
     render() {
         const { name, relation, telephone, friends } = this.state.selectedJson;
         var reference = [];
@@ -111,22 +208,34 @@ class References extends React.Component<any, any>{
             reference.push(<div key={i}>
                 <TextField
                     floatingLabelText={name}
+                    fullWidth
+                    className="text-area"
                     value={this.state.form.references[i].name}
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.references[i].name.nameError ? this.state.error.references[i].name.msg : null}
                     name="name"
                     style={{ marginRight: "50px" }}
                     onChange={this.handleText.bind(this, "references", i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
                 <TextField
+                    fullWidth
+                    className="text-area"
                     floatingLabelText={relation}
                     name="relation"
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.references[i].relation.relationError ? this.state.error.references[i].relation.msg : null}
                     value={this.state.form.references[i].relation}
                     style={{ marginRight: "50px" }}
                     onChange={this.handleText.bind(this, "references", i)}
                     onBlur={this.handleTargetEvents.bind(this, "references", i)}
                 />
                 <TextField
+                    fullWidth
+                    className="text-area"
                     floatingLabelText={telephone}
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.references[i].telephone.telephoneError ? this.state.error.references[i].telephone.msg : null}
                     name="telephone"
                     value={this.state.form.references[i].telephone}
                     onChange={this.handleText.bind(this, "references", i)}
@@ -139,6 +248,10 @@ class References extends React.Component<any, any>{
                 <TextField
                     floatingLabelText={name}
                     name="name"
+                    fullWidth
+                    className="text-area"
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.friendRef[i].name.nameError ? this.state.error.friendRef[i].name.msg : null}
                     style={{ marginRight: "50px" }}
                     value={this.state.form.friendRef[i].name}
                     onChange={this.handleText.bind(this, "friendRef", i)}
@@ -147,6 +260,10 @@ class References extends React.Component<any, any>{
                 <TextField
                     floatingLabelText={relation}
                     name="relation"
+                    fullWidth
+                    className="text-area"
+                    errorStyle={Styling.errorMsg}
+                    errorText={this.state.error.friendRef[i].relation.relationError ? this.state.error.friendRef[i].relation.msg : null}
                     onChange={this.handleText.bind(this, "friendRef", i)}
                     value={this.state.form.friendRef[i].relation}
                     onBlur={this.handleTargetEvents.bind(this, "friendRef", i)}
