@@ -147,14 +147,25 @@ class Home extends React.Component<any, any> {
                     </p>
                             <FlatButton labelStyle={Styling.buttonLabel} className="get-started-button" style={Styling.addButton} label={<b>Get Started</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
                             <FlatButton labelStyle={Styling.buttonLabel} className="home-apply-button" style={Styling.addButton} label={<b>Apply</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
+                            <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
+                                <span className="icon-mobile">
+                                    <img src={require("../../assets/mobile-arrow.png")} />
+                                </span>
+                                <span className="icon">
+                                    <img src={require("../../assets/arrow-down.svg")} />
+                                </span>
 
+                                <span className="text">
+                                    SCROLL DOWN
+                       </span>
+                            </div>
                         </div>
                         <div className="header-image">
                             <img src={require("../../assets/header-image.png")} />
                         </div>
 
                     </div>
-                    <div className="scroll-down" onClick={() => this.props.scrolling()}>
+                    <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
                             <img src={require("../../assets/mobile-arrow.png")} />
                         </span>
