@@ -129,16 +129,14 @@
     align-self:flex-end;
 }
 .job-sub-menu .card-icon{
-    width:18px !important;
-    height:18px !important;
+    width:16px !important;
+    height:16px !important;
     position:absolute;
     top:14px;
-    right:12px
+    right:14px
 }
 .job-sub-menu .categories-disabled{
-  opacity: 0.4;
-  color:#414141;
-
+  color:#a49f9f !important
 }
   .navbar-container .sm-screen .menu-container{
     display:none;

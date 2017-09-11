@@ -3,7 +3,6 @@ import { AppBar, Card, RaisedButton, FlatButton, SelectField, MenuItem} from 'ma
 // import Done from 'material-ui/svg-icons/action/done';
 // import Arrow from 'material-ui/svg-icons/av/play-arrow';
 // import NotIntrested from 'material-ui/svg-icons/av/not-interested';
-import Cancelled from 'material-ui/svg-icons/navigation/cancel';
 import Done from 'material-ui/svg-icons/action/check-circle';
 import './NavBar.css';
 import { connect } from 'react-redux';
@@ -292,37 +291,37 @@ class NavBar extends React.Component<any, any> {
                     {(this.state.jobMenuOpen) ?
                         <div className="job-sub-menu slide-in-job">
                             <Card className={this.stateData.visited.indexOf(0) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.applicationInformation}</span>{this.stateData.visited.indexOf(0) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.applicationInformation}</span>{this.stateData.visited.indexOf(0) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(1) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.jobLocation}</span>{this.stateData.visited.indexOf(1) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.jobLocation}</span>{this.stateData.visited.indexOf(1) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(2) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.educationTraining}</span>{this.stateData.visited.indexOf(2) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.educationTraining}</span>{this.stateData.visited.indexOf(2) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(3) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.employementHistory}</span>{this.stateData.visited.indexOf(3) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.employementHistory}</span>{this.stateData.visited.indexOf(3) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(4) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.personalInformation}</span>{this.stateData.visited.indexOf(4) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.personalInformation}</span>{this.stateData.visited.indexOf(4) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(5) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.lightIndustrialSkills}</span>{this.stateData.visited.indexOf(5) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.lightIndustrialSkills}</span>{this.stateData.visited.indexOf(5) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(6) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.media}</span>{this.stateData.visited.indexOf(6) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.media}</span>{this.stateData.visited.indexOf(6) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(7) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.equalOpportunity}</span>{this.stateData.visited.indexOf(7) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.equalOpportunity}</span>{this.stateData.visited.indexOf(7) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(8) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.transportation}</span>{this.stateData.visited.indexOf(8) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.transportation}</span>{this.stateData.visited.indexOf(8) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(9) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.references}</span>{this.stateData.visited.indexOf(9) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.references}</span>{this.stateData.visited.indexOf(9) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                             <Card className={this.stateData.visited.indexOf(10) !== -1 ? "categories" : "categories categories-disabled"}>
-                                <li><span>{this.stateData.selectedJson.headings.certification}</span>{this.stateData.visited.indexOf(10) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><Cancelled className="card-icon" color="#ec506d" /></span>}</li>
+                                <li><span>{this.stateData.selectedJson.headings.certification}</span>{this.stateData.visited.indexOf(10) !== -1 ? <span><Done className="card-icon" color="#00ca02" /></span> : <span><img src={require('../../assets/close.svg')} className="card-icon" /></span>}</li>
                             </Card>
                         </div>
                         : null}
