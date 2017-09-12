@@ -1,11 +1,13 @@
 .width-limit{
   max-width: 1116px;
   margin: 0 auto;
+  opacity: 1;
 }
 .child-page-active{
   max-width: 1116px;
   margin: 0 auto;
-  display:none; 
+  opacity:0.5;
+  /*display:none; */
 }
 
 body{

@@ -8,7 +8,7 @@
   font-family: 'Roboto',sans-serif;
 }
 .home-container .main-paper-parent{
-  max-width: 1266px;
+  max-width: 1306px;
   margin: 0 auto;
 }
 .home-container .arrow-next{
@@ -242,8 +242,8 @@
 
 @media (max-width: 945px) {
   .apply-paper {
-     width: 98% !important;
-     margin: 7px;
+     width: 94% !important;
+     /*margin: 7px;*/
   }
   .home-header-container .background-image {
     max-width: initial;
@@ -402,4 +402,21 @@
   float: right;
   cursor: pointer;
   margin-right: -16px;
+}
+
+@media(min-width:1380px)
+{
+  .home-container .paper-parent{
+      columns: 4;
+      column-gap: 3em;
+      -webkit-columns: 4;
+      -moz-columns: 4
+  }
+}
+
+@media(max-width:1380px){
+  .home-container .main-paper-parent{
+    max-width:1023px;
+
+  }
 }
