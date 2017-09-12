@@ -226,7 +226,7 @@ class NavBar extends React.Component<any, any> {
             <AppBar
                 zDepth={1}
                 className={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?"navbar-login-items":"icon-menu-hamburger"}
-                iconElementLeft={this.state.jobMenuOpen ? <span></span> : <img className="logo-navbar" src={require("../../assets/logos.png")} />}
+                iconElementLeft={<img className="logo-navbar" src={require("../../assets/logos.png")} />}
                 iconElementRight={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="sm-screen"><img className="dash-icon" src={require("../../assets/dash-icon.png")} />{menu}</div>:languageSelect}
                 title={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="title-bar"><p className="title">Let's get started</p><img src={require('../../assets/logos.png')} /></div>:null}
                 style={{ zIndex: 1, backgroundColor: "white", transition: "none" }}
