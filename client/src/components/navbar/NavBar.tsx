@@ -131,12 +131,12 @@ class NavBar extends React.Component<any, any> {
         const menu = (
             <div className="menu-container">
                 <span>
-                    <Link className="navigation-button-about" to="/about">About</Link>
+                    <Link className={this.props.router.location.pathname==='/about'?"navigation-button":"navigation-button-about"} to="/about">About</Link>
                     {/*<FlatButton label="About" className="navigation-button-about" labelStyle={{ textTransform: 'capitalize' }}
                         onTouchTap={this.handleStaticUrl.bind(null, 'about', false)} />*/}
                     {/*<FlatButton label="Employers" className="navigation-button" labelStyle={{ textTransform: 'capitalize' }}
                         onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)} />*/}
-                    <Link className="navigation-button" to="/employee">Employers</Link>
+                    <Link className={this.props.router.location.pathname==='/employee'?"navigation-button":"navigation-button-about"} to="/employee">Employers</Link>
                     <RaisedButton label="Apply" onTouchTap={this.props.logout} className="apply-button"
                         labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)"}}
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
