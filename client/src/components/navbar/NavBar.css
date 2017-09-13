@@ -45,17 +45,20 @@
 .navbar-container .lang-select{
   width: 64px !important;
   bottom: 14px;
+  top:25px;
   /*right: 45px;
-  top:10px;*/
-  position:static !important;
+  /*position:static !important;*/
   height:32px !important;
   border-radius: 7px;
   border:1px solid #f2f2f2;
-  display:inline-flex !important;
+  /*display:-webkit-inline-box !important;*/
   justify-content: center;
   align-items: center;
   margin-right:8px;
   /*z-index: -9000 !important;*/
+}
+.navbar-container .dashboard-icon {
+  vertical-align: inherit !important
 }
 .navbar-container .logo-navbar{
   width:50px;
@@ -79,7 +82,8 @@
 }
 .navbar-container .close-icon{
   margin-top:12px;
-  cursor:pointer
+  cursor:pointer;
+  vertical-align: inherit !important
 }
 .navbar-container .sub-menu{
   padding-left: 21px;

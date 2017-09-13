@@ -109,7 +109,7 @@ class NavBar extends React.Component<any, any> {
         username = JSON.parse(username);
         const languageSelect = (
             this.props.router.location.pathname === "/job" ?
-                <div className="navbar-right-icon" style={{ marginTop: "2px", display: "inline-block" }}>
+                <div className="navbar-right-icon" style={{ marginTop: "-13px", display: "inline-block" }}>
                     <SelectField
                         className="lang-select"
                         labelStyle={{ color: "black", textOverflow: "none", lineHeight: "40px", paddingLeft: "15px" }}
