@@ -16,6 +16,18 @@ class EmployeeInfo extends React.Component<any, any> {
                             <div className="title-desc">
                                 Spanning the gap. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
                     </div>
+                            <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
+                                <span className="icon-mobile">
+                                    <img src={require("../../assets/mobile-arrow.png")} />
+                                </span>
+                                <span className="icon">
+                                    <img src={require("../../assets/arrow-down.svg")} />
+                                </span>
+
+                                <span className="text">
+                                    SCROLL DOWN
+                       </span>
+                            </div>
                             {/*<p className="apply-desc">
                                 We have open positions now, and applying is easy.
                     </p>*/}
@@ -23,9 +35,8 @@ class EmployeeInfo extends React.Component<any, any> {
                         <div className="header-image">
                             <img src={require("../../assets/employee-image.png")} />
                         </div>
-
                     </div>
-                    <div className="scroll-down" onClick={()=>this.props.scrolling()}>
+                                        <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
                             <img src={require("../../assets/mobile-arrow.png")} />
                         </span>
@@ -37,6 +48,7 @@ class EmployeeInfo extends React.Component<any, any> {
                             SCROLL DOWN
                        </span>
                     </div>
+
                 </div>
                 <div className="employee-content">
                     <p className="first"> InterSpan offers specialized workforce solutions tailored to each client’s needs. If you have labor needs we can help you meet them. As a family owned and operated business we are flexible and can meet the specific needs of you site. We take the time to screen candidates and make sure the right person is sent to your jobsite. We fill temporary and temp-to-permanent job assignments. Currently we specialize in light industrial placements including:</p>
@@ -94,7 +106,7 @@ class EmployeeInfo extends React.Component<any, any> {
                     <p className="text">
                         Interspan provides quality employees to companies that need them.
                         </p>
-                    <FlatButton labelStyle={{ color: "#3B7CFF",textTransform:'none',fontSize:'19px',fontWeight:400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>

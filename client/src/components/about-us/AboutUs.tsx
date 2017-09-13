@@ -37,6 +37,19 @@ class AboutUs extends React.Component<any, any> {
                             <img src={require("../../assets/about-image.png")} />
                         </div>
                     </div>
+                    <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
+                        <span className="icon-mobile">
+                            <img src={require("../../assets/mobile-arrow.png")} />
+                        </span>
+                        <span className="icon">
+                            <img src={require("../../assets/arrow-down.svg")} />
+                        </span>
+
+                        <span className="text">
+                            SCROLL DOWN
+                       </span>
+                    </div>
+
                 </div>
                 <div className="aboutus-content">
                     <p className="first"> In 1995 Mike Daugherty Sr. (Mr. Mike) and his daughter, Wanda Klein, noticed a gap. They knew that there were many people in Richmond, Virginia seeking employment and that there were many companies in the area looking for quality employees</p>
@@ -48,7 +61,7 @@ class AboutUs extends React.Component<any, any> {
                     <p className="text">
                         For <b> more information</b> on our services please contact us:
                         </p>
-                    <FlatButton labelStyle={{ color: "#3B7CFF",textTransform:'none',fontSize:'19px',fontWeight:400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>
