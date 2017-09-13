@@ -19,11 +19,11 @@ class Home extends React.Component<any, any> {
     carouselRef: any;
     carouselArray = [
         {
-            title: '-- 1Jesse Hudson, UI/UX designer',
+            title: '-- Jesse Hudson, UI/UX designer',
             contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
         },
-                {
-            title: '-- 2Jesse Hudson, UI/UX designer',
+        {
+            title: '-- Jesse Hudson, UI/UX designer',
             contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
         },
     ];
@@ -212,16 +212,16 @@ class Home extends React.Component<any, any> {
                 </div>
 
                 <div className="slider-section">
-                    <Carousel onChange={(event:any)=>this.setState({status:event})} ref={(event: any) => this.carouselRef = event} showIndicators={false} showThumb={false} showStatus={false} showArrows={false} emulateTouch>
+                    <Carousel onChange={(event: any) => this.setState({ status: event })} ref={(event: any) => this.carouselRef = event} showIndicators={false} showThumb={false} showStatus={false} showArrows={false}>
                         {this.carouselArray.map((arr, id) => {
                             return (
                                 <div key={id} className="carousel-contents">
                                     <p className="carousel-title">
-                                      {arr.title}
-                            </p>
+                                        {arr.title}
+                                    </p>
                                     <p className="contents">
-                                       {arr.contents}
-                            </p>
+                                        {arr.contents}
+                                    </p>
                                 </div>
                             )
                         })}
@@ -229,10 +229,10 @@ class Home extends React.Component<any, any> {
                     <div className='carousel-dots'>
                         {this.state.carouselElement.state ? this.carouselArray.map((arr, index) => {
                             if (this.state.status == index) {
-                                return <img key ={index} onClick={(e) => { this.carouselRef.selectItem({ selectedItem: index }) }} src={require('../../assets/Group.svg')} />
+                                return <img key={index} onClick={(e) => { this.carouselRef.selectItem({ selectedItem: index }) }} src={require('../../assets/Group.svg')} />
                             }
                             else {
-                                return <img key ={index} onClick={(e) => { this.carouselRef.selectItem({ selectedItem: index }) }} src={require('../../assets/Dot.svg')} />
+                                return <img key={index} onClick={(e) => { this.carouselRef.selectItem({ selectedItem: index }) }} src={require('../../assets/Dot.svg')} />
 
                             }
                         }) : <div></div>}

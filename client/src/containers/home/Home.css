@@ -15,7 +15,7 @@
     position: absolute;
     top: 50%;
     bottom: 50%;
-    left: 9%;
+    left: 5%;
     cursor: pointer;
 
 }
@@ -44,7 +44,7 @@
     position: absolute;
     top: 50%;
     bottom: 50%;
-    right: 9%;
+    right: 5%;
     cursor: pointer;
 }
 @media(max-width:1032px){
@@ -276,7 +276,10 @@
   .mobile-view{
     display:block;
   }
-
+.home-container .carousel-dots{
+  left:48%;
+  top:75%
+}
   .apply-paper .more-button > div > span{
     font-size:12px !important;
     font-weight: bold !important
