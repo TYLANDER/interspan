@@ -8,7 +8,7 @@ class AboutUs extends React.Component<any, any> {
     render() {
         return (
             <div className="home-container">
-                <div className="home-header-container">
+                <div className="home-header-container about">
                     <div className="header-body">
                         <img className="background-image" src={require('../../assets/back.png')} />
                         <img className="background-image-mobile" src={require('../../assets/back-mobile.png')} />
@@ -20,23 +20,22 @@ class AboutUs extends React.Component<any, any> {
                             {/*<p className="apply-desc">
                                 We have open positions now, and applying is easy.
                     </p>*/}
+                            <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
+                                <span className="icon-mobile">
+                                    <img src={require("../../assets/mobile-arrow.png")} />
+                                </span>
+                                <span className="icon">
+                                    <img src={require("../../assets/arrow-down.svg")} />
+                                </span>
+
+                                <span className="text">
+                                    SCROLL DOWN
+                       </span>
+                            </div>
                         </div>
                         <div className="header-image">
                             <img src={require("../../assets/about-image.png")} />
                         </div>
-
-                    </div>
-                    <div className="scroll-down" onClick={()=>this.props.scrolling()}>
-                        <span className="icon-mobile">
-                            <img src={require("../../assets/mobile-arrow.png")} />
-                        </span>
-                        <span className="icon">
-                            <img src={require("../../assets/arrow-down.svg")} />
-                        </span>
-
-                        <span className="text">
-                            SCROLL DOWN
-                       </span>
                     </div>
                 </div>
                 <div className="aboutus-content">
@@ -49,7 +48,7 @@ class AboutUs extends React.Component<any, any> {
                     <p className="text">
                         For <b> more information</b> on our services please contact us:
                         </p>
-                        <FlatButton labelStyle={{color:"#3B7CFF"}} style={{borderRadius:"6px"}} hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF",textTransform:'none',fontSize:'19px',fontWeight:400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>

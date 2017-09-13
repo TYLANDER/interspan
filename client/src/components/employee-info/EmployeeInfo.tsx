@@ -90,11 +90,11 @@ class EmployeeInfo extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                <div className="contact-us">
+                <div className="contact-us employee">
                     <p className="text">
                         Interspan provides quality employees to companies that need them.
                         </p>
-                    <FlatButton labelStyle={{ color: "#3B7CFF" }} style={{ borderRadius: "6px" }} hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF",textTransform:'none',fontSize:'19px',fontWeight:400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>

@@ -5,6 +5,9 @@
   line-height: 28px;
   border-bottom:1px solid #f2f2f2;
 }
+.about .background-image-mobile{
+  /*bottom:0 !important;*/
+}
 .aboutus-content .second , .aboutus-content .last{
   margin-top:30px;
   color:#2e2e2e;
@@ -13,6 +16,11 @@
   padding-bottom:20px;
   opacity: 0.72;
   border-bottom:1px solid #f2f2f2;
+}
+.contact-us .contact-us-button{
+  width: 134px !important;
+  height: 44px !important;
+  text-transform: none !important
 }
 .aboutus-content .last{
   border:0;
