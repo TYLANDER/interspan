@@ -11,13 +11,23 @@ import { connect } from 'react-redux';
 import Styling from "../../components/job-form/jobTheme";
 import Footer from "../../components/footer/footer";
 import "../../assets/carousel.css";
-
 const Carousel = require('react-responsive-carousel').Carousel;
 
 class Home extends React.Component<any, any> {
     gettingData = false;
     panelArray: any;
     carouselRef: any;
+    carouselArray = [
+        {
+            title: '-- 1Jesse Hudson, UI/UX designer',
+            contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
+        },
+                {
+            title: '-- 2Jesse Hudson, UI/UX designer',
+            contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
+        },
+    ];
+
     constructor(props: any) {
         super(props);
 
@@ -27,7 +37,8 @@ class Home extends React.Component<any, any> {
         }
         this.state = {
             panelArray: [{ showMore: false }],
-            carouselElement: ""
+            carouselElement: "",
+            status: 0
         };
     }
 
@@ -199,39 +210,38 @@ class Home extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-                <div className="slider-section">
-                    <Carousel ref={(event: any) => this.carouselRef = event} showThumb={false} showStatus={false} showArrows={false} emulateTouch>
-                        <div className="carousel-contents">
-                            <p className="carousel-title">
-                                -- Jesse Hudson, UI/UX designer
-                            </p>
-                            <p className="contents">
-                                "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."
-                            </p>
-                        </div>
-                        <div className="carousel-contents">
-                            <p className="carousel-title">
-                                -- Jesse Hudson, UI/UX designer
-                            </p>
-                            <p className="contents">
-                                "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."
-                            </p>
-                        </div>
-                        <div className="carousel-contents">
-                            <p className="carousel-title">
-                                -- Jesse Hudson, UI/UX designer
-                            </p>
-                            <p className="contents">
-                                "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."
-                            </p>
-                        </div>
 
+                <div className="slider-section">
+                    <Carousel onChange={(event:any)=>this.setState({status:event})} ref={(event: any) => this.carouselRef = event} showIndicators={false} showThumb={false} showStatus={false} showArrows={false} emulateTouch>
+                        {this.carouselArray.map((arr, id) => {
+                            return (
+                                <div key={id} className="carousel-contents">
+                                    <p className="carousel-title">
+                                      {arr.title}
+                            </p>
+                                    <p className="contents">
+                                       {arr.contents}
+                            </p>
+                                </div>
+                            )
+                        })}
                     </Carousel>
+                    <div className='carousel-dots'>
+                        {this.state.carouselElement.state ? this.carouselArray.map((arr, index) => {
+                            if (this.state.status == index) {
+                                return <img key ={index} onClick={(e) => { this.carouselRef.selectItem({ selectedItem: index }) }} src={require('../../assets/Group.svg')} />
+                            }
+                            else {
+                                return <img key ={index} onClick={(e) => { this.carouselRef.selectItem({ selectedItem: index }) }} src={require('../../assets/Dot.svg')} />
+
+                            }
+                        }) : <div></div>}
+                    </div>
                     <div className="arrow-next">
-                        <img src={require("../../assets/arrow-caro.png")} onClick={() => this.state.carouselElement.decrement()} />
+                        <img src={require("../../assets/arrow-caro.png")} onClick={() => this.carouselRef.decrement()} />
                     </div>
                     <div className="arrow-prev">
-                        <img src={require("../../assets/prev-carp.png")} onClick={() => this.state.carouselElement.increment()} />
+                        <img src={require("../../assets/prev-carp.png")} onClick={() => this.carouselRef.moveTo(this.carouselRef.state.selectedItem + 1)} />
                     </div>
 
                     {/*</div>*/}

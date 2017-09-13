@@ -205,7 +205,7 @@
       .carousel .control-dots {
         bottom: 125px; } }
     .carousel .control-dots .dot {
-      -webkit-transition: opacity 0.25s ease-in;
+      /*-webkit-transition: opacity 0.25s ease-in;
       -moz-transition: opacity 0.25s ease-in;
       -ms-transition: opacity 0.25s ease-in;
       -o-transition: opacity 0.25s ease-in;
@@ -219,7 +219,15 @@
       height: 8px;
       cursor: pointer;
       display: inline-block;
-      margin: 0 8px; }
+      margin: 0 8px; }*/
+      background: #BEC2C9;
+      border-radius: 50%;
+      width: 5px;
+      height: 5px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 8px;  
+    }
       .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
         opacity: 1;
         filter: alpha(opacity=100); }

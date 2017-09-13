@@ -19,6 +19,19 @@
     cursor: pointer;
 
 }
+.home-container .carousel-dots{
+  position: absolute;
+  top: 68%;
+  bottom: 50%;
+  left: 50%;
+  cursor: pointer;
+}
+.home-container .carousel-dots > img{
+  padding-right:10px
+}
+.home-container .carousel-dots > img:nth-last-child(1){
+  padding-right:0px;
+}
 .home-container .desktop-view{
   margin-left:0 !important;
   margin-top:83px;
