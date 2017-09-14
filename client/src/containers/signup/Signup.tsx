@@ -129,7 +129,6 @@ class Signup extends React.Component<any, any> {
             </MuiThemeProvider>
         );
     }
-
 }
 const mapStateToProps = (state: any) => {
     return { authObj: state.AuthReducer };

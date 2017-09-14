@@ -5,7 +5,7 @@ var Styling = {
         display: "block",
         color: "#2E2E2E",
         marginLeft: "-7px",
-        fontFamily: "'Roboto', sans-serif"
+        // fontFamily: "'Roboto', sans-serif"
     },
     radioButtonError:{
         fontSize: "16px",
@@ -13,7 +13,7 @@ var Styling = {
         display: "block",
         color: "rgb(244, 67, 54)",
         marginLeft: "-7px",
-        fontFamily: "'Roboto', sans-serif",
+        // fontFamily: "'Roboto', sans-serif",
     },
     dateIcon: {
         width: "16px",
@@ -24,7 +24,7 @@ var Styling = {
         display: "inline-block",
         width: "65px",
         fontSize: "16px",
-        fontFamily: "'Roboto', sans-serif"
+        // fontFamily: "'Roboto', sans-serif"
     },
     iconStyle: {
         width: "17px",
@@ -57,8 +57,8 @@ var Styling = {
         fontSize: "19px"
     },
     defaultLabelButton: {
-        color: "white",
-        fontFamily: "'Roboto',sans-serif",
+        // color: "white",
+        // fontFamily: "'Roboto',sans-serif",
 
     },
     errorIcon: {
@@ -85,12 +85,13 @@ var Styling = {
         width: '110px',
         lineHeight: "41px",
         color: "#2e2e2e",
-        ontFamily: "SFUI_Text",
+        // ontFamily: "SFUI_Text",
 
     },
     buttonLabel: {
         textTransform: "none",
         fontSize: "16px",
+        fontFamily:'Calibri'
     },
     dateTextFeild: {
         display: "inline-block",

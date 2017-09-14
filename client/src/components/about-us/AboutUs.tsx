@@ -61,7 +61,7 @@ class AboutUs extends React.Component<any, any> {
                     <p className="text">
                         For <b> more information</b> on our services please contact us:
                         </p>
-                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400 }} style={{ borderRadius: "6px" }} className="contact-us-button" hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400 }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>

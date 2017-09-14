@@ -36,7 +36,7 @@ class EmployeeInfo extends React.Component<any, any> {
                             <img src={require("../../assets/employee-image.png")} />
                         </div>
                     </div>
-                                        <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
+                    <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
                             <img src={require("../../assets/mobile-arrow.png")} />
                         </span>

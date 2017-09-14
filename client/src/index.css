@@ -29,9 +29,20 @@
     src: url('./assets/fonts/Karla/Karla-BoldItalic.ttf');
 }
 
+@font-face{
+    font-family: Calibri;
+    src:url('./assets/fonts/Calibri/Calibri.ttf')
+}
+.hovered-class:hover
+{
+  background:white !important;
+  color:#3B7CFF !important;
+  box-shadow: 3px 12px 20px rgba(59,124,255,0.2) !important;
+}
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif,"SFUI_Text";
+  /*font-family: sans-serif,"SFUI_Text";*/
+  font-family: Calibri, sans-serif;
   color:#2e2e2e;
 }

@@ -11,28 +11,29 @@ const CustomTheme = getMuiTheme({
     accent1Color: Colors.redA200,
     pickerHeaderColor: Colors.darkBlack,
   },
+  fontFamily: 'Calibri',
   appBar: {
     height: 57,
     color: Colors.white
   },
-  radioButton:{
-  
+  radioButton: {
+
   },
   raisedButton: {
     primaryColor: '#2D459E',
-    primaryTextColor: Colors.white
+    primaryTextColor: Colors.white,
   },
   textField: {
     focusColor: '#2e469e',
     textColor: '#2e469e',
   },
-  stepper: 
+  stepper:
   {
-    iconColor:"#2e469e"
+    iconColor: "#2e469e"
   }
 });
 
-function AppTheme(){
+function AppTheme() {
   return CustomTheme;
 }
 

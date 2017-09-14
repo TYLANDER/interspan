@@ -1,20 +1,18 @@
 .footer-container-main{
     display:flex;
     justify-content: space-between;
-    height:100px;
+    height:120px;
     align-items: center;
     flex-wrap: wrap;
     border-top:1px solid #f2f2f2;
-    padding-top:40px
-
 }
 
 .footer-container-main .copyright{
-    color:#9b9b9b;
-    font-size:9pt;
+    color:#2e2e2e;
+    font-size:14px;
     margin-right:5%;
-    font-family: 'Roboto';
     font-weight: 500;
+    opacity:0.48
 }
 .footer-container-main .icon{
     margin-left: 5%;

@@ -4,6 +4,9 @@
     margin:0 auto;
     margin-top: 50px;*/
 }
+.signup-container .continue-btn{
+    color:white !important;
+}
 .signup-container .signup-header{
     height:250px;   
     max-height: 250px;
