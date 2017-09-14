@@ -131,7 +131,8 @@
 
 
 .main-job-form-container .stepper-content label{
-    font-weight: 400
+    font-weight: 400;
+    font-size:20px
 }
 .main-job-form-container .stepper-content label.title {
     font-weight: 600 !important;
