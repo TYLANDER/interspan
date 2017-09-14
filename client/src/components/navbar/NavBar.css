@@ -219,6 +219,17 @@
   .navbar-container .sm-screen .dash-icon{
     display:none;
   }
+  .navbar-container .lang-select-mobile{
+    position:fixed !important;
+    left:17px !important;
+    top:13px !important
+  }
+  .navbar-container .close-icon-mobile{
+    margin-top:23px !important
+  }
+  .navbar-container .logo-hide{
+    display:none;
+  }
   .navbar-container .title-bar .title{
     display: none;
   }
@@ -267,8 +278,10 @@
   .navbar-container .logo-navbar{
     margin-left: 0px;
   }
-  .navbar-container .lang-select{
+  .navbar-container .job-sub-menu{
   /*right: 46px;*/
+    margin:0;
+    margin-top:20px
 }
   .md-menu{
     display: none;

@@ -111,7 +111,7 @@ class NavBar extends React.Component<any, any> {
             this.props.router.location.pathname === "/job" ?
                 <div className="navbar-right-icon" style={{ marginTop: "-13px", display: "inline-block" }}>
                     <SelectField
-                        className="lang-select"
+                        className={this.state.jobMenuOpen?"lang-select lang-select-mobile": "lang-select"}
                         labelStyle={{ color: "black", textOverflow: "none", lineHeight: "40px", paddingLeft: "15px" }}
                         value={this.state.language}
                         underlineStyle={{ display: 'none' }}
@@ -122,7 +122,7 @@ class NavBar extends React.Component<any, any> {
                         <MenuItem value="en" primaryText="EN" />
                         <MenuItem value="sp" primaryText="SP" />
                     </SelectField>
-                    {this.state.jobMenuOpen ? <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: false }) }} className="close-icon" src={require("../../assets/close.png")} /> : <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: true }) }} className="dashboard-icon" src={require("../../assets/dash-icon.png")} />
+                    {this.state.jobMenuOpen ? <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: false }) }} className={this.state.jobMenuOpen?"close-icon close-icon-mobile": "close-icon"} src={require("../../assets/close.png")} /> : <img onClick={() => { this.props.menuAction(); this.setState({ jobMenuOpen: true }) }} className="dashboard-icon" src={require("../../assets/dash-icon.png")} />
                     }
                 </div>
                 : <p></p>
@@ -226,7 +226,7 @@ class NavBar extends React.Component<any, any> {
             <AppBar
                 zDepth={1}
                 className={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?"navbar-login-items":"icon-menu-hamburger"}
-                iconElementLeft={<img className="logo-navbar" src={require("../../assets/logos.png")} />}
+                iconElementLeft={<img className={this.state.jobMenuOpen?"logo-navbar logo-hide":"logo-navbar"} src={require("../../assets/logos.png")} />}
                 iconElementRight={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="sm-screen"><img className="dash-icon" src={require("../../assets/dash-icon.png")} />{menu}</div>:languageSelect}
                 title={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="title-bar"><p className="title">Let's get started</p><img src={require('../../assets/logos.png')} /></div>:null}
                 style={{ zIndex: 1, backgroundColor: "white", transition: "none" }}

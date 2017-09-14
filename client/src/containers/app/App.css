@@ -16,3 +16,11 @@ body{
 .app-box-shadow{
   box-shadow: rgba(135, 152, 164, 0.1) 0px 6px 8px !important
 }
+
+@media(max-width:630px)
+{
+  .child-page-active{
+    display:none; 
+  }
+
+}
