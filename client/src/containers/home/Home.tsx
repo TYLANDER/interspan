@@ -128,13 +128,13 @@ class Home extends React.Component<any, any> {
                         <div className="paper-bar"></div>
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49' }}
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49' , fontFamily:'calibre-semi-bold',fontSize:'16px' }}
                                     className="apply-job-btn" onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'Calibri' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily: 'Calibri', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
+                                <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily:'calibre-semi-bold',fontSize:'16px' }} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily:'calibre-semi-bold',fontSize:'16px', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>

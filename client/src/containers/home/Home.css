@@ -5,6 +5,7 @@
 .home-container .title{
   color: #2e2e2e;
   font-size: 48px; 
+  font-family: 'calibre-medium';
 }
 .home-container .contact-us .text{
   color:white;
@@ -116,6 +117,7 @@
   color:#2e2e2e;
   opacity:0.72;
   max-width:460px;
+  font-family:'calibre-medium'
 }
 .paper-container .h3{
   color:#414141;
@@ -126,6 +128,7 @@
   font-size: 20px;  
   font-stretch: normal;
   font-weight: 400;
+  font-family: 'calibre-medium';
   opacity:0.48;
 }
 .home-header-container .get-started-button{
@@ -185,6 +188,7 @@
 .paper-parent h3 {
   font-weight: 400;
   color:#414141;
+  font-family: 'calibre-medium';
 }
 .apply-paper:hover{
   box-shadow: rgba(9, 13, 31, 0.1) 0px 4px 8px 4px !important;
@@ -227,7 +231,7 @@
   }
 }
 
-.home-header-container .get-started-button:hover ,.home-header-container .get-started-button:focus , .home-header-container .get-started-button:active , .home-container .home-apply-button:hover {
+.home-header-container .get-started-button:hover ,.home-header-container .get-started-button:focus , .home-header-container .get-started-button:active , .home-container .home-apply-button:hover, .home-container .home-apply-button:focus, .home-container .home-apply-button:active {
     -webkit-animation-name: hvr-pop;
   animation-name: hvr-pop;
   -webkit-animation-duration: 0.2s;
@@ -424,7 +428,9 @@
 .apply-paper .paper-container .label-title{
   line-height: 1.89;
   color:#2e2e2e;
-  font-size:16px
+  font-size:16px;
+  font-family: 'calibre-medium';
+
 }
 .apply-paper .paper-container .icon{
   margin-right:5px;
@@ -432,7 +438,9 @@
 }
 .apply-paper .paper-container .label-desc{
   opacity:0.58;
-  font-size: 16px
+  font-size: 16px;
+  font-family: 'calibre-medium';
+
 }
 
 .apply-paper .apply-job-btn{

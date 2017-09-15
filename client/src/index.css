@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: SFUI Display;
     src: url('./assets/fonts/SFUI/SFUI.otf');
 }
@@ -27,12 +27,46 @@
 @font-face {
     font-family: Karla-Bold-Italic;
     src: url('./assets/fonts/Karla/Karla-BoldItalic.ttf');
-}
+}*/
 
 @font-face{
+    font-family: calibre-bold;
+    src:url('./assets/fonts/Calibre/calibre-bold.ttf')
+}
+@font-face{
+    font-family: calibri-bold-italic;
+    src:url('./assets/fonts/Calibre/calibre-bolditalic.ttf')
+}
+@font-face{
+    font-family: calibre;
+    src:url('./assets/fonts/Calibre/calibre-regular.ttf')
+}
+@font-face{
+    font-family: calibre-light;
+    src:url('./assets/fonts/Calibre/calibre-light.ttf')
+}
+@font-face{
+    font-family: calibre-light-italic;
+    src:url('./assets/fonts/Calibre/calibre-lightitalic.ttf')
+}
+@font-face{
+    font-family: calibre-medium;
+    src:url('./assets/fonts/Calibre/calibre-medium.ttf')
+}
+@font-face{
+    font-family: calibre-regular-italic;
+    src:url('./assets/fonts/Calibre/calibre-regularitalic.ttf')
+}
+@font-face{
+    font-family: calibre-semi-bold;
+    src:url('./assets/fonts/Calibre/calibre-semibold.ttf')
+}
+
+/*@font-face{
     font-family: Calibri;
     src:url('./assets/fonts/Calibri/Calibri.ttf')
-}
+}*/
+
 
 .hovered-class:hover
 {
@@ -84,6 +118,6 @@ body {
   margin: 0;
   padding: 0;
   /*font-family: sans-serif,"SFUI_Text";*/
-  font-family: Calibri, sans-serif;
+  font-family: calibre, sans-serif;
   color:#2e2e2e;
 }

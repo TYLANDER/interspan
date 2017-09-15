@@ -29,8 +29,8 @@ class ActiveButtons extends React.Component<any, any>{
                     label={this.props.finished ? <b>I Agree</b> : <b>Next</b>}
                     disabled={this.props.disabled}
                     className="second-button hovered-class"
-                    labelStyle={{ textTransform: "none", fontSize: "15px" }}
-                    style={{ width: "300px", height: "41px", fontFamily: "Calibri", borderRadius: "8px", lineHeight: "41px", background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white" }}
+                    labelStyle={{ textTransform: "none", fontSize: "20px",fontFamily: "calibre",lineHeight:'48px',}}
+                    style={{ width: "300px", height: "41px",borderRadius: "8px", lineHeight: "48px", background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white" }}
                     onTouchTap={() => this.handleNext()}
                 />
             </div>

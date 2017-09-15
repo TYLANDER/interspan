@@ -138,7 +138,7 @@ class NavBar extends React.Component<any, any> {
                         onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)} />*/}
                     <Link className={this.props.router.location.pathname==='/employee'?"navigation-button":"navigation-button-about"} to="/employee">Employers</Link>
                     <RaisedButton label="Apply" onTouchTap={this.props.logout} className="apply-button hovered-class"
-                        labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)",fontSize:'17px'}}
+                        labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)",fontSize:'17px',lineHeight:'42px'}}
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
                     {/*{this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
                         iconStyle={{ height: "15px", marginLeft: "-10px", display: "inline", marginTop: "0px" }}

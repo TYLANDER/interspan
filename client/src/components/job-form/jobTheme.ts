@@ -58,7 +58,9 @@ var Styling = {
     },
     defaultLabelButton: {
         // color: "white",
-        // fontFamily: "'Roboto',sans-serif",
+        fontFamily: "calibre-medium",
+        lineHeight:'48px',
+        fontSize:'20px'
 
     },
     errorIcon: {
@@ -72,7 +74,7 @@ var Styling = {
     addButton: {
         height: "41px",
         borderRadius: "5px",
-        fontFamily: "SFUI_Text",
+        fontFamily: "calibre",
         lineHeight: "41px",
         marginLeft: "-7px",
         background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
@@ -90,8 +92,9 @@ var Styling = {
     },
     buttonLabel: {
         textTransform: "none",
-        fontSize: "16px",
-        fontFamily:'Calibri'
+        fontSize: "20px",
+        lineHeight:'57px',
+        fontFamily:'calibre-light'
     },
     dateTextFeild: {
         display: "inline-block",

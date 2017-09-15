@@ -32,7 +32,7 @@
 }
 .forget-password-container .forget-header p{
     color:white;
-    font-family:"Roboto",sans-serif;
+    /*font-family:"Roboto",sans-serif;*/
     font-size:26px;
     z-index: 10
 }
@@ -51,14 +51,14 @@
     color: #2e2e2e;
     font-weight: 400;
     font-size: 20px;
-    font-family: "Roboto",sans-serif;
+    /*font-family: "Roboto",sans-serif;*/
     margin-bottom: 26px;
     line-height: 28px
 }
 .forget-password-container .fields-container .create-account{
     color:#387cff;
     font-size:16px;
-    font-family:"Roboto", sans-serif;
+    /*font-family:"Roboto", sans-serif;*/
     line-height: 22px;
 }
 .forget-password-container .fields-container .error-icon{
@@ -69,7 +69,7 @@
 .forget-password-container .fields-container .forget-password{
     color:#387cff;
     font-size:16px;
-    font-family:"Roboto", sans-serif;
+    /*font-family:"Roboto", sans-serif;*/
     line-height: 22px;
     float: right;
 }

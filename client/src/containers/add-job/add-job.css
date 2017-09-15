@@ -13,7 +13,7 @@
 .add-job-container .fields-container .title{
     color: #bbbbbb;
     font-weight: 500;
-    font-family: "SFUI_Text";
+    /*font-family: "SFUI_Text";*/
     font-Size:14px
 }
 .add-job-container .paper-container .footer-container{

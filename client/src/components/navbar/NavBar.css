@@ -88,7 +88,7 @@
 .navbar-container .sub-menu{
   padding-left: 21px;
   color: #373e9b;
-  font-family: "SFUI_Text";
+  /*font-family: "SFUI_Text";*/
   width:100%;
   position:absolute;
   overflow: auto;
@@ -118,6 +118,7 @@
 .navbar-container .apply-button > button ,.navbar-container .apply-button  {
     box-shadow:none !important;
     border-radius: 8px !important;
+    font-family:'calibre-semi-bold' !important;
     /*border:1px solid #f2f2f2;*/
 }
 .job-sub-menu {
@@ -158,7 +159,7 @@
   height:45px;
   align-items: center;
   display:flex;
-  font-family: 'Roboto',sans-serif;
+  /*font-family: 'Roboto',sans-serif;*/
   width:420px !important;
   position: relative;
   border-radius:4px !important;

@@ -11,7 +11,7 @@ const CustomTheme = getMuiTheme({
     accent1Color: Colors.redA200,
     pickerHeaderColor: Colors.darkBlack,
   },
-  fontFamily: 'Calibri',
+  fontFamily: 'calibre',
   appBar: {
     height: 57,
     color: Colors.white

@@ -3,7 +3,7 @@ padding-top: 96px;
   padding-bottom: 50px;
   max-width: 750px;
   margin: 0 auto;
-}
+}       
 
 .employee-content .first{
   color:#2e2e2e;
@@ -29,16 +29,14 @@ padding-top: 96px;
 }
 
 .employee-content .choice-title{
-    font-family: 'Roboto',sans-serif;
-    font-size: 21px;
+    font-family: 'calibre-medium';
+    font-size: 26px;
     color: #2e2e2e;
-    font-weight: 500;
-    color:#2e2e2e;
 }
 
 .employee-content .choice-desc{
-    font-family: 'Roboto',sans-serif;
-    font-size:19px;
+    font-family: 'calibre';
+    font-size:20px;
     color:#2e2e2e;
     opacity:0.64;
 }
