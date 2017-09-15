@@ -7,7 +7,7 @@ export default class FotgetActionButton extends React.Component<any, any>{
         return (
             <div className="footer-container">
                 <FlatButton label="Send"
-                    className="continue-btn"
+                    className="continue-btn hovered-class"
                     labelPosition="before"
                     primary={true}
                     fullWidth

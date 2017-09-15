@@ -8,6 +8,9 @@
     opacity:0.48;
     position:absolute
 }
+.forget-password-container .continue-btn{
+    color:white !important;
+}
 .forget-password-container .forget-view{
     max-width: 450px;
     display: block;

@@ -33,12 +33,53 @@
     font-family: Calibri;
     src:url('./assets/fonts/Calibri/Calibri.ttf')
 }
+
 .hovered-class:hover
 {
   background:white !important;
   color:#3B7CFF !important;
   box-shadow: 3px 12px 20px rgba(59,124,255,0.2) !important;
+    /*box-shadow: 3px 12px 20px rgba(59,124,255,0.2) !important;
+    color:#3B7CFF !important;*/
+
 }
+/*.hovered-class:before{
+    content: "\f005";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+transition-timing-function: ease-out;
+}*/
+/*.hovered-class:hover:before, .hovered-class:focus:before, .hovered-class:active:before {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.hovered-class:before{
+     content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}*/
 body {
   margin: 0;
   padding: 0;
