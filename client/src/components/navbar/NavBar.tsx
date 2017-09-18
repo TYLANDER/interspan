@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppBar, Card, RaisedButton, FlatButton, SelectField, MenuItem} from 'material-ui';
+import { AppBar, Card, FlatButton, SelectField, MenuItem} from 'material-ui';
 // import Done from 'material-ui/svg-icons/action/done';
 // import Arrow from 'material-ui/svg-icons/av/play-arrow';
 // import NotIntrested from 'material-ui/svg-icons/av/not-interested';
@@ -137,7 +137,7 @@ class NavBar extends React.Component<any, any> {
                     {/*<FlatButton label="Employers" className="navigation-button" labelStyle={{ textTransform: 'capitalize' }}
                         onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)} />*/}
                     <Link className={this.props.router.location.pathname==='/employee'?"navigation-button":"navigation-button-about"} to="/employee">Employers</Link>
-                    <RaisedButton label="Apply" onTouchTap={this.props.logout} className="apply-button hovered-class"
+                    <FlatButton disableFocusRipple={true} focusRippleColor={'transparent'} label="Apply" onTouchTap={this.props.logout} className="apply-button hovered-class"
                         labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)",fontSize:'17px',lineHeight:'42px'}}
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
                     {/*{this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
