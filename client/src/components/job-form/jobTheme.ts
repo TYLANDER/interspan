@@ -60,7 +60,8 @@ var Styling = {
         // color: "white",
         fontFamily: "calibre-medium",
         lineHeight:'48px',
-        fontSize:'20px'
+        fontSize:'20px',
+        textTransform:'upper-case'
 
     },
     errorIcon: {
