@@ -131,14 +131,14 @@ class NavBar extends React.Component<any, any> {
         const menu = (
             <div className="menu-container">
                 <span>
-                    <Link className={this.props.router.location.pathname==='/about'?"navigation-button":"navigation-button-about"} to="/about">About</Link>
+                    <Link className={this.props.router.location.pathname==='/about'?"navigation-button about-style":"navigation-button-about about-style"} to="/about">About</Link>
                     {/*<FlatButton label="About" className="navigation-button-about" labelStyle={{ textTransform: 'capitalize' }}
                         onTouchTap={this.handleStaticUrl.bind(null, 'about', false)} />*/}
                     {/*<FlatButton label="Employers" className="navigation-button" labelStyle={{ textTransform: 'capitalize' }}
                         onTouchTap={this.handleStaticUrl.bind(null, 'employee', false)} />*/}
-                    <Link className={this.props.router.location.pathname==='/employee'?"navigation-button":"navigation-button-about"} to="/employee">Employers</Link>
+                    <Link className={this.props.router.location.pathname==='/employee'?"navigation-button employee":"navigation-button-about employee"} to="/employee">Employers</Link>
                     <FlatButton disableFocusRipple={true} focusRippleColor={'transparent'} label="Apply" onTouchTap={this.props.logout} className="apply-button hovered-class"
-                        labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)",fontSize:'17px',lineHeight:'42px'}}
+                        labelStyle={{ textTransform: 'capitalize' ,color:"rgb(74, 118, 253)",fontSize:'20px',fontFamily:'calibre-medium', lineHeight:'42px'}}
                         onClick={this.handleStaticUrl.bind(null, 'signup', false)} />
                     {/*{this.state.isLogin ? <div style={{ display: "inline" }}>  <IconMenu
                         iconStyle={{ height: "15px", marginLeft: "-10px", display: "inline", marginTop: "0px" }}
@@ -184,7 +184,7 @@ class NavBar extends React.Component<any, any> {
                 zDepth={1}
                 style={{ backgroundColor: 'transparent', transition: "none"}}
                 iconElementLeft={
-                    <img src={require('../../assets/logos.png')} className="logo" alt="logo" />
+                    <img src={require('../../assets/logo.svg')} className="logo" alt="logo" />
                 }
                 iconElementRight={menu}
                 onLeftIconButtonTouchTap={this.handleHomePage}

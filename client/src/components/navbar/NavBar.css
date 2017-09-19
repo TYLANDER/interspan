@@ -13,6 +13,8 @@
   position:absolute;
   top:10px;
   left:0;
+  padding-top: 22px;
+  min-height: 96px;
   right:0;
 }
 .navbar-left-icon{
@@ -97,8 +99,14 @@
     opacity: 0.58;
     min-width:36px !important;
     color:white;
-    margin-right:20px;
-    font-size:18px
+    font-size:18px;
+    font-family:'calibre-medium'
+}
+.navbar-container .about-style{
+  margin-right:16px;
+}
+.navbar-container .employee{
+  margin-right:32px
 }
 .navbar-container .title-bar img{
   display:none;
@@ -106,11 +114,10 @@
 .navbar-container .navigation-button{
     min-width:36px !important;
     color:white;
-    margin-right:20px;
     text-decoration: none;
     font-weight: 600;
-    font-size:18px
-
+    font-size:18px;
+    font-family:'calibre-medium'
 }
 .navbar-container .navigation-button:hover , .navbar-container .navigation-button-about{
   text-decoration: none
@@ -221,6 +228,20 @@
   .navbar-container .sm-screen .dash-icon{
     display:none;
   }
+  .navbar-container-color{
+      min-height: 36px;
+      padding-top:6px
+  }
+  .navbar-container .navigation-button-about{
+      margin-right: 11px;
+  }
+  .navbar-container .apply-button > div > span{
+    color:#2e2e2e !important;
+  }
+  .navbar-container .apply-button
+  {
+    border:1px solid #eeefef !important;
+  }
   .navbar-container .lang-select-mobile{
     position:fixed !important;
     left:17px !important;
@@ -252,7 +273,7 @@
     color:#2e2e2e;
   }
   .navbar-container .logo{
-    margin-left:0;
+    margin-left:12px;
   }
   .navbar-defaults{
       border-bottom:1px solid #eeefef
