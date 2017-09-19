@@ -288,7 +288,7 @@ class ApplicantInfo extends React.Component<any, any>{
                             formRef.employement = date.toISOString()
                             this.setState(formRef);
                         }}
-                    /><span><img src={require("../../../assets/Date.png")} style={Styling.dateIcon} /></span><p style={Styling.dateNoteStyle}><b>Type or choose from calendar by clicking on the icon</b></p></div>
+                    /><span><img src={require("../../../assets/Date.png")} style={Styling.dateIcon} /></span><p style={Styling.dateNoteStyle}>Type or choose from calendar by clicking on the icon</p></div>
                     : ''}
                 <p style={this.state.error.eligible.eligibleError ? Styling.radioButtonError : Styling.radioButtonLabel}>{legallyEligible}</p>
                 <RadioButtonGroup className="radio-label" name="eligible" valueSelected={this.state.form.eligible} onChange={(event: any) => {

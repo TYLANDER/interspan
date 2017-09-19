@@ -23,6 +23,7 @@
     margin-top: 38px;
     margin-left: -18px;
 }
+
 .main-job-form-container .text-area{
     display: block;
     width: 56% !important;
@@ -121,12 +122,13 @@
 
 
 .main-job-form-container input[type=radio] ~ div label{
-    font-weight: 400;
-    opacity:0.5
+    opacity:0.5;
+    font-size:20px !important;
+    line-height:29px !important
 }
 
 .main-job-form-container input[type=radio]:checked{
-   font-weight: bold !important;
+   font-family:"calibre-medium" !important;
 }
 
 

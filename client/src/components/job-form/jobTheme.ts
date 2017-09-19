@@ -1,19 +1,19 @@
 var Styling = {
     radioButtonLabel: {
-        fontSize: "16px",
+        fontSize: "20px",
         marginBottom: "13px",
         display: "block",
         color: "#2E2E2E",
         marginLeft: "-7px",
-        // fontFamily: "'Roboto', sans-serif"
+        fontFamily: "calibre-medium"
     },
     radioButtonError:{
-        fontSize: "16px",
+        fontSize: "20px",
         marginBottom: "13px",
         display: "block",
         color: "rgb(244, 67, 54)",
         marginLeft: "-7px",
-        // fontFamily: "'Roboto', sans-serif",
+        fontFamily: "calibre-medium"
     },
     dateIcon: {
         width: "16px",
@@ -23,8 +23,8 @@ var Styling = {
     radioButtonStyle: {
         display: "inline-block",
         width: "65px",
-        fontSize: "16px",
-        // fontFamily: "'Roboto', sans-serif"
+        fontSize: "20px",
+        fontFamily: "calibre-medium"
     },
     iconStyle: {
         width: "17px",
@@ -35,7 +35,8 @@ var Styling = {
     },
     dateNoteStyle: {
         color: "#3B7CFF",
-        fontSize: "10px",
+        fontSize: "14px",
+        fontFamily:'calibre-medium'
     },
     date: {
         display: "inline-block",
