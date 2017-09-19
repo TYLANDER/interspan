@@ -8,6 +8,11 @@
     opacity:0.48;
     position:absolute
 }
+.forget-password-container{
+    background-color: #fcfcfc;
+    height: 100%
+
+}
 .forget-password-container .continue-btn{
     color:white !important;
 }

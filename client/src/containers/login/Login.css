@@ -7,6 +7,11 @@
 .login-container .continue-btn{
     color:white !important
 }
+.login-container{
+        background-color: #fcfcfc;
+    height: 100%
+
+}
 .login-container .login-header .shadow-image{
     background-color:#2e2e2e;            
     left: 0;

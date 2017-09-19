@@ -4,6 +4,10 @@
     margin:0 auto;
     margin-top: 50px;*/
 }
+.signup-container{
+    background-color: #fcfcfc;
+    height: 100%
+}
 .signup-container .continue-btn{
     color:white !important;
 }
