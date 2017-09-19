@@ -32,6 +32,7 @@ padding-top: 96px;
     font-family: 'calibre-medium';
     font-size: 26px;
     color: #2e2e2e;
+    max-height:36px;
 }
 
 .employee-content .choice-desc{
@@ -46,13 +47,15 @@ padding-top: 96px;
     margin-right:24px
 }
 .employee-content .template{
-    margin-bottom: 34px;
+    margin-bottom: 20px;
     padding-left:32px;
-    padding-top: 17px;
-    padding-bottom: 10px;
-    padding-right: 89px;    
+    padding-top: 16px;
+    /*padding-bottom: 10px;*/
+    border-radius: 6px; 
+    min-height:96px;
+    min-width:360px;
     /*box-shadow: 20px 10px 20px rgba(9,13,31,.1);*/
-    box-shadow: 0 17px 40px rgba(9,13,31,.07);
+    box-shadow: 0 6px 53px rgba(9,13,31,0.07)
 }
   .home-container .seprator{
       display:none;
