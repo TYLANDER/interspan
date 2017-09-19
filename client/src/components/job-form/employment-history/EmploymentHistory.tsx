@@ -215,7 +215,7 @@ class EmploymentHistory extends React.Component<any, any>{
                             this.handleTargetEvents.bind(this, "EmploymentHistory", i);
                         }}
                     />
-                    {this.state.error.company_name.company_nameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.company_name.company_nameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <TextField
                         hintText={state}
                         className="text-area"
@@ -242,7 +242,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         }
                         }
                     />
-                    {this.state.error.city.cityError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.city.cityError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <TextField
                         hintText={nameOfSupervisor}
                         className="text-area"
@@ -259,7 +259,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         }
                         }
                     />
-                    {this.state.error.supervisor_name.supervisor_nameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.supervisor_name.supervisor_nameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
 
                     <TextField
                         className="text-area"
@@ -278,7 +278,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         }
                         }
                     />
-                    {this.state.error.job_title.job_titleError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.job_title.job_titleError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <TextField
                         className="text-area"
                         hintText={telephone}
@@ -296,7 +296,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         }
                         }
                     />
-                    {this.state.error.telephone.telephoneError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.telephone.telephoneError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <p className="title">{employed}</p>
                     <DatePicker className="dateTextFeild" style={Styling.dateTextFeild} textFieldStyle={Styling.date} floatingLabelText={from} defaultDate={new Date(formRef.EmploymentHistory[i].employment_start)} name="employment_start" onChange={this.handleTargetDate.bind(this, "EmploymentHistory", i, "employment_start")}
                     />
@@ -321,7 +321,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         onChange={this.handleTargetEvents.bind(this, "EmploymentHistory", i)}
                         value={formRef.EmploymentHistory[i].pay_rate_start}
                     />
-                    {this.state.error.pay_rate_start.pay_rate_startError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.pay_rate_start.pay_rate_startError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <TextField
                         className="text-area"
                         type="number"
@@ -336,7 +336,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         }
                         value={formRef.EmploymentHistory[i].pay_rate_end}
                         onChange={this.handleTargetEvents.bind(this, "EmploymentHistory", i)} />
-                    {this.state.error.pay_rate_end.pay_rate_endError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.pay_rate_end.pay_rate_endError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <TextField
                         className="text-area"
                         hintText={reasonForleaving}
@@ -354,7 +354,7 @@ class EmploymentHistory extends React.Component<any, any>{
                         }
                         }
                     />
-                    {this.state.error.leaving_reason.leaving_reasonError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.leaving_reason.leaving_reasonError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 </div>);
         }
         return (
@@ -389,7 +389,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     }
                     }
                 />
-                {this.state.error.no_contact_num.no_contact_numError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.no_contact_num.no_contact_numError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
 
                 <TextField
                     className="text-area"
@@ -411,7 +411,7 @@ class EmploymentHistory extends React.Component<any, any>{
                     }
                     }
                 />
-                {this.state.error.no_contact_reason.no_contact_reasonError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.no_contact_reason.no_contact_reasonError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
 
                 <br /><br />
                 {/*<FlatButton style={Styling.addButton} label={<b>Add</b>} labelStyle={Styling.buttonLabel} primary={true}  />

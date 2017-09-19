@@ -111,7 +111,7 @@ class Forms extends React.Component<any, any> {
                     floatingLabelStyle={this.state.email_success ? styles.floating : styles.floatingFailure}
                     floatingLabelText="Email address"
                 />
-                {this.state.email_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
+                {this.state.email_error ? <span className="error-icon"><img src={require("../../assets/error-icon.svg")} /></span> : null}
                 <TextField
                     hintText=""
                     errorText={this.state.pass_error ? this.state.pass_message : ''}
@@ -125,7 +125,7 @@ class Forms extends React.Component<any, any> {
                     style={{ marginBottom: "30px" }}
                     floatingLabelStyle={this.state.pass_success ? styles.floating : styles.floatingFailure}
                 />
-                {this.state.pass_error ? <span className="error-icon"><img src={require("../../assets/error-icon.png")} /></span> : null}
+                {this.state.pass_error ? <span className="error-icon"><img src={require("../../assets/error-icon.svg")} /></span> : null}
                <div className="help-button">
                 <Link to="/signup" className="create-account">Already have account?</Link>
                 <Link to="/forget" className="forget-password">Forgotten password?</Link>

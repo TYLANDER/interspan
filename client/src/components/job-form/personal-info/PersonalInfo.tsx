@@ -151,7 +151,7 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                     }
                 />
-                {this.state.error.employment_history.employment_historyError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.employment_history.employment_historyError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
 
                 <br /><br />
                 <p className="title">{questions.two}</p>
@@ -175,7 +175,7 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                     name="emergency_name"
                 />
-                {this.state.error.emergency_name.emergency_nameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.emergency_name.emergency_nameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <TextField
                     floatingLabelStyle={Styling.TextLabelStyle}
                     className="text-area"
@@ -196,7 +196,7 @@ class PersonalInfo extends React.Component<any, any>{
                     }
                     name="emergency_number"
                 />
-                {this.state.error.emergency_number.emergency_numberError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.emergency_number.emergency_numberError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
 
                 <br /> <br />
                 <p className="sub-title">
@@ -244,7 +244,7 @@ class PersonalInfo extends React.Component<any, any>{
                             value={formRef.crime}
                             name="crime"
                         />
-                        {this.state.error.crime.crimeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                        {this.state.error.crime.crimeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                         <br /><br />
                     </div>
                     : null}

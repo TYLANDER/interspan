@@ -254,7 +254,7 @@ class JobLocation extends React.Component<any, any>{
                     floatingLabelText={payRateExpected}
                     onBlur={() => { this.handleTargetEvents; this.validationCheck(event, 'pay_rate') }}
                 />
-                {this.state.error.pay_rate.pay_rateError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.pay_rate.pay_rateError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <p style={Styling.prefered} className="title">{title}</p>
                 <p style={this.state.error.available.availableError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.one}</p>
                 <RadioButtonGroup name="available_fulltime" defaultSelected={formRef.available_fulltime} className="radio-label right" onChange={(event: any) => { this.handleTargetEvents(event); this.validationCheck(event, 'available') }}>

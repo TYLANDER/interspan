@@ -168,7 +168,7 @@ class Transportation extends React.Component<any, any>{
                         }
                         }
                     />
-                        {this.state.error.another_employee.another_employeeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                        {this.state.error.another_employee.another_employeeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     </div> :
                     null
                 }

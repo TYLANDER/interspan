@@ -156,7 +156,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                {this.state.error.address.addressError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.address.addressError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <TextField
                     hintText=""
                     className="text-area"
@@ -176,7 +176,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                {this.state.error.city.cityError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.city.cityError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <TextField
                     hintText=""
                     className="text-area"
@@ -196,7 +196,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                {this.state.error.state.stateError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.state.stateError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <TextField
                     hintText=""
                     underlineStyle={{ bottom: "4px" }}
@@ -216,7 +216,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                {this.state.error.zip.zipError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.zip.zipError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <TextField
                     hintText=""
                     type="tel"
@@ -237,7 +237,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                {this.state.error.home.homeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.home.homeError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <br />
                 <br />
                 <p style={this.state.error.years.yearsError ? Styling.radioButtonError : Styling.radioButtonLabel}>{areYou18} </p>
@@ -330,7 +330,7 @@ class ApplicantInfo extends React.Component<any, any>{
                         this.setState(formRef);
                     }}
                 />
-                {this.state.error.begin_work.begin_workError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                {this.state.error.begin_work.begin_workError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

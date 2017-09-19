@@ -176,7 +176,7 @@ class EqualOpportunity extends React.Component<any, any>{
                             }
                             value={formRef.race}
                             onBlur={(event: any) => { this.validationCheck(event, 'race'); this.handleTargetEvents }}
-                        /> {this.state.error.race.raceError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                        /> {this.state.error.race.raceError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     </div> : null
                 } <br /><br />
                 <p style={this.state.error.veteran.veteranError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{veteranStatus} </p>

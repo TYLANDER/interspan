@@ -177,7 +177,7 @@ class Education extends React.Component<any, any>{
                         onChange={this.handleText.bind(this, "schoolLocationList", i)}
                         floatingLabelText="Name of High School / College"
                     />
-                    {this.state.error.schoolLocationName.schoolLocationNameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.schoolLocationName.schoolLocationNameError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     <TextField
                         hintText=""
                         className="text-area"
@@ -189,7 +189,7 @@ class Education extends React.Component<any, any>{
                         onBlur={(event: any) => { this.validationCheck(event, 'schoolLocationLocation'); this.handleTargetEvents.bind(this, "schoolLocationList", i) }}
                         floatingLabelText="Location of High School / College"
                     />
-                    {this.state.error.schoolLocationLocation.schoolLocationLocationError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.schoolLocationLocation.schoolLocationLocationError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                 </div>);
         }
         for (var i = 0; i < this.state.skills; i++) {
@@ -209,7 +209,7 @@ class Education extends React.Component<any, any>{
                         }
                         floatingLabelText="Special Training / Skills"
                     />
-                    {this.state.error.specialTraining.specialTrainingError ? <span className="error-icon"><img src={require("../../../assets/error-icon.png")} /></span> : null}
+                    {this.state.error.specialTraining.specialTrainingError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
 
                 </div>);
         }
