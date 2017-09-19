@@ -112,7 +112,7 @@ class NavBar extends React.Component<any, any> {
                 <div className="navbar-right-icon" style={{ marginTop: "-13px", display: "inline-block" }}>
                     <SelectField
                         className={this.state.jobMenuOpen?"lang-select lang-select-mobile": "lang-select"}
-                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "40px", paddingLeft: "15px" }}
+                        labelStyle={{ color: "black", textOverflow: "none", lineHeight: "44px", paddingLeft: "15px" ,fontSize:"20px"}}
                         value={this.state.language}
                         underlineStyle={{ display: 'none' }}
                         onChange={this.handleLanguage}

@@ -20,6 +20,12 @@
 .navbar-left-icon{
   margin-left:100px !important;
 }
+.navbar-container .lang-select > div ~ div > div > button{
+  padding: 9px !important;
+}
+/*.navbar-container .lang-select > div ~ div > div > button > div >svg{
+  margin-left: -11px !important;
+}*/
 .navbar-container .menu-container{
   margin-right: 58px !important;
 }
