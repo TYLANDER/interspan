@@ -19,8 +19,7 @@
 .login-container .login-view{
     max-width: 450px;
     display: block;
-    margin: 0 auto;
-    margin-top:122px;
+    margin: 122px auto
 }
 .login-container .login-header{
     height:250px;   
