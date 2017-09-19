@@ -87,7 +87,7 @@ class Home extends React.Component<any, any> {
         this.panelArray = (
             this.state.panelArray.map((jobObj: any, i: number) => {
                 return (
-                    <Paper zDepth={2} key={i} className="apply-paper" style={{ borderRadius: '2px', boxShadow: '0 4px 8px 0 rgba(9, 13, 31, 0.1), rgba(9, 13, 31, 0.1) 0px 6px 8px' }}>
+                    <Paper zDepth={2} key={i} className="apply-paper" style={{ borderRadius: '6px',boxShadow:'0px 6px 12px rgba(46, 46, 46, 0.08)' }}>
                         <div className="paper-container">
                             {jobObj.showMore ?
                                 <img src={require('../../assets/window-close.svg')} className="cross-btn"

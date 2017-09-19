@@ -477,3 +477,8 @@ transition-property: transform;
 
   }
 }
+
+
+/*
+Previous box shadow for apply paper
+boxShadow: '0 4px 8px 0 rgba(9, 13, 31, 0.1), rgba(9, 13, 31, 0.1) 0px 6px 8px'*/
