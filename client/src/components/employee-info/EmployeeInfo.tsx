@@ -32,9 +32,13 @@ class EmployeeInfo extends React.Component<any, any> {
                                 We have open positions now, and applying is easy.
                     </p>*/}
                         </div>
-                        <div className="header-image">
-                            <img src={require("../../assets/employee-image.png")} />
+                        <div className="header-image desktop">
+                            <img src={require("../../assets/emp1.svg")} />
                         </div>
+                        <div className="header-image mobile">
+                            <img src={require("../../assets/emp2.svg")} />
+                        </div>
+
                     </div>
                     <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
@@ -106,7 +110,7 @@ class EmployeeInfo extends React.Component<any, any> {
                     <p className="text">
                         Interspan provides quality employees to companies that need them.
                         </p>
-                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400 , fontFamily:'calibre-semi-bold' , lineHeight:'51px' }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400, fontFamily: 'calibre-semi-bold', lineHeight: '51px' }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>

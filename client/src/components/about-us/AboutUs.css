@@ -4,7 +4,7 @@
   padding-bottom:36px;
   line-height: 36px;
   border-bottom:1px solid #f2f2f2;
-  font-family: calibre-medium;
+  font-family: calibre;
 }
 .about .background-image-mobile{
   /*bottom:0 !important;*/
@@ -22,14 +22,9 @@
   }
 }
 .contact-us .contact-us-button:hover {
- -webkit-animation-name: hvr-pop;
-  animation-name: hvr-pop;
-  -webkit-animation-duration: 0.2s;
-  animation-duration: 0.2s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+
 }
 .aboutus-content .second , .aboutus-content .last{
   margin-top:36px;

@@ -33,9 +33,13 @@ class AboutUs extends React.Component<any, any> {
                        </span>
                             </div>
                         </div>
-                        <div className="header-image">
-                            <img src={require("../../assets/about-image.png")} />
+                        <div className="header-image desktop">
+                            <img src={require("../../assets/about1.svg")} />
                         </div>
+                        <div className="header-image mobile">
+                            <img src={require("../../assets/about2.svg")} />
+                        </div>
+
                     </div>
                     <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
@@ -61,7 +65,7 @@ class AboutUs extends React.Component<any, any> {
                     <p className="text">
                         For <b> more information</b> on our services please contact us:
                         </p>
-                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400 , fontFamily:'calibre-semi-bold' , lineHeight:'51px' }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
+                    <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400, fontFamily: 'calibre-medium', lineHeight: '51px' }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
                 <Footer />
             </div>

@@ -128,13 +128,13 @@ class Home extends React.Component<any, any> {
                         <div className="paper-bar"></div>
                         {jobObj.showMore ?
                             <div className="text-left footer-container">
-                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49' , fontFamily:'calibre-semi-bold',fontSize:'16px' }}
+                                <FlatButton label="Apply" style={{ backgroundColor: 'rgba(0,0,0,0)' }} labelStyle={{ color: '#494a49', fontFamily: 'calibre-semi-bold', fontSize: '16px' }}
                                     className="apply-job-btn" onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily:'calibre-semi-bold',fontSize:'16px' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily:'calibre-semi-bold',fontSize:'16px', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
+                                <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'calibre-semi-bold', fontSize: '16px' }} onClick={this.showDescription.bind(this, jobObj, i)} />
+                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily: 'calibre-semi-bold', fontSize: '16px', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>
@@ -157,7 +157,7 @@ class Home extends React.Component<any, any> {
                                 We have open positions now, and applying is easy.
                     </p>
                             <FlatButton labelStyle={Styling.buttonLabel} className="get-started-button hovered-class" style={Styling.addButton} label={<b>Get Started</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
-                            <FlatButton labelStyle={Styling.buttonLabel} className="home-apply-button hovered-class" style={Styling.addButton} label={<b>Apply</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
+                            <FlatButton labelStyle={Styling.buttonLabelApply} className="home-apply-button hovered-class" style={Styling.addButton} label={<b>Apply</b>} onClick={this.handleJobApply.bind(this, localStorage.getItem('job-id'))} />
                             <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
                                 <span className="icon-mobile">
                                     <img src={require("../../assets/mobile-arrow.png")} />
@@ -171,10 +171,12 @@ class Home extends React.Component<any, any> {
                        </span>
                             </div>
                         </div>
-                        <div className="header-image">
-                            <img src={require("../../assets/header-image.png")} />
+                        <div className="header-image desktop">
+                            <img src={require("../../assets/bitmap.svg")} />
                         </div>
-
+                        <div className="header-image mobile">
+                            <img src={require("../../assets/mobile-header-2.svg")} />
+                        </div>
                     </div>
                     <div className="scroll-down mobile-view" onClick={() => this.props.scrolling()}>
                         <span className="icon-mobile">
