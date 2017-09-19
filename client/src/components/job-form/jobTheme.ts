@@ -96,6 +96,12 @@ var Styling = {
         lineHeight:'57px',
         fontFamily:'calibre-light'
     },
+    buttonLabelApply: {
+        textTransform: "none",
+        fontSize: "20px",
+        lineHeight:'48px',
+        fontFamily:'calibre-light'
+    },
     dateTextFeild: {
         display: "inline-block",
         width: "55%"

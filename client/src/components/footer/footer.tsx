@@ -6,12 +6,12 @@ class Footer extends React.Component<any, any> {
         return (
             <div className="md-stepper footer-container-main">
                 <div className="icon">
-                    <img style={{width:"50px"}} src={require("../../assets/logos.png")} />
+                    <img src={require("../../assets/logo.svg")} />
                 </div>
                 <div className="social-media">
-                    <a href="#"><img width="40px" src={require("../../assets/insta.jpg")} /></a>
-                    <a href="#"><img width="40px" src={require("../../assets/fb.jpg")} /></a>
-                    <a href="#"><img width="40px" src={require("../../assets/twitter.jpg")} /></a>
+                    <a href="#"><img src={require("../../assets/insta.svg")} /></a>
+                    <a href="#"><img src={require("../../assets/fb.svg")} /></a>
+                    <a href="#"><img src={require("../../assets/twitter.svg")} /></a>
 
                 </div>
                 <div className="copyright">

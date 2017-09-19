@@ -16,17 +16,18 @@
 }
 .footer-container-main .icon{
     margin-left: 5%;
-    margin-right:80px;
+    margin-right:11%;
 }
 @media(max-width:680px){
     .footer-container-main .copyright{
         display: block;
         margin: 0 auto;
-        width: 86%;
-        text-align: center;
+        width: 100%;
+        text-align: right;
         border-top: 1px solid #eeefef;
         padding-top: 11px;
         padding-bottom: 18px;
+        margin-right: 25px;
     }
     .footer-container-main{
         border-top:none;

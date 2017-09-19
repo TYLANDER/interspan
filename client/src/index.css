@@ -121,3 +121,18 @@ body {
   font-family: calibre, sans-serif;
   color:#2e2e2e;
 }
+.desktop{
+    display:block;
+}
+.mobile{
+    display:none;
+}
+
+@media(max-width:680px){
+    .desktop{
+        display:none
+    }
+    .mobile{
+        display:block;
+    }
+}
