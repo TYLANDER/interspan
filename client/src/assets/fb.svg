@@ -1,0 +1,34 @@
+<svg width="36" height="36" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>icn_fb</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-372 -1814)">
+<rect x="372" y="1814" width="36" height="36" fill="#FFFFFF"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -250 -181L 1030 -181L 1030 1894L -250 1894L -250 -181Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="01_Slide" clip-path="url(#clip-0)">
+<g id="bg_footer">
+<g id="bg_footer">
+<g id="bg_footer">
+<use xlink:href="#path0_fill" transform="translate(-250 1769)" fill="#FFFFFF"/>
+</g>
+<g id="icons_sm">
+<g id="icn_fb">
+<g id="mask">
+<use xlink:href="#path1_fill" transform="translate(372 1814)" fill="#FAFAFA"/>
+</g>
+<g id="Combined-Shape">
+<use xlink:href="#path2_fill" transform="translate(380 1822)" fill="#2E2E2E"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 0L 1280 0L 1280 125L 0 125L 0 0Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 0 4C 0 1.79086 1.79086 0 4 0L 32 0C 34.2091 0 36 1.79086 36 4L 36 32C 36 34.2091 34.2091 36 32 36L 4 36C 1.79086 36 0 34.2091 0 32L 0 4Z"/>
+<path id="path2_fill" fill-rule="evenodd" d="M 0 2.99512L 0 17.0049C 0 18.6595 1.34079 20 2.99509 20L 17.0049 20C 18.6595 20 20 18.6592 20 17.0049L 20 2.99512C 20 1.34045 18.6592 0 17.0049 0L 2.99509 0C 1.34052 0 0 1.34082 0 2.99512ZM 18 17.0049C 18 17.5547 17.5548 18 17.0049 18L 12 18L 12 12L 14 12C 14.5523 12 15 11.5522 15 11C 15 10.4478 14.5523 10 14 10L 12 10C 12 8.59119 12.1525 7.74011 12.5953 7.24451C 13.0818 6.69995 13.5629 6.5 14 6.5C 14.5523 6.5 15 6.05225 15 5.5C 15 4.94775 14.5523 4.5 14 4.5C 13.0117 4.5 11.9836 4.92725 11.1039 5.91199C 10.2142 6.90771 10 8.10315 10 10L 8.99951 10C 8.44724 10 7.99951 10.4478 7.99951 11C 7.99951 11.5522 8.44724 12 8.99951 12L 10 12L 10 18L 2.99509 18C 2.44525 18 2 17.5548 2 17.0049L 2 2.99512C 2 2.44531 2.44516 2 2.99509 2L 17.0049 2C 17.5547 2 18 2.44519 18 2.99512L 18 17.0049Z"/>
+</defs>
+</svg>
