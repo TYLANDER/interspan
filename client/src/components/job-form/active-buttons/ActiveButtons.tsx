@@ -23,7 +23,7 @@ class ActiveButtons extends React.Component<any, any>{
                     onTouchTap={() => this.handlePrev()}
                     disabled={this.stepIndex === -1}
                     className="first-button hovered-class"
-                    style={{ marginRight: 12, border: "2px solid #f2f2f2", borderRadius: "6px", height: "44px", lineHeight: "41px" }}
+                    style={{ marginRight: 12, border: "2px solid #f2f2f2", borderRadius: "6px", height: "41px", lineHeight: "41px" }}
                 />
                 <FlatButton
                     label={this.props.finished ? <b>I Agree</b> : <b>Next</b>}
