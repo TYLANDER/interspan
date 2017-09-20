@@ -164,21 +164,21 @@ class Media extends React.Component<any, any>{
                     <RadioButton
                         value="Radio Station"
                         label={radio}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Richmond Times Newspaper"
                         label={richMond}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Job search on Internet"
                         label={jobSearch}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
@@ -186,21 +186,21 @@ class Media extends React.Component<any, any>{
                     <RadioButton
                         value="Referred from job site"
                         iconStyle={Styling.iconStyle}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={referredJob}
                     />
                     <RadioButton
                         value="Referred by InterSpan, Inc. employee"
                         label={referredInterSpan}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Referred by friend"
                         label={referredFriend}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />

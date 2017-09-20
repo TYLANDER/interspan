@@ -216,7 +216,7 @@ class PersonalInfo extends React.Component<any, any>{
                     />
                     <RadioButton
                         value="No"
-                        label={no} 
+                        label={no}
                         uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
@@ -258,14 +258,14 @@ class PersonalInfo extends React.Component<any, any>{
                         style={Styling.radioButtonStyle}
                         value="yes"
                         label={yes}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         style={Styling.radioButtonStyle}
                         value="no"
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={no}
@@ -277,27 +277,27 @@ class PersonalInfo extends React.Component<any, any>{
                     <RadioButton
                         value="Understand/Speak no English"
                         label={understandSpeak}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Understand a few English instructions"
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={understandEnglish}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Understand most English instructions"
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={understandInstructions}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         value="Learning English as ESL"
                         label={ESL}
@@ -305,7 +305,7 @@ class PersonalInfo extends React.Component<any, any>{
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Bilingual English/Spanish"
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={billingual}
                     />

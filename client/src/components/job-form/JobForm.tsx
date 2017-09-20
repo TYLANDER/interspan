@@ -33,7 +33,7 @@ class MainJobForm extends React.Component<any, any>{
         //state of the component
         this.state = {
             finished: false,
-            stepIndex:10,
+            stepIndex:0,
             selectedJson: this.jobDataEn,
             visited: [],
             open: true

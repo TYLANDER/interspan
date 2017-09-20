@@ -200,21 +200,21 @@ class EqualOpportunity extends React.Component<any, any>{
                     <RadioButton
                         value="veteran"
                         label={veteran}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Vietnam Era Veteran"
                         label={vietname}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Disabled Veteran"
                         label={disableVeteran}
-                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
                         checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
