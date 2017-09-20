@@ -272,16 +272,20 @@ class References extends React.Component<any, any>{
         }
         return (
             <div className="transportation-container">
-                <p className="title"> References </p> <br />
-                {reference}
-                <FlatButton style={Styling.addButton} label="Add" onClick={() => this.handleReference("add")} />
-                <FlatButton style={Styling.deleteButton} label="Delete" onTouchTap={() => this.state.reference === 1 ? null : this.handleReference("delete")} />
-                <br /><br />
+                <p className="title"> References </p>
+                {reference}<br />
+                <div className="button-group">
+                    <FlatButton className="hovered-class" style={Styling.addButton} labelStyle={Styling.addButtonLabel} label="Add" onClick={() => this.handleReference("add")} />
+                    <FlatButton className="hovered-class" style={Styling.deleteButton} labelStyle={Styling.addButtonLabel} label="Remove" onTouchTap={() => this.state.reference === 1 ? null : this.handleReference("delete")} />
+                </div>
+                <br /><br /><br />
                 <p className="title">{friends}</p>
-                {family}
-                <FlatButton style={Styling.addButton} label="Add" onClick={() => this.handleFriend("add")} />
-                <FlatButton style={Styling.deleteButton} label="Delete" onTouchTap={() => this.state.family === 1 ? null : this.handleFriend("delete")} />
-                <br /><br />
+                {family}<br />
+                <div className="button-group">
+                    <FlatButton className="hovered-class" labelStyle={Styling.addButtonLabel} style={Styling.addButton} label="Add" onClick={() => this.handleFriend("add")} />
+                    <FlatButton className="hovered-class" labelStyle={Styling.addButtonLabel} style={Styling.deleteButton} label="Remove" onTouchTap={() => this.state.family === 1 ? null : this.handleFriend("delete")} />
+                </div>
+                <br /><br /><br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

@@ -39,11 +39,10 @@
     border-radius: 20px;
 }
 .main-job-form-container .counting-stepper{
-    /*font-family: 'Roboto', sans-serif;*/
-    color:"#2E2E2E";
-    font-weight:"bold";
-    font-size:17px;
-    opacity: 0.5;
+    font-family: 'calibre-medium';
+    color:#2E2E2E;
+    font-size:20px;
+    opacity: 0.3;
 }
 .main-job-form-container .dateTextFeild{
         display: inline-block !important;
@@ -117,14 +116,14 @@
 .main-job-form-container input[type=checkbox] ~ div label{
     font-weight: 400;
     color:#2e2e2e;
-    font-size:16px;
+    font-size:20px;
 }
 
 
 .main-job-form-container input[type=radio] ~ div label{
     opacity:0.5;
     font-size:20px !important;
-    line-height:29px !important
+    line-height:23px !important
 }
 
 .main-job-form-container input[type=radio]:checked{
@@ -137,17 +136,17 @@
     font-size:20px
 }
 .main-job-form-container .stepper-content label.title {
-    font-weight: 600 !important;
+    /*font-weight: 600 !important;*/
 }
 .main-job-form-container .stepper-header{
     color:#2e2e2e;
     /*font-family: 'Roboto', sans-serif;    */
-    font-size:17px;
+    font-size:20px;
 }
 
 @media (min-width: 1050px){
     .stepper-content{
-        width: calc(100vw / 12 * 5.2) !important;
-        max-width:1110px;
+        min-width: calc(100vw / 12 * 5.2) !important;
+        max-width:750px;
     }
 }

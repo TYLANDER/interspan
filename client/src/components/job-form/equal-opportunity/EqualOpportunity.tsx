@@ -103,20 +103,24 @@ class EqualOpportunity extends React.Component<any, any>{
                 <p className="title">Equal Opportunity Information (Voluntary, responses not required)</p>
                 <p className="paragraph">
                     {content}
-                </p><br /><br />
+                </p><br />
                 <p className="title">{gender}</p>
                 <RadioButtonGroup name="gender" valueSelected={formRef.gender} onChange={(event: any) => { this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="male"
                         label={male}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="female"
                         label={female}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
-                </RadioButtonGroup> <br /><br />
+                </RadioButtonGroup> <br />
                 <p style={this.state.error.race.raceError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{raceEthnicity}</p>
                 <RadioButtonGroup name="race" defaultSelected={
                     formRef.race !== "asian" && formRef.race !== "black" && formRef.race !== "hispanic" && formRef.race !== "native american" && formRef.race !== "white" ?
@@ -131,31 +135,43 @@ class EqualOpportunity extends React.Component<any, any>{
                     <RadioButton
                         value="asian"
                         label={asian}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="black"
                         label={black}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
 
                     <RadioButton
                         value="hispanic"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={hispanic}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="native american"
                         label={nativeAmerican}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="white"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={white}
                     />
                     <RadioButton
                         value="other"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={other}
                     />
@@ -178,22 +194,28 @@ class EqualOpportunity extends React.Component<any, any>{
                             onBlur={(event: any) => { this.validationCheck(event, 'race'); this.handleTargetEvents }}
                         /> {this.state.error.race.raceError ? <span className="error-icon"><img src={require("../../../assets/error-icon.svg")} /></span> : null}
                     </div> : null
-                } <br /><br />
+                } <br />
                 <p style={this.state.error.veteran.veteranError ? Styling.radioButtonError : Styling.radioButtonLabel} className="title">{veteranStatus} </p>
                 <RadioButtonGroup name="veteran" defaultSelected={formRef.veteran} onChange={(event: any) => { this.validationCheck(event, 'veteran'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         value="veteran"
                         label={veteran}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Vietnam Era Veteran"
                         label={vietname}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Disabled Veteran"
                         label={disableVeteran}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>

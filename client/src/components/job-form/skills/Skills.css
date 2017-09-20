@@ -1,7 +1,7 @@
 .skills-applicant-container .inline-radio{
     display: inline-block !important;
     width: 68px !important;
-    font-size:16px;
+    /*font-size:20px;*/
 }
 /*.skills-applicant-container .inline-fields{
     float: left;
@@ -15,7 +15,8 @@
 }*/
 
 .skills-applicant-container .title{
-    font-size:16px;
+    font-size:20px;
+    font-family:'calibre-medium';
     margin-top:20px;
     margin-bottom:12px;
 }

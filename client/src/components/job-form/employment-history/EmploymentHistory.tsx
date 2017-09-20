@@ -361,8 +361,10 @@ class EmploymentHistory extends React.Component<any, any>{
             <div className="employement-applicant-container">
                 {history}
                 <br />
-                <FlatButton style={Styling.addButton} label={<b>Add</b>} labelStyle={Styling.buttonLabel} primary={true} onTouchTap={() => this.handleHistoryDetails("add")} />
-                <FlatButton style={Styling.deleteButton} label={<b>Remove</b>} labelStyle={Styling.buttonLabel} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete")} />
+                <div className="button-group">
+                <FlatButton className="hovered-class" style={Styling.addButton} label={'Add'} labelStyle={Styling.addButtonLabel} onTouchTap={() => this.handleHistoryDetails("add")} />
+                <FlatButton className="hovered-class" style={Styling.deleteButton} label={'Remove'} labelStyle={Styling.addButtonLabel} onTouchTap={() => this.state.employed === 1 ? null : this.handleHistoryDetails("delete")} />
+                </div>
                 <br />
                 <br />
                 <p className='subTitle'>{note}</p>

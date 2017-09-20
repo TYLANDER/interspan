@@ -168,24 +168,36 @@ class JobLocation extends React.Component<any, any>{
                 }}>
                     <RadioButton
                         value="Any available position"
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         label={avalaiblePosition}
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="Clerical / Office"
                         label={clericalOffice}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
 
                     />
                     <RadioButton
                         value="Industrial / Factory / Warehouse"
                         label={industrialFactory}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
 
                     />
                     <RadioButton
                         value="other"
                         label={other}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
 
                     />
@@ -215,11 +227,17 @@ class JobLocation extends React.Component<any, any>{
                     <RadioButton
                         value="Any available site"
                         label={anyAvailableSite}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
                     />
                     <RadioButton
                         value="site"
                         label={site}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>
@@ -263,11 +281,15 @@ class JobLocation extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                         value="Yes"
                         label={yes}
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                     />
                     <RadioButton
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
                         value="No"
+                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                     />
                 </RadioButtonGroup>
@@ -281,12 +303,16 @@ class JobLocation extends React.Component<any, any>{
                                 className="inline-radio"
                                 iconStyle={Styling.iconStyle}
                                 value="Yes"
+                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={yes}
                             />
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="No"
+                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={no}
                             />
                         </RadioButtonGroup>
@@ -299,12 +325,16 @@ class JobLocation extends React.Component<any, any>{
                                 className="inline-radio"
                                 iconStyle={Styling.iconStyle}
                                 value="Yes"
+                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={yes}
                             />
                             <RadioButton
                                 className="inline-radio"
                                 value="No"
                                 iconStyle={Styling.iconStyle}
+                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={no}
                             />
                         </RadioButtonGroup>
@@ -317,11 +347,15 @@ class JobLocation extends React.Component<any, any>{
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="Yes"
+                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={yes}
                             />
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
+                                                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 value="No"
                                 label={no}
                             />
@@ -335,12 +369,16 @@ class JobLocation extends React.Component<any, any>{
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="Yes"
+                                                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={yes}
                             />
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="No"
+                                                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={no}
                             />
                         </RadioButtonGroup>
@@ -353,12 +391,16 @@ class JobLocation extends React.Component<any, any>{
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="Yes"
+                                                                                    uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={yes}
                             />
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="No"
+                                                                                    uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={no}
                             />
                         </RadioButtonGroup>
@@ -371,12 +413,16 @@ class JobLocation extends React.Component<any, any>{
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="Yes"
+                                                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={yes}
                             />
                             <RadioButton
                                 iconStyle={Styling.iconStyle}
                                 className="inline-radio"
                                 value="No"
+                                                                                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                                 label={no}
                             />
                         </RadioButtonGroup>
@@ -389,12 +435,16 @@ class JobLocation extends React.Component<any, any>{
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
                         value="Yes"
+                                                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
                         value="No"
+                                                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                     />
                 </RadioButtonGroup>
@@ -405,12 +455,16 @@ class JobLocation extends React.Component<any, any>{
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
                         value="Yes"
+                                                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         iconStyle={Styling.iconStyle}
                         value="No"
+                                                                                uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                     />
                 </RadioButtonGroup>

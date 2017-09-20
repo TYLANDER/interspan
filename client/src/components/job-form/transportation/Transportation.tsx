@@ -108,43 +108,61 @@ class Transportation extends React.Component<any, any>{
             <div className="transportation-container">
                 <br />
                 <label style={this.state.error.reliable_transportation.reliable_transportationError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{accessReliableTransportation}</label>
-                <RadioButtonGroup name="reliable_transportation" defaultSelected={formRef.reliable_transportation} className="right" onChange={(event: any) => { this.validationCheck(event, 'reliable_transportation'); this.handleTargetEvents(event) }}>
+                <RadioButtonGroup name="reliable_transportation" defaultSelected={formRef.reliable_transportation} onChange={(event: any) => { this.validationCheck(event, 'reliable_transportation'); this.handleTargetEvents(event) }}>
                     <RadioButton
-                        className="inline-radio"
                         value="Yes"
+                        iconStyle={Styling.iconStyle}
+                        className="inline-radio"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                     />
                     <RadioButton
-                        className="inline-radio"
                         value="No"
+                        className="inline-radio"
+                        iconStyle={Styling.iconStyle}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /> <br />
                 <label style={this.state.error.employment_bus.employment_busError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{employmentBusLine}</label>
-                <RadioButtonGroup name="employment_bus" defaultSelected={formRef.employment_bus} className="right" onChange={(event: any) => { this.validationCheck(event, 'employment_bus'); this.handleTargetEvents(event) }}>
+                <RadioButtonGroup name="employment_bus" defaultSelected={formRef.employment_bus} onChange={(event: any) => { this.validationCheck(event, 'employment_bus'); this.handleTargetEvents(event) }}>
                     <RadioButton
-                        className="inline-radio"
                         value="Yes"
+                        className="inline-radio"
+                        iconStyle={Styling.iconStyle}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
+                        iconStyle={Styling.iconStyle}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                     />
                 </RadioButtonGroup>
                 <br /> <br />
                 <label style={this.state.error.another_employee.another_employeeError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{rideWithAnotherEmployment}</label>
-                <RadioButtonGroup name="another_employee" className="right" defaultSelected={formRef.another_employee !== "No" ? "Yes" : formRef.another_employee} onChange={(event: any) => { this.validationCheck(event,'another_employee'); this.handleTargetEvents(event); event.target.value === 'Yes' ? this.setState({ employee: true }) : this.setState({ employee: false }); }}>
+                <RadioButtonGroup name="another_employee" defaultSelected={formRef.another_employee !== "No" ? "Yes" : formRef.another_employee} onChange={(event: any) => { this.validationCheck(event, 'another_employee'); this.handleTargetEvents(event); event.target.value === 'Yes' ? this.setState({ employee: true }) : this.setState({ employee: false }); }}>
                     <RadioButton
                         className="inline-radio"
                         value="Yes"
+                        iconStyle={Styling.iconStyle}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="No"
+                        iconStyle={Styling.iconStyle}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                     />
                 </RadioButtonGroup>
@@ -172,6 +190,7 @@ class Transportation extends React.Component<any, any>{
                     </div> :
                     null
                 }
+                <br /><br />
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div >
         );

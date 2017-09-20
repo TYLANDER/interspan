@@ -2,6 +2,8 @@ import * as React from 'react';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { Checkbox } from 'material-ui';
 import './Certification.css';
+import Styling from "../jobTheme";
+
 class Certification extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
@@ -44,10 +46,15 @@ class Certification extends React.Component<any, any>{
                             formRef.agreed = value;
                             this.setState(formRef);
                         }}
+                        iconStyle={Styling.iconStyle}
+                        uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                         name="agreed"
                         label={agreed}
                     />
                 </div>
+                <br />
+                <br />
                 <ActiveButtons disabled={this.state.form.agreed ? false : true} finished={true} handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />
             </div>
         );

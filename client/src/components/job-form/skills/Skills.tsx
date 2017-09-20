@@ -3,8 +3,6 @@ import './Skills.css';
 import ActiveButtons from '../active-buttons/ActiveButtons';
 import { RadioButtonGroup, RadioButton, TextField, Checkbox } from 'material-ui';
 import Styling from "../jobTheme";
-import Check from "material-ui/svg-icons/av/stop";
-
 
 class Skills extends React.Component<any, any>{
     constructor(props: any) {
@@ -85,8 +83,8 @@ class Skills extends React.Component<any, any>{
                 operated_pallet_jack: {
                     operated_pallet_jackError: false, msg: ""
                 },
-                steel_shoes:{
-                    steel_shoesError:false, msg: ""
+                steel_shoes: {
+                    steel_shoesError: false, msg: ""
                 },
                 // experience:{
                 //     experienceError:false , msg :""
@@ -122,7 +120,7 @@ class Skills extends React.Component<any, any>{
 
     //handling next state
     handleNext = () => {
-        if (this.state.form.industrial_experience  && this.state.form.steel_shoes && this.state.form.operated_pallet_jack && this.state.form.certified_forklift && this.state.form.operated_forklift && this.state.form.use_pc && this.state.form.use_calculator && this.state.form.tape_mesurement && this.state.form.basic_maths && this.state.form.stand_bend && this.state.form.walking_job && this.state.form.lift_weight && this.state.form.lifting && this.state.form.stand_hours) {
+        if (this.state.form.industrial_experience && this.state.form.steel_shoes && this.state.form.operated_pallet_jack && this.state.form.certified_forklift && this.state.form.operated_forklift && this.state.form.use_pc && this.state.form.use_calculator && this.state.form.tape_mesurement && this.state.form.basic_maths && this.state.form.stand_bend && this.state.form.walking_job && this.state.form.lift_weight && this.state.form.lifting && this.state.form.stand_hours) {
             this.props.handleNext("skills-form", this.state.form);
         }
         else {
@@ -165,8 +163,7 @@ class Skills extends React.Component<any, any>{
             if (!this.state.form.operated_pallet_jack) {
                 this.setError('operated_pallet_jack')
             }
-            if(!this.state.form.steel_shoes)
-            {
+            if (!this.state.form.steel_shoes) {
                 this.setError('steel_shoes')
             }
             // if(!this.state.form.assembly || !this.state.form.pulling_order || !this.state.form.production_line || !this.state.form.production_materials || !this.state.form.loadingLifter || !this.state.form.banding_machine || !this.state.form.ups_shipping || !this.state.form.data_entry || !this.state.form.counting_material || !this.state.form.working_conveyor || !this.state.form.gluing_boxes || !this.state.form.stacker || !this.state.form.quality_control || !this.state.form.weight_materials || !this.state.form.none_of_above)
@@ -221,48 +218,61 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="No experience"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={noExperience}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Less than 1 year"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={lessThanOneYear}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="1 to 5 years"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={oneToFiveYears}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="6 to 10 years"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={sixToTenYears}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="10 years or moreNo"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={tenYearsOrMore}
                     />
                 </RadioButtonGroup>
                 <p className="title">{questions.two}</p>
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={assembly}
                     name="assembly"
                     checked={this.state.form.assembly}
-                    onCheck={(event:any)=>{this.handleTargetSkills(event,true)}}
+                    onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
                     iconStyle={Styling.iconStyle}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     label={pullingOrders}
                     name="pulling_order"
                     checked={this.state.form.pulling_order}
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={productionLine}
                     name="production_line"
@@ -270,7 +280,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={packingMaterials}
                     name="production_materials"
@@ -278,7 +289,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={loadingLifter}
                     name="heavy_lift"
@@ -286,7 +298,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={bandingMachine}
                     name="banding_machine"
@@ -294,7 +307,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={upsShippingLabels}
                     name="ups_shipping"
@@ -302,7 +316,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={dataEntry}
                     name="data_entry"
@@ -310,7 +325,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={countingMaterial}
                     name="counting_material"
@@ -318,7 +334,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={workingFrom}
                     name="working_conveyor"
@@ -326,7 +343,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={gluingBoxes}
                     name="gluing_boxes"
@@ -334,7 +352,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={stacker}
                     name="stacker"
@@ -342,7 +361,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={qualityControl}
                     name="quality_control"
@@ -350,7 +370,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={weighingMaterial}
                     name="weight_materials"
@@ -358,7 +379,8 @@ class Skills extends React.Component<any, any>{
                     onCheck={this.handleTargetSkills}
                 />
                 <Checkbox
-                    checkedIcon={<Check />}
+                    uncheckedIcon={<img src={require('../../../assets/check.svg')} />}
+                    checkedIcon={<img src={require('../../../assets/check-1.svg')} />}
                     iconStyle={Styling.iconStyle}
                     label={noneOfAbove}
                     name="none_of_above"
@@ -370,26 +392,36 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Less than 10 lbs."
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={lessThanTenLbs}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Up to 10 lbs."
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={upToTenLbs}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Up to 20 lbs"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={upToTwentyLbs}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Up to 60 lbs"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={upToSixtyLbs}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="61 lbs or more"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={sixtyOneOrMore}
                     />
                 </RadioButtonGroup>
@@ -399,16 +431,18 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -417,16 +451,18 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -435,16 +471,18 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -454,15 +492,17 @@ class Skills extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -471,16 +511,18 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -489,16 +531,18 @@ class Skills extends React.Component<any, any>{
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -508,15 +552,17 @@ class Skills extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -526,15 +572,17 @@ class Skills extends React.Component<any, any>{
                         iconStyle={Styling.iconStyle}
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={yes}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
@@ -544,15 +592,17 @@ class Skills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 {this.state.forklift || formRef.operated_forklift !== "false" ?
@@ -580,44 +630,48 @@ class Skills extends React.Component<any, any>{
                         className="inline-radio"
                         value="true"
                         label={yes}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={no}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />
                 <label style={this.state.error.operated_pallet_jack.operated_pallet_jackError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.fourteen}</label>
-                <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack?'false':'true'} onChange={(event: any) => { this.validationCheck(event, 'operated_pallet_jack'); this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
+                <RadioButtonGroup name="operated_pallet_jack" className="right" defaultSelected={formRef.operated_pallet_jack ? 'false' : 'true'} onChange={(event: any) => { this.validationCheck(event, 'operated_pallet_jack'); this.handleTargetEvents(event); event.target.value === 'false' ? this.setState({ palletJack: false }) : this.setState({ palletJack: true }) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={yes}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={no}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 {this.state.palletJack || formRef.operated_pallet_jack !== "false" ?
                     <TextField
                         hintText=""
-                        onBlur={(event: any) => {this.validationCheck(event,'operated_pallet_jack') ;this.handleTargetEvents(event) }}
+                        onBlur={(event: any) => { this.validationCheck(event, 'operated_pallet_jack'); this.handleTargetEvents(event) }}
                         fullWidth={true}
                         errorStyle={Styling.errorMsg}
                         errorText={this.state.error.operated_pallet_jack.operated_pallet_jackError ? this.state.error.operated_pallet_jack.msg : null}
                         onChange={(event: any) => {
-                            this.validationCheck(event,'operated_pallet_jack')
+                            this.validationCheck(event, 'operated_pallet_jack')
                             formRef.operated_pallet_jack = event.target.value
                             this.setState(formRef);
                         }
@@ -629,20 +683,22 @@ class Skills extends React.Component<any, any>{
                     : null}
                 <br /><br />
                 <label style={this.state.error.steel_shoes.steel_shoesError ? Styling.radioButtonError : Styling.radioButtonLabel} className="inline-fields">{questions.fifteen}</label>
-                <RadioButtonGroup name="steel_shoes" defaultSelected={formRef.steel_shoes} className="right" onChange={(event: any) => { this.validationCheck(event,'steel_shoes');this.handleTargetEvents(event) }}>
+                <RadioButtonGroup name="steel_shoes" defaultSelected={formRef.steel_shoes} className="right" onChange={(event: any) => { this.validationCheck(event, 'steel_shoes'); this.handleTargetEvents(event) }}>
                     <RadioButton
                         className="inline-radio"
                         value="true"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={yes}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                     <RadioButton
                         className="inline-radio"
                         value="false"
                         label={no}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
-                        labelStyle={{ color: "gray", fontWeight: 500 }}
                     />
                 </RadioButtonGroup>
                 <br /><br />

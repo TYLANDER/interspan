@@ -85,12 +85,18 @@ var Styling = {
         marginLeft: "9px",
         border: "2px solid #f2f2f2",
         borderRadius: "5px",
-        height: "44px",
+        height: "42px",
         width: '110px',
-        lineHeight: "41px",
+        lineHeight: "45px",
         color: "#2e2e2e",
         // ontFamily: "SFUI_Text",
 
+    },
+    addButtonLabel:{
+        lineHeight:'49px',
+        textTransform: "none",
+        fontSize: "20px",
+        fontFamily:'calibre'
     },
     buttonLabel: {
         textTransform: "none",
@@ -109,7 +115,8 @@ var Styling = {
         width: "55%"
     },
     TextLabelStyle: {
-        fontSize: "16px"
+        fontSize: "20px",
+        fontFamily:'calibre-medium'
     },
     progressBar: {
         height: "9px", backgroundColor: "white", borderRadius: "50px", marginTop: "7px"

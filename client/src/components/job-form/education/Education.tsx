@@ -226,32 +226,43 @@ class Education extends React.Component<any, any>{
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Elementary"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={values.elementary}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Trade/Business/ Technical School"
                         label={values.trade}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                     />
                     <RadioButton
                         value="High School"
                         iconStyle={Styling.iconStyle}
-
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={values.highSchool}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="Attended some College"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={values.attendedCollege}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="GED"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={values.ged}
                     />
                     <RadioButton
                         iconStyle={Styling.iconStyle}
                         value="College Degree"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         label={values.collegeDegree}
                     />
                 </RadioButtonGroup>
@@ -260,8 +271,8 @@ class Education extends React.Component<any, any>{
                     <p className="sub-title">{question.two}</p>
                     {school}
                     <div className="button-group">
-                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.addButton} label={<b>Add</b>} onClick={() => this.handleSchoolLocationList("add")} />
-                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={"Remove"} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
+                        <FlatButton className="hovered-class" labelStyle={Styling.addButtonLabel} style={Styling.addButton} label={'Add'} onClick={() => this.handleSchoolLocationList("add")} />
+                        <FlatButton className="hovered-class" labelStyle={Styling.addButtonLabel} style={Styling.deleteButton} label={"Remove"} onClick={() => this.state.school === 1 ? '' : this.handleSchoolLocationList("delete")} />
                     </div>
                 </div>
                 <div>
@@ -269,8 +280,8 @@ class Education extends React.Component<any, any>{
                     <label className="title">{skillsAndExperience.content}</label>
                     {skills}
                     <div className="button-group">
-                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.addButton} label={<b>Add</b>} primary={true} onClick={() => this.handleSpecialTrainingList("add")} />
-                        <FlatButton labelStyle={Styling.buttonLabel} style={Styling.deleteButton} label={"Remove"} secondary={true} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
+                        <FlatButton className="hovered-class" labelStyle={Styling.addButtonLabel} style={Styling.addButton} label={'Add'} onClick={() => this.handleSpecialTrainingList("add")} />
+                        <FlatButton className="hovered-class" labelStyle={Styling.addButtonLabel} style={Styling.deleteButton} label={"Remove"} onClick={() => this.state.skills === 1 ? '' : this.handleSpecialTrainingList("delete")} />
                     </div>
                 </div>
                 <ActiveButtons handleNext={() => this.handleNext()} handlePrev={() => this.handlePrev()} />

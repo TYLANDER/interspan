@@ -1,11 +1,13 @@
 .equal-opprtunity-container .paragraph{
     text-align: justify;
     text-justify: inter-word;
+    font-size:17px;
 }
 
 .equal-opprtunity-container .title{
-    font-size: 17px;
+    font-size: 20px;
     margin-bottom: 11px;
+    font-family:'calibre-medium';
     margin-top:15px;
     margin-left:1px;
 }

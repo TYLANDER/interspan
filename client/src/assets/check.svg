@@ -1,0 +1,21 @@
+<svg width="16" height="16" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Radio button</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-12435 -781)">
+<g id="Radio button">
+<g id="Rectangle">
+<use xlink:href="#path0_fill" transform="translate(12435 781)" fill="#FCFCFC"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(12435 781)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(12435 781)" fill="#EDEEEE"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 4C 0 1.79086 1.79086 0 4 0L 12 0C 14.2091 0 16 1.79086 16 4L 16 12C 16 14.2091 14.2091 16 12 16L 4 16C 1.79086 16 0 14.2091 0 12L 0 4Z"/>
+<path id="path1_stroke_2x" d="M 4 2L 12 2L 12 -2L 4 -2L 4 2ZM 14 4L 14 12L 18 12L 18 4L 14 4ZM 12 14L 4 14L 4 18L 12 18L 12 14ZM 2 12L 2 4L -2 4L -2 12L 2 12ZM 4 -2C 0.686292 -2 -2 0.686292 -2 4L 2 4C 2 2.89543 2.89543 2 4 2L 4 -2ZM 12 2C 13.1046 2 14 2.89543 14 4L 18 4C 18 0.686292 15.3137 -2 12 -2L 12 2ZM 14 12C 14 13.1046 13.1046 14 12 14L 12 18C 15.3137 18 18 15.3137 18 12L 14 12ZM 4 14C 2.89543 14 2 13.1046 2 12L -2 12C -2 15.3137 0.686292 18 4 18L 4 14Z"/>
+</defs>
+</svg>

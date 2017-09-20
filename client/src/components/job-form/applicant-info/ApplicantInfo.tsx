@@ -4,6 +4,7 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 // import * as Colors from 'material-ui/styles/colors';
 // import DateRange from "material-ui/svg-icons/action/date-range";
 import Styling from "../jobTheme";
+// import Logo from "material-ui/svg-icons/action/date-rang";
 
 class ApplicantInfo extends React.Component<any, any>{
     constructor(props: any) {
@@ -250,12 +251,16 @@ class ApplicantInfo extends React.Component<any, any>{
                     <RadioButton
                         style={Styling.radioButtonStyle}
                         value="yes"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                         label={yes}
                         labelStyle={{ transform: "lower-case" }}
                     />
                     <RadioButton
                         style={Styling.radioButtonStyle}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         value="no"
                         label={no}
                         iconStyle={Styling.iconStyle}
@@ -272,6 +277,9 @@ class ApplicantInfo extends React.Component<any, any>{
                     <RadioButton
                         style={Styling.radioButtonStyle}
                         value="yes"
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
                         label={yes}
                     />
@@ -279,6 +287,9 @@ class ApplicantInfo extends React.Component<any, any>{
                         style={Styling.radioButtonStyle}
                         value="no"
                         label={no}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
+
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>
@@ -301,6 +312,8 @@ class ApplicantInfo extends React.Component<any, any>{
                         style={Styling.radioButtonStyle}
                         value="yes"
                         label={yes}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
 
                     />
@@ -308,6 +321,8 @@ class ApplicantInfo extends React.Component<any, any>{
                         style={Styling.radioButtonStyle}
                         value="no"
                         label={no}
+                        uncheckedIcon={<img src={require('../../../assets/radio-1.svg')} />}
+                        checkedIcon={<img src={require('../../../assets/radio.svg')} />}
                         iconStyle={Styling.iconStyle}
                     />
                 </RadioButtonGroup>

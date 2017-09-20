@@ -1,4 +1,11 @@
-.paragraph{
+.certification-container .paragraph{
     text-align: justify;
-    text-justify: inter-word;
+    font-size:17px;
+    margin-top:20px;    
+    margin-bottom:20px;
+    color:#2e2e2e
+}
+.certification-container .title{
+    font-family:'calibre-medium';
+    margin-top:15px;
 }
