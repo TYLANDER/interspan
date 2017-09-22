@@ -6,7 +6,7 @@ import ActiveButtons from '../active-buttons/ActiveButtons';
 import Styling from "../jobTheme";
 // import Logo from "material-ui/svg-icons/action/date-rang";
 
-class ApplicantInfo extends React.Component<any, any>{
+class ApplicantInfo extends React.PureComponent<any, any>{
     constructor(props: any) {
         super(props);
         //State of component

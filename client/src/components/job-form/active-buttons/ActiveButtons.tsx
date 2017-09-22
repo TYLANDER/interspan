@@ -31,7 +31,7 @@ class ActiveButtons extends React.Component<any, any>{
                     className="second-button hovered-class"
                     labelStyle={{ textTransform: "none", fontSize: "20px",fontFamily: "calibre",lineHeight:'48px',}}
                     style={{ width: "300px", height: "41px",borderRadius: "8px", lineHeight: "48px", background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white" }}
-                    onTouchTap={() => this.handleNext()}
+                    onTouchTap={this.props.finished ?()=>this.props.openModal() :() => this.handleNext()}
                 />
             </div>
         );

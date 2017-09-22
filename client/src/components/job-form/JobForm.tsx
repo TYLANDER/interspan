@@ -13,8 +13,8 @@ import Media from './media/Media';
 import EqualOpportunity from './equal-opportunity/EqualOpportunity';
 import Transportation from './transportation/Transportation';
 import References from './references/References';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+// import Dialog from 'material-ui/Dialog';
+// import FlatButton from 'material-ui/FlatButton';
 import { withRouter, browserHistory } from "react-router"
 import StateManager from "../../service/stateManage";
 import LinearProgress from 'material-ui/LinearProgress';
@@ -33,7 +33,7 @@ class MainJobForm extends React.Component<any, any>{
         //state of the component
         this.state = {
             finished: false,
-            stepIndex:0,
+            stepIndex: 0,
             selectedJson: this.jobDataEn,
             visited: [],
             open: true
@@ -124,7 +124,7 @@ class MainJobForm extends React.Component<any, any>{
             case 9:
                 return <References handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.references} />;
             case 10:
-                return <Certification handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.certification} />;
+                return <Certification handleClose={()=>this.handleClose()} handleNext={(url: any, e: any) => this.handleNext(url, e)} handlePrev={(e: any) => this.handlePrev(e)} jsonData={this.state.selectedJson.certification} />;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
@@ -202,7 +202,7 @@ class MainJobForm extends React.Component<any, any>{
             "skills_form": this.parsingLocalStorage('skills-form'),
             "transportation_form": this.parsingLocalStorage('transportation-form'),
         }
-        this.setState({ open: false, finished: false, stepIndex: this.state.stepIndex - 2 });
+        this.setState({ open: false, finished: false });
         //dispatch action and send data to server
         this.props.applyJob(formData);
     };
@@ -211,15 +211,15 @@ class MainJobForm extends React.Component<any, any>{
         const { stepperheadings } = this.state.selectedJson;
         StateManager.stepperObserver.next(this.state);
         //action button of dialog box
-        const actions = [
+        /*const actions = [
             <FlatButton
                 label="Done"
                 primary={true}
                 keyboardFocused={true}
                 onTouchTap={this.handleClose}
             />,
-        ];
-        const { finished, stepIndex } = this.state;
+        ];*/
+        const { stepIndex } = this.state;
         // const { headings } = this.state.selectedJson;
         //after success job submitted. It route to main page
         this.props.jobObj.success ? browserHistory.push("/") : null;
@@ -236,7 +236,7 @@ class MainJobForm extends React.Component<any, any>{
                             </div>
                             <div className="counting-stepper">
                                 <span>{stepIndex + 1}</span> <span>of 11</span>
-                                </div>
+                            </div>
                         </div>
                         <div className="stepper-loader">
                             <LinearProgress style={Styling.progressBar} mode="determinate" value={stepIndex + 1} max={11} />
@@ -296,11 +296,15 @@ class MainJobForm extends React.Component<any, any>{
                     </div>*/}
                     <div className="main-content">
                         <div className="stepper-content">
-                            {finished ? (
+                            <div>
+                                <div>{this.getStepContent(stepIndex)}</div>
+                            </div>
+                            {/*{finished ? (
                                 <Dialog
                                     title="Congratulations!"
                                     actions={actions}
                                     modal={false}
+                                    style={{maxWidth:'485px'}}
                                     open={this.state.open}
                                     onRequestClose={this.handleClose}
                                 >
@@ -309,7 +313,7 @@ class MainJobForm extends React.Component<any, any>{
                                     <div>
                                         <div>{this.getStepContent(stepIndex)}</div>
                                     </div>
-                                )}
+                                )}*/}
                         </div>
                     </div>
                     <Footer />

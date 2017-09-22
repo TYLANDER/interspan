@@ -7,7 +7,7 @@ var Styling = {
         marginLeft: "-7px",
         fontFamily: "calibre-medium"
     },
-    radioButtonError:{
+    radioButtonError: {
         fontSize: "20px",
         marginBottom: "13px",
         display: "block",
@@ -36,7 +36,7 @@ var Styling = {
     dateNoteStyle: {
         color: "#3B7CFF",
         fontSize: "14px",
-        fontFamily:'calibre-medium'
+        fontFamily: 'calibre-medium'
     },
     date: {
         display: "inline-block",
@@ -60,18 +60,31 @@ var Styling = {
     defaultLabelButton: {
         // color: "white",
         fontFamily: "calibre-medium",
-        lineHeight:'48px',
-        fontSize:'20px',
-        textTransform:'upper-case'
+        lineHeight: '48px',
+        fontSize: '20px',
+        textTransform: 'upper-case'
 
     },
     errorIcon: {
         position: "relative",
         top: "-65px",
-        left:"95%"
+        left: "95%"
     },
     errorMsg: {
         marginTop: "10px"
+    }, 
+    dialogButton: {
+        height: "35px",
+        minWidth:"70px",
+        borderRadius: "5px",
+        fontFamily: "calibre",
+        background: "linear-gradient(to right,#3e7fff,#6bb0ff)", color: "white",
+    },
+    labelDialogButton:{
+        lineHeight: '41px',
+        textTransform: "none",
+        fontSize: "17px",
+        fontFamily: 'calibre-medium'
     },
     addButton: {
         height: "41px",
@@ -92,23 +105,23 @@ var Styling = {
         // ontFamily: "SFUI_Text",
 
     },
-    addButtonLabel:{
-        lineHeight:'49px',
+    addButtonLabel: {
+        lineHeight: '49px',
         textTransform: "none",
         fontSize: "20px",
-        fontFamily:'calibre'
+        fontFamily: 'calibre'
     },
     buttonLabel: {
         textTransform: "none",
         fontSize: "20px",
-        lineHeight:'57px',
-        fontFamily:'calibre-light'
+        lineHeight: '57px',
+        fontFamily: 'calibre-light'
     },
     buttonLabelApply: {
         textTransform: "none",
         fontSize: "20px",
-        lineHeight:'48px',
-        fontFamily:'calibre-light'
+        lineHeight: '48px',
+        fontFamily: 'calibre-light'
     },
     dateTextFeild: {
         display: "inline-block",
@@ -116,7 +129,7 @@ var Styling = {
     },
     TextLabelStyle: {
         fontSize: "20px",
-        fontFamily:'calibre-medium'
+        fontFamily: 'calibre-medium'
     },
     progressBar: {
         height: "9px", backgroundColor: "white", borderRadius: "50px", marginTop: "7px"
