@@ -19,7 +19,7 @@ class Home extends React.Component<any, any> {
     carouselRef: any;
     carouselArray = [
         {
-            title: '-- Jesse Hudson, UI/UX designer',
+            title: '-- , UI/UX designer',
             contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
         },
         {
@@ -151,7 +151,7 @@ class Home extends React.Component<any, any> {
                         <div className="content">
                             <p className="title">We span the gap</p>
                             <div className="title-desc">
-                                InterSpan has been matching employees to jobs since 1995. 
+                                InterSpan has been matching employees to jobs since 1995.
                     </div>
                             <p className="apply-desc">
                                 We have open positions now, and applying is easy.

@@ -23,10 +23,6 @@ class EmployeeInfo extends React.Component<any, any> {
                                 <span className="icon">
                                     <img src={require("../../assets/arrow-down.svg")} />
                                 </span>
-
-                                <span className="text">
-                                    SCROLL DOWN
-                       </span>
                             </div>
                             {/*<p className="apply-desc">
                                 We have open positions now, and applying is easy.
@@ -102,7 +98,7 @@ class EmployeeInfo extends React.Component<any, any> {
                 </div>
                 <div className="contact-us employee">
                     <p className="text">
-                       Reach out. We are happy to discuss your staffing needs.
+                       Let's discuss your staffing needs.
                         </p>
                     <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400, fontFamily: 'calibre-semi-bold', lineHeight: '51px' }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>
