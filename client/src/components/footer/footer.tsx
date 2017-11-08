@@ -6,10 +6,10 @@ class Footer extends React.Component<any, any> {
         return (
             <div className="md-stepper footer-container-main">
                 <div className="icon">
-                    <img src={require("../../assets/logo.svg")} />
+                    <img src={require("../../assets/logo2.svg")} />
                 </div>
                 <div className="social-media">
-                    <a href="#"><img src={require("../../assets/insta.svg")} /></a>
+                    <a href="https://www.facebook.com/InterSpanInc/"><img src={require("../../assets/insta.svg")} /></a>
                     <a href="#"><img src={require("../../assets/fb.svg")} /></a>
                     <a href="#"><img src={require("../../assets/twitter.svg")} /></a>
 

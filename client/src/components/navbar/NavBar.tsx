@@ -184,7 +184,7 @@ class NavBar extends React.Component<any, any> {
                 zDepth={1}
                 style={{ backgroundColor: 'transparent', transition: "none"}}
                 iconElementLeft={
-                    <img src={require('../../assets/logo.svg')} className="logo" alt="logo" />
+                    <img src={require('../../assets/logo2.svg')} className="logo" alt="logo" />
                 }
                 iconElementRight={menu}
                 onLeftIconButtonTouchTap={this.handleHomePage}

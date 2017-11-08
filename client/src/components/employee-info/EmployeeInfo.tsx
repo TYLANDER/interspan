@@ -12,9 +12,9 @@ class EmployeeInfo extends React.Component<any, any> {
                         <img className="background-image" src={require('../../assets/back.png')} />
                         <img className="background-image-mobile" src={require('../../assets/back-mobile.png')} />
                         <div className="content">
-                            <h2 className="title"> For Employers</h2>
+                            <h2 className="title">Improve Your Bottom Line</h2>
                             <div className="title-desc">
-                                Spanning the gap. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                                As employee salary and benefit package costs continue to rise, profit margins continue to shrink - all in an intensively competitive marketplace. Sound like a familiar problem?
                     </div>
                             <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
                                 <span className="icon-mobile">
@@ -55,60 +55,54 @@ class EmployeeInfo extends React.Component<any, any> {
 
                 </div>
                 <div className="employee-content">
-                    <p className="first"> InterSpan offers specialized workforce solutions tailored to each client’s needs. If you have labor needs we can help you meet them. As a family owned and operated business we are flexible and can meet the specific needs of you site. We take the time to screen candidates and make sure the right person is sent to your jobsite. We fill temporary and temp-to-permanent job assignments. Currently we specialize in light industrial placements including:</p>
+                    <p className="first"> InterSpan offers specialized workforce solutions tailored to each client’s needs. If you have labor needs we can help you meet them. As a family owned and operated business we are flexible and can meet the specific needs of you site. We take the time to screen candidates and make sure the right person is sent to your jobsite. We fill temporary and temp-to-permanent job assignments. In addition to placing someone with a job, we offer the following services:</p>
                     <div className="choices">
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Value preposition</div>
-                                <div className="choice-desc">Description</div>
+                                <div className="choice-title">Temporary Labor Assignments</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Value preposition</div>
-                                <div className="choice-desc">Description</div>
+                                <div className="choice-title">Temp to permanent Assignments</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Value preposition</div>
-                                <div className="choice-desc">Description</div>
+                                <div className="choice-title">Payroll Services</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Value preposition</div>
-                                <div className="choice-desc">Description</div>
+                                <div className="choice-title">Safety Programs</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Value preposition</div>
-                                <div className="choice-desc">Description</div>
+                                <div className="choice-title">Workers Compensation Insurance</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Value preposition</div>
-                                <div className="choice-desc">Description</div>
+                                <div className="choice-title">The Patient Protection and Affordable Care Act (ObamaCare) Advisement.</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="contact-us employee">
                     <p className="text">
-                        Interspan provides quality employees to companies that need them.
+                       Reach out. We are happy to discuss your staffing needs.
                         </p>
                     <FlatButton labelStyle={{ color: "#3B7CFF", textTransform: 'none', fontSize: '19px', fontWeight: 400, fontFamily: 'calibre-semi-bold', lineHeight: '51px' }} style={{ borderRadius: "6px" }} className="contact-us-button hovered-class" hoverColor="none" backgroundColor="white" label="Contact us" />
                 </div>

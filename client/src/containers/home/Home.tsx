@@ -149,9 +149,9 @@ class Home extends React.Component<any, any> {
                         <img className="background-image" src={require('../../assets/back.png')} />
                         <img className="background-image-mobile" src={require('../../assets/back-mobile.png')} />
                         <div className="content">
-                            <p className="title"> We span the gap</p>
+                            <p className="title">We span the gap</p>
                             <div className="title-desc">
-                                InterSpan provides quality employees to companies that need them.
+                                InterSpan has been matching employees to jobs since 1995. 
                     </div>
                             <p className="apply-desc">
                                 We have open positions now, and applying is easy.
