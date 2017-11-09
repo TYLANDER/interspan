@@ -14,7 +14,7 @@ class EmployeeInfo extends React.Component<any, any> {
                         <div className="content">
                             <h2 className="title">Improve Your Bottom Line</h2>
                             <div className="title-desc">
-                                As employee salary and benefit package costs continue to rise, profit margins continue to shrink - all in an intensively competitive marketplace. Sound like a familiar problem?
+                                Employee salary and benefit package costs continue to rise, profit margins continue to shrink - all in an intensively competitive marketplace. Sound familiar?
                     </div>
                             <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
                                 <span className="icon-mobile">
@@ -51,7 +51,15 @@ class EmployeeInfo extends React.Component<any, any> {
 
                 </div>
                 <div className="employee-content">
-                    <p className="first"> InterSpan offers specialized workforce solutions tailored to each client’s needs. If you have labor needs we can help you meet them. As a family owned and operated business we are flexible and can meet the specific needs of you site. We take the time to screen candidates and make sure the right person is sent to your jobsite. We fill temporary and temp-to-permanent job assignments. In addition to placing someone with a job, we offer the following services:</p>
+                    <p className="first"> InterSpan offers specialized workforce
+                     solutions tailored to each client’s needs. If you have labor
+                      needs, we can help you meet them. As a family owned and
+                      operated business we are flexible and can meet the specific
+                       needs of you site. We take the time to screen candidates
+                       and make sure the right person is sent to your jobsite.
+                       We fill temporary and temp-to-permanent job assignments.
+                       In addition to placing someone with a job, we offer the
+                       following services:</p>
                     <div className="choices">
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
@@ -63,7 +71,7 @@ class EmployeeInfo extends React.Component<any, any> {
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Temp to permanent Assignments</div>
+                                <div className="choice-title">Temp-to-permanent Assignments</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
@@ -77,21 +85,21 @@ class EmployeeInfo extends React.Component<any, any> {
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Safety Programs</div>
+                                <div className="choice-title">Comprehensive Candidate Orientation Program</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">Workers Compensation Insurance</div>
+                                <div className="choice-title">Bilingual employees</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
                             <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
                             <div className="content">
-                                <div className="choice-title">The Patient Protection and Affordable Care Act (ObamaCare) Advisement.</div>
+                                <div className="choice-title">Fast Placements</div>
                             </div>
                         </div>
                     </div>
