@@ -89,28 +89,11 @@ class Home extends React.Component<any, any> {
                 return (
                     <Paper zDepth={2} key={i} className="apply-paper" style={{ borderRadius: '6px',boxShadow:'0px 6px 12px rgba(46, 46, 46, 0.08)' }}>
                         <div className="paper-container">
-                            {jobObj.showMore ?
-                                <img src={require('../../assets/window-close.svg')} className="cross-btn"
-                                    onClick={this.showDescription.bind(this, jobObj, i)} />
-                                : null}
+                                {/* <img src={require('../../assets/window-close.svg')} className="cross-btn"
+                                    onClick={this.showDescription.bind(this, jobObj, i)} /> */}
+                                
                             <h3>{jobObj.title}</h3>
                             <div className="text-left alignment">
-                                <div>
-                                    <span><img className="icon" src={require('../../assets/location.png')} /></span>
-                                    <span className="label-title">Location: </span>
-                                    <span className="label-desc">{jobObj.location}</span>
-                                </div>
-                                <div>
-                                    <span><img className="icon" src={require('../../assets/duration.png')} /></span>
-                                    <span className="label-title">Duration: </span>
-                                    <span className="label-desc">{jobObj.duration}</span>
-                                </div>
-                                <div>
-                                    <span><img className="icon" src={require('../../assets/hour.png')} /></span>
-                                    <span className="label-title">Hours: </span>
-                                    <span className="label-desc">{jobObj.hours}</span>
-                                </div>
-                                {jobObj.showMore ?
                                     <div className="showMoreDesc-container">
                                         <div>
                                             <span className="label-title">Description: </span>
@@ -121,8 +104,6 @@ class Home extends React.Component<any, any> {
                                             <span>{jobObj.compensation}</span>
                                         </div>
                                     </div>
-                                    : null}
-
                             </div>
                         </div>
                         <div className="paper-bar"></div>
@@ -133,8 +114,8 @@ class Home extends React.Component<any, any> {
                             </div>
                             :
                             <div className="text-left footer-container">
-                                <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'calibre-semi-bold', fontSize: '16px' }} onClick={this.showDescription.bind(this, jobObj, i)} />
-                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#2e2e2e', fontFamily: 'calibre-semi-bold', fontSize: '16px', opacity: 0.58 }} onClick={this.handleJobApply.bind(this, jobObj.id)} />
+                                {/* <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'calibre-semi-bold', fontSize: '16px' }} onClick={this.showDescription.bind(this, jobObj, i)} /> */}
+                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'calibre-semi-bold', fontSize: '16px'}} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>

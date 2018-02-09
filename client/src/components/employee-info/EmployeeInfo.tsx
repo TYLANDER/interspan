@@ -14,7 +14,7 @@ class EmployeeInfo extends React.Component<any, any> {
                         <div className="content">
                             <h2 className="title">Improve Your Bottom Line</h2>
                             <div className="title-desc">
-                                Employee salary and benefit package costs continue to rise, profit margins continue to shrink - all in an intensively competitive marketplace. Sound familiar?
+                            spanning the gap between employer and employee
                     </div>
                             <div className="scroll-down desktop-view" onClick={() => this.props.scrolling()}>
                                 <span className="icon-mobile">
@@ -62,44 +62,51 @@ class EmployeeInfo extends React.Component<any, any> {
                        following services:</p>
                     <div className="choices">
                         <div className="template">
-                            <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
                             <div className="content">
-                                <div className="choice-title">Temporary Labor Assignments</div>
+                                <div className="choice-title">Pre-Employment screening</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
-                            <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
                             <div className="content">
-                                <div className="choice-title">Temp-to-permanent Assignments</div>
+                                <div className="choice-title">Dedicated client liaison</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
-                            <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
                             <div className="content">
-                                <div className="choice-title">Payroll Services</div>
+                                <div className="choice-title">Custom workforce solutions</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
-                            <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
                             <div className="content">
-                                <div className="choice-title">Comprehensive Candidate Orientation Program</div>
+                                <div className="choice-title">Human resources management</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
-                            <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
                             <div className="content">
-                                <div className="choice-title">Bilingual employees</div>
+                                <div className="choice-title">Payroll management</div>
                             </div>
                         </div>
                         <div className="seprator"></div>
                         <div className="template">
-                            <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div>
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
                             <div className="content">
-                                <div className="choice-title">Fast Placements</div>
+                                <div className="choice-title">Short notice placement</div>
+                            </div>
+                        </div>
+                        <div className="seprator"></div>
+                        <div className="template">
+                            {/* <div className="choice-icon"><img src={require("../../assets/checked.png")} /></div> */}
+                            <div className="content">
+                                <div className="choice-title">Pre-placement orientation</div>
                             </div>
                         </div>
                     </div>
