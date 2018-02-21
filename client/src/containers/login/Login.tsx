@@ -92,11 +92,11 @@ class Login extends React.Component<any, any> {
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
                     style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="login-container">
                         <div className="paper-container">
-                            <div className="login-header">
+                            {/* <div className="login-header">
                                 <div className="shadow-image"></div>
                                 <p>{this.getMessage()}</p>
-                                {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
-                            </div>
+                                <img className="image" src={require("../../assets/login-header.png")} />
+                            </div> */}
                             <div className="md-screen login-view">
                                 {this.formCard()}
                             </div>

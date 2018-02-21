@@ -26,6 +26,9 @@
     transform: scale(1.1);
 
 }
+.content-about {
+  margin-bottom: 180px
+}
 .aboutus-content .second , .aboutus-content .last{
   margin-top:36px;
   color:#2e2e2e;

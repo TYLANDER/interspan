@@ -71,11 +71,11 @@ class Login extends React.Component<any, any> {
                 {this.state.loading ? <CircularProgress size={80} thickness={5} color="rgb(45, 69, 158)"
                     style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="forget-password-container">
                         <div className="paper-container">
-                            <div className="forget-header">
+                            {/* <div className="forget-header">
                                 <div className="shadow-image"></div>
                                 <p>Forget your password?</p>
-                                {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
-                            </div>
+                                <img className="image" src={require("../../assets/login-header.png")} />
+                            </div> */}
                             <div className="md-screen forget-view">
                                 {this.formCard()}
                             </div>

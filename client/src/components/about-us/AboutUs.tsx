@@ -12,7 +12,7 @@ class AboutUs extends React.Component<any, any> {
                     <div className="header-body">
                         <img className="background-image" src={require('../../assets/back.png')} />
                         <img className="background-image-mobile" src={require('../../assets/back-mobile.png')} />
-                        <div className="content">
+                        <div className="content-about">
                             <h2 className="title">A Workforce Staffing Firm</h2>
                             <div className="title-desc">
                             Spanning the gap since 1995

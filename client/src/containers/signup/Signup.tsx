@@ -66,7 +66,7 @@ class Signup extends React.Component<any, any> {
         let users = Object.assign(this.state.userObj, values);
         //returning form value
         if (this.state.step + 1 === 1) {
-            this.refs.admin['className'] = "signup-header-second"
+            // this.refs.admin['className'] = "signup-header-second"
             this.setState({
                 step: this.state.step + 1,
                 width: this.state.width + 33.33,
@@ -74,7 +74,7 @@ class Signup extends React.Component<any, any> {
             })
         }
         else if (this.state.step + 1 === 2) {
-            this.refs.admin['className'] = "signup-header-third"
+            // this.refs.admin['className'] = "signup-header-third"
             this.setState({
                 step: this.state.step + 1,
                 width: this.state.width + 33.33,
@@ -108,14 +108,14 @@ class Signup extends React.Component<any, any> {
                     style={{ position: 'absolute', textAlign: 'center', margin: '0 auto', left: 0, right: 0 }} /> : <div className="signup-container">
                         <div className="paper-container">
                             <div className="loader">
-                                <div style={{ width: this.state.width + "%" }} className="progress">
-                                </div>
+                                {/* <div style={{ width: this.state.width + "%" }} className="progress">
+                                </div> */}
                             </div>
-                            <div ref="admin" className="signup-header">
+                            {/* <div ref="admin" className="signup-header">
                                 <div className="shadow-image"></div>
                                 <p>{this.state.title}</p>
-                                {/*<img className="image" src={require("../../assets/login-header.png")} />*/}
-                            </div>
+                                <img className="image" src={require("../../assets/login-header.png")} />
+                            </div> */}
                             <div className="md-screen signup-view">
                                 {/*<button onClick={()=>this.refs.admin['className']='notnot'}>CLICK</button>*/}
                                 {this.formCard()}

@@ -11,22 +11,22 @@ import { connect } from 'react-redux';
 import Styling from "../../components/job-form/jobTheme";
 import Footer from "../../components/footer/footer";
 import "../../assets/carousel.css";
-const Carousel = require('react-responsive-carousel').Carousel;
+// const Carousel = require('react-responsive-carousel').Carousel;
 
 class Home extends React.Component<any, any> {
     gettingData = false;
     panelArray: any;
     carouselRef: any;
-    carouselArray = [
-        {
-            title: '-- , UI/UX designer',
-            contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
-        },
-        {
-            title: '-- Jesse Hudson, UI/UX designer',
-            contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
-        },
-    ];
+    // carouselArray = [
+    //     {
+    //         title: '-- , UI/UX designer',
+    //         contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
+    //     },
+    //     {
+    //         title: '-- Jesse Hudson, UI/UX designer',
+    //         contents: '   "It was so worth it to get a Nanodegree. Seeing that first paycheck, I couldn’t believe it. I never thought I’d be here. It’s like a dream."'
+    //     },
+    // ];
 
     constructor(props: any) {
         super(props);
@@ -115,7 +115,8 @@ class Home extends React.Component<any, any> {
                             :
                             <div className="text-left footer-container">
                                 {/* <FlatButton label="More" className="more-button" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'calibre-semi-bold', fontSize: '16px' }} onClick={this.showDescription.bind(this, jobObj, i)} /> */}
-                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: 'rgba(0,0,0,0)', width: "60px", minWidth: "none" }} labelStyle={{ color: '#3B7CFF', fontFamily: 'calibre-semi-bold', fontSize: '16px'}} onClick={this.handleJobApply.bind(this, jobObj.id)} />
+                                <FlatButton label="Apply" className="apply-button-style" style={{ backgroundColor: '#6cb3ff', width: "90px", minWidth: "none", height: "34px" }} 
+                                    labelStyle={{ color: '#ffffff', fontFamily: 'calibre-semi-bold', fontSize: '16px'}} onClick={this.handleJobApply.bind(this, jobObj.id)} />
                             </div>
                         }
                     </Paper>
@@ -193,7 +194,7 @@ class Home extends React.Component<any, any> {
                     </div>
                 </div>
 
-                <div className="slider-section">
+                {/* <div className="slider-section">
                     <Carousel onChange={(event: any) => this.setState({ status: event })} ref={(event: any) => this.carouselRef = event} showIndicators={false} showThumb={false} showStatus={false} showArrows={false}>
                         {this.carouselArray.map((arr, id) => {
                             return (
@@ -226,8 +227,7 @@ class Home extends React.Component<any, any> {
                         <img src={require("../../assets/prev-carp.png")} onClick={() => this.carouselRef.moveTo(this.carouselRef.state.selectedItem + 1)} />
                     </div>
 
-                    {/*</div>*/}
-                </div>
+                </div> */}
                 <Footer />
             </div>
         );
