@@ -226,9 +226,9 @@ class NavBar extends React.Component<any, any> {
             <AppBar
                 zDepth={1}
                 className={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?"navbar-login-items":"icon-menu-hamburger"}
-                iconElementLeft={<img className={this.state.jobMenuOpen?"logo-navbar logo-hide":"logo-navbar"} src={require("../../assets/logos.png")} />}
+                iconElementLeft={<img className={this.state.jobMenuOpen?"logo-navbar logo-hide":"logo-navbar"} src={require("../../assets/logo.png")} />}
                 iconElementRight={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="sm-screen"><img className="dash-icon" src={require("../../assets/dash-icon.png")} />{menu}</div>:languageSelect}
-                title={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="title-bar"><p className="title">Let's get started</p><img src={require('../../assets/logos.png')} /></div>:null}
+                title={this.props.router.location.pathname === "/login" || this.props.router.location.pathname === "/signup" || this.props.router.location.pathname === "/forget"?<div className="title-bar"><p className="title">Let's get started</p><img src={require('../../assets/logo.png')} /></div>:null}
                 style={{ zIndex: 1, backgroundColor: "white", transition: "none" }}
                 titleStyle={{ color: '#2e2e2e', fontFamily: "'Roboto',sans-serif" }}
                 showMenuIconButton={this.props.router.location.pathname === "/job" ? true : false}
